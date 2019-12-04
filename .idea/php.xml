@@ -5,4 +5,5 @@
       <interpreter id="2ebbcabc-5779-470e-acaa-1a5b97e769a9" name="PHP latest" home="$USER_HOME$/.PhpStorm2019.3/system/plugins/idea-php-latest-plugin/php-v7.3.1/php.sh" debugger_id="php.debugger.XDebug" />
     </interpreters>
   </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
 </project>
