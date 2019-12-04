@@ -1,3 +1,17 @@
-{
+[
+  {
 
-}
+	"id" : "1.1" ,
+	"name" : "Home" ,
+	"file_path" : "view/for-home/home.php" ,
+	"isNav_sub" : true ,
+	"route" : "home" ,
+	"resources" : {
+	  "css" : [ ] ,
+	  "js" : [
+
+	  ]
+	}
+
+  }
+]

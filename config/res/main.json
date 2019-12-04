@@ -1,3 +1,10 @@
 {
+  "pages": {
+	"name": "render" ,"status_use" : "default"
+  },
+  "js": [
 
+  ], "css": [
+
+  ]
 }
