@@ -7,10 +7,22 @@
   "require": {
 	"php":  ">=7.3" ,
 	"psr/http-message": "^1.0",
-	"phpmailer/phpmailer": "~6.1",
+	"phpmailer/phpmailer": ">=6.1 <7.0.0",
 	"ramsey/uuid" : "^3.8",
 	"ext-json": "*",
+	"abr4xas/utils": "dev-master",
+	"mpdf/mpdf": "~8.0",
+	"kwn/number-to-words": "^1.6",
+	"dompdf/dompdf": "^0.8.3",
+	"phpoffice/phpspreadsheet": "^1.9",
+	"phpoffice/phpword": "^0.17.0",
+	"php-ai/php-ml": "^0.8.0",
 	"ext-mysqli": "*"
+  },
+  "require-dev": {
+	"roave/security-advisories": "dev-master",
+	"phpunit/phpunit": "8",
+	"spatie/phpunit-watcher": "^1.8"
   },
   "config": {
 	"platform": {
