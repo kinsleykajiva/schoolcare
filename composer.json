@@ -1,0 +1,21 @@
+{
+  "name": "schoolcare",
+  "description": "this is is a  school management system" ,
+
+  "type": "project",
+  "license": "BSD",
+  "require": {
+	"php":  ">=7.3" ,
+	"psr/http-message": "^1.0",
+	"phpmailer/phpmailer": "~6.1",
+	"ramsey/uuid" : "^3.8",
+	"ext-json": "*",
+	"ext-mysqli": "*"
+  },
+  "config": {
+	"platform": {
+	  "php": "7.3.0"
+	}
+  }
+
+}
