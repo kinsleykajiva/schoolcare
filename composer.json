@@ -17,7 +17,8 @@
 	"phpoffice/phpspreadsheet": "^1.9",
 	"phpoffice/phpword": "^0.17.0",
 	"php-ai/php-ml": "^0.8.0",
-	"ext-mysqli": "*"
+	"ext-mysqli": "*",
+    "lcobucci/jwt": "^3.3"
   },
   "require-dev": {
 	"roave/security-advisories": "dev-master",

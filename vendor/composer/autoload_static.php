@@ -134,6 +134,10 @@ class ComposerStaticInit9dce82627eadaa6092be5b2eec9d2aad
             'Mpdf\\' => 5,
             'Matrix\\' => 7,
         ),
+        'L' => 
+        array (
+            'Lcobucci\\JWT\\' => 13,
+        ),
         'J' => 
         array (
             'Joli\\JoliNotif\\' => 15,
@@ -287,6 +291,10 @@ class ComposerStaticInit9dce82627eadaa6092be5b2eec9d2aad
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
+        ),
+        'Lcobucci\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
         ),
         'Joli\\JoliNotif\\' => 
         array (
