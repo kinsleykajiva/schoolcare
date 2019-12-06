@@ -1,3 +1,19 @@
+<?php
+	session_start();
+	if ( !isset( $_SESSION ) || !isset( $_SESSION[ 'USER_MODULES' ] ) ) {
+		header( 'Location: log?msg=auth' );
+		exit;
+	}
+	$USER_MODULES = $_SESSION[ 'USER_MODULES' ];// array
+	$SYSTEM_MAIN_NAV = $_SESSION[ 'SYSTEM_MAIN_NAV' ];// array
+	require_once 'config/ViewRenderer.php';
+
+	$url_fetch = $_GET[ 'fetch' ] ?? '';
+
+	$viewObject = new ViewRenderer ( $url_fetch, $USER_MODULES, $SYSTEM_MAIN_NAV, TRUE );
+
+
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -62,7 +78,8 @@
 
 <body>
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+	your browser</a> to improve your experience.</p>
 <![endif]-->
 <!-- Start Header Top Area -->
 <div class="header-top-area">
@@ -70,23 +87,23 @@
 		<div class="row">
 			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 				<div class="logo-area">
-					<a href="#"><img src="assets/img/logo/logo.png" alt="" /></a>
+					<a href="#"><img src="assets/img/logo/logo.png" alt=""/></a>
 				</div>
 			</div>
 			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 				<div class="header-top-menu">
 					<ul class="nav navbar-nav notika-top-nav">
 						<li class="nav-item dropdown">
-							<a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-search"></i></span></a>
+							<a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+							   class="nav-link dropdown-toggle"><span><i
+										class="notika-icon notika-search"></i></span></a>
 							<div role="menu" class="dropdown-menu search-dd animated flipInX">
 								<div class="search-input">
 									<i class="notika-icon notika-left-arrow"></i>
-									<input type="text" />
+									<input type="text"/>
 								</div>
 							</div>
 						</li>
-
-
 
 
 					</ul>
@@ -220,7 +237,8 @@
 					</li>
 					<li><a data-toggle="tab" href="#Appviews"><i class="notika-icon notika-app"></i> App views</a>
 					</li>
-					<li class="active"><a data-toggle="tab" href="#Page"><i class="notika-icon notika-support"></i> Pages</a>
+					<li class="active"><a data-toggle="tab" href="#Page"><i class="notika-icon notika-support"></i>
+							Pages</a>
 					</li>
 				</ul>
 				<div class="tab-content custom-menu-content">
@@ -362,7 +380,8 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 							<div class="breadcomb-report">
-								<button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
+								<button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn">
+									<i class="notika-icon notika-sent"></i></button>
 							</div>
 						</div>
 					</div>

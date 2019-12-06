@@ -34,24 +34,32 @@
 		}
 
 		public function loginUser(string $username ,string $password):array {
-			if($this->countRows('users',['username'=>$username]) < 1){
-				return ['status'=>'none'];
+			if ( $this->countRows( 'users', [ 'username' => $username ] ) < 1 ) {
+				return [ 'status' => 'none' ];
 			}
 
-			$sql = mysqli_query($this->DBCon , "SELECT password,id_role,id FROM users WHERE username = '$username'");
-			$sqlArr = mysqli_fetch_assoc($sql);
-			$dbPassword = $sqlArr['password'];
-			$dbRole =(int) $sqlArr['id_role'];
-			$dbUserID = (int) $sqlArr['id'];
-			if ( !password_verify ( $password , $dbPassword ) ) {
-				return ['status'=>'auth'];
+			$sql = mysqli_query( $this->DBCon, "SELECT password,id_role,id FROM users WHERE username = '$username'" );
+			$sqlArr = mysqli_fetch_assoc( $sql );
+			$dbPassword = $sqlArr[ 'password' ];
+			$dbRole = (int)$sqlArr[ 'id_role' ];
+			$dbUserID = (int)$sqlArr[ 'id' ];
+			$accessM = '1.1,1.2,1.3';
+			if ( !password_verify( $password, $dbPassword ) ) {
+				return [ 'status' => 'auth' ];
 			}
 
-			if(!isset($_SESSION)){
+			if ( !isset( $_SESSION ) ) {
 				session_start();
 			}
-			$token = (string) $this->createUserToken($dbUserID ,$dbRole );
-			return ['status'=>'ok' , 'jwt'=>$token];
+			require '../../../config/LoadModulesResources.php';
+			$_SESSION[ 'modules_lists' ] = $accessM;
+			$res = new LoadModulesResources();
+			$res->loadFiles();
+			$res->buildNavigations( $accessM );
+			$_SESSION[ 'SYSTEM_MAIN_NAV' ] = $res->SYSTEM_MAIN_NAV;
+			$_SESSION[ 'USER_MODULES' ] = $res->USER_MODULES;
+			$token = (string)$this->createUserToken( $dbUserID, $dbRole );
+			return [ 'status' => 'ok', 'jwt' => $token ];
 
 
 		}
