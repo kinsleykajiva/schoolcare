@@ -1,20 +1,28 @@
 <?php
 	declare(strict_types=1);
+	/*$levl = '';
+	for ($i = 0 ; $i < 17 ; $i++){
 
-	use DbManager\DbManager;
+		print "{$levl}dbaccess/dbcontrol/DbManager.php";
+		var_dump(file_exists("{$levl}dbaccess/dbcontrol/DbManager.php"));
+		$levl.= "../";
+	}
+	exit;*/
+	//use DbManager\DbManager;
 	use Lcobucci\JWT\Builder;
 	use Lcobucci\JWT\Configuration;
 	use Lcobucci\JWT\Parser;
 	use Lcobucci\JWT\Signer\Key;
 	use Lcobucci\JWT\Signer\Rsa\Sha256;
-
+	require_once '../../dbaccess/dbcontrol/DbManager.php';
+	//var_dump(file_exists('../dbcontrol/DbManager.php'));exit;
 
 	if(file_exists('../../../vendor/autoload.php')){
 		include_once '../../../vendor/autoload.php';
 	}else{
 		include_once '../../vendor/autoload.php';
 	}
-	//require_once "../dbcontrol/DbManager.php";
+
 
 
 	class DBUsers extends DbManager	{
@@ -30,7 +38,7 @@
 				return ['status'=>'none'];
 			}
 
-			$sql = mysqli_query($this->DBCon , "SELECT password,id_role,id FROM users WHERE username = $username");
+			$sql = mysqli_query($this->DBCon , "SELECT password,id_role,id FROM users WHERE username = '$username'");
 			$sqlArr = mysqli_fetch_assoc($sql);
 			$dbPassword = $sqlArr['password'];
 			$dbRole =(int) $sqlArr['id_role'];

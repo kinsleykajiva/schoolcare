@@ -5,7 +5,7 @@
 	define ( 'HOST' , 'localhost' );
 	define ( 'USER' , 'root' );
 	define ( 'DATABASE', 'schoolcare' );
-	define ( 'PASSWORD' , "N5b3iFM7)]E!R*)YDt}!./kmh!NE,B-p)L&*r_Xy" );
+	define ( 'PASSWORD' , "" );
 
 	/*if ( session_status () === PHP_SESSION_ACTIVE ) {
 		$doComp = $_SESSION[ 'xdomainx' ];

@@ -1,3 +1,11 @@
-var sJWT = "eyT...";
-var headerObj = KJUR.jws.JWS.readSafeJSONString(b64utoutf8(sJWT.split(".")[0]));
-var payloadObj = KJUR.jws.JWS.readSafeJSONString(b64utoutf8(sJWT.split(".")[1]));
+let loggedUserName = null;
+function checkAccess () {
+	if(!Cookies.get('JWT')){
+		window.location.href = "http://localhost/projects/AAllAA/schoolcare/log?access=1";
+		return;
+	}
+	
+	const payloadObj = KJUR.jws.JWS.readSafeJSONString(b64utoutf8(Cookies.get('JWT').split(".")[1]));
+	 loggedUserName =payloadObj.username;
+}
+checkAccess ();

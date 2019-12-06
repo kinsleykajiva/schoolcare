@@ -1,5 +1,5 @@
 <?php
-	namespace DbManager;
+	//namespace DbManager;
 	//use DBLoggingService as log;
 
 

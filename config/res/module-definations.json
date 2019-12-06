@@ -1,0 +1,32 @@
+[
+  {
+	"name" : "Dashboard" ,
+	"id" : 1 ,
+	"has": [1.1,1.2],
+	"sub-modules" : [
+	  {
+		"title" : "Home" ,
+		"id" : 1.1
+	  } ,
+	  {
+		"title" : "Profile" ,
+		"id" : 1.2
+	  }
+	]
+  } ,
+  {
+	"name" : "Settings" ,
+	"id" : 10 ,
+	"has": [10.1,10.2],
+	"sub-modules" : [
+	  {
+		"title" : "Users" ,
+		"id" : 10.1
+	  } ,
+	  {
+		"title" : "Profile" ,
+		"id" : 10.2
+	  }
+	]
+  }
+]

@@ -13,22 +13,32 @@ function loginUser() {
 		status_response.text("Password Required !");
 		return;
 	}
-	status_response.text("");
+	status_response.text("Loading..");
 	
 	$('body').loading({
 		stoppable: true
 	});
 	// makeToken('124212wadewr');
-	$.post('app/api/backend/users',{username:username , password:password}).done(res=>{
+	$.post('app/api/backend/login',{username:username , password:password}).done(res=>{
 		let  j = JSON.parse(res);
 		if(j.status=== 'ok'){
-			makeToken
+			makeToken(j.jwt , username);
+			alert('in');
+			window.location.href = "http://localhost/projects/AAllAA/schoolcare/render-home";
+		}else{
+			if(j.status === 'none'){
+				status_response.text("User not found !");
+			}
+			if(j.status === 'auth'){
+				status_response.text("Access Denied..");
+			}
 		}
+		
 	});
 }
 
 
-function makeToken (token) {
+function makeToken (token,username) {
 // Header
 	var oHeader = {alg: 'HS256', typ: 'JWT'};
 // Payload
@@ -40,17 +50,18 @@ function makeToken (token) {
 	oPayload.nbf = tNow;
 	oPayload.iat = tNow;
 	oPayload.exp = tEnd;
-	oPayload.jti = token;
+	oPayload.jwt = token;
+	oPayload.username = username;
 	oPayload.aud = "http://foo.com/employee";
 // Sign JWT, password=616161
 	let sHeader = JSON.stringify(oHeader);
 	let sPayload = JSON.stringify(oPayload);
 	let sJWT = KJUR.jws.JWS.sign("HS256", sHeader, sPayload, "616161");
-	console.log (sJWT);
+	//console.log (sJWT);
 	const payloadObj = KJUR.jws.JWS.readSafeJSONString(b64utoutf8(sJWT.split(".")[1]));
-	console.log (payloadObj.jti)
+//	console.log (payloadObj.username)
 	// expires 7 days from now
-	//Cookies.set('JWT', sJWT, { expires: 7 });
+	Cookies.set('JWT', sJWT, { expires: 7 });
 	
 	///
 	//Cookies.get('name') // => 'value'
