@@ -1,6 +1,11 @@
 <!-- jquery
 	============================================ -->
 <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="assets/js/loading.min/loading.min.js"></script>
+<script src="assets/js/jscookie/js.cookie.min.js"></script>
+<script src="assets/js/JWT/jsrsasign-latest-all-min.js"></script>
+<script src="assets/js/axios/axios.min.js"></script>
+
 <!-- bootstrap JS
 	============================================ -->
 <script src="assets/js/bootstrap.min.js"></script>
@@ -29,3 +34,4 @@
 <!-- main JS
 	============================================ -->
 <script src="assets/js/main.js"></script>
+<script src="customes/js/custome_base.js"></script>
