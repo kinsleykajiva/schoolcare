@@ -129,7 +129,7 @@
 				foreach ( $this->USER_MODULES as $MODULE ) {
 					$parentOfID = (int)explode( '.', (string)$MODULE[ 'id' ] )[ 0 ];
 					if ( $parent_id === $parentOfID ) {
-						$link .= '<li><a href="/render-' . $MODULE[ 'route' ] . '">' . $MODULE[ 'route' ] . '</a></li>';
+						$link .= '<li><a href="render-' . $MODULE[ 'route' ] . '">' . $MODULE[ 'route' ] . '</a></li>';
 					}
 				}
 				$link .= '</ul> </div>';
@@ -151,16 +151,18 @@
 		 */
 		public function getFocusViewResources ( string $route ): array
 		{
+
 			$retVal = array();
 			$focusViewsArr = $this->USER_MODULES;
-			$focusViewsArr = $this->arrayToObject( $focusViewsArr );
+
 
 			foreach ( $focusViewsArr as $views ) {
 
-				if ( ( $views->route ) === $route ) {
+				if ( ( $views[ 'route' ] ) === $route ) {
+					$this->FilePath = $views[ 'file_path' ];
 					return array(
-						'css' => $views->resources->css,
-						'js' => $views->resources->js,
+						'css' => $views[ 'resources' ][ 'css' ],
+						'js' => $views[ 'resources' ][ 'js' ],
 					);
 				}
 			}
@@ -194,10 +196,10 @@
 
 	}
 
-	//	$obj = new LoadModulesResources();
-	//	//$obj->loadFiles();
-	//$obj->buildNavigations( "1.1,1.2,2.1" );
+	/*$obj = new LoadModulesResources();
+	$obj->loadFiles();
+	$obj->buildNavigations( "1.1,1.2,2.1" );*/
 	//print_r($obj->SYSTEM_MAIN_NAV);
 	//print_r( $obj->SYSTEM_PARENT_NAV );
 	//print_r( $obj->USER_MODULES );
-	//print_r($obj->getFocusViewResources('home'));
+	//	print_r($obj->getFocusViewResources('home'));

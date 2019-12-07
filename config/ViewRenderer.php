@@ -10,18 +10,28 @@
 		private $hasStrictFileCheck = FALSE;
 		private $Resources = null;
 		/**@var string */
-		private $ROUTE_TITLE;
+		private $ROUTE_TITLE = '';
+		private $MODULE_FILES = [];
 
 		public function __construct ( string $route, array $USER_MODULES, array $SYSTEM_MAIN_NAV, array $NAVIGATION_BAR, bool $checkResourceFile = TRUE )
 		{
-			$route = trim( $route );
-			$this->hasStrictFileCheck = $checkResourceFile;
+			try {
 
-			$this->Resources = new LoadModulesResources();
+				$route = trim( $route );
 
-			$this->Resources->USER_MODULES = $USER_MODULES;
-			$this->Resources->SYSTEM_MAIN_NAV = $SYSTEM_MAIN_NAV;
-			$this->Resources->NAVIGATION_BAR = $NAVIGATION_BAR;
+				$this->ROUTE_TITLE = $route;
+				$this->hasStrictFileCheck = $checkResourceFile;
+
+				$this->Resources = new LoadModulesResources();
+
+				$this->Resources->USER_MODULES = $USER_MODULES;
+				$this->Resources->SYSTEM_MAIN_NAV = $SYSTEM_MAIN_NAV;
+				$this->Resources->NAVIGATION_BAR = $NAVIGATION_BAR;
+
+				$this->MODULE_FILES = $this->Resources->getFocusViewResources( $route );
+				//print_r($this->MODULE_FILES );exit;
+			} catch ( Exception $e ) {
+			}
 
 		}
 
@@ -33,7 +43,7 @@
 
 		public function renderLinksNavigationBar (): string
 		{
-			//print_r($this->Resources->NAVIGATION_BAR['links'] );exit;
+
 			return $this->Resources->NAVIGATION_BAR[ 'links' ];
 
 		}
@@ -81,8 +91,9 @@
 		 */
 		private function loadModuleFile (): string
 		{
+
 			if ( !file_exists( $this->Resources->getModuleFile() ) ) {
-				throw new Exception( "Failed to load Module File " . $this->Resources->getModuleFile() );
+				throw new \RuntimeException( 'Failed to load Module File ' . $this->Resources->getModuleFile() );
 			}
 
 			return $this->Resources->getModuleFile();
@@ -92,14 +103,12 @@
 		{
 
 			/** @var array $this */
-			$cssFiles = $this->moduleResources->css;
+			//print_r($this->MODULE_FILES);exit;
+			$cssFiles = $this->MODULE_FILES[ 'css' ];
+
 			try {
 				$this->printFileRefs( $cssFiles, TRUE );
-				if ( $this->SettingsAccessControl !== NULL ):
-					foreach ( $this->SettingsAccessControl->getModules() as $moduleData ):
-						$this->printFileRefs( $moduleData->css, TRUE );
-					endforeach;
-				endif;
+
 			} catch ( Exception $e ) {
 				$e->getMessage();
 			}
@@ -113,6 +122,7 @@
 		 */
 		private function printFileRefs ( array $srcArr, bool $isCSS ): void
 		{
+
 			if ( !empty( $srcArr ) ) {
 				foreach ( $srcArr as $file ) {
 					$extraWrite = '';
@@ -136,43 +146,16 @@
 		{
 
 			/** @var array $this */
-			$cssJS = $this->moduleResources->js;
+			$cssJS = $this->MODULE_FILES[ 'js' ];
 			try {
 				$this->printFileRefs( $cssJS, FALSE );
 
-				if ( $this->SettingsAccessControl !== NULL ):
-					foreach ( $this->SettingsAccessControl->getModules() as $moduleData ):
-						$this->printFileRefs( $moduleData->js, FALSE );
-					endforeach;
-				endif;
+
 			} catch ( Exception $e ) {
 				$e->getMessage();
 			}
 		}
 
-		/**Loads the css for the main page*
-		 *
-		 * @throws Exception
-		 */
-		public function loadFocusPageCSS (): void
-		{
-			$cssFiles = $this->frameWorkResources[ 'css' ];
-			$this->printFileRefs( $cssFiles, TRUE );
-		}
 
-		/**Loads the js for the main page*
-		 *
-		 * @throws Exception
-		 */
-		public function loadFocusPageJS (): void
-		{
-			$jsFiles = $this->frameWorkResources[ 'js' ];
-			$this->printFileRefs( $jsFiles, FALSE );
-		}
-
-		private function buildNavigationBar ()
-		{
-
-		}
 
 	}
