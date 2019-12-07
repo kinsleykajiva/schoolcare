@@ -15,9 +15,7 @@ function loginUser() {
 	}
 	status_response.text("Loading..");
 	
-	$('body').loading({
-		stoppable: true
-	});
+	
 	// makeToken('124212wadewr');
 	$.post('app/api/backend/login',{username:username , password:password}).done(res=>{
 		let  j = JSON.parse(res);

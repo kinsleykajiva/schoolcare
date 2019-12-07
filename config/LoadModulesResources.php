@@ -149,6 +149,7 @@
 			}
 			$ul .= $parentMenuTitle;
 			$ul .= '<ul>';
+
 			return $ul;
 
 		}

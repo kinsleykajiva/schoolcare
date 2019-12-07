@@ -13,7 +13,7 @@
 		private $ROUTE_TITLE = '';
 		private $MODULE_FILES = [];
 
-		public function __construct ( string $route, array $USER_MODULES, array $SYSTEM_MAIN_NAV, bool $checkResourceFile = TRUE )
+		public function __construct ( string $route, array $USER_MODULES, array $SYSTEM_MAIN_NAV,array $SYSTEM_PARENT_NAV, bool $checkResourceFile = TRUE )
 		{
 			try {
 
@@ -26,6 +26,7 @@
 
 				$this->Resources->USER_MODULES = $USER_MODULES;
 				$this->Resources->SYSTEM_MAIN_NAV = $SYSTEM_MAIN_NAV;
+				$this->Resources->SYSTEM_PARENT_NAV = $SYSTEM_PARENT_NAV;
 
 
 				$this->MODULE_FILES = $this->Resources->getFocusViewResources( $route );
@@ -38,22 +39,12 @@
 
 		public function renderRenderLeftNavigationBar (): string
 		{
+
 			return $this->Resources->buildSideBarNavigationBar( $this->ROUTE_TITLE );
 
 		}
 
-		public function renderTitlesNavigationBar (): string
-		{
-			return $this->Resources->NAVIGATION_BAR[ 'parent' ];
 
-		}
-
-		public function renderLinksNavigationBar (): string
-		{
-
-			return $this->Resources->NAVIGATION_BAR[ 'links' ];
-
-		}
 
 		/**This will build the view page thus is the mainview  to which it will host the module
 		 *This could be viewed as useless

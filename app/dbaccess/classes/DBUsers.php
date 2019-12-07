@@ -58,6 +58,7 @@
 			$res->buildNavigations( $accessM );
 			$_SESSION[ 'SYSTEM_MAIN_NAV' ] = $res->SYSTEM_MAIN_NAV;
 			$_SESSION[ 'USER_MODULES' ] = $res->USER_MODULES;
+			$_SESSION[ 'SYSTEM_PARENT_NAV' ] = $res->SYSTEM_PARENT_NAV;
 			$token = (string)$this->createUserToken( $dbUserID, $dbRole );
 			return [ 'status' => 'ok', 'jwt' => $token ];
 

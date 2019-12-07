@@ -15,8 +15,9 @@
                     </div>
                 </div>
             </div>
-            <a href="index.html">
-                <img class="img-fluid" src="template/assets/images/logo.png" alt="Theme-Logo"/>
+            <a href="javascript:void(0);">
+                <!--<img class="img-fluid" src="template/assets/images/logo.png" alt="Theme-Logo"/>-->
+                <h5 class="img-fluid"  style="color: white;">SchoolCare</h5>
             </a>
             <a class="mobile-options">
                 <i class="ti-more"></i>
