@@ -1,173 +1,217 @@
 <?php include "includes/render-engine.php"; ?>
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
     <title> <?php print $viewObject->pageTitle(); ?></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- favicon
-		============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Meta -->
 	<?php include "includes/include_css.php"; ?>
-	<?php print $viewObject->loadModuleCSS(); ?>
 </head>
 
 <body>
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
-<!-- Start Header Top Area -->
-<?php include "includes/include_header.php"; ?>
-
-<!-- End Header Top Area -->
-<!-- Mobile Menu start -->
-<div class="mobile-menu-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="mobile-menu">
-                    <nav id="dropdown">
-                        <ul class="mobile-menu-nav">
-							<li><a href="#">Home</a>
-								<ul class="collapse dropdown-header-top">
-									<li><a href="index.html">Dashboard One</a></li>
-									<li><a href="index-2.html">Dashboard Two</a></li>
-									<li><a href="index-3.html">Dashboard Three</a></li>
-									<li><a href="index-4.html">Dashboard Four</a></li>
-									<li><a href="analytics.html">Analytics</a></li>
-									<li><a href="widgets.html">Widgets</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Email</a>
-								<ul id="demoevent" class="collapse dropdown-header-top">
-									<li><a href="inbox.html">Inbox</a></li>
-									<li><a href="view-email.html">View Email</a></li>
-									<li><a href="compose-email.html">Compose Email</a></li>
-								</ul>
-							</li>
-							<li><a data-toggle="collapse" data-target="#democrou" href="#">Interface</a>
-								<ul id="democrou" class="collapse dropdown-header-top">
-									<li><a href="animations.html">Animations</a></li>
-									<li><a href="google-map.html">Google Map</a></li>
-									<li><a href="data-map.html">Data Maps</a></li>
-									<li><a href="code-editor.html">Code Editor</a></li>
-									<li><a href="image-cropper.html">Images Cropper</a></li>
-									<li><a href="wizard.html">Wizard</a></li>
-								</ul>
-							</li>
-							<li><a data-toggle="collapse" data-target="#demolibra" href="#">Charts</a>
-								<ul id="demolibra" class="collapse dropdown-header-top">
-									<li><a href="flot-charts.html">Flot Charts</a></li>
-									<li><a href="bar-charts.html">Bar Charts</a></li>
-									<li><a href="line-charts.html">Line Charts</a></li>
-									<li><a href="area-charts.html">Area Charts</a></li>
-								</ul>
-							</li>
-							<li><a data-toggle="collapse" data-target="#demodepart" href="#">Tables</a>
-								<ul id="demodepart" class="collapse dropdown-header-top">
-									<li><a href="normal-table.html">Normal Table</a></li>
-									<li><a href="data-table.html">Data Table</a></li>
-								</ul>
-							</li>
-							<li><a data-toggle="collapse" data-target="#demo" href="#">Forms</a>
-								<ul id="demo" class="collapse dropdown-header-top">
-									<li><a href="form-elements.html">Form Elements</a></li>
-									<li><a href="form-components.html">Form Components</a></li>
-									<li><a href="form-examples.html">Form Examples</a></li>
-								</ul>
-							</li>
-							<li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">App views</a>
-								<ul id="Miscellaneousmob" class="collapse dropdown-header-top">
-									<li><a href="notification.html">Notifications</a>
-									</li>
-									<li><a href="alert.html">Alerts</a>
-									</li>
-									<li><a href="modals.html">Modals</a>
-									</li>
-									<li><a href="buttons.html">Buttons</a>
-									</li>
-									<li><a href="tabs.html">Tabs</a>
-									</li>
-									<li><a href="accordion.html">Accordion</a>
-									</li>
-									<li><a href="dialog.html">Dialogs</a>
-									</li>
-									<li><a href="popovers.html">Popovers</a>
-									</li>
-									<li><a href="tooltips.html">Tooltips</a>
-									</li>
-									<li><a href="dropdown.html">Dropdowns</a>
-									</li>
-								</ul>
-							</li>
-							<li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages</a>
-								<ul id="Pagemob" class="collapse dropdown-header-top">
-									<li><a href="contact.html">Contact</a>
-									</li>
-									<li><a href="invoice.html">Invoice</a>
-									</li>
-									<li><a href="typography.html">Typography</a>
-									</li>
-									<li><a href="color.html">Color</a>
-									</li>
-									<li><a href="login-register.html">Login Register</a>
-									</li>
-									<li><a href="404.html">404 Page</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="fixed-button">
+    <a href="https://codedthemes.com/item/gradient-able-admin-template" target="_blank" class="btn btn-md btn-primary">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
+    </a>
 </div>
-<!-- Mobile Menu end -->
-<!-- Main Menu area start-->
-<div class="main-menu-area mg-tb-40">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<?php print $viewObject->renderTitlesNavigationBar(); ?>
-
-				<div class="tab-content custom-menu-content">
-					<?php print $viewObject->renderLinksNavigationBar(); ?>
-
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- Pre-loader start -->
+<div class="theme-loader">
+    <div class="loader-track">
+        <div class="loader-bar"></div>
+    </div>
 </div>
-<!-- Main Menu area End-->
-<!-- Breadcomb area Start-->
-<div class="breadcomb-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="breadcomb-list">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="breadcomb-wp">
-								<div class="breadcomb-icon">
-									<i class="notika-icon notika-support"></i>
-								</div>
-								<div class="breadcomb-ctn">
-									<h3>Module Page</h3>
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
 
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-							<div class="breadcomb-report">
-								<button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn">
-									<i class="notika-icon notika-sent"></i></button>
-							</div>
+        <nav class="navbar header-navbar pcoded-header">
+            <div class="navbar-wrapper">
+                <div class="navbar-logo">
+                    <a class="mobile-menu" id="mobile-collapse" href="#!">
+                        <i class="ti-menu"></i>
+                    </a>
+                    <div class="mobile-search">
+                        <div class="header-search">
+                            <div class="main-search morphsearch-search">
+                                <div class="input-group">
+                                    <span class="input-group-addon search-close"><i class="ti-close"></i></span>
+                                    <input type="text" class="form-control" placeholder="Enter Keyword">
+                                    <span class="input-group-addon search-btn"><i class="ti-search"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="index.html">
+                        <img class="img-fluid" src="template/assets/images/logo.png" alt="Theme-Logo"/>
+                    </a>
+                    <a class="mobile-options">
+                        <i class="ti-more"></i>
+                    </a>
+                </div>
+
+                <div class="navbar-container container-fluid">
+                    <ul class="nav-left">
+                        <li>
+                            <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+                        </li>
+                        <li class="header-search">
+                            <div class="main-search morphsearch-search">
+                                <div class="input-group">
+                                    <span class="input-group-addon search-close"><i class="ti-close"></i></span>
+                                    <input type="text" class="form-control">
+                                    <span class="input-group-addon search-btn"><i class="ti-search"></i></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#!" onclick="javascript:toggleFullScreen()">
+                                <i class="ti-fullscreen"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav-right">
+                        <li class="header-notification">
+                            <a href="#!">
+                                <i class="ti-bell"></i>
+                                <span class="badge bg-c-pink"></span>
+                            </a>
+                            <ul class="show-notification">
+                                <li>
+                                    <h6>Notifications</h6>
+                                    <label class="label label-danger">New</label>
+                                </li>
+                                <li>
+                                    <div class="media">
+                                        <img class="d-flex align-self-center img-radius"
+                                             src="template/assets/images/avatar-2.jpg" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <h5 class="notification-user">John Doe</h5>
+                                            <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
+                                                elit.</p>
+                                            <span class="notification-time">30 minutes ago</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="media">
+                                        <img class="d-flex align-self-center img-radius"
+                                             src="template/assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <h5 class="notification-user">Joseph William</h5>
+                                            <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
+                                                elit.</p>
+                                            <span class="notification-time">30 minutes ago</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="media">
+                                        <img class="d-flex align-self-center img-radius"
+                                             src="template/assets/images/avatar-3.jpg" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <h5 class="notification-user">Sara Soudein</h5>
+                                            <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
+                                                elit.</p>
+                                            <span class="notification-time">30 minutes ago</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="user-profile header-notification">
+                            <a href="#!">
+                                <img src="template/assets/images/avatar-4.jpg" class="img-radius"
+                                     alt="User-Profile-Image">
+                                <span>John Doe</span>
+                                <i class="ti-angle-down"></i>
+                            </a>
+                            <ul class="show-notification profile-notification">
+                                <li>
+                                    <a href="#!">
+                                        <i class="ti-settings"></i> Settings
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="user-profile.html">
+                                        <i class="ti-user"></i> Profile
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="auth-lock-screen.html">
+                                        <i class="ti-lock"></i> Lock Screen
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="auth-normal-sign-in.html">
+                                        <i class="ti-layout-sidebar-left"></i> Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <nav class="pcoded-navbar">
+                    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                    <div class="pcoded-inner-navbar main-menu">
+
+
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Menu</div>
+                        <ul class="pcoded-item pcoded-left-item">
+
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Components</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class=" ">
+                                        <a href="accordion.html">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext"
+                                                  data-i18n="nav.basic-components.alert">Accordion</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                </nav>
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+
+                        <div class="main-body">
+                            <div class="page-wrapper">
+
+
+                                <div class="page-body">
+                                    <div class="container">
+										<?php $viewObject->setModuleCotentFile(); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="styleSelector">
+
                         </div>
                     </div>
                 </div>
@@ -175,19 +219,55 @@
         </div>
     </div>
 </div>
-<!-- Breadcomb area End-->
-<!-- content area start-->
-<div class="container">
-	<?php $viewObject->setModuleCotentFile(); ?>
-</div>
-<!-- content area End-->
-<!-- Start Footer area-->
-<?php require 'includes/include_footer.php'; ?>
 
-<!-- End Footer area-->
+
+<!-- Warning Section Starts -->
+<!-- Older IE warning message -->
+<!--[if lt IE 9]>
+<div class="ie-warning">
+    <h1>Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers
+        to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="template/assets/images/browser/chrome.png" alt="Chrome">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="template/assets/images/browser/firefox.png" alt="Firefox">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="template/assets/images/browser/opera.png" alt="Opera">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="template/assets/images/browser/safari.png" alt="Safari">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="template/assets/images/browser/ie.png" alt="">
+                    <div>IE (9 & above)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+<!-- Warning Section Ends -->
 <?php require 'includes/include_js.php'; ?>
 <?php print $viewObject->loadModuleJSS(); ?>
-
 </body>
 
 </html>
