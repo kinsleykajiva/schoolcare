@@ -11,7 +11,7 @@
 		public $USER_MODULES = [];
 		public $SYSTEM_PARENT_NAV = [];
 		public $SYSTEM_MAIN_NAV = [];
-		public $NAVIGATION_BAR = [];
+
 		private $FilePath = "";
 
 		private function array_to_obj ( $array, &$obj )
@@ -96,7 +96,7 @@
 			//$this->USER_MODULES = ($hasAccessModules);
 			$this->USER_MODULES = $this->unique_multidim_array( $hasAccessModules, 'id' );
 			//$this->USER_MODULES = array_unique(array_merge( $hasAccessModules , $this->USER_MODULES ));
-			$this->buildNavigation();
+
 		}
 
 		private function unique_multidim_array ( $array, $key )
@@ -115,33 +115,44 @@
 			return $temp_array;
 		}
 
-		private function buildNavigation (): void
+		public function buildSideBarNavigationBar ( $link_is_active = '' ): string
 		{
-			$parentMenuTitle = '<ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">';
-			$linkArr = [];
-			$link = '';
+			$ul = '<ul class="pcoded-item pcoded-left-item">';
+			$parentMenuTitle = '';
 			foreach ( $this->SYSTEM_PARENT_NAV as $parent ) {
 				$parent_id = (int)$parent[ 'id' ];
-				$parentMenuTitle .= '<li><a data-toggle="tab" href="#head_' . $parent_id . '"><i class="notika-icon notika-mail"></i> ' . $parent[ 'title' ] . '</a></li>';
-				$link .= '<div id="head_' . $parent_id . '" class="tab-pane in notika-tab-menu-bg animated flipInX">
-					<ul class="notika-main-menu-dropdown">';
-
+				$parentMenuTitle .= '
+									<li class="pcoded-hasmenu">
+										<a href="javascript:void(0)">
+												<span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+												 <span class="pcoded-mtext" data-i18n="nav.basic-components.main"> ' . $parent[ 'title' ] . ' </span>
+												 <span class="pcoded-mcaret"></span>
+										 </a>
+									';
+				$link = '';
 				foreach ( $this->USER_MODULES as $MODULE ) {
 					$parentOfID = (int)explode( '.', (string)$MODULE[ 'id' ] )[ 0 ];
 					if ( $parent_id === $parentOfID ) {
-						$link .= '<li><a href="render-' . $MODULE[ 'route' ] . '">' . $MODULE[ 'route' ] . '</a></li>';
+						$link .= '<ul class="pcoded-submenu">';
+						$link .= '<li class=" ">';
+						$link .= '<a href="render-' . $MODULE[ 'route' ] . '">';
+						$link .= '<span class="pcoded-micon"><i class="ti-angle-right"></i></span>';
+						$link .= '<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">' . $MODULE[ 'name' ] . '</span>';
+						$link .= ' <span class="pcoded-mcaret"></span>';
+						$link .= '</a>';
+						$link .= '</li>';
+						$link .= '</ul>';
 					}
 				}
-				$link .= '</ul> </div>';
-
-				//$linkArr[$parent_id] = $link ;
-
+				$parentMenuTitle .= $link;
+				$parentMenuTitle .= '</li>';
 			}
-			$parentMenuTitle .= '</ul>';
-			//print_r($linkArr) ;
-			$this->NAVIGATION_BAR = [ 'parent' => $parentMenuTitle, 'links' => $link ];
+			$ul .= $parentMenuTitle;
+			$ul .= '<ul>';
+			return $ul;
 
 		}
+
 
 		/**
 		 * @param string $focus_view
@@ -198,8 +209,8 @@
 
 	/*$obj = new LoadModulesResources();
 	$obj->loadFiles();
-	$obj->buildNavigations( "1.1,1.2,2.1" );*/
+	$obj->buildNavigations( "1.1,1.2,2.1,10.1,10.2" );*/
 	//print_r($obj->SYSTEM_MAIN_NAV);
 	//print_r( $obj->SYSTEM_PARENT_NAV );
-	//print_r( $obj->USER_MODULES );
+	//print_r( $obj->buildSideBarNavigationBar() );
 	//	print_r($obj->getFocusViewResources('home'));

@@ -24,7 +24,7 @@
   } ,
   {
 	"id" : 10.1 ,
-	"name" : "Settings" ,
+	"name" : "Main" ,
 	"file_path" : "view/settings/settings.php" ,
 	"route" : "settings" ,
 	"resources" : {
@@ -35,7 +35,7 @@
   } ,
   {
 	"id" : 10.2 ,
-	"name" : "Settings" ,
+	"name" : "Profile" ,
 	"file_path" : "view/settings/profile.php" ,
 	"route" : "profile" ,
 	"resources" : {

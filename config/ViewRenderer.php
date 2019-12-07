@@ -13,7 +13,7 @@
 		private $ROUTE_TITLE = '';
 		private $MODULE_FILES = [];
 
-		public function __construct ( string $route, array $USER_MODULES, array $SYSTEM_MAIN_NAV, array $NAVIGATION_BAR, bool $checkResourceFile = TRUE )
+		public function __construct ( string $route, array $USER_MODULES, array $SYSTEM_MAIN_NAV, bool $checkResourceFile = TRUE )
 		{
 			try {
 
@@ -26,12 +26,19 @@
 
 				$this->Resources->USER_MODULES = $USER_MODULES;
 				$this->Resources->SYSTEM_MAIN_NAV = $SYSTEM_MAIN_NAV;
-				$this->Resources->NAVIGATION_BAR = $NAVIGATION_BAR;
+
 
 				$this->MODULE_FILES = $this->Resources->getFocusViewResources( $route );
 				//print_r($this->MODULE_FILES );exit;
 			} catch ( Exception $e ) {
 			}
+
+		}
+
+
+		public function renderRenderLeftNavigationBar (): string
+		{
+			return $this->Resources->buildSideBarNavigationBar( $this->ROUTE_TITLE );
 
 		}
 
