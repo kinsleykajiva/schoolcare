@@ -1,4 +1,4 @@
-<div class="header-top-area">
+<div class="header-top-area" style="display: none;">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
