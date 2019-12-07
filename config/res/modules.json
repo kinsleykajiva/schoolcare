@@ -1,16 +1,46 @@
 [
   {
-
 	"id" : 1.1 ,
 	"name" : "Home" ,
-	"file_path" : "view/for-home/home.php" ,
+	"file_path" : "view/dashboard/dashboard.php" ,
 	"route" : "home" ,
 	"resources" : {
 	  "css" : [ ] ,
 	  "js" : [
-
 	  ]
 	}
-
+  } ,
+  {
+	"id" : 2.1 ,
+	"name" : "Staff" ,
+	"file_path" : "view/staff/staff.php" ,
+	"route" : "staff" ,
+	"resources" : {
+	  "css" : [ ] ,
+	  "js" : [
+	  ]
+	}
+  } ,
+  {
+	"id" : 10.1 ,
+	"name" : "Settings" ,
+	"file_path" : "view/settings/settings.php" ,
+	"route" : "settings" ,
+	"resources" : {
+	  "css" : [ ] ,
+	  "js" : [
+	  ]
+	}
+  } ,
+  {
+	"id" : 10.2 ,
+	"name" : "Settings" ,
+	"file_path" : "view/settings/profile.php" ,
+	"route" : "profile" ,
+	"resources" : {
+	  "css" : [ ] ,
+	  "js" : [
+	  ]
+	}
   }
 ]

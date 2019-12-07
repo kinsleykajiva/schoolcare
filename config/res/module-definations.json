@@ -15,9 +15,25 @@
 	]
   } ,
   {
+	"name" : "Staff" ,
+	"id" : 2 ,
+	"has" : [
+	  2.1
+	] ,
+	"sub-modules" : [
+	  {
+		"title" : "Employees" ,
+		"id" : 2.1
+	  }
+	]
+  } ,
+  {
 	"name" : "Settings" ,
 	"id" : 10 ,
-	"has": [10.1,10.2],
+	"has" : [
+	  10.1 ,
+	  10.2
+	] ,
 	"sub-modules" : [
 	  {
 		"title" : "Users" ,

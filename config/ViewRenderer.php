@@ -12,7 +12,7 @@
 		/**@var string */
 		private $ROUTE_TITLE;
 
-		public function __construct ( string $route, array $USER_MODULES, array $SYSTEM_MAIN_NAV, bool $checkResourceFile = TRUE )
+		public function __construct ( string $route, array $USER_MODULES, array $SYSTEM_MAIN_NAV, array $NAVIGATION_BAR, bool $checkResourceFile = TRUE )
 		{
 			$route = trim( $route );
 			$this->hasStrictFileCheck = $checkResourceFile;
@@ -21,6 +21,20 @@
 
 			$this->Resources->USER_MODULES = $USER_MODULES;
 			$this->Resources->SYSTEM_MAIN_NAV = $SYSTEM_MAIN_NAV;
+			$this->Resources->NAVIGATION_BAR = $NAVIGATION_BAR;
+
+		}
+
+		public function renderTitlesNavigationBar (): string
+		{
+			return $this->Resources->NAVIGATION_BAR[ 'parent' ];
+
+		}
+
+		public function renderLinksNavigationBar (): string
+		{
+			//print_r($this->Resources->NAVIGATION_BAR['links'] );exit;
+			return $this->Resources->NAVIGATION_BAR[ 'links' ];
 
 		}
 

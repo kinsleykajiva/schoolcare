@@ -43,7 +43,7 @@
 			$dbPassword = $sqlArr[ 'password' ];
 			$dbRole = (int)$sqlArr[ 'id_role' ];
 			$dbUserID = (int)$sqlArr[ 'id' ];
-			$accessM = '1.1,1.2,1.3';
+			$accessM = '1.1,1.2,2.1,10.1,10.2';
 			if ( !password_verify( $password, $dbPassword ) ) {
 				return [ 'status' => 'auth' ];
 			}
@@ -58,6 +58,7 @@
 			$res->buildNavigations( $accessM );
 			$_SESSION[ 'SYSTEM_MAIN_NAV' ] = $res->SYSTEM_MAIN_NAV;
 			$_SESSION[ 'USER_MODULES' ] = $res->USER_MODULES;
+			$_SESSION[ 'NAVIGATION_BAR' ] = $res->NAVIGATION_BAR;
 			$token = (string)$this->createUserToken( $dbUserID, $dbRole );
 			return [ 'status' => 'ok', 'jwt' => $token ];
 

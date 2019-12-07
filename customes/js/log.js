@@ -22,8 +22,8 @@ function loginUser() {
 	$.post('app/api/backend/login',{username:username , password:password}).done(res=>{
 		let  j = JSON.parse(res);
 		if(j.status=== 'ok'){
-			makeToken(j.jwt , username);
-			alert('in');
+			makeToken (j.jwt, username);
+			//	alert('in');
 			window.location.href = "http://localhost/projects/AAllAA/schoolcare/render-home";
 		}else{
 			if(j.status === 'none'){
