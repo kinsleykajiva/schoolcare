@@ -134,13 +134,13 @@
 					$parentOfID = (int)explode( '.', (string)$MODULE[ 'id' ] )[ 0 ];
 					if ( $parent_id === $parentOfID ) {
 						$link .= '<ul class="pcoded-submenu">';
-						$link .= '<li class=" ">';
-						$link .= '<a href="render-' . $MODULE[ 'route' ] . '">';
-						$link .= '<span class="pcoded-micon"><i class="ti-angle-right"></i></span>';
-						$link .= '<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">' . $MODULE[ 'name' ] . '</span>';
-						$link .= ' <span class="pcoded-mcaret"></span>';
-						$link .= '</a>';
-						$link .= '</li>';
+								$link .= '<li class=" ">';
+										$link .= '<a href="render-' . $MODULE[ 'route' ] . '">';
+												$link .= '<span class="pcoded-micon"><i class="ti-angle-right"></i></span>';
+												$link .= '<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">' . $MODULE[ 'name' ] . '</span>';
+												$link .= ' <span class="pcoded-mcaret"></span>';
+										$link .= '</a>';
+								$link .= '</li>';
 						$link .= '</ul>';
 					}
 				}
