@@ -1,8 +1,11 @@
 <?php
 
+	$AUTH = 'auth';
+
 	/**
 	 * Get header Authorization
 	 * */
+
 	function getAuthorizationHeader ()
 	{
 		$headers = null;
@@ -18,6 +21,8 @@
 			if ( isset( $requestHeaders[ 'Authorization' ] ) ) {
 				$headers = trim( $requestHeaders[ 'Authorization' ] );
 			}
+		}else{
+			$headers = 'auth';
 		}
 		return $headers;
 	}

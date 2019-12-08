@@ -114,12 +114,12 @@
                         </li>
 
                         <li>
-                            <a href="auth-lock-screen.html">
+                            <a href="log">
                                 <i class="ti-lock"></i> Lock Screen
                             </a>
                         </li>
                         <li>
-                            <a href="auth-normal-sign-in.html">
+                            <a href="log">
                                 <i class="ti-layout-sidebar-left"></i> Logout
                             </a>
                         </li>

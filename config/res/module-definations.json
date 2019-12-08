@@ -18,12 +18,15 @@
 	"name" : "Staff" ,
 	"id" : 2 ,
 	"has" : [
-	  2.1
+	  2.1,2.2
 	] ,
 	"sub-modules" : [
 	  {
 		"title" : "Employees" ,
 		"id" : 2.1
+	  },{
+		"title" : "Job Position" ,
+		"id" : 2.2
 	  }
 	]
   } ,

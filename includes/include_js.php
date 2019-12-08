@@ -11,6 +11,10 @@
 <!-- notification js -->
 <script type="text/javascript" src="template/assets/js/bootstrap-growl.min.js"></script>
 
+<script type="text/javascript" src="assets/js/izModalModal/iziModal.min.js"></script>
+<script type="text/javascript" src="assets/js/iziToast/iziToast.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.loading/jquery.loading.min.js"></script>
+
 <!-- Custom js -->
 <script type="text/javascript" src="template/assets/js/script.js"></script>
 <script src="template/assets/js/pcoded.min.js"></script>

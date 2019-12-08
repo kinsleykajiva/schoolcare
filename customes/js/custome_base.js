@@ -4,7 +4,7 @@ axios.defaults.baseURL = 'app/api/';
 
 function checkAccess () {
 	if (!Cookies.get ('JWT')) {
-		window.location.href = "http://localhost/projects/AAllAA/schoolcare/log?access=1";
+		window.location.href = "log?access=1";
 		return;
 	}
 	
@@ -18,6 +18,7 @@ function checkAccess () {
 }
 checkAccess ();
 
+const MODAL_HEADER_COLOR = '#2989f7';
 
 /*********************************************************************************************/
 function allowTextInputOnly($objectInput) {
@@ -27,6 +28,14 @@ function allowTextInputOnly($objectInput) {
 	);
 }
 /*********************************************************************************************/
+
+function checkAuth(jdata){
+	if(jdata === 'auth'){
+		window.location.href = "log";
+	}
+	
+}
+
 /*********************************************************************************************/
 /**
  * Get the URL parameters
@@ -487,10 +496,10 @@ function isPasswordValid(str)
 }
 /*********************************************************************************************/
 
-function __notify(message , from, align, icon, type, animIn, animOut ,time){
+function __notify(message , from, align, icon, type, animIn, animOut ,time , title){
 	$.growl({
 		icon: icon,
-		title: ' Bootstrap Growl ',
+		title: title,
 		message: message,
 		url: ''
 	},{
@@ -531,16 +540,28 @@ function __notify(message , from, align, icon, type, animIn, animOut ,time){
 
 
 function showGeneralMessage (messageText,time) {
-		__notify(messageText , 'top','right' , 'fa fa-check','inverse','animated fadeInRight','animated fadeOutRight',time);
+	iziToast.info({
+		title: 'Information',
+		message: messageText,
+	});
+		//__notify(messageText , 'top','right' , 'fa fa-check','inverse','animated fadeInRight','animated fadeOutRight',time , '');
 }
 
 function showErrorMessage (messageText,time) {
-		__notify(messageText , 'top','right' , 'fa fa-check','danger','animated fadeInRight','animated fadeOutRight',time);
+		//__notify(messageText , 'top','right' , 'fa fa-check','danger','animated fadeInRight','animated fadeOutRight',time,'');
+	iziToast.error({
+		title: 'Error',
+		message: messageText,
+	});
 }
 
 
 function showSuccessMessage (messageText,time) {
-		__notify(messageText , 'top','right' , 'fa fa-close','success','animated fadeInRight','animated fadeOutRight',time);
+	iziToast.success({
+		title: 'Success',
+		message: messageText,
+	});
+		//__notify(messageText , 'top','right' , 'fa fa-check','success','animated fadeInRight','animated fadeOutRight',time , '');
 }
 /*********************************************************************************************/
 /*********************************************************************************************/

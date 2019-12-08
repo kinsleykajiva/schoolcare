@@ -23,6 +23,18 @@
 	}
   } ,
   {
+	"id" : 2.2 ,
+	"name" : "Job Positions" ,
+	"file_path" : "view/staff/jobpositions.php" ,
+	"route" : "job-position" ,
+	"resources" : {
+	  "css" : [ ] ,
+	  "js" : [
+		"view/staff/js/jobpositions.js"
+	  ]
+	}
+  } ,
+  {
 	"id" : 10.1 ,
 	"name" : "Main" ,
 	"file_path" : "view/settings/settings.php" ,

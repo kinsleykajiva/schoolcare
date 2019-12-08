@@ -1,21 +1,12 @@
 <?php
 	declare(strict_types=1);
-	/*$levl = '';
-	for ($i = 0 ; $i < 17 ; $i++){
 
-		print "{$levl}dbaccess/dbcontrol/DbManager.php";
-		var_dump(file_exists("{$levl}dbaccess/dbcontrol/DbManager.php"));
-		$levl.= "../";
-	}
-	exit;*/
-	//use DbManager\DbManager;
 	use Lcobucci\JWT\Builder;
 	use Lcobucci\JWT\Configuration;
 	use Lcobucci\JWT\Parser;
 	use Lcobucci\JWT\Signer\Key;
 	use Lcobucci\JWT\Signer\Rsa\Sha256;
 	require_once '../../dbaccess/dbcontrol/DbManager.php';
-	//var_dump(file_exists('../dbcontrol/DbManager.php'));exit;
 
 	if(file_exists('../../../vendor/autoload.php')){
 		include_once '../../../vendor/autoload.php';
@@ -43,7 +34,7 @@
 			$dbPassword = $sqlArr[ 'password' ];
 			$dbRole = (int)$sqlArr[ 'id_role' ];
 			$dbUserID = (int)$sqlArr[ 'id' ];
-			$accessM = '1.1,1.2,2.1,10.1,10.2';
+			$accessM = '1.1,1.2,2.1,2.2,10.1,10.2';
 			if ( !password_verify( $password, $dbPassword ) ) {
 				return [ 'status' => 'auth' ];
 			}
@@ -63,6 +54,12 @@
 			return [ 'status' => 'ok', 'jwt' => $token ];
 
 
+		}
+
+		public function tokenToken(string $token ):array {
+			if(!$this->isTokenValid($token)){
+				return null;
+			}
 		}
 
 		public function createUserToken(int $userID,int $role) {
@@ -102,20 +99,21 @@
 			}
 			return !$token->isExpired();
 		}
-		public function validateTokenAccess( $token){
+		public function deduceTokenAccess( $token){
+			$ret = [] ;
 			try {
 			$token = (new Parser())->parse( (string)$token); // Parses from a string
-			$token->getHeaders(); // Retrieves the token header
-			$token->getClaims(); // Retrieves the token claims
+			//$token->getHeaders(); // Retrieves the token header
+			//$token->getClaims(); // Retrieves the token claims
+				$ret ['userID'] = (int) $token->getClaim('user');
 
 			//echo $token->getHeader('jti'); // will print "4f1g23a12aa"
 			//echo $token->getClaim('iss'); // will print "http://example.com"
 			//echo $token->getClaim('uid'); // will print "1"
-
-				($token->isExpired());
 			}catch (Exception  $exception){
-				print "eee".$exception->getMessage();
+				// print "eee".$exception->getMessage();
 			}
+			return $ret;
 
 		}
 

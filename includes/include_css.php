@@ -16,3 +16,5 @@
 <!-- Style.css -->
 <link rel="stylesheet" type="text/css" href="template/assets/css/style.css">
 <link rel="stylesheet" type="text/css" href="template/assets/css/jquery.mCustomScrollbar.css">
+<link rel="stylesheet" type="text/css" href="assets/js/izModalModal/iziModal.min.css">
+<link rel="stylesheet" type="text/css" href="assets/js/iziToast/iziToast.min.css">
