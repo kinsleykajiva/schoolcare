@@ -7,7 +7,10 @@
 <!-- themify-icons line icon -->
 <link rel="stylesheet" type="text/css" href="template/assets/icon/themify-icons/themify-icons.css">
 <link rel="stylesheet" type="text/css" href="template/assets/icon/font-awesome/css/font-awesome.min.css">
-
+<!-- Notification.css -->
+<link rel="stylesheet" type="text/css" href="template/assets/pages/notification/notification.css">
+<!-- Animate.css -->
+<link rel="stylesheet" type="text/css" href="template/assets/css/animate.css/css/animate.css">
 <!-- ico font -->
 <link rel="stylesheet" type="text/css" href="template/assets/icon/icofont/css/icofont.css">
 <!-- Style.css -->

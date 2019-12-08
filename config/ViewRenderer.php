@@ -4,8 +4,7 @@
 
 	class ViewRenderer
 	{
-		/** @var array */
-		private $frameWorkResources = NULL;
+		
 		/**this will enable a check on resource files , but this will slow down the framework is set to True*/
 		private $hasStrictFileCheck = FALSE;
 		private $Resources = null;
@@ -46,27 +45,8 @@
 
 
 
-		/**This will build the view page thus is the mainview  to which it will host the module
-		 *This could be viewed as useless
-		 *
-		 * @param string $default_view
-		 *
-		 * @throws Exception
-		 */
-		private function buildFocusPageView ( string $default_view = "render" ): void
-		{
-			if ( !empty( $this->modulesLoaderObject ) ) {
-				$this->frameWorkResources = $this->modulesLoaderObject->getFocusViewResources( $default_view );
-				$this->buildNavigationBar();
-			} else {
-				throw new \RuntimeException( 'Failed to Build View' );
-			}
-		}
 
-		private function buildModulePage ( string $route ): void
-		{
 
-		}
 
 		public function pageTitle (): string
 		{
