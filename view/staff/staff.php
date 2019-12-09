@@ -70,12 +70,20 @@
                 </div>
                 <div class="card-block">
                     <form onsubmit="return false;">
-                        <div class="form-group row">
+                        <div id="phoneNumberDiv"></div>
+                        <!--<div class="form-group row">
                             <label class="col-sm-2 col-form-label">Phone No.</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-8">
                                 <input type="text" class="form-control form-control-normal" placeholder="">
                             </div>
-                        </div>
+
+                            <div class="col-sm-2">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="optionsRadios" id="default_" value="1">
+                                   Default
+                                </label>
+                            </div>
+                        </div>-->
 
                         <div class="form-group row">
                             <button class="col-sm-2 btn btn-mini btn-round btn-success">New</button>
@@ -85,8 +93,14 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Address</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-8">
                                 <input type="text" class="form-control form-control-uppercase" placeholder="">
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="optionsRadios" id="default_" value="1">
+                                    Default
+                                </label>
                             </div>
                         </div>
 
