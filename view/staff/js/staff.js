@@ -68,8 +68,30 @@ function onPrevFromFiles(){
 
 
 function onNextToFiles(){
+	let phone = $("#phoneNum_1").val();
+	let email = $("#email").val();
+	if(email === ''){
+		showErrorMessage('Email is Required' , 4);
+		error_input_element(true , 'email');
+		return;
+	}
+	error_input_element(false , 'email');
+	
+	if(!isEmail(email) ){
+		showErrorMessage('Valid Email is Required' , 4);
+		error_input_element(true , 'email');
+		return;
+	}
+	error_input_element(false , 'email');
+	if(phone === ''){
+		showErrorMessage('Phone is Required' , 4);
+		error_input_element(true , 'phoneNum_1');
+		return;
+	}
+	error_input_element(false , 'phoneNum_1');
 	$("#div_card_contact_details").slideUp('slow');
 	$("#div_card_files_details").slideDown('slow');
+	
 }
 
 
@@ -100,22 +122,27 @@ let data_ = new FormData();
 	data_.append( 'pics', pics.files[0]);
 	data_.append( 'email', email);
 	data_.append( 'address', address);
+	
 	data_.append( 'select_jobPosition',select_jobPosition );
 	
 	for (var x = 0; x < ins; x++) {
 		data_.append("docss[]", docss.files[x]);
 		
 	}
-	let added_multi_phone = [] ;
+	let phone = $("#phoneNum_1").val();
+	data_.append( phone, phone);
+	/*let added_multi_phone = [] ;
 	$(".added_multi_phone" ).each(()=>{
-		
+		var currentElement = $(this);
+		console.log (currentElement.is(':checked'));
+		console.log ($(this));
 		if($(this).is(':checked')){
-			console.log ('here')
+			
 			let iid = $(this).attr('id');
 			console.log (iid);
 		}
 	});
-	return;
+	return;*/
 	$('body').loading({
 		message: 'Saving...'
 	});
@@ -142,10 +169,10 @@ function addPhoneOption () {
 	<div class="form-group row" id="phone_aaded_${phoneCounter}">
                             <label class="col-sm-2 col-form-label">Phone No.</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control form-control-normal" id="de_${phoneCounter}" placeholder="">
+                                <input type="text" class="form-control form-control-normal" id="phoneNum_${phoneCounter}" placeholder="">
                             </div>
 
-                            <div class="col-sm-2">
+                            <div style="display: none;" class="col-sm-2">
                                 <label class="form-check-label">
                                     <input type="radio" class="form-check-input added_multi_phone" name="phoneNum" id="default_${phoneCounter}" value="1">
                                    Default
@@ -155,7 +182,7 @@ function addPhoneOption () {
 	
 	`;
 	$("#phoneNumberDiv").append(html);
-	phoneCounter++;
+	//phoneCounter++;
 	
 }
 addPhoneOption () ;

@@ -105,7 +105,7 @@
                         </div>
                         <div id="phoneNumberDiv"></div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" style="display: none;">
                             <button onclick="addPhoneOption ();" class="col-sm-2 btn btn-mini btn-round btn-success">Add Number</button>
                             <div class="col-sm-10" style="display: none">
 

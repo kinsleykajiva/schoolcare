@@ -5,6 +5,12 @@
 	require_once '../../dbaccess/dbcontrol/DbManager.php';
 	class DBEmployees	extends DbManager	{
 		private $DBCon;
+
+		public function getLastInsertAutoID (): int
+		{
+			return parent::getLastInsertAutoID();
+		}
+
 		public function __construct ( string $USER , string $PASSWORD , string $DATABASE ) {
 
 			$this->DBCon = mysqli_connect ( 'localhost' , $USER , $PASSWORD , $DATABASE );
