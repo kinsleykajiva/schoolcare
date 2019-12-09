@@ -19,6 +19,7 @@
 	"resources" : {
 	  "css" : [ ] ,
 	  "js" : [
+		"view/staff/js/staff.js"
 	  ]
 	}
   } ,
