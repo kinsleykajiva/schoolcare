@@ -11,6 +11,7 @@
 		$name = $_POST[ 'name' ];
 		$surname = $_POST[ 'surname' ];
 		$id_num = $_POST[ 'id_num' ];
+		$phone = $_POST[ 'phone' ];
 		$sex = $_POST[ 'sex' ];
 		$date_of_birth = $_POST[ 'date_of_birth' ];
 		//$pics = $_POST['pics'];
@@ -22,7 +23,7 @@
 		$res = [];
 		$emplObj = new DBEmployees( USER, PASSWORD, DATABASE );
 
-		$res = $emplObj->saveNewEmployee($name , $surname , $date_of_birth , $id_num ,$USER_ID , $sex , $select_jobPosition);
+		$res = $emplObj->saveNewEmployee($name , $surname , $date_of_birth , $id_num ,$USER_ID , $sex , $select_jobPosition,$phone,$address,$email);
 		if($res['status'] !== 'ok'){
 			echo json_encode($res, JSON_THROW_ON_ERROR, 512 );
 			exit;

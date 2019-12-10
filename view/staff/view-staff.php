@@ -1,4 +1,4 @@
-<div class="page-body">
+<div class="page-body" id="div_card_view_staff_ontable">
 	<!-- Basic table card start -->
 	<div class="card">
 		<div class="card-header">

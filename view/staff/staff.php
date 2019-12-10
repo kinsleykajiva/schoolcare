@@ -166,7 +166,8 @@
                         <div class="form-group row" style="margin-top: 20px;">
                             <button onclick="onPrevToContact()" class="col-sm-2 btn btn-mini btn-round btn-default">Prev </button>
                             <button style="visibility: hidden;" class="col-sm-2 btn btn-mini btn-round btn-info">. </button>
-                            <button onclick="onsaveNewEmployee()" class="col-sm-2 btn btn-mini btn-round btn-info">Save </button>
+                            <button onclick="onsaveNewEmployee()" id="btnSaveEmp" class="col-sm-2 btn btn-mini btn-round btn-info">Save </button>
+                            <button onclick="onsaveUpdateEmployee()" id="btnUpdate" style="display: none;" class="col-sm-2 btn btn-mini btn-round btn-info">Update </button>
                             <div class="col-sm-10" style="display: none">
 
                             </div>

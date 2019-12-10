@@ -10,6 +10,7 @@ function getDefaultData () {
 	axios.get('/view/staff',{params:{get_data:'3it'}}).then(res=>{
 		if(res.statusText === 'OK'){
 			const j = res.data;
+			renderJobPositions(j.jobpos);
 			renderEmployeesTable(j.emp);
 		}else{
 			showErrorMessage('Failed to refresh Data')
@@ -19,6 +20,13 @@ function getDefaultData () {
 	})
 }
 $(()=>{getDefaultData()});
+function renderJobPositions (jdata) {
+	let opt = `<option value="null"> Select Position </option>`;
+	_.forEach(jdata , (valls,inx)=>{
+		opt += `<option value="${valls.id}"> ${valls.title} </option>`;
+	});
+	$("#select_jobPosition").html(opt);
+}
 function openEmployeeInfoDialog (id) {
 	
 	const Objj = EMPLOYEE_READ_ROWS.filter(x=>x.id == id)[0];
@@ -52,7 +60,7 @@ function renderEmployeesTable (data) {
                      <button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</button>
                      <div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
                          <a class="dropdown-item waves-light waves-effect" onclick="openEmployeeInfoDialog('${valls.id}')" href="javascript:void(0)">Info</a>
-                         <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)">Edit</a>
+                         <a class="dropdown-item waves-light waves-effect" onclick="editEmplyee('${valls.id}')" href="javascript:void(0)">Edit</a>
                          <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)">Delete</a>
                      </div>
                  </div>
@@ -63,15 +71,34 @@ function renderEmployeesTable (data) {
 	});
 	$("#tbody_staff").html(row);
 }
+function editEmplyee (id) {
+	openNewStaffDialog ();
+	$("#btnSaveEmp").hide();
+	$("#btnSaveEmp").show();
+	const Objj = EMPLOYEE_READ_ROWS.filter(x=>x.id == id)[0];
+	$("#name").val(Objj.name);
+	$("#surname").val(Objj.surname);
+	$("#id_num").val(Objj.id_number);
+	$("#sex").val(Objj.sex);
+	$("#date_of_birth").val(Objj.date_of_birth);
+	$("#email").val(Objj.email);
+	$("#address").val(Objj.address);
+	$("#select_jobPosition").val(Objj.id_job_position);
+}
 
 function closeNewStaffDialog () {
 		$("#div_card_Newstaff_details").slideUp('fast');
 	$("#btnCloseDialog").hide();
 	$("#btnNewDialog").show();
+	$("#div_card_view_staff_ontable").show();
+	
+	$("#btnSaveEmp").hide();
+	$("#btnSaveEmp").show();
 }
 
 function openNewStaffDialog () {
 	$("#btnNewDialog").hide();
+	$("#div_card_view_staff_ontable").hide();
 	$("#btnCloseDialog").show();
 	$("#div_card_Newstaff_details").slideDown('fast');
 }
@@ -164,6 +191,9 @@ function onPrevToContact(){
 	$("#div_card_files_details").slideUp('slow');
 	$("#div_card_contact_details").slideDown('slow');
 }
+function onsaveUpdateEmployee () {
+
+}
 
 function onsaveNewEmployee(){
 let name = $("#name").val();
@@ -194,7 +224,7 @@ let data_ = new FormData();
 		
 	}
 	let phone = $("#phoneNum_1").val();
-	data_.append( phone, phone);
+	data_.append( 'phone', phone);
 	/*let added_multi_phone = [] ;
 	$(".added_multi_phone" ).each(()=>{
 		var currentElement = $(this);
