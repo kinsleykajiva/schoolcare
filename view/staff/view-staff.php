@@ -48,3 +48,46 @@
 	<!-- Basic table card end -->
 
 </div>
+
+<div class="iziModal" data-izimodal-title="Employee Info Dialog" id="div_view_employee_info">
+
+	<div class="row">
+		<div class="col-lg-6">
+			<h5>Name</h5> <br> <h6 id="info_name"></h6>
+		</div>
+		<div class="col-lg-6">
+			<h4>Surname</h4><br> <h6 id="info_surname"></h6>
+		</div>
+	</div>
+	<hr>
+
+	<div class="row">
+		<div class="col-lg-6">
+			<h5>Sex</h5> <br> <h5 id="info_sex"></h5>
+		</div>
+		<div class="col-lg-6">
+			<h5>ID Number</h5><br> <h6 id="info_id_number"></h6>
+		</div>
+	</div>
+	<hr>
+
+	<div class="row">
+		<div class="col-lg-6">
+			<h5>Date Of Birth</h5> <br> <h6 id="info_dob"></h6>
+		</div>
+		<div class="col-lg-6">
+			<h5>Date Record Created</h5><br> <h6 id="date_record_created"></h6>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-lg-6">
+			<h5>Job Position</h5> <br> <h6 id="info_jobPosition"></h6>
+		</div>
+		<div class="col-lg-6">
+			.
+		</div>
+	</div>
+	<hr>
+
+</div>

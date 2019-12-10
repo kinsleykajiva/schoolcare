@@ -1,3 +1,11 @@
+const modalView_employee_info = $("#div_view_employee_info");
+let EMPLOYEE_READ_ROWS = [];
+modalView_employee_info.iziModal({
+	width: 700,
+	radius: 5,
+	padding: 20
+});
+modalView_employee_info.iziModal('setHeaderColor', MODAL_HEADER_COLOR);
 function getDefaultData () {
 	axios.get('/view/staff',{params:{get_data:'3it'}}).then(res=>{
 		if(res.statusText === 'OK'){
@@ -11,8 +19,24 @@ function getDefaultData () {
 	})
 }
 $(()=>{getDefaultData()});
-
+function openEmployeeInfoDialog (id) {
+	
+	const Objj = EMPLOYEE_READ_ROWS.filter(x=>x.id == id)[0];
+	modalView_employee_info.iziModal('open');
+	modalView_employee_info.iziModal('startLoading');
+	$("#info_name").text(Objj.name);
+	$("#info_surname").text(Objj.surname);
+	$("#info_sex").text(Objj.sex);
+	$("#info_id_number").text(Objj.id_number);
+	$("#info_dob").text(Objj.date_of_birth);
+	$("#date_record_created").text(Objj.date_created);
+	$("#info_jobPosition").text(Objj.Jobposition);
+	
+	setTimeout(function(){modalView_employee_info.iziModal('stopLoading');},2300);
+	
+}
 function renderEmployeesTable (data) {
+	EMPLOYEE_READ_ROWS = data ;
 	let row = ``;
 	_.forEach(data,(valls,inx)=>{
 		row += `
@@ -27,7 +51,7 @@ function renderEmployeesTable (data) {
 					 <div class="dropdown-default dropdown open">
                      <button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</button>
                      <div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
-                         <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)">Info</a>
+                         <a class="dropdown-item waves-light waves-effect" onclick="openEmployeeInfoDialog('${valls.id}')" href="javascript:void(0)">Info</a>
                          <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)">Edit</a>
                          <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)">Delete</a>
                      </div>
@@ -39,6 +63,7 @@ function renderEmployeesTable (data) {
 	});
 	$("#tbody_staff").html(row);
 }
+
 function closeNewStaffDialog () {
 		$("#div_card_Newstaff_details").slideUp('fast');
 	$("#btnCloseDialog").hide();
