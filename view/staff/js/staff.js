@@ -1,5 +1,44 @@
+function getDefaultData () {
+	axios.get('/view/staff',{params:{get_data:'3it'}}).then(res=>{
+		if(res.statusText === 'OK'){
+			const j = res.data;
+			renderEmployeesTable(j.emp);
+		}else{
+			showErrorMessage('Failed to refresh Data')
+		}
+	}).catch(err =>{
+		showErrorMessage('Failed to connect .' ,4);
+	})
+}
+$(()=>{getDefaultData()});
 
-
+function renderEmployeesTable (data) {
+	let row = ``;
+	_.forEach(data,(valls,inx)=>{
+		row += `
+			<tr>
+				<th></th>
+				<td>${capitaliseTextFirstCaseForWords(valls.name)}</td>
+				<td>${capitaliseTextFirstCaseForWords(valls.surname)}</td>
+				<td>${capitaliseTextFristLetter(valls.sex)}</td>
+				<td>${valls.id_number}</td>
+				<td>${valls.Jobposition}</td>
+				<td>
+					 <div class="dropdown-default dropdown open">
+                     <button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</button>
+                     <div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+                         <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)">Info</a>
+                         <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)">Edit</a>
+                         <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)">Delete</a>
+                     </div>
+                 </div>
+			</td>
+			</tr>
+		
+		`;
+	});
+	$("#tbody_staff").html(row);
+}
 function closeNewStaffDialog () {
 		$("#div_card_Newstaff_details").slideUp('fast');
 	$("#btnCloseDialog").hide();

@@ -17,6 +17,15 @@
 			parent ::__construct ( $this->DBCon );
 		}
 
+		public function getAllEmployees():array {
+			$sql = 'SELECT e.id, e. name, e.surname, e.date_of_birth, e.id_number, e.id_user_saved, e.date_created, e.sex, e.id_job_position ,job_positions.title AS Jobposition
+					FROM employees e JOIN job_positions ON job_positions.id = e.id_job_position
+					WHERE e.isvisible = 1 AND e.isdeleted = 0
+					';
+
+			return $this->fetchInArray($sql);
+		}
+
 		public function saveNewEmployee( $name, $surname, $date_of_birth, $id_number, $id_user_saved, $sex ,$id_job_position  ):array {
 
 			$res = $this->insert('employees',[

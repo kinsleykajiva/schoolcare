@@ -7,6 +7,8 @@
 </div>
 
 
+<?php include 'view-staff.php';?>
+
 <div class="page-body" id="div_card_Newstaff_details" style="display: none;">
     <div class="row">
         <div class="col-sm-12">
