@@ -28,7 +28,7 @@
 				'date_created' => self::nowDateTime(),
 				'sex' => $sex ,
 				'id_job_position' =>$id_job_position
-			]);
+			],TRUE);
 			return $this->result($res , 'Saving Employee');
 		}
 

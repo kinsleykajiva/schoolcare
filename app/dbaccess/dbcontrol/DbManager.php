@@ -1,9 +1,9 @@
 <?php
 	//namespace DbManager;
-	//use DBLoggingService as log;
+	use DBLoggingService as log;
 
 
-	//require_once "DBLoggingService.php";
+	require_once "DBLoggingService.php";
 
 	class DbManager {
 
@@ -107,7 +107,7 @@
 				$sql = "SELECT  id  FROM {$tableName}  ";
 			}
 			if ( $debug ) {
-				//log ::logInfo ( $sql , "countRows()" );
+				log ::logInfo ( $sql , "countRows()" );
 
 			}
 
@@ -157,7 +157,7 @@
 			$query     = $INSERT . " ( {$columns}  ) VALUES ( {$valuesCol} )";
 
 			if ( $debug ) {
-				//log ::logInfo ( $query , "insert()" );
+				log ::logInfo ( $query , "insert()" );
 
 			}
 
@@ -218,7 +218,7 @@
 			$setData = rtrim ( $setData , $comma );
 			$sql .= " " . $setData . " WHERE {$whereCondi}  ";
 			if ( $debug ) {
-				//log ::logInfo ( $sql , "andUpdate()" );
+				log ::logInfo ( $sql , "andUpdate()" );
 			}
 
 			return $this -> rawQuery ( $sql );
@@ -229,7 +229,7 @@
 			$sql = implode ( "," , $columns );
 			$sql = "SELECT " . $sql . " FROM " . $table . " WHERE {$conditionColumn} = '$condition'";
 			if ( $debug ) {
-				//log ::logInfo ( $sql , "justFetch()" );
+				log ::logInfo ( $sql , "justFetch()" );
 			}
 			return mysqli_fetch_assoc ( $this -> rawQuery ( $sql ) );
 		}
@@ -239,7 +239,7 @@
 			$sql = implode ( "," , $columns );
 			$sql = "SELECT " . $sql . " FROM " . $table . " WHERE id = " . $conditional_id;
 			if ( $debug ) {
-				//log ::logInfo ( $sql , "justGet()" );
+				log ::logInfo ( $sql , "justGet()" );
 			}
 			return mysqli_fetch_assoc ( $this -> rawQuery ( $sql ) );
 		}
@@ -266,7 +266,7 @@
 			$setData = rtrim ( $setData , $comma );
 			$sql     = $sql . " " . $setData . " WHERE {$whereCondi}  ";
 			if ( $debug ) {
-				//log ::logInfo ( $sql , "orUpdate()" );
+				log ::logInfo ( $sql , "orUpdate()" );
 			}
 			if ( $debug ) {
 				return $sql;
@@ -292,7 +292,7 @@
 				throw new Exception( 'Null Database Connection' );
 			}
 			if($isDebug){
-				//log ::logInfo ( $query_statement , "RawInsert" );
+				log ::logInfo ( $query_statement , "RawInsert" );
 			}
 
 			return mysqli_query ( $this -> DBCon , $query_statement );
@@ -319,7 +319,7 @@
 		 * @param string $tableName
 		 * @return void
 		 */
-		public function emptyTableWithRisk(string $tableName){
+		public function emptyTableWithRisk(string $tableName):mysqli_result{
 			$sql  = "TRUNCATE  TABLE  {$tableName}" ;
 			return $this->rawQuery($sql);
 		}
