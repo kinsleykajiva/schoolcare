@@ -82,7 +82,7 @@
 			$dbPassword = $sqlArr[ 'password' ];
 			$dbRole = (int)$sqlArr[ 'id_role' ];
 			$dbUserID = (int)$sqlArr[ 'id' ];
-			$accessM = '1.1,1.2,2.1,2.2,10.1,10.2';
+			$accessM = '1.1,1.2,2.1,2.2,10.1,10.2,3.1,3.2';
 			if ( !password_verify( $password, $dbPassword ) ) {
 				return [ 'status' => 'auth' ];
 			}

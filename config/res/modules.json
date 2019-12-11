@@ -58,5 +58,28 @@
 		"view/settings/js/profile.js"
 	  ]
 	}
+  },
+  {
+	"id" : 3.1 ,
+	"name" : "Enrol" ,
+	"file_path" : "view/children/enrolment.php" ,
+	"route" : "enrol" ,
+	"resources" : {
+	  "css" : [ ] ,
+	  "js" : [
+		"view/children/js/enrolment.js"
+	  ]
+	}
+  },{
+	"id" : 3.2 ,
+	"name" : "Kids" ,
+	"file_path" : "view/children/children-view.php" ,
+	"route" : "children" ,
+	"resources" : {
+	  "css" : [ ] ,
+	  "js" : [
+		"view/children/js/children-view.js"
+	  ]
+	}
   }
 ]
