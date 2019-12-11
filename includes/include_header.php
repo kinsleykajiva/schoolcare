@@ -96,9 +96,9 @@
 
                 <li class="user-profile header-notification">
                     <a href="#!">
-                        <img src="template/assets/images/avatar-4.jpg" class="img-radius"
+                        <img src="template/assets/images/avatar-4.jpg" style="display: none;" class="img-radius"
                              alt="User-Profile-Image">
-                        <span>John Doe</span>
+                        <span id="loggedUserName">--</span>
                         <i class="ti-angle-down"></i>
                     </a>
                     <ul class="show-notification profile-notification">

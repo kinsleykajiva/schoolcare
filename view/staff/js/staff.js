@@ -124,6 +124,7 @@ function deleteEmployeee (id) {
 	axios({url:'/backend/staff' , method:'post',data:data_}).then(res=>{
 		$ ('body').loading ('stop');
 		if(res.statusText === 'OK' && res.data.status === 'ok'){
+			checkAuth(res.data);
 			getDefaultData();
 			showSuccessMessage('Record Deleted' , 4);
 		}else{
@@ -299,6 +300,7 @@ function onsaveUpdateEmployee () {
 	axios ({url: '/backend/staff', method: 'post', data: data_}).then (res => {
 		$ ('body').loading ('stop');
 		if (res.statusText === 'OK' && res.data.status === 'ok') {
+			checkAuth(res.data);
 			onPrevToContact();
 			onPrevFromFiles();
 			closeNewStaffDialog();
@@ -353,6 +355,7 @@ function onsaveNewEmployee () {
 	axios ({url: '/backend/staff', method: 'post', data: data_}).then (res => {
 		$ ('body').loading ('stop');
 		if (res.statusText === 'OK' && res.data.status === 'ok') {
+			checkAuth(res.data);
 			getDefaultData();
 			showSuccessMessage ('Saved  Details', 4);
 			emptyInputs([ 'name','surname' , 'id_num' , 'date_of_birth' ,'email' ,'address' , 'phoneNum_1'  ] , ['select_jobPosition' , 'sex']);

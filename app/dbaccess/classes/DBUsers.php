@@ -23,6 +23,50 @@
 			$this->DBCon = mysqli_connect ( 'localhost' , $USER , $PASSWORD , $DATABASE );
 			parent ::__construct ( $this->DBCon );
 		}
+		public function UpdateUser($record_id ,  $username, $password,$id_role ):array {
+			if(empty($password)){
+				$res = $this->andUpdate( 'users', [
+					'username' => $username,  'id_role' => $id_role
+				], [ 'id' => $record_id ] );
+			}else {
+				$password =  password_hash ( $password , CRYPT_BLOWFISH , [ 'cost' => 8 , ] );
+				$res = $this->andUpdate( 'users', [
+					'username' => $username, 'password' => $password, 'id_role' => $id_role
+				], [ 'id' => $record_id ] );
+			}
+			return $this->result($res , 'Updated a  User');
+		}
+		public function saveNewUser( $username, $password, $id_employee,$id_role ):array {
+
+			$res = $this->insert('users',[
+				'username'=> $username , 'password'=>$password , 'id_employee'=>$id_employee ,'id_role'=>$id_role
+			]);
+			return $this->result($res , 'Created a New User');
+		}
+		public function getEmployeesWithOutUserAccounnts ()
+		: array {
+
+			$sql = 'SELECT e.id ,  e.name  , e.surname
+								FROM employees e
+								WHERE (e.isdeleted = 0 AND e.isvisible =1)
+								  AND  e.id NOT IN (SELECT users.id_employee FROM users)';
+
+			return $this -> fetchInArray ( $sql );
+		}
+		/**Get all users*/
+		public function getAllUsers():array {
+			$sql = "SELECT users.ID, users.USERNAME, CONCAT(employees.name , '', employees.surname) AS fullName, roles.title AS roleTitle, 
+    						users.ID_ROLE 
+						FROM users JOIN roles ON roles.id = users.id_role JOIN employees ON employees.id = users.id_employee WHERE
+					users.isvisible = 1";
+			return $this->fetchInArray($sql);
+		}
+		public function getAllRoles():array {
+			$sql = "SELECT * FROM roles";
+			return $this->fetchInArray($sql);
+		}
+
+
 
 		public function loginUser(string $username ,string $password):array {
 			if ( $this->countRows( 'users', [ 'username' => $username ] ) < 1 ) {

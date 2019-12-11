@@ -12,7 +12,7 @@ function checkAccess () {
 	loggedUserName = payloadObj.username;
 	TOKEN = payloadObj.jwt;
 	
-	
+	$("#loggedUserName").text(loggedUserName);
 	axios.defaults.headers.common['Authorization'] = TOKEN;
 	
 }

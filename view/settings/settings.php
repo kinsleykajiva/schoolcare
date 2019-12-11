@@ -24,26 +24,26 @@
 							<!-- Nav tabs -->
 							<ul class="nav nav-tabs md-tabs" role="tablist">
 								<li class="nav-item">
-									<a class="nav-link active" data-toggle="tab" href="#home3" role="tab" aria-expanded="true">Users</a>
+									<a class="nav-link active" data-toggle="tab" href="#usrs-tab" role="tab" aria-expanded="true">Users</a>
 									<div class="slide"></div>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item" style="visibility: hidden;">
 									<a class="nav-link" data-toggle="tab" href="#profile3" role="tab" aria-expanded="false">Profile</a>
 									<div class="slide"></div>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item" style="visibility: hidden;">
 									<a class="nav-link" data-toggle="tab" href="#messages3" role="tab" aria-expanded="false">Messages</a>
 									<div class="slide"></div>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item" style="visibility: hidden;">
 									<a class="nav-link" data-toggle="tab" href="#settings3" role="tab" aria-expanded="false">Settings</a>
 									<div class="slide"></div>
 								</li>
 							</ul>
 							<!-- Tab panes -->
 							<div class="tab-content card-block">
-								<div class="tab-pane active" id="home3" role="tabpanel" aria-expanded="true">
-									<p class="m-0">1. This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis natoque penatibus et magnis dis.....</p>
+								<div class="tab-pane active" id="usrs-tab" role="tabpanel" aria-expanded="true">
+									<?php include "main/users-tab.php"; ?>
 								</div>
 								<div class="tab-pane" id="profile3" role="tabpanel" aria-expanded="false">
 									<p class="m-0">2.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor interdum praesent sit amet nulla vel enim amet. Donec convallis tellus neque, et imperdiet felis amet.</p>
