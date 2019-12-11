@@ -86,7 +86,7 @@ function renderUsersTable (data) {
 									<button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</button>
 									<div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
 									<a class="dropdown-item waves-light waves-effect" onclick="openEditUserDialog('${vall.ID}')" href="javascript:void(0)">Edit</a>
-									<a class="dropdown-item waves-light waves-effect" href="#">Delete</a>
+									<a class="dropdown-item waves-light waves-effect" href="javascript:void(0);" onclick="openDeleteDialog('${vall.ID}')">Delete</a>
 									</div>
 							</div>
 						</td>
@@ -95,6 +95,66 @@ function renderUsersTable (data) {
 		`;
 	});
 	$("#tbodyUsers").html(row);
+}
+function openDeleteDialog(id)  {
+	iziToast.question({
+		timeout: 20000,
+		close: false,
+		overlay: true,
+		displayMode: 'once',
+		id: 'question',
+		zindex: 999,
+		title: 'Confirmation',
+		message: 'Are you sure about deleting this record ?',
+		position: 'center',
+		buttons: [
+			['<button><b>YES</b></button>', function (instance, toast) {
+				
+				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+				
+				deleteUser(id);
+			}, true],
+			['<button>NO</button>', function (instance, toast) {
+				
+				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+				
+			}],
+		],
+		onClosing: function(instance, toast, closedBy){
+			console.info('Closing | closedBy: ' + closedBy);
+		},
+		onClosed: function(instance, toast, closedBy){
+			console.info('Closed | closedBy: ' + closedBy);
+		}
+	});
+}
+function deleteUser (id) {
+	$('body').loading({
+		message: 'Deleting...'
+	});
+	let data_ = new FormData();
+	data_.append('delete_user' ,id);
+	axios({url:'/backend/users' , method:'post' , data:data_}).then(res=>{
+		$('body').loading('stop');
+		if(res.statusText === 'OK' && res.data.status === 'ok'){
+			iziToast.success({
+				title: 'Record Removed',
+				message: 'Operation Done Successfully !',
+			});
+			getDefaultData () ;
+		}else{
+			iziToast.error({
+				title: 'Error Response',
+				message: 'Failed to Delete !',
+			});
+		}
+	}).catch(err=>{
+		$('body').loading('stop');
+		iziToast.error({
+			title: 'Error Response',
+			message: 'Failed to Connect,Check Internet Connection !',
+		});
+	})
 }
 function saveUpdateUser () {
 	
@@ -188,13 +248,15 @@ function saveNewJobUser () {
 	let data_ = new FormData();
 	data_.append('type' ,'new' );
 	data_.append('newUsername' , newUsername);
-	data_.append('newUsername' , newUsername);
+	data_.append('selectEmployees' , selectEmployees);
 	data_.append('selectRole' , selectRole);
+	data_.append('newPassword' , newPassword);
 	modalNewUser.iziModal('startLoading');
 	axios({url:'/backend/users' , method:'post' , data:data_}).then(res=>{
 		modalNewUser.iziModal('stopLoading');
 		if(res.statusText === 'OK' && res.data.status ==='ok'){
 			getDefaultData ();
+			modalNewUser.iziModal('close');
 			showSuccessMessage('User Created');
 			emptyInputs(['newUsername','newPassword'],[]);
 		}else{

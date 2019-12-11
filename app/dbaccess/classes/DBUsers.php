@@ -23,6 +23,10 @@
 			$this->DBCon = mysqli_connect ( 'localhost' , $USER , $PASSWORD , $DATABASE );
 			parent ::__construct ( $this->DBCon );
 		}
+		public function deleteUser(int $rec_id):array {
+			$res = $this->setDeleteSafely('users',$rec_id );
+			return $this->result($res , 'Deleted User');
+		}
 		public function UpdateUser($record_id ,  $username, $password,$id_role ):array {
 			if(empty($password)){
 				$res = $this->andUpdate( 'users', [
@@ -37,7 +41,7 @@
 			return $this->result($res , 'Updated a  User');
 		}
 		public function saveNewUser( $username, $password, $id_employee,$id_role ):array {
-
+			$password =  password_hash ( $password , CRYPT_BLOWFISH , [ 'cost' => 8 , ] );
 			$res = $this->insert('users',[
 				'username'=> $username , 'password'=>$password , 'id_employee'=>$id_employee ,'id_role'=>$id_role
 			]);

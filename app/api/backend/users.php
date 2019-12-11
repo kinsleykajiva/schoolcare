@@ -2,6 +2,13 @@
 	include '../checkReqst.php';
 // print $USER_ID ;
 
+	if(isset($_POST['delete_user'])){
+		$rec_id = (int) $_POST['delete_user'];
+		$res = $usersObj->deleteUser($rec_id);
+		print json_encode( $res, JSON_THROW_ON_ERROR, 512 );
+		exit;
+	}
+
 	if(isset($_POST['edit_selectRole'])){
 		$edit_selectRole = $_POST['edit_selectRole'];
 		$edit_newPassword = $_POST['edit_newPassword'];
@@ -10,6 +17,17 @@
 
 		$res = $usersObj->UpdateUser($rec_id , $edit_newUsername , $edit_newPassword , $edit_selectRole );
 
+
+		print json_encode( $res, JSON_THROW_ON_ERROR, 512 );
+		exit;
+	}
+	if(isset($_POST['newUsername'])){
+
+		$newUsername = $_POST['newUsername'];
+		$selectEmployees = $_POST['selectEmployees'];
+		$selectRole = $_POST['selectRole'];
+		$newPassword = $_POST['newPassword'];
+		$res = $usersObj->saveNewUser($newUsername , $newPassword ,$selectEmployees ,$selectRole  );
 
 		print json_encode( $res, JSON_THROW_ON_ERROR, 512 );
 		exit;
