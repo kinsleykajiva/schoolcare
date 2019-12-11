@@ -51,7 +51,7 @@ function openEmployeeInfoDialog (id) {
 	
 	setTimeout (function () {
 		modalView_employee_info.iziModal ('stopLoading');
-	}, 2300);
+	}, randomNumbers(1,4) * 1000);
 	
 }
 
