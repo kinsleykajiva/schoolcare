@@ -1,58 +1,67 @@
-const modalView_employee_info = $("#div_view_employee_info");
+const modalView_employee_info = $ ("#div_view_employee_info");
 let EMPLOYEE_READ_ROWS = [];
-modalView_employee_info.iziModal({
+modalView_employee_info.iziModal ({
 	width: 700,
 	radius: 5,
 	padding: 20
 });
-modalView_employee_info.iziModal('setHeaderColor', MODAL_HEADER_COLOR);
+modalView_employee_info.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
+
 function getDefaultData () {
-	axios.get('/view/staff',{params:{get_data:'3it'}}).then(res=>{
-		if(res.statusText === 'OK'){
+	axios.get ('/view/staff', {params: {get_data: '3it'}}).then (res => {
+		if (res.statusText === 'OK') {
 			const j = res.data;
-			renderJobPositions(j.jobpos);
-			renderEmployeesTable(j.emp);
-		}else{
-			showErrorMessage('Failed to refresh Data')
+			renderJobPositions (j.jobpos);
+			renderEmployeesTable (j.emp);
+		} else {
+			showErrorMessage ('Failed to refresh Data')
 		}
-	}).catch(err =>{
-		showErrorMessage('Failed to connect .' ,4);
+	}).catch (err => {
+		showErrorMessage ('Failed to connect .', 4);
 	})
 }
-$(()=>{getDefaultData()});
+
+$ (() => {
+	getDefaultData ()
+});
+
 function renderJobPositions (jdata) {
 	let opt = `<option value="null"> Select Position </option>`;
-	_.forEach(jdata , (valls,inx)=>{
+	_.forEach (jdata, (valls, inx) => {
 		opt += `<option value="${valls.id}"> ${valls.title} </option>`;
 	});
-	$("#select_jobPosition").html(opt);
+	$ ("#select_jobPosition").html (opt);
 }
+
 function openEmployeeInfoDialog (id) {
 	
-	const Objj = EMPLOYEE_READ_ROWS.filter(x=>x.id == id)[0];
-	modalView_employee_info.iziModal('open');
-	modalView_employee_info.iziModal('startLoading');
-	$("#info_name").text(Objj.name);
-	$("#info_surname").text(Objj.surname);
-	$("#info_sex").text(Objj.sex);
-	$("#info_id_number").text(Objj.id_number);
-	$("#info_dob").text(Objj.date_of_birth);
-	$("#date_record_created").text(Objj.date_created);
-	$("#info_jobPosition").text(Objj.Jobposition);
+	const Objj = EMPLOYEE_READ_ROWS.filter (x => x.id == id)[0];
+	modalView_employee_info.iziModal ('open');
+	modalView_employee_info.iziModal ('startLoading');
+	$ ("#info_name").text (Objj.name);
+	$ ("#info_surname").text (Objj.surname);
+	$ ("#info_sex").text (Objj.sex);
+	$ ("#info_id_number").text (Objj.id_number);
+	$ ("#info_dob").text (Objj.date_of_birth);
+	$ ("#date_record_created").text (Objj.date_created);
+	$ ("#info_jobPosition").text (Objj.Jobposition);
 	
-	setTimeout(function(){modalView_employee_info.iziModal('stopLoading');},2300);
+	setTimeout (function () {
+		modalView_employee_info.iziModal ('stopLoading');
+	}, 2300);
 	
 }
+
 function renderEmployeesTable (data) {
-	EMPLOYEE_READ_ROWS = data ;
+	EMPLOYEE_READ_ROWS = data;
 	let row = ``;
-	_.forEach(data,(valls,inx)=>{
+	_.forEach (data, (valls, inx) => {
 		row += `
 			<tr>
 				<th></th>
-				<td>${capitaliseTextFirstCaseForWords(valls.name)}</td>
-				<td>${capitaliseTextFirstCaseForWords(valls.surname)}</td>
-				<td>${capitaliseTextFristLetter(valls.sex)}</td>
+				<td>${capitaliseTextFirstCaseForWords (valls.name)}</td>
+				<td>${capitaliseTextFirstCaseForWords (valls.surname)}</td>
+				<td>${capitaliseTextFristLetter (valls.sex)}</td>
 				<td>${valls.id_number}</td>
 				<td>${valls.Jobposition}</td>
 				<td>
@@ -61,7 +70,7 @@ function renderEmployeesTable (data) {
                      <div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
                          <a class="dropdown-item waves-light waves-effect" onclick="openEmployeeInfoDialog('${valls.id}')" href="javascript:void(0)">Info</a>
                          <a class="dropdown-item waves-light waves-effect" onclick="editEmplyee('${valls.id}')" href="javascript:void(0)">Edit</a>
-                         <a class="dropdown-item waves-light waves-effect" href="javascript:void(0)">Delete</a>
+                         <a class="dropdown-item waves-light waves-effect" onclick="deleteEmployeeDialog('${valls.id}')" href="javascript:void(0)">Delete</a>
                      </div>
                  </div>
 			</td>
@@ -69,194 +78,295 @@ function renderEmployeesTable (data) {
 		
 		`;
 	});
-	$("#tbody_staff").html(row);
+	$ ("#tbody_staff").html (row);
+}
+function deleteEmployeeDialog (id) {
+	iziToast.question({
+		timeout: 20000,
+		close: false,
+		overlay: true,
+		displayMode: 'once',
+		id: 'question',
+		zindex: 999,
+		title: 'Confirmation',
+		message: 'Are you sure about deleting?',
+		position: 'center',
+		buttons: [
+			['<button><b>YES Delete</b></button>', function (instance, toast) {
+				
+				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+				deleteEmployeee(id);
+				
+			}, true],
+			['<button>NO</button>', function (instance, toast) {
+				
+				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+				
+			}],
+		],
+		onClosing: function(instance, toast, closedBy){
+			//console.info('Closing | closedBy: ' + closedBy);
+		},
+		onClosed: function(instance, toast, closedBy){
+			//console.info('Closed | closedBy: ' + closedBy);
+		}
+	});
+}
+function deleteEmployeee (id) {
+	$ ('body').loading ({
+		message: 'Deleting...'
+	});
+	let data_ = new FormData();
+	data_.append('delete_empl' , id);
+	axios({url:'/backend/staff' , method:'post',data:data_}).then(res=>{
+		$ ('body').loading ('stop');
+		if(res.statusText === 'OK' && res.data.status === 'ok'){
+			getDefaultData();
+			showSuccessMessage('Record Deleted' , 4);
+		}else{
+			showErrorMessage('Failed to delete' , 4);
+		}
+	}).catch(res=>{
+		$ ('body').loading ('stop');
+		showErrorMessage('Failed to connect' , 4);
+	})
+	
+	
 }
 function editEmplyee (id) {
 	openNewStaffDialog ();
-	$("#btnSaveEmp").hide();
-	$("#btnSaveEmp").show();
-	const Objj = EMPLOYEE_READ_ROWS.filter(x=>x.id == id)[0];
-	$("#name").val(Objj.name);
-	$("#surname").val(Objj.surname);
-	$("#id_num").val(Objj.id_number);
-	$("#sex").val(Objj.sex);
-	$("#date_of_birth").val(Objj.date_of_birth);
-	$("#email").val(Objj.email);
-	$("#address").val(Objj.address);
-	$("#select_jobPosition").val(Objj.id_job_position);
+	$('#id_selected_record').text(id);
+	$ ("#btnSaveEmp").hide ();
+	$ ("#btnUpdate").show ();
+	const Objj = EMPLOYEE_READ_ROWS.filter (x => x.id == id)[0];
+	$ ("#name").val (Objj.name);
+	$ ("#surname").val (Objj.surname);
+	$ ("#id_num").val (Objj.id_number);
+	$ ("#phoneNum_1").val (Objj.phoneContact);
+	$ ("#sex").val (Objj.sex);
+	$ ("#date_of_birth").val (Objj.date_of_birth);
+	$ ("#email").val (Objj.email);
+	$ ("#address").val (Objj.address);
+	$ ("#select_jobPosition").val (Objj.id_job_position);
 }
 
 function closeNewStaffDialog () {
-		$("#div_card_Newstaff_details").slideUp('fast');
-	$("#btnCloseDialog").hide();
-	$("#btnNewDialog").show();
-	$("#div_card_view_staff_ontable").show();
+	$ ("#div_card_Newstaff_details").slideUp ('fast');
+	$ ("#btnCloseDialog").hide ();
+	$ ("#btnNewDialog").show ();
+	$ ("#div_card_view_staff_ontable").show ();
 	
-	$("#btnSaveEmp").hide();
-	$("#btnSaveEmp").show();
+	$ ("#btnUpdate").hide ();
+	$ ("#btnSaveEmp").show ();
+	
+	emptyInputs([ 'name','surname' , 'id_num' , 'date_of_birth' ,'email' ,'address' , 'phoneNum_1'  ] , ['select_jobPosition' , 'sex']);
 }
 
 function openNewStaffDialog () {
-	$("#btnNewDialog").hide();
-	$("#div_card_view_staff_ontable").hide();
-	$("#btnCloseDialog").show();
-	$("#div_card_Newstaff_details").slideDown('fast');
+	$ ("#btnNewDialog").hide ();
+	$ ("#div_card_view_staff_ontable").hide ();
+	$ ("#btnCloseDialog").show ();
+	$ ("#div_card_Newstaff_details").slideDown ('fast');
 }
 
-function onNextToContactDetails(){
-	let name = $("#name").val();
-	let surname = $("#surname").val();
-	let id_num = $("#id_num").val();
-	let sex = $("#sex").val();
-	let date_of_birth = $("#date_of_birth").val();
+function onNextToContactDetails () {
+	let name = $ ("#name").val ();
+	let surname = $ ("#surname").val ();
+	let id_num = $ ("#id_num").val ();
+	let sex = $ ("#sex").val ();
+	let date_of_birth = $ ("#date_of_birth").val ();
 	
-	if(name === ''){
-		showErrorMessage('Name is Required' , 4);
-		error_input_element(true , 'name');
+	if (name === '') {
+		showErrorMessage ('Name is Required', 4);
+		error_input_element (true, 'name');
 		return;
 	}
-	error_input_element(false , 'name');
+	error_input_element (false, 'name');
 	
-	if(surname === ''){
-		showErrorMessage('Surname is Required' , 4);
-		error_input_element(true , 'surname');
+	if (surname === '') {
+		showErrorMessage ('Surname is Required', 4);
+		error_input_element (true, 'surname');
 		return;
 	}
-	error_input_element(false , 'surname');
+	error_input_element (false, 'surname');
 	
-	if(id_num === ''){
-		showErrorMessage('ID Number is Required' , 4);
-		error_input_element(true , 'id_num');
+	if (id_num === '') {
+		showErrorMessage ('ID Number is Required', 4);
+		error_input_element (true, 'id_num');
 		return;
 	}
-	error_input_element(false , 'id_num');
+	error_input_element (false, 'id_num');
 	
-	if(sex === 'null'){
-		showErrorMessage('Sex Selection is Required' , 4);
-		error_input_element(true , 'sex');
+	if (sex === 'null') {
+		showErrorMessage ('Sex Selection is Required', 4);
+		error_input_element (true, 'sex');
 		return;
 	}
-	error_input_element(false , 'sex');
-	if(date_of_birth === 'null'){
-		showErrorMessage('Date Of Birth is Required' , 4);
-		error_input_element(true , 'date_of_birth');
+	error_input_element (false, 'sex');
+	if (date_of_birth === 'null') {
+		showErrorMessage ('Date Of Birth is Required', 4);
+		error_input_element (true, 'date_of_birth');
 		return;
 	}
-	error_input_element(false , 'date_of_birth');
+	error_input_element (false, 'date_of_birth');
 	
 	
-	$("#div_card_personal_details").hide('slow',()=>{
-		$("#div_card_contact_details").show('slow');
+	$ ("#div_card_personal_details").hide ('slow', () => {
+		$ ("#div_card_contact_details").show ('slow');
 	});
 	
 }
 
-function onPrevFromFiles(){
+function onPrevFromFiles () {
 	
-	$("#div_card_personal_details").slideDown('slow');
-	$("#div_card_contact_details").slideUp('slow');
+	$ ("#div_card_personal_details").slideDown ('slow');
+	$ ("#div_card_contact_details").slideUp ('slow');
 }
 
 
-function onNextToFiles(){
-	let phone = $("#phoneNum_1").val();
-	let email = $("#email").val();
-	if(email === ''){
-		showErrorMessage('Email is Required' , 4);
-		error_input_element(true , 'email');
+function onNextToFiles () {
+	let phone = $ ("#phoneNum_1").val ();
+	let email = $ ("#email").val ();
+	if (email === '') {
+		showErrorMessage ('Email is Required', 4);
+		error_input_element (true, 'email');
 		return;
 	}
-	error_input_element(false , 'email');
+	error_input_element (false, 'email');
 	
-	if(!isEmail(email) ){
-		showErrorMessage('Valid Email is Required' , 4);
-		error_input_element(true , 'email');
+	if (!isEmail (email)) {
+		showErrorMessage ('Valid Email is Required', 4);
+		error_input_element (true, 'email');
 		return;
 	}
-	error_input_element(false , 'email');
-	if(phone === ''){
-		showErrorMessage('Phone is Required' , 4);
-		error_input_element(true , 'phoneNum_1');
+	error_input_element (false, 'email');
+	if (phone === '') {
+		showErrorMessage ('Phone is Required', 4);
+		error_input_element (true, 'phoneNum_1');
 		return;
 	}
-	error_input_element(false , 'phoneNum_1');
-	$("#div_card_contact_details").slideUp('slow');
-	$("#div_card_files_details").slideDown('slow');
+	error_input_element (false, 'phoneNum_1');
+	$ ("#div_card_contact_details").slideUp ('slow');
+	$ ("#div_card_files_details").slideDown ('slow');
 	
 }
 
 
-function onPrevToContact(){
+function onPrevToContact () {
 	
-	$("#div_card_files_details").slideUp('slow');
-	$("#div_card_contact_details").slideDown('slow');
+	$ ("#div_card_files_details").slideUp ('slow');
+	$ ("#div_card_contact_details").slideDown ('slow');
 }
+
 function onsaveUpdateEmployee () {
-
-}
-
-function onsaveNewEmployee(){
-let name = $("#name").val();
-let surname = $("#surname").val();
-let id_num = $("#id_num").val();
-let sex = $("#sex").val();
-let date_of_birth = $("#date_of_birth").val();
-let pics  =  document.getElementById('pics');
-let email = $("#email").val();
-let address = $("#address").val();
-let select_jobPosition = $("#select_jobPosition").val();
-let docss = document.getElementById('docss');
-let ins = docss.files.length;
-let data_ = new FormData();
-	data_.append( 'name' , name);
-	data_.append('surname' , surname);
-	data_.append('id_num' , id_num);
-	data_.append('sex' ,sex );
-	data_.append('date_of_birth' , date_of_birth);
-	data_.append( 'pics', pics.files[0]);
-	data_.append( 'email', email);
-	data_.append( 'address', address);
+	let name = $ ("#name").val ();
+	let surname = $ ("#surname").val ();
+	let id_num = $ ("#id_num").val ();
+	let sex = $ ("#sex").val ();
+	let date_of_birth = $ ("#date_of_birth").val ();
+	let pics = document.getElementById ('pics');
+	let email = $ ("#email").val ();
+	let address = $ ("#address").val ();
+	let select_jobPosition = $ ("#select_jobPosition").val ();
+	let docss = document.getElementById ('docss');
+	let ins = docss.files.length;
+	let data_ = new FormData ();
+	data_.append ('type_send', 'edit');
+	data_.append ('record', $('#id_selected_record').text());
+	data_.append ('name', name);
+	data_.append ('surname', surname);
+	data_.append ('id_num', id_num);
+	data_.append ('sex', sex);
+	data_.append ('date_of_birth', date_of_birth);
+	data_.append ('pics', pics.files[0]);
+	data_.append ('email', email);
+	data_.append ('address', address);
 	
-	data_.append( 'select_jobPosition',select_jobPosition );
+	data_.append ('select_jobPosition', select_jobPosition);
 	
 	for (var x = 0; x < ins; x++) {
-		data_.append("docss[]", docss.files[x]);
+		data_.append ("docss[]", docss.files[x]);
 		
 	}
-	let phone = $("#phoneNum_1").val();
-	data_.append( 'phone', phone);
-	/*let added_multi_phone = [] ;
-	$(".added_multi_phone" ).each(()=>{
-		var currentElement = $(this);
-		console.log (currentElement.is(':checked'));
-		console.log ($(this));
-		if($(this).is(':checked')){
-			
-			let iid = $(this).attr('id');
-			console.log (iid);
-		}
-	});
-	return;*/
-	$('body').loading({
+	let phone = $ ("#phoneNum_1").val ();
+	data_.append ('phone', phone);
+	$ ('body').loading ({
 		message: 'Saving...'
 	});
-	axios({url:'/backend/staff',method:'post',data:data_}).then(res=>{
-		$('body').loading('stop');
-		if(res.statusText === 'OK'&& res.data.status === 'ok'){
-			showSuccessMessage('Saved the Details' , 4);
-		}else{
-			showErrorMessage('Failed to save,Try again .' ,6);
+	axios ({url: '/backend/staff', method: 'post', data: data_}).then (res => {
+		$ ('body').loading ('stop');
+		if (res.statusText === 'OK' && res.data.status === 'ok') {
+			onPrevToContact();
+			onPrevFromFiles();
+			closeNewStaffDialog();
+			getDefaultData();
+			showSuccessMessage ('Updated the Details', 4);
+			emptyInputs([ 'name','surname' , 'id_num' , 'date_of_birth' ,'email' ,'address' , 'phoneNum_1'  ] , ['select_jobPosition' , 'sex']);
+		} else {
+			showErrorMessage ('Failed to save,Try again .', 6);
 		}
 	})
-		.catch(err=>{
-			showErrorMessage('Failed to connect Please check your connection' ,6);
-			$('body').loading('stop');
+		.catch (err => {
+			showErrorMessage ('Failed to connect Please check your connection', 6);
+			$ ('body').loading ('stop');
 		})
+}
+
+function onsaveNewEmployee () {
+	let name = $ ("#name").val ();
+	let surname = $ ("#surname").val ();
+	let id_num = $ ("#id_num").val ();
+	let sex = $ ("#sex").val ();
+	let date_of_birth = $ ("#date_of_birth").val ();
+	let pics = document.getElementById ('pics');
+	let email = $ ("#email").val ();
+	let address = $ ("#address").val ();
+	let select_jobPosition = $ ("#select_jobPosition").val ();
+	let docss = document.getElementById ('docss');
+	let ins = docss.files.length;
+	let data_ = new FormData ();
+	data_.append ('type_send', 'new');
+	data_.append ('name', name);
+	data_.append ('surname', surname);
+	data_.append ('id_num', id_num);
+	data_.append ('sex', sex);
+	data_.append ('date_of_birth', date_of_birth);
+	data_.append ('pics', pics.files[0]);
+	data_.append ('email', email);
+	data_.append ('address', address);
+	
+	data_.append ('select_jobPosition', select_jobPosition);
+	
+	for (var x = 0; x < ins; x++) {
+		data_.append ("docss[]", docss.files[x]);
+		
+	}
+	let phone = $ ("#phoneNum_1").val ();
+	data_.append ('phone', phone);
+	
+	$ ('body').loading ({
+		message: 'Saving...'
+	});
+	axios ({url: '/backend/staff', method: 'post', data: data_}).then (res => {
+		$ ('body').loading ('stop');
+		if (res.statusText === 'OK' && res.data.status === 'ok') {
+			getDefaultData();
+			showSuccessMessage ('Saved  Details', 4);
+			emptyInputs([ 'name','surname' , 'id_num' , 'date_of_birth' ,'email' ,'address' , 'phoneNum_1'  ] , ['select_jobPosition' , 'sex']);
+		} else {
+			showErrorMessage ('Failed to save,Try again .', 6);
+		}
+	})
+		.catch (err => {
+			showErrorMessage ('Failed to connect Please check your connection', 6);
+			$ ('body').loading ('stop');
+		});
 	
 }
 
 
-let phoneCounter = 1 ;
+let phoneCounter = 1;
+
 function addPhoneOption () {
 	
 	let html = `
@@ -275,8 +385,9 @@ function addPhoneOption () {
                         </div>
 	
 	`;
-	$("#phoneNumberDiv").append(html);
+	$ ("#phoneNumberDiv").append (html);
 	//phoneCounter++;
 	
 }
-addPhoneOption () ;
+
+addPhoneOption ();
