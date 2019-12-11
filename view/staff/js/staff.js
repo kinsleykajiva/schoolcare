@@ -45,6 +45,9 @@ function openEmployeeInfoDialog (id) {
 	$ ("#info_dob").text (Objj.date_of_birth);
 	$ ("#date_record_created").text (Objj.date_created);
 	$ ("#info_jobPosition").text (Objj.Jobposition);
+	$ ("#info_email").text (Objj.email);
+	$ ("#info_phone").text (Objj.phoneContact);
+	$ ("#info_address").html (Objj.address.split(',').join(' <br>'));
 	
 	setTimeout (function () {
 		modalView_employee_info.iziModal ('stopLoading');
