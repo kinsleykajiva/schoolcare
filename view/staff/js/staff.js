@@ -20,7 +20,7 @@ function getDefaultData () {
 		}
 	}).catch (err => {
 		showErrorMessage ('Failed to connect .', 4);
-	})
+	});
 }
 
 $ (() => {

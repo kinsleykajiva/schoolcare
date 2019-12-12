@@ -14,6 +14,12 @@
 			$this->DBCon = mysqli_connect ( 'localhost' , $USER , $PASSWORD , $DATABASE );
 			parent ::__construct ( $this->DBCon );
 		}
+
+		public function getChild($record_id):array {
+			$sql = "SELECT c.id, c.name, c.surname, c.sex, c.date_of_birth,c. notes  FROM  children c WHERE c.id = $record_id ";
+
+			return $this->fetchAllInArray($sql);
+		}
 		public function getAllChildren():array {
 			$sql = "SELECT c.id, c.name, c.surname, c.sex, c.date_of_birth,c. notes  FROM  children c WHERE c.isvisible = 1 AND c.isdeleted = 0 ";
 

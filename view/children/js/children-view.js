@@ -1,9 +1,61 @@
+const modalinformationDialog = $("#informationDialog");
+modalinformationDialog.iziModal ({
+	width: 700,
+	radius: 5,
+	padding: 20
+});
+modalinformationDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 
 $('.reload-card-remake').click(()=>{
 	
 	getDefaultData ();
 });
 
+function getChildDetail (id) {
+	modalinformationDialog.iziModal ('startLoading');
+	axios.get('/view/children',{params:{rec_get:id}}).then(res=>{
+		setTimeout (function () {
+			modalinformationDialog.iziModal ('stopLoading');
+		}, randomNumbers(1,4) * 1000);
+		
+		if(res.statusText === 'OK'){
+			let j = res.data.childDetails;
+			const details =`
+			
+			<h4 class="sub-title">Child Details</h4>
+						<dl class="dl-horizontal row">
+						<dt class="col-sm-3">Full Name</dt>
+						<dd class="col-sm-9">${(j.name)} ${(j.surname)} </dd>
+						<dt class="col-sm-3">Euismod</dt>
+						<dd class="col-sm-9">Veit.</dd>
+						
+						<dt class="col-sm-3">Malesuada porta</dt>
+						<dd class="col-sm-9">Etiam porta sem ismod.</dd>
+						<dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
+						<dd class="col-sm-9">Fusce dto sit amet risus.</dd>
+						</dl>
+						<h4 class="sub-title">Parents Details</h4>
+						<dl class="dl-horizontal row">
+						<dt class="col-sm-3">Description lists</dt>
+						<dd class="col-sm-9">A dems.</dd>
+						<dt class="col-sm-3">Euismod</dt>
+						<dd class="col-sm-9">Veit.</dd>
+						<dt class="col-sm-3">Malesuada porta</dt>
+						<dd class="col-sm-9">Etiam porta sem ismod.</dd>
+						<dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
+						<dd class="col-sm-9">Fusce dto sit amet risus.</dd>
+			</dl>
+			`;
+			$("#div_details_info_dialog").html(details);
+			console.log (res.data.childDetails)
+		}
+	}).catch(err=>{
+		console.log (err)
+		modalinformationDialog.iziModal ('stopLoading');
+		modalinformationDialog.iziModal ('close');
+		showErrorMessage('Failed to connect' ,4);
+	});
+}
 
 function getDefaultData () {
 	const card = onDivLoad ();
@@ -83,5 +135,6 @@ function showEditDialog (id) {
 }
 
 function showInfoDialog (id) {
-
+	modalinformationDialog.iziModal ('open');
+	getChildDetail(id);
 }
