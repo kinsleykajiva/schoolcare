@@ -1,4 +1,4 @@
-let parentsArr =childrenArr = [];
+let parentsArr = [] ;let childrenArr = [];
 let parentCounter = childCounter = 1;
 const parentCount = $("#parentCount");
 const childCount = $("#childCount");
@@ -16,13 +16,72 @@ function onSaveForm () {
 	if(childrenArr.length === 0){
 		getChildrenDetails();
 	}
+	//console.log (parentsArr);
+//	console.log (childrenArr);
 	let parentJson = JSON.stringify(parentsArr);
 	let childrenJson = JSON.stringify(childrenArr);
+	
+	let data_ = new FormData();
+	data_.append('parentJson',parentJson);
+	data_.append('childrenJson',childrenJson);
+	axios({url:'/backend/enrolement',method:'post',data:data_})
 }
 
 
 
 function onNextToChildDetails () {
+	let parentName = $("#parentName").val();
+	if(parentName === ''){
+		showErrorMessage('Name is Required');
+		error_input_element(true , 'parentName');
+		return;
+	}
+	error_input_element(false , 'parentName');
+	let parentSurname = $("#parentSurname").val();
+	if(parentSurname === ''){
+		showErrorMessage('Surname is Required');
+		error_input_element(true , 'parentSurname');
+		return;
+	}
+	error_input_element(false , 'parentSurname');
+	
+	let parentIDNumber = $("#parentIDNumber").val();
+	if(parentIDNumber === ''){
+		showErrorMessage('ID is Required');
+		error_input_element(true , 'parentIDNumber');
+		return;
+	}
+	error_input_element(false , 'parentIDNumber');
+	
+	let parentSex = $("#parentSex").val();
+	if(parentSex === 'null'){
+		showErrorMessage('Gender is Required');
+		error_input_element(true , 'parentSex');
+		return;
+	}
+	error_input_element(false , 'parentSex');
+	let  parentOccupation = $("#parentOccupation").val();
+	let parentPhone = $("#parentPhone").val();
+	if(parentPhone === ''){
+		showErrorMessage('Contact is Required');
+		error_input_element(true , 'parentPhone');
+		return;
+	}
+	error_input_element(false , 'parentPhone');
+	let parentEmail = $("#parentEmail").val();
+	if(parentEmail === ''){
+		showErrorMessage('Contact is Required');
+		error_input_element(true , 'parentEmail');
+		return;
+	}
+	error_input_element(false , 'parentEmail');
+	let parentHomeAddress = $("#parentHomeAddress").val();
+	if(parentHomeAddress === ''){
+		showErrorMessage('Contact is Required');
+		error_input_element(true , 'parentHomeAddress');
+		return;
+	}
+	error_input_element(false , 'parentHomeAddress');
 $("#divRow_ParentDetails").slideUp('slow');
 $("#divRow_ChildDetails").slideDown('slow');
 $("#btnaddAnotherChild").show();

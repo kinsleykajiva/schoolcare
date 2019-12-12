@@ -6,15 +6,16 @@
 	class DBEmployees	extends DbManager	{
 		private $DBCon;
 
-		public function getLastInsertAutoID (): int
-		{
-			return parent::getLastInsertAutoID();
-		}
+
 
 		public function __construct ( string $USER , string $PASSWORD , string $DATABASE ) {
 
 			$this->DBCon = mysqli_connect ( 'localhost' , $USER , $PASSWORD , $DATABASE );
 			parent ::__construct ( $this->DBCon );
+		}
+		public function getLastInsertAutoID (): int
+		{
+			return parent::getLastInsertAutoID();
 		}
 
 		public function deleteEmployee(int $rec_id):array {

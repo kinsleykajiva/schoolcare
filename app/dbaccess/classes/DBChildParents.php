@@ -1,0 +1,56 @@
+<?php
+	declare(strict_types=1);
+
+	require_once '../../dbaccess/dbcontrol/DbManager.php';
+
+	class DBChildParents
+		extends DbManager	{
+		private $DBCon;
+
+
+
+		public function __construct ( string $USER , string $PASSWORD , string $DATABASE ) {
+
+			$this->DBCon = mysqli_connect ( 'localhost' , $USER , $PASSWORD , $DATABASE );
+			parent ::__construct ( $this->DBCon );
+		}
+
+		public function saveParent( $name, $surname, $id_number, $sex, $occupation, $id_user_created, $phoneNumber,$email,$address ):array {
+			$res = $this->insert('child_parents',[
+				'name' =>$name ,
+				'surname'=>$surname ,
+				'id_number'=>$id_number ,
+				'sex'=>$sex ,
+				'email'=>$email ,
+				'date_created'=>self::nowDateTime() ,
+				'occupation'=>$occupation ,
+				'id_user_created'=>$id_user_created ,
+
+			]);
+			$lastID = $this->getLastInsertAutoID();
+			if($res) {
+				$this->insert( 'adresses', [
+					'address' => $address,
+					'for_table' => 'child_parents',
+					'id_table_index' => $lastID
+				] );
+				$this->insert( 'contacts', [
+					'contact_number' => $phoneNumber,
+					'for_table' => 'child_parents',
+					'id_table_index' => $lastID
+				] );
+			}
+
+			return $this->result($res , 'Saved Parent' , null ,['lastID'=>$lastID] );
+		}
+		/**this is to connect the parents to the children at any point the child is connected to many parents  */
+		public function saveParentChildConnection($id_parent , $id_child):array {
+			$res = $this->insert('parent_child_intermediary' , [
+				'id_parent' =>$id_parent ,
+				'id_child' =>$id_child ,
+			]);
+			return $this->result($res , 'Saved Parent Child Connection');
+		}
+
+
+	}
