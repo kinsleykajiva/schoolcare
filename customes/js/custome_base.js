@@ -564,7 +564,17 @@ function showSuccessMessage (messageText,time) {
 		//__notify(messageText , 'top','right' , 'fa fa-check','success','animated fadeInRight','animated fadeOutRight',time , '');
 }
 /*********************************************************************************************/
+function onDivLoadRemove (card) {
+	card.parents ('.card').children (".card-loader").remove ();
+	card.parents ('.card').removeClass ("card-load");
+}
 /*********************************************************************************************/
+function onDivLoad () {
+	const card = $ (".card-header-right .reload-card");
+	card.parents ('.card').addClass ("card-load");
+	card.parents ('.card').append ('<div class="card-loader"><i class="fa fa-spinner rotate-refresh"></div>');
+	return card;
+}
 /*********************************************************************************************/
 /*********************************************************************************************/
 /*********************************************************************************************/

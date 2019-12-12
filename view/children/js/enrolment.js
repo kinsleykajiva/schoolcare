@@ -2,6 +2,8 @@ let parentsArr = [] ;let childrenArr = [];
 let parentCounter = childCounter = 1;
 const parentCount = $("#parentCount");
 const childCount = $("#childCount");
+$(":input[data-inputmask-mask]").inputmask();
+$(":input[data-inputmask-alias]").inputmask();
 function onPrevToParent () {
 	$("#divRow_ChildDetails").slideUp('slow');
 	$("#divRow_ParentDetails").slideDown('slow');
@@ -326,3 +328,10 @@ function addAnotherChild () {
 	});
 	// console.log (childrenArr)
 }
+
+$(document).keydown(function(event) {
+	if (event.ctrlKey==true && (event.which == '118' || event.which == '86')) {
+		alert('thou. shalt. not. PASTE!');
+		event.preventDefault();
+	}
+});

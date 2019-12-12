@@ -34,7 +34,7 @@
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Date Of Birth</label>
 						<div class="col-sm-10">
-							<input type="text" id="childDOB" class="form-control">
+							<input type="text" id="childDOB" class="form-control" data-inputmask-alias="yyyy-mm-dd" data-inputmask="'yearrange': { 'minyear': '2010', 'maxyear': '2019' }" data-val="true" data-val-required="Required">
 						</div>
 					</div>
 

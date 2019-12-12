@@ -45,13 +45,13 @@
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Phone</label>
 						<div class="col-sm-10">
-							<input type="text" id="parentPhone" class="form-control">
+							<input type="text" id="parentPhone" class="form-control" onpaste="return false;" data-inputmask-mask="(+27)99-999-9999" data-val="true" data-val-required="Required" >
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Email</label>
 						<div class="col-sm-10">
-							<input type="text" id="parentEmail" class="form-control">
+							<input type="text" id="parentEmail" class="form-control" data-inputmask-alias="email" data-val="true" data-val-required="Required">
 						</div>
 					</div>
 					<div class="form-group row">

@@ -19,16 +19,8 @@ modalEditUser.iziModal('setHeaderColor', MODAL_HEADER_COLOR);
 $('.reload-card-remake').click(()=>{
 	getDefaultData ();
 });
-function onDivLoadRemove (card) {
-	card.parents ('.card').children (".card-loader").remove ();
-	card.parents ('.card').removeClass ("card-load");
-}
-function onDivLoad () {
-	const card = $ (".card-header-right .reload-card");
-	card.parents ('.card').addClass ("card-load");
-	card.parents ('.card').append ('<div class="card-loader"><i class="fa fa-spinner rotate-refresh"></div>');
-	return card;
-}
+
+
 function getDefaultData () {
 	const card = onDivLoad ();
 	

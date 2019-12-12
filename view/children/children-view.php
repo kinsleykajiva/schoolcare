@@ -14,35 +14,36 @@
 
 		</div>
 		<div class="card-block table-border-style">
-			<div class="table-responsive">
+			<div class="table-responsive" style="min-height: 200px;">
 				<table class="table">
 					<thead>
 					<tr>
 						<th>#</th>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Username</th>
+						<th>Full Name</th>
+						<th>Sex</th>
+						<th>Date Of Birth</th>
+						<th> . </th>
 					</tr>
 					</thead>
-					<tbody>
-					<tr>
+					<tbody id="tbody_childrenview">
+					<tr style="display: none;">
 						<th scope="row">1</th>
 						<td>Mark</td>
 						<td>Otto</td>
 						<td>@mdo</td>
+						<td>
+							<div class="dropdown-default dropdown open">
+								<button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</button>
+								<div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+
+									<a class="dropdown-item waves-light waves-effect" href="#">Info</a>
+
+									<a class="dropdown-item waves-light waves-effect" href="#">Edit</a>
+								</div>
+							</div>
+						</td>
 					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Larry</td>
-						<td>the Bird</td>
-						<td>@twitter</td>
-					</tr>
+
 					</tbody>
 				</table>
 			</div>

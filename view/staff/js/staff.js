@@ -1,3 +1,5 @@
+$(":input[data-inputmask-mask]").inputmask();
+$(":input[data-inputmask-alias]").inputmask();
 const modalView_employee_info = $ ("#div_view_employee_info");
 let EMPLOYEE_READ_ROWS = [];
 modalView_employee_info.iziModal ({
@@ -379,7 +381,7 @@ function addPhoneOption () {
 	<div class="form-group row" id="phone_aaded_${phoneCounter}">
                             <label class="col-sm-2 col-form-label">Phone No.</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control form-control-normal" id="phoneNum_${phoneCounter}" placeholder="">
+                                <input type="text" class="form-control form-control-normal" id="phoneNum_${phoneCounter}" placeholder="" data-inputmask-mask="(+27)99-999-9999" data-val="true" data-val-required="Required">
                             </div>
 
                             <div style="display: none;" class="col-sm-2">

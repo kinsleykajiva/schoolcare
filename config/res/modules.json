@@ -19,6 +19,8 @@
 	"resources" : {
 	  "css" : [ ] ,
 	  "js" : [
+		"assets/js/input-mask/jquery.inputmask.bundle.js",
+		"assets/js/input-mask/inputmask.binding.js",
 		"view/staff/js/staff.js"
 	  ]
 	}
@@ -55,6 +57,8 @@
 	"resources" : {
 	  "css" : [ ] ,
 	  "js" : [
+		"assets/js/input-mask/jquery.inputmask.bundle.js",
+		"assets/js/input-mask/inputmask.binding.js",
 		"view/settings/js/profile.js"
 	  ]
 	}
@@ -67,6 +71,8 @@
 	"resources" : {
 	  "css" : [ ] ,
 	  "js" : [
+		"assets/js/input-mask/jquery.inputmask.bundle.js",
+		"assets/js/input-mask/inputmask.binding.js",
 		"view/children/js/enrolment.js"
 	  ]
 	}
@@ -78,6 +84,8 @@
 	"resources" : {
 	  "css" : [ ] ,
 	  "js" : [
+		"assets/js/input-mask/jquery.inputmask.bundle.js",
+		"assets/js/input-mask/inputmask.binding.js",
 		"view/children/js/children-view.js"
 	  ]
 	}
