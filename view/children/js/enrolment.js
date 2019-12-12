@@ -24,10 +24,28 @@ function onSaveForm () {
 	let data_ = new FormData();
 	data_.append('parentJson',parentJson);
 	data_.append('childrenJson',childrenJson);
-	axios({url:'/backend/enrolement',method:'post',data:data_})
+	$('body').loading({
+		message: 'Saving...'
+	});
+	axios({url:'/backend/enrolement',method:'post',data:data_}).then(res=>{
+		$('body').loading('stop');
+		if(res.statusText==='OK' && res.data.status === 'ok'){
+			showSuccessMessage('Saved' , 4);
+			emptyInputs(['parentHomeAddress','parentEmail','parentName','parentSurname','parentIDNumber','parentOccupation','parentPhone'],['parentSex']);
+			emptyInputs(['childName','childSurname','childDOB','childNotes'],['childSex']);
+			parentsArr = [];childrenArr =[];
+			parentCounter = 1;childCounter = 1;
+			childCount.text(1);
+			parentCount.text(1);
+			onPrevToParent ();
+		}else{
+			showErrorMessage('Failed to save',4);
+		}
+	}).catch(error=>{
+		$('body').loading('stop');
+		showErrorMessage('Failed to connect' , 4);
+	})
 }
-
-
 
 function onNextToChildDetails () {
 	let parentName = $("#parentName").val();
@@ -133,6 +151,12 @@ function getParentDetails () {
 		return;
 	}
 	error_input_element(false , 'parentEmail');
+	if(!isEmail(parentEmail) ){
+		showErrorMessage('Valid Email is Required');
+		error_input_element(true , 'parentEmail');
+		return;
+	}
+	error_input_element(false , 'parentEmail');
 	let parentHomeAddress = $("#parentHomeAddress").val();
 	if(parentHomeAddress === ''){
 		showErrorMessage('Contact is Required');
@@ -201,6 +225,12 @@ function addAnotherParent () {
 		return;
 	}
 	error_input_element(false , 'parentEmail');
+	if(!isEmail(parentEmail) ){
+		showErrorMessage('Valid Email is Required');
+		error_input_element(true , 'parentEmail');
+		return;
+	}
+	error_input_element(false , 'parentEmail');
 	let parentHomeAddress = $("#parentHomeAddress").val();
 	if(parentHomeAddress === ''){
 		showErrorMessage('Contact is Required');
@@ -245,7 +275,7 @@ function getChildrenDetails () {
 	}
 	error_input_element(false , 'childSex');
 	let childNotes = $("#childNotes").val();
-	emptyInputs(['childName','childSurname','childDOB','childNotes'],['childSex'])
+	emptyInputs(['childName','childSurname','childDOB','childNotes'],['childSex']);
 	childrenArr.push({
 		'pos':childCounter ,
 		'data':{

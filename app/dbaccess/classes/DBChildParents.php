@@ -29,7 +29,7 @@
 			]);
 			$lastID = $this->getLastInsertAutoID();
 			if($res) {
-				$this->insert( 'adresses', [
+				$this->insert( 'addresses', [
 					'address' => $address,
 					'for_table' => 'child_parents',
 					'id_table_index' => $lastID
