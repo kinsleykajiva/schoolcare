@@ -11,7 +11,7 @@
 		$parentJson = $_POST['parentJson'];
 		$childrenJson = json_decode( $childrenJson, TRUE, 512, JSON_THROW_ON_ERROR );
 		$parentJson = json_decode( $parentJson, TRUE, 512, JSON_THROW_ON_ERROR );
-		//print_r($childrenJson);
+		//print_r($childrenJson);exit;
 		//print_r($parentJson);exit;
 		$parentObj = new DBChildParents( USER, PASSWORD, DATABASE );
 		$childObj = new DBChildren( USER, PASSWORD, DATABASE );

@@ -4,6 +4,8 @@
 
 		<button id="btnaddAnotherParent" onclick="addAnotherParent()" class="btn btn-mini btn-round btn-info"><i class="fa fa-plus-circle"></i> Add Another Parent</button>
 		<button id="btnaddAnotherChild" style="display: none;" onclick="addAnotherChild()" class="btn btn-mini btn-round btn-info"><i class="fa fa-plus-circle"></i> Add Another Child</button>
+		<button id="btnCancel" style="float: right;" onclick="addCancelProcess()" class="btn btn-mini btn-round btn-warning"><i class="fa fa-refresh"></i> Cancel</button>
+
 	</div>
 </div>
 

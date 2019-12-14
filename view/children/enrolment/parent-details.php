@@ -4,7 +4,18 @@
 		<div class="card">
 
 			<div class="card-block">
-				<h4 class="sub-title">Parent <span id="parentCount">1</span> Details</h4>
+				<div class="row">
+					<h4 class="col-sm-12 sub-title ">
+						Parent <span id="parentCount">1</span> Details
+						<div class="btn-group " style="float: right;display: none;" role="group" data-toggle="tooltip" data-placement="top" title="" data-original-title="Parents Navigation">
+							<button id="btnParentPrev"  onclick="onParentPrev()" type="button" style="margin-right: 10px;display: none;" class="btn btn-primary btn-mini waves-effect waves-light"><i class="icofont icofont-arrow-left"></i> Prev</button>
+
+							<button id="btnParentNext" onclick="onParentNext()" type="button" style="margin-left: 10px;display: none;" class="btn btn-primary btn-mini waves-effect waves-light"><i class="icofont icofont-arrow-right"></i> Next</button>
+						</div>
+					</h4>
+
+				</div>
+
 				<form onsubmit="return false;">
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Name</label>
