@@ -16,9 +16,16 @@
 		}
 
 		public function getChild($record_id):array {
-			$sql = "SELECT c.id, c.name, c.surname, c.sex, c.date_of_birth,c. notes  FROM  children c WHERE c.id = $record_id ";
+			$sql = "SELECT c.id, c.name, c.surname, c.sex, c.date_of_birth,c. notes , pci.id_parent,
+					       (SELECT CONCAT(child_parents.name , ' '  , child_parents.surname) FROM child_parents WHERE child_parents.id = pci.id_parent) AS parent,
+					(SELECT addresses.address FROM addresses WHERE addresses.for_table = 'child_parents' AND addresses.id_table_index = pci.id_parent ) AS address,
+					(SELECT contacts.contact_number FROM contacts WHERE contacts.for_table = 'child_parents' AND contacts.id_table_index = pci.id_parent ) AS contact,
+					       child_parents.email , child_parents.id_number , child_parents.occupation , child_parents.sex
+					FROM  children c
+					JOIN parent_child_intermediary pci ON c.id = pci.id_child
+					JOIN child_parents ON  pci.id_parent = child_parents.id WHERE c.id = $record_id ";
 
-			return $this->fetchAllInArray($sql);
+			return $this->fetchInArray($sql);
 		}
 		public function getAllChildren():array {
 			$sql = "SELECT c.id, c.name, c.surname, c.sex, c.date_of_birth,c. notes  FROM  children c WHERE c.isvisible = 1 AND c.isdeleted = 0 ";

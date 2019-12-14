@@ -19,35 +19,69 @@ function getChildDetail (id) {
 		}, randomNumbers(1,4) * 1000);
 		
 		if(res.statusText === 'OK'){
-			let j = res.data.childDetails;
-			const details =`
+			let details='';
+			let j = res.data.childDetails[0];
+			let data = res.data.childDetails;
 			
-			<h4 class="sub-title">Child Details</h4>
+			
+			 details +=`
+			
+						<h4 class="sub-title">Child Details</h4>
 						<dl class="dl-horizontal row">
-						<dt class="col-sm-3">Full Name</dt>
-						<dd class="col-sm-9">${(j.name)} ${(j.surname)} </dd>
-						<dt class="col-sm-3">Euismod</dt>
-						<dd class="col-sm-9">Veit.</dd>
+							<dt class="col-sm-3">Full Name</dt>
+							<dd class="col-sm-9">${(j.name)} ${(j.surname)} </dd>
+							
+							<dt class="col-sm-3">Sex</dt>
+							<dd class="col-sm-9">${j.sex}.</dd>
+							
+							<dt class="col-sm-3">Date Of Birth</dt>
+							<dd class="col-sm-9">${j.date_of_birth}.</dd>
 						
-						<dt class="col-sm-3">Malesuada porta</dt>
-						<dd class="col-sm-9">Etiam porta sem ismod.</dd>
-						<dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
-						<dd class="col-sm-9">Fusce dto sit amet risus.</dd>
 						</dl>
-						<h4 class="sub-title">Parents Details</h4>
-						<dl class="dl-horizontal row">
-						<dt class="col-sm-3">Description lists</dt>
-						<dd class="col-sm-9">A dems.</dd>
-						<dt class="col-sm-3">Euismod</dt>
-						<dd class="col-sm-9">Veit.</dd>
-						<dt class="col-sm-3">Malesuada porta</dt>
-						<dd class="col-sm-9">Etiam porta sem ismod.</dd>
-						<dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
-						<dd class="col-sm-9">Fusce dto sit amet risus.</dd>
-			</dl>
+						`;
+			
+			//console.log (j);
+			const col_size = Math.floor( 12 / data.length) ;
+			details+=`<h4 class="sub-title">Parents Details</h4>
+						
+						<div class="row" >`;
+			_.forEach(data,(valls,inx)=>{
+				
+				details+=`
+							<div class="col-lg-${col_size}">
+								
+									<h4 class="sub-title">Parent ${inx + 1}</h4>
+									<dl class="dl-horizontal row">
+									
+										<dt class="col-sm-3"> Name </dt>
+										<dt class="col-sm-9"> ${capitaliseTextFirstCaseForWords(valls.parent?valls.parent:'None')}</dt>
+										
+										<dt class="col-sm-3"> Gender </dt>
+										<dt class="col-sm-9">${capitaliseTextFristLetter(valls.sex?valls.sex:'None')} </dt>
+										
+										<dt class="col-sm-3">Contact </dt>
+										<dt class="col-sm-9">${valls.contact?valls.contact:'None'} </dt>
+										
+										<dt class="col-sm-3"> Email</dt>
+										<dt class="col-sm-9">${valls.email?valls.email:'None'} </dt>
+										
+										<dt class="col-sm-3"> ID No. </dt>
+										<dt class="col-sm-9"> ${valls.id_number ? valls.id_number : 'None'}</dt>
+										
+										<dt class="col-sm-3">Occu. </dt>
+										<dt class="col-sm-9">${valls.occupation?valls.occupation:''} </dt>
+										
+										<dt class="col-sm-3">Address </dt>
+										<dt class="col-sm-9">${valls.address? valls.address.split(',').join(' <br> ') : ''} </dt>
+										
+									</dl>
+							</div>
+						
 			`;
+			});
+			details+=` </div>`;
 			$("#div_details_info_dialog").html(details);
-			console.log (res.data.childDetails)
+			//console.log (res.data.childDetails)
 		}
 	}).catch(err=>{
 		console.log (err)
