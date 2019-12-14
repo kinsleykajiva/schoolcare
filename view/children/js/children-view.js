@@ -117,6 +117,7 @@ function getChildDetail (id) {
 function getDefaultData () {
 	const card = onDivLoad ();
 	axios.get('/view/children',{params:{get_def:3}}).then(res=>{
+		checkAuth(res.data);
 		if(res.statusText === 'OK'){
 			const j = res.data;
 			renderChildrenTable(j.children);
