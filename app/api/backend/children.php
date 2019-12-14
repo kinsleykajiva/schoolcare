@@ -5,24 +5,24 @@
 
 	include_once '../../dbaccess/classes/DBChildParents.php';
 	include_once '../../dbaccess/classes/DBChildren.php';
-	$parentObj = new DBChildParents( USER, PASSWORD, DATABASE );
-	$childrenObj = new DBChildren( USER, PASSWORD, DATABASE );
+	$parentObj = new DBChildParents( USER , PASSWORD , DATABASE );
+	$childrenObj = new DBChildren( USER , PASSWORD , DATABASE );
 
-	if(isset($_POST['delete_rec'])){
-		$res = $childrenObj->deleteRecord($_POST['delete_rec']);
-		print json_encode( $res, JSON_THROW_ON_ERROR, 512 );
+	if ( isset( $_POST[ 'delete_rec' ] ) ) {
+		$res = $childrenObj->deleteRecord( $_POST[ 'delete_rec' ] );
+		print json_encode( $res , JSON_THROW_ON_ERROR , 512 );
 		exit;
 	}
 
-	if(isset($_POST['child_edit_rec'])){
-		$rec_id = $_POST['child_edit_rec'];
-		$childName = $_POST['childName'];
-		$childSurname = $_POST['childSurname'];
-		$childSex = $_POST['childSex'];
-		$childDOB = $_POST['childDOB'];
-		$childNotes = $_POST['childNotes'];
-		$res = $childrenObj->updateChild($rec_id , $childName , $childSurname ,$childSex,$childDOB,$childNotes);
-		print json_encode( $res, JSON_THROW_ON_ERROR, 512 );
+	if ( isset( $_POST[ 'child_edit_rec' ] ) ) {
+		$rec_id = $_POST[ 'child_edit_rec' ];
+		$childName = $_POST[ 'childName' ];
+		$childSurname = $_POST[ 'childSurname' ];
+		$childSex = $_POST[ 'childSex' ];
+		$childDOB = $_POST[ 'childDOB' ];
+		$childNotes = $_POST[ 'childNotes' ];
+		$res = $childrenObj->updateChild( $rec_id , $childName , $childSurname , $childSex , $childDOB , $childNotes );
+		print json_encode( $res , JSON_THROW_ON_ERROR , 512 );
 		exit;
 	}
 
@@ -38,8 +38,8 @@
 		$parentEmail = $_POST[ 'parentEmail' ];
 		$parentHomeAddress = $_POST[ 'parentHomeAddress' ];
 
-		$res = $parentObj->updateParent( $rec_id, $parentName, $parentSurname, $parentIDNumber, $parentSex, $parentOccupation, $parentEmail, $parentHomeAddress );
-		print json_encode( $res, JSON_THROW_ON_ERROR, 512 );
+		$res = $parentObj->updateParent( $rec_id , $parentName , $parentSurname , $parentIDNumber , $parentSex , $parentOccupation , $parentEmail , $parentHomeAddress );
+		print json_encode( $res , JSON_THROW_ON_ERROR , 512 );
 		exit;
 
 	}
