@@ -15,6 +15,36 @@
 			parent ::__construct ( $this->DBCon );
 		}
 
+
+
+		public function deleteRecord($record_id):array {
+			$res = $this->setDeleteSafely('child_parents',(int) $record_id);
+
+			return $this->result($res  , 'Deleted parent');
+		}
+
+		public function updateParent ( $id_record, $name, $surname, $id_number, $sex, $occupation, $id_user_created, $email, $address ): array
+		{
+			$res = $this->andUpdate( 'child_parents', [
+				'name' => $name,
+				'surname' => $surname,
+				'id_number' => $id_number,
+				'sex' => $sex,
+				'email' => $email,
+				'occupation' => $occupation
+			], [ 'id' => $id_record ] );
+			$this->andUpdate( 'addresses', [
+				'address' => $address,
+			], [ 'for_table' => 'child_parents',
+				'id_table_index' => $id_record ] );
+			$this->andUpdate( 'contacts', [
+				'contact_number' => $address,
+			], [ 'for_table' => 'child_parents',
+				'id_table_index' => $id_record ] );
+
+			return $this->result( $res, 'Updated Parents' );
+		}
+
 		public function saveParent( $name, $surname, $id_number, $sex, $occupation, $id_user_created, $phoneNumber,$email,$address ):array {
 			$res = $this->insert('child_parents',[
 				'name' =>$name ,

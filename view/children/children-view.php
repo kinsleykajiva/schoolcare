@@ -51,38 +51,23 @@
 	</div>
 </div>
 
+<div class="" id="editChildDialog" data-izimodal-title="Child Edit Dialog">
+	<?php include 'edit/child-edit.php'; ?>
+</div>
+
+<div class="" id="editParentDialog" data-izimodal-title="Parent Edit Dialog">
+	<?php include 'edit/parent-edit.php'; ?>
+</div>
+
 <div class="" id="informationDialog" data-izimodal-title="Child Info Dialog">
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="">
-
 				<div class="card-block">
 					<div class="row">
 
 						<div class="col-sm-12 col-xl-12" id="div_details_info_dialog">
-							<h4 class="sub-title">Child Details</h4>
-							<dl class="dl-horizontal row">
-								<dt class="col-sm-3">Description lists</dt>
-								<dd class="col-sm-9">A dems.</dd>
-								<dt class="col-sm-3">Euismod</dt>
-								<dd class="col-sm-9">Veit.</dd>
 
-								<dt class="col-sm-3">Malesuada porta</dt>
-								<dd class="col-sm-9">Etiam porta sem ismod.</dd>
-								<dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
-								<dd class="col-sm-9">Fusce dto sit amet risus.</dd>
-							</dl>
-							<h4 class="sub-title">Parents Details</h4>
-							<dl class="dl-horizontal row">
-								<dt class="col-sm-3">Description lists</dt>
-								<dd class="col-sm-9">A dems.</dd>
-								<dt class="col-sm-3">Euismod</dt>
-								<dd class="col-sm-9">Veit.</dd>
-								<dt class="col-sm-3">Malesuada porta</dt>
-								<dd class="col-sm-9">Etiam porta sem ismod.</dd>
-								<dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
-								<dd class="col-sm-9">Fusce dto sit amet risus.</dd>
-							</dl>
 						</div>
 					</div>
 				</div>

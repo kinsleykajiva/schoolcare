@@ -3,7 +3,10 @@
 
 	//print $USER_ID ;
 	include_once '../../dbaccess/classes/DBChildren.php';
+	include_once '../../dbaccess/classes/DBChildParents.php';
 	$childrenObj = new DBChildren( USER, PASSWORD, DATABASE );
+
+
 
 	if(isset($_GET['rec_get'])){
 		$id = $_GET['rec_get'] ;

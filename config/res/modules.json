@@ -86,6 +86,7 @@
 	  "js" : [
 		"assets/js/input-mask/jquery.inputmask.bundle.js",
 		"assets/js/input-mask/inputmask.binding.js",
+		"view/children/js/util.js",
 		"view/children/js/children-view.js"
 	  ]
 	}

@@ -1,10 +1,34 @@
+const util = new Util();
 const modalinformationDialog = $("#informationDialog");
+const modalEditChildDialog = $("#editChildDialog");
+const modalEditParentDialog = $("#editParentDialog");
+
+modalEditParentDialog.iziModal ({
+	width: 700,
+	radius: 5,
+	padding: 20
+});
+
+modalEditChildDialog.iziModal ({
+	width: 700,
+	radius: 5,
+	padding: 20
+});
+
 modalinformationDialog.iziModal ({
 	width: 700,
 	radius: 5,
 	padding: 20
 });
+
+
+
 modalinformationDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
+modalEditParentDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
+modalEditChildDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
+
+$(":input[data-inputmask-mask]").inputmask();
+$(":input[data-inputmask-alias]").inputmask();
 
 $('.reload-card-remake').click(()=>{
 	
@@ -136,6 +160,13 @@ function renderChildrenTable(data){
 $(()=>getDefaultData());
 
 
+function onSaveChildEditDetails () {
+
+}
+function onSaveParentEditDetails () {
+	util.renderParentEdit()
+}
+
 function showEditDialog (id) {
 	iziToast.question({
 		timeout: 20000,
@@ -145,28 +176,66 @@ function showEditDialog (id) {
 		id: 'question',
 		zindex: 999,
 		title: 'Confirm',
-		message: 'Are you sure about Editing?',
+		message: 'You Want To Edit ',
 		position: 'center',
 		buttons: [
-			['<button><b>YES</b></button>', function (instance, toast) {
+			['<button><b>the Child</b></button>', function (instance, toast) {
 				
 				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-				
+				modalEditChildDialog.iziModal('open');
+				axios.get('/view/children',{params:{rec_get:id}}).then(res=>{
+					if(res.statusText === 'OK'){
+						renderEditChild(res.data.childDetails);
+						
+					}
+				}).catch(err=>{
+					showErrorMessage('Failed to connect', 4);
+				});
 			}, true],
-			['<button>NO</button>', function (instance, toast) {
+			['<button>the Parent(s)</button>', function (instance, toast) {
 				
 				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+				modalEditParentDialog.iziModal('open');
+				modalEditParentDialog.iziModal('startLoading');
+				axios.get('/view/children',{params:{rec_get:id}}).then(res=>{
+					if(res.statusText === 'OK'){
+						renderEditParent(res.data.childDetails);
+						
+					}
+				}).catch(err=>{
+					console.log (err)
+					showErrorMessage('Failed to connect', 4);
+				});
 				
 			}],
 		],
 		onClosing: function(instance, toast, closedBy){
-			console.info('Closing | closedBy: ' + closedBy);
+			//console.info('Closing | closedBy: ' + closedBy);
 		},
 		onClosed: function(instance, toast, closedBy){
-			console.info('Closed | closedBy: ' + closedBy);
+			//console.info('Closed | closedBy: ' + closedBy);
 		}
 	});
 }
+function renderEditChild (data) {
+	
+	console.log (data)
+}
+
+function renderEditParent (data) {
+	
+	modalEditParentDialog.iziModal('setZindex', 9999);
+	const html = util.renderParentEdit(data);
+	$("#renderEditDiv").html(html);
+	modalEditParentDialog.iziModal('stopLoading');
+	//modalEditParentDialog.iziModal('setFullscreen', true);
+	$(":input[data-inputmask-mask]").inputmask();
+	$(":input[data-inputmask-alias]").inputmask();
+	
+	//console.log (data)
+}
+
+
 
 function showInfoDialog (id) {
 	modalinformationDialog.iziModal ('open');
