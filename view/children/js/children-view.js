@@ -27,8 +27,7 @@ modalinformationDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 modalEditParentDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 modalEditChildDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 
-$(":input[data-inputmask-mask]").inputmask();
-$(":input[data-inputmask-alias]").inputmask();
+
 
 $('.reload-card-remake').click(()=>{
 	
@@ -161,13 +160,173 @@ $(()=>getDefaultData());
 
 
 function onSaveChildEditDetails () {
-
+	let childName = $("#childName").val();
+	if(childName === ''){
+		isFormSubmittable = false;
+		showErrorMessage('Child Name is Required');
+		error_input_element(true , 'childName');
+		return;
+	}
+	error_input_element(false , 'childName');
+	isFormSubmittable = true;
+	let childSurname = $("#childSurname").val();
+	if(childSurname === ''){
+		isFormSubmittable = false;
+		showErrorMessage('Surname is Required');
+		error_input_element(true , 'childSurname');
+		return;
+	}
+	error_input_element(false , 'childSurname');
+	isFormSubmittable = true;
+	let childSex = $("#childSex").val();
+	if(childSex === 'null'){
+		isFormSubmittable = false;
+		showErrorMessage('Gender is Required');
+		error_input_element(true , 'childSex');
+		return;
+	}
+	isFormSubmittable = true;
+	error_input_element(false , 'childSex');
+	let childDOB = $("#childDOB").val();
+	if(childDOB === ''){
+		isFormSubmittable = false;
+		showErrorMessage('Date Of Birth is Required');
+		error_input_element(true , 'childDOB');
+		return;
+	}
+	error_input_element(false , 'childDOB');
+	isFormSubmittable = true;
+	let childNotes = $("#childNotes").val();
+	let data_ = new FormData();
+	let rec_id = $("#sleectedit_id").text();
+	data_.append('child_edit_rec',rec_id);
+	data_.append('childName',childName);
+	data_.append('childSurname',childSurname);
+	data_.append('childSex',childSex);
+	data_.append('childDOB',childDOB);
+	data_.append('childNotes',childNotes);
+	modalEditChildDialog.iziModal('startLoading');
+	axios({url:'/backend/children',method:'post',data:data_}).then(res=>{
+		modalEditChildDialog.iziModal('stopLoading');
+		if(res.statusText === 'OK' && res.data.status === 'ok'){
+			showSuccessMessage('Saved Update' , 5);
+			modalEditChildDialog.iziModal('close');
+			getDefaultData();
+		}else {
+			showErrorMessage('Failed to save' , 4);
+		}
+	}).catch(err=>{
+		modalEditChildDialog.iziModal('stopLoading');
+		showErrorMessage('Failed to connect check connection' , 4 );
+	});
+	
 }
-function onSaveParentEditDetails () {
-	util.renderParentEdit()
+let isFormSubmittable = true;
+function onSaveParentEditDetails (id_parent) {
+	let parentName = $("#parentName"+'-'+id_parent).val();
+	if(parentName === ''){
+		isFormSubmittable = false;
+		showErrorMessage('Name is Required');
+		error_input_element(true , 'parentName'+'-'+id_parent);
+		return;
+	}
+	isFormSubmittable = true;
+	error_input_element(false , 'parentName'+'-'+id_parent);
+	let parentSurname = $("#parentSurname"+'-'+id_parent).val();
+	if(parentSurname === ''){
+		isFormSubmittable = false;
+		showErrorMessage('Surname is Required');
+		error_input_element(true , 'parentSurname'+'-'+id_parent);
+		return;
+	}
+	isFormSubmittable = true;
+	error_input_element(false , 'parentSurname'+'-'+id_parent);
+	
+	let parentIDNumber = $("#parentIDNumber").val();
+	if(parentIDNumber === ''){
+		isFormSubmittable = false;
+		showErrorMessage('ID is Required');
+		error_input_element(true , 'parentIDNumber'+'-'+id_parent);
+		return;
+	}
+	isFormSubmittable = true;
+	error_input_element(false , 'parentIDNumber'+'-'+id_parent);
+	
+	let parentSex = $("#parentSex"+'-'+id_parent).val();
+	if(parentSex === 'null'){
+		isFormSubmittable = false;
+		showErrorMessage('Gender is Required');
+		error_input_element(true , 'parentSex'+'-'+id_parent);
+		return;
+	}
+	isFormSubmittable = true;
+	error_input_element(false , 'parentSex'+'-'+id_parent);
+	let  parentOccupation = $("#parentOccupation").val();
+	let parentPhone = $("#parentPhone"+'-'+id_parent).val();
+	if(parentPhone === ''){
+		isFormSubmittable = false;
+		showErrorMessage('Contact is Required');
+		error_input_element(true , 'parentPhone'+'-'+id_parent);
+		return;
+	}
+	isFormSubmittable = true;
+	error_input_element(false , 'parentPhone'+'-'+id_parent);
+	let parentEmail = $("#parentEmail"+'-'+id_parent).val();
+	if(parentEmail === ''){
+		isFormSubmittable = false;
+		showErrorMessage('Contact is Required');
+		error_input_element(true , 'parentEmail'+'-'+id_parent);
+		return;
+	}
+	isFormSubmittable = true;
+	error_input_element(false , 'parentEmail'+'-'+id_parent);
+	if(!isEmail(parentEmail) ){
+		isFormSubmittable = false;
+		showErrorMessage('Valid Email is Required');
+		error_input_element(true , 'parentEmail'+'-'+id_parent);
+		return;
+	}
+	isFormSubmittable = true;
+	error_input_element(false , 'parentEmail'+'-'+id_parent);
+	let parentHomeAddress = $("#parentHomeAddress").val();
+	if(parentHomeAddress === ''){
+		isFormSubmittable = false;
+		showErrorMessage('Contact is Required');
+		error_input_element(true , 'parentHomeAddress'+'-'+id_parent);
+		return;
+	}
+	isFormSubmittable = true;
+	error_input_element(false , 'parentHomeAddress'+'-'+id_parent);
+	let data_ = new FormData();
+	data_.append('parent_edit_rec_id' , id_parent);
+	data_.append('parentName' , parentName);
+	data_.append('parentSurname' , parentSurname);
+	data_.append('parentIDNumber' ,parentIDNumber );
+	data_.append('parentSex' ,parentSex );
+	data_.append('parentOccupation' ,parentOccupation );
+	data_.append('parentPhone' ,parentPhone );
+	data_.append('parentEmail' , parentEmail);
+	data_.append('parentHomeAddress' ,parentHomeAddress );
+	modalEditParentDialog.iziModal('startLoading');
+	axios({url:'/backend/children',method:'post',data:data_}).then(res=>{
+		modalEditParentDialog.iziModal('stopLoading');
+		if(res.statusText === 'OK' && res.data.status === 'ok'){
+			showSuccessMessage('Saved Update' , 5);
+			modalEditParentDialog.iziModal('close');
+			getDefaultData();
+		}else {
+			showErrorMessage('Failed to save' , 4);
+		}
+	}).catch(err=>{
+		modalEditParentDialog.iziModal('stopLoading');
+		showErrorMessage('Failed to connect check connection' , 4 );
+	});
+	// parentsArr = [...new Set(parentsArr)];
+	//console.log (parentsArr)
 }
 
 function showEditDialog (id) {
+	$("#sleectedit_id").text(id);
 	iziToast.question({
 		timeout: 20000,
 		close: false,
@@ -218,8 +377,18 @@ function showEditDialog (id) {
 	});
 }
 function renderEditChild (data) {
+	data = data[0];
 	
-	console.log (data)
+	
+	$("#childName").val(data.name);
+	$("#childSurname").val(data.surname);
+	$("#childSex").val(data.sex);
+	$("#childDOB").val(data.date_of_birth);
+	$("#childNotes").val(data.notes);
+	
+	$(":input[data-inputmask-mask]").inputmask();
+	$(":input[data-inputmask-alias]").inputmask();
+	
 }
 
 function renderEditParent (data) {

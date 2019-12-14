@@ -23,7 +23,7 @@
 			return $this->result($res  , 'Deleted parent');
 		}
 
-		public function updateParent ( $id_record, $name, $surname, $id_number, $sex, $occupation, $id_user_created, $email, $address ): array
+		public function updateParent ( $id_record, $name, $surname, $id_number, $sex, $occupation, $email, $address ): array
 		{
 			$res = $this->andUpdate( 'child_parents', [
 				'name' => $name,

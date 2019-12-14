@@ -26,19 +26,19 @@ class Util {
 									   <div class="form-group row">
 									    <label class="col-sm-2 col-form-label">Name</label>
 									    <div class="col-sm-10">
-									     <input type="text" id="parentName-${inx}" value="${name}" class="form-control">
+									     <input type="text" id="parentName-${valls.id_parent}" value="${name}" class="form-control">
 									    </div>
 									   </div>
 									   <div class="form-group row">
 									    <label class="col-sm-2 col-form-label">Surname</label>
 									    <div class="col-sm-10">
-									     <input type="text" id="parentSurname-${inx}" value="${surname}" class="form-control">
+									     <input type="text" id="parentSurname-${valls.id_parent}" value="${surname}" class="form-control">
 									    </div>
 									   </div>
 									   <div class="form-group row">
 									    <label class="col-sm-2 col-form-label">ID Number</label>
 									    <div class="col-sm-10">
-									     <input type="text" value="${valls.id_number}" id="parentIDNumber-${inx}" class="form-control">
+									     <input type="text" value="${valls.id_number}" id="parentIDNumber-${valls.id_parent}" class="form-control">
 									    </div>
 									   </div>
 									
@@ -46,7 +46,7 @@ class Util {
 									   <div class="form-group row">
 									    <label class="col-sm-2 col-form-label">Gender</label>
 									    <div class="col-sm-10">
-									     <select name="select" id="parentSex-${inx}" class="form-control">
+									     <select name="select" id="parentSex-${valls.id_parent}" class="form-control">
 									      <option value="null" >Select </option>
 									      ${sex}
 									     </select>
@@ -55,25 +55,25 @@ class Util {
 									   <div class="form-group row">
 									    <label class="col-sm-2 col-form-label">Occupation</label>
 									    <div class="col-sm-10">
-									     <input type="text" id="parentOccupation-${inx}" value="${valls.occupation}" class="form-control">
+									     <input type="text" id="parentOccupation-${valls.id_parent}" value="${valls.occupation}" class="form-control">
 									    </div>
 									   </div>
 									   <div class="form-group row">
 									    <label class="col-sm-2 col-form-label">Phone</label>
 									    <div class="col-sm-10">
-									     <input type="text" id="parentPhone-${inx}" value="${valls.contact}" class="form-control" onpaste="return false;" data-inputmask-mask="(+27)99-999-9999" data-val="true" data-val-required="Required" >
+									     <input type="text" id="parentPhone-${valls.id_parent}" value="${valls.contact}" class="form-control" onpaste="return false;" data-inputmask-mask="(+27)99-999-9999" data-val="true" data-val-required="Required" >
 									    </div>
 									   </div>
 									   <div class="form-group row">
 									    <label class="col-sm-2 col-form-label">Email</label>
 									    <div class="col-sm-10">
-									     <input type="text" id="parentEmail-${inx}" value="${valls.email}" class="form-control" data-inputmask-alias="email" data-val="true" data-val-required="Required">
+									     <input type="text" id="parentEmail-${valls.id_parent}" value="${valls.email}" class="form-control" data-inputmask-alias="email" data-val="true" data-val-required="Required">
 									    </div>
 									   </div>
 									   <div class="form-group row">
 									    <label class="col-sm-2 col-form-label">Home Address</label>
 									    <div class="col-sm-10">
-									     <input type="text" id="parentHomeAddress-${inx}" value="${valls.address}"placeholder="comma separate" class="form-control">
+									     <input type="text" id="parentHomeAddress-${valls.id_parent}" value="${valls.address}"placeholder="comma separate" class="form-control">
 									    </div>
 									   </div>
 									
@@ -86,7 +86,7 @@ class Util {
 									     </div>
 									    </div>
 									    <div class="col-sm-2 ">
-									     <button onclick="onSaveChildEditDetails()" class="btn btn-info btn-round btn-sm ">Save <i class="fa fa-arrow-save"></i></button>
+									     <button onclick="onSaveParentEditDetails('${valls.id_parent}')" class="btn btn-info btn-round btn-sm ">Save <i class="fa fa-save"></i></button>
 									    </div>
 									   </div>
 									

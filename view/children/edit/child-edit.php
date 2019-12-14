@@ -1,7 +1,7 @@
 
 
 	<div class="card-block">
-
+<span id="sleectedit_id" style="display: none;"></span>
 		<form onsubmit="return false;">
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Name</label>
@@ -47,7 +47,7 @@
 
 			<div class="form-group row" >
 				<div class="col-sm-2 ">
-					<button onclick="onSaveParentEditDetails()" class="btn btn-info btn-round btn-sm ">Save <i class="fa fa-arrow-save"></i></button>
+					<button onclick="onSaveChildEditDetails()" class="btn btn-info btn-round btn-sm ">Save <i class="fa fa-arrow-save"></i></button>
 				</div>
 				<div class="col-sm-8">
 					<div class="form-control-static">
