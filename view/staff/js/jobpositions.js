@@ -1,18 +1,29 @@
+$('.reload-card-remake').click(()=>{
+	
+	getDefaultData ();
+});
+
 function getDefaultData () {
+	const card = onDivLoad ();
 	axios.get('/view/jobposition',{
 		params:{
 			get_def:'all'
 		}
 	}).then(res=>{
+		
 		if(res.statusText === 'OK'){
 			checkAuth(res.data);
 			renderJobsTable(res.data.jobPos);
 			//console.log (res.data);
 		}else{
-		
+			showErrorMessage('Failed to get data , reload page again' , 4);
 		}
+		setTimeout (function () {
+			onDivLoadRemove(card);
+		}, 2000);
 		
 	}).catch(err=>{
+		showErrorMessage('Failed to Connect, check your connection.',4);
 		console.log (err);
 	});
 }

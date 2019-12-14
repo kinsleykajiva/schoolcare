@@ -138,7 +138,7 @@ function renderChildrenTable(data){
 		<tr>
 				<th scope="row">${(inx+1)}</th>
 				<td>${capitaliseTextFristLetter(valls.name)} ${capitaliseTextFristLetter(valls.surname)}</td>
-				<td>${valls.sex}</td>
+				<td>${capitaliseTextFristLetter(valls.sex)}</td>
 				<td>${valls.date_of_birth}</td>
 				<td>
 				<div class="dropdown-default dropdown open">
