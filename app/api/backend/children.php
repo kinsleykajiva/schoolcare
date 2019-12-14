@@ -8,6 +8,12 @@
 	$parentObj = new DBChildParents( USER, PASSWORD, DATABASE );
 	$childrenObj = new DBChildren( USER, PASSWORD, DATABASE );
 
+	if(isset($_POST['delete_rec'])){
+		$res = $childrenObj->deleteRecord($_POST['delete_rec']);
+		print json_encode( $res, JSON_THROW_ON_ERROR, 512 );
+		exit;
+	}
+
 	if(isset($_POST['child_edit_rec'])){
 		$rec_id = $_POST['child_edit_rec'];
 		$childName = $_POST['childName'];

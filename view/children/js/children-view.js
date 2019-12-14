@@ -147,6 +147,7 @@ function renderChildrenTable(data){
 				<a class="dropdown-item waves-light waves-effect" onclick="showInfoDialog('${valls.id}')" href="javascript:void(0)">Info</a>
 				
 				<a class="dropdown-item waves-light waves-effect" onclick="showEditDialog('${valls.id}')" href="javascript:void(0)">Edit</a>
+				<a class="dropdown-item waves-light waves-effect" onclick="openDeleteDdialog('${valls.id}')" href="javascript:void(0)">Delete</a>
 				</div>
 				</div>
 				</td>
@@ -155,6 +156,58 @@ function renderChildrenTable(data){
 		`;
 	});
 	$("#tbody_childrenview").html(row);
+}
+function openDeleteDdialog(id){
+	iziToast.question({
+		timeout: 20000,
+		close: false,
+		overlay: true,
+		displayMode: 'once',
+		id: 'question',
+		zindex: 999,
+		title: 'Confirm',
+		message: 'Are you sure about Deleting ?',
+		position: 'center',
+		buttons: [
+			['<button class="btn-danger"><b>YES Delete</b></button>', function (instance, toast) {
+				
+				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+				deleteRecord(id);
+				
+			}, true],
+			['<button>NO</button>', function (instance, toast) {
+				
+				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+				
+			}],
+		],
+		onClosing: function(instance, toast, closedBy){
+			//console.info('Closing | closedBy: ' + closedBy);
+		},
+		onClosed: function(instance, toast, closedBy){
+		//	console.info('Closed | closedBy: ' + closedBy);
+		}
+	});
+	
+}
+function deleteRecord(id){
+	let data_ = new FormData();
+	data_.append('delete_rec' , id);
+	$('body').loading({
+		message: 'Deleting...'
+	});
+	axios({url:'/backend/children' , method:'post',data:data_}).then(res=>{
+		$('body').loading('stop');
+		if(res.statusText === 'OK' && res.data.status === 'ok'){
+			showSuccessMessage('Record Removed/Delete' , 5);
+			getDefaultData();
+		}else{
+			showErrorMessage('Failed to delete, try again' , 5);
+		}
+	}).catch(err=>{
+		$('body').loading('stop');
+		showErrorMessage('Failed to connect ,check your connection' , 5);
+	});
 }
 $(()=>getDefaultData());
 
