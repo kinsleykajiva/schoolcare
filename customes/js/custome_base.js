@@ -1,6 +1,7 @@
 let loggedUserName = null;
 let TOKEN = null;
 axios.defaults.baseURL = 'app/api/';
+axios.defaults.timeout = 1000 * 4;
 
 function checkAccess () {
 	if (!Cookies.get ('JWT')) {
@@ -12,7 +13,7 @@ function checkAccess () {
 	loggedUserName = payloadObj.username;
 	TOKEN = payloadObj.jwt;
 	
-	$("#loggedUserName").text(loggedUserName);
+	$("#loggedUserName").text(capitaliseTextFristLetter(loggedUserName));
 	axios.defaults.headers.common['Authorization'] = TOKEN;
 	
 }

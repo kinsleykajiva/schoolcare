@@ -114,8 +114,8 @@
 							throw new Exception( "Resource File <{$file}> not Found !" );
 						}
 					}
-					echo $isCSS ? "<link href='{$file}' rel='stylesheet' {$extraWrite} >" : "<script {$extraWrite} src='{$file}'></script> ";
-					echo "  \r\n  ";
+					echo $isCSS ? "<link rel='stylesheet' type='text/css' href='{$file}'  {$extraWrite}>" : "<script type='text/javascript' {$extraWrite} src='{$file}'></script>";
+					echo "\n";
 				}
 			}
 		}

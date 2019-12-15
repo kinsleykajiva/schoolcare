@@ -22,10 +22,12 @@
 <script src="template/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="assets/js/moment.min.js"></script>
 
+
 <script src="assets/js/axios.min.js"></script>
 <script src="assets/js/js.cookie.min.js"></script>
 <script src="assets/js/jsrasign-latest-all-min.js"></script>
 <script src="assets/js/accounting.js"></script>
 <script src="assets/js/lodash.js"></script>
 <script src="customes/js/blockUI.js"></script>
+<script src="assets/js/bootstrap-select/select.js"></script>
 <script src="customes/js/custome_base.js"></script>

@@ -63,5 +63,20 @@
 		"id" : 3.2
 	  }
 	]
-  }
+  },{
+  "name" : "Attendance" ,
+  "id" : 4 ,
+  "has" : [
+	4.1,4.2
+  ] ,
+  "sub-modules" : [
+	{
+	  "title" : "Kids" ,
+	  "id" : 4.1
+	},{
+	  "title" : "Staff" ,
+	  "id" : 4.2
+	}
+  ]
+}
 ]

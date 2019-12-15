@@ -90,5 +90,51 @@
 		"view/children/js/children-view.js"
 	  ]
 	}
+  },{
+	"id" : 4.1 ,
+	"name" : "Kids" ,
+	"file_path" : "view/attendance/kids.php" ,
+	"route" : "kids-attendance" ,
+	"resources" : {
+	  "css" : [
+		"assets/js/jquery.datetimepicker.css",
+		"assets/pickadate.js-3.6.2/themes/default.css",
+		"assets/pickadate.js-3.6.2/themes/default.date.css",
+		"assets/pickadate.js-3.6.2/themes/default.time.css"
+	  ] ,
+	  "js" : [
+		"assets/js/datetimepicker.js",
+		"assets/js/input-mask/jquery.inputmask.bundle.js",
+		"assets/js/input-mask/inputmask.binding.js",
+		"assets/pickadate.js-3.6.2/picker.js",
+		"assets/pickadate.js-3.6.2/picker.date.js",
+		"assets/pickadate.js-3.6.2/picker.time.js",
+		"assets/pickadate.js-3.6.2/legacy.js",
+		"view/attendance/js/kinds-attendance.js"
+	  ]
+	}
+  },{
+	"id" : 4.2 ,
+	"name" : "Staff" ,
+	"file_path" : "view/attendance/staff.php" ,
+	"route" : "staff-attendance" ,
+	"resources" : {
+	  "css" : [
+		"assets/js/jquery.datetimepicker.css",
+		"assets/pickadate.js-3.6.2/themes/default.css",
+		"assets/pickadate.js-3.6.2/themes/default.date.css",
+		"assets/pickadate.js-3.6.2/themes/default.time.css"
+	  ] ,
+	  "js" : [
+		"assets/js/datetimepicker.js",
+		"assets/pickadate.js-3.6.2/picker.js",
+		"assets/pickadate.js-3.6.2/picker.date.js",
+		"assets/pickadate.js-3.6.2/picker.time.js",
+		"assets/pickadate.js-3.6.2/legacy.js",
+		"assets/js/input-mask/jquery.inputmask.bundle.js",
+		"assets/js/input-mask/inputmask.binding.js",
+		"view/attendance/js/staff-attendance.js"
+	  ]
+	}
   }
 ]
