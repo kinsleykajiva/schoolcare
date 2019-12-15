@@ -4,7 +4,7 @@
 	class DBLoggingService {
 
 		CONST LOG_FOLDER = "../../../storage/logs/";
-		CONST LOG_FILE = self::LOG_FOLDER . "logger.log";
+		CONST LOG_FILE = self::LOG_FOLDER . "logger.txt";
 
 		public static function logInfo ( string $statement , string $functionName = "" )
 		: void {

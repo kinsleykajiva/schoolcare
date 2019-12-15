@@ -122,9 +122,7 @@ function getDefaultData () {
 			const j = res.data;
 			renderChildrenTable(j.children);
 		}
-		setTimeout (function () {
-			onDivLoadRemove(card);
-		}, 2000);
+		setTimeout ( ()=> onDivLoadRemove(card), 2000);
 	}).catch(err=>{
 		onDivLoadRemove(card);
 	})

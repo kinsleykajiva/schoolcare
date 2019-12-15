@@ -42,7 +42,16 @@
 		: int {
 			return $this -> lastInsertAutoID = mysqli_insert_id ( $this -> DBCon );
 		}
-		/**Tests result for a query insert*/
+
+		/**Tests result for a query insert
+		 *
+		 * @param bool        $processResult
+		 * @param string      $operationType
+		 * @param string|null $reason
+		 * @param array|null  $extra
+		 *
+		 * @return array
+		 */
 		protected function result ( bool $processResult , string $operationType , string $reason = NULL , array $extra = NULL )
 		: array {
 
