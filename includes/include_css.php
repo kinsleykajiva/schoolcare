@@ -1,7 +1,7 @@
 <!-- Favicon icon -->
 <link rel="icon" href="template/assets/images/favicon.ico" type="image/x-icon">
 <!-- Google font-->
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+<!--<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">-->
 <!-- Required Fremwork -->
 <link rel="stylesheet" type="text/css" href="template/assets/css/bootstrap/css/bootstrap.min.css">
 <!-- themify-icons line icon -->

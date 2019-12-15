@@ -10,6 +10,17 @@
 		"view/dashboard/js/dashboard.js"
 	  ]
 	}
+  } ,{
+	"id" : 1.2 ,
+	"name" : "Rooms" ,
+	"file_path" : "view/dashboard/rooms.php" ,
+	"route" : "rooms" ,
+	"resources" : {
+	  "css" : [ ] ,
+	  "js" : [
+		"view/dashboard/js/rooms.js"
+	  ]
+	}
   } ,
   {
 	"id" : 2.1 ,

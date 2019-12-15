@@ -1,5 +1,8 @@
 let loggedUserName = null;
 let TOKEN = null;
+const firstAPI = axios.create({
+	//baseURL: 'https://github.com/'
+});
 axios.defaults.baseURL = 'app/api/';
 axios.defaults.timeout = 1000 * 4;
 
@@ -577,6 +580,82 @@ function onDivLoad () {
 	return card;
 }
 /*********************************************************************************************/
+
+function doesConnectionExist() {
+	var xhr = new XMLHttpRequest();
+	var file = "https://www.kirupa.com/blank.png";
+	var randomNum = Math.round(Math.random() * 10000);
+	
+	xhr.open('HEAD', file + "?rand=" + randomNum, true);
+	xhr.send();
+	
+	xhr.addEventListener("readystatechange", processRequest, false);
+	
+	function processRequest(e) {
+		if (xhr.readyState === 4) {
+			console.log (xhr.status)
+			console.log (xhr)
+			if (xhr.status >= 200 && xhr.status < 304) {
+				alert("connection exists!");
+			} else {
+				alert("connection doesn't exist!");
+			}
+		}
+	}
+}
+function hostReachable() {
+	
+	$.ajax({url: "http://api.themoviedb.org/2.1/Movie.search/en/json/23afca60ebf72f8d88cdcae2c4f31866/The Goonies",
+		dataType: "jsonp",
+		timeout:3000,
+		statusCode: {
+			200: function (response) {
+				alert('status 200');
+			},
+			404: function (response) {
+				alert('status  404 ');
+			}
+		}
+	});
+	/*$.ajax({url: "http://api.themoviedb.org/2.1/Movie.search/en/json/23afca60ebf72f8d88cdcae2c4f31866/The Goonies",
+		type: "HEAD",
+		timeout:1000,
+		statusCode: {
+			200: function (response) {
+				alert('Working!');
+			},
+			400: function (response) {
+				alert('Not working!');
+			},
+			0: function (response) {
+				alert('Not working!');
+			}
+		}
+	});*/
+	/*axios.get('https://www.kirupa.com/blank.png')
+		.catch(function (error) {
+			if (error.response) {
+				// The request was made and the server responded with a status code
+				// that falls out of the range of 2xx
+				console.log(error.response.data);
+				console.log(error.response.status);
+				console.log(error.response.headers);
+			} else if (error.request) {
+				// The request was made but no response was received
+				// `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+				// http.ClientRequest in node.js
+				console.log(error.request);
+			} else {
+				// Something happened in setting up the request that triggered an Error
+				console.log('Error', error.message);
+			}
+			console.log(error.config);
+		});*/
+	
+}
+//hostReachable()
+//console.log (hostReachable())
+//doesConnectionExist();
 /*********************************************************************************************/
 /*********************************************************************************************/
 /*********************************************************************************************/
