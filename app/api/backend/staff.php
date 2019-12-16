@@ -7,6 +7,29 @@
 	include_once '../../dbaccess/classes/DBJobPositions.php';
 	include_once '../../dbaccess/classes/FileAccess.php';
 
+
+	if(isset($_POST['new_edit_att'])){
+
+		$select_staff_out = $_POST['select_staff_out'];
+		$datetimepicker4_out = $_POST['datetimepicker4_out'];
+		$timepicker_out = $_POST['timepicker_out'];
+		$id_record = $_POST['id_record'];
+		$emplObj = new DBEmployees( USER, PASSWORD, DATABASE );
+		$res = $emplObj->clockOutAttendance($id_record , $timepicker_out);
+		echo json_encode($res, JSON_THROW_ON_ERROR, 512 );
+		exit;
+	}
+
+	if(isset($_POST['new_save_att'])){
+		$select_staff = $_POST['select_staff'];
+		$datetimepicker4 = $_POST['datetimepicker4'];
+		$timepicker = $_POST['timepicker'];
+		$emplObj = new DBEmployees( USER, PASSWORD, DATABASE );
+		$res = $emplObj->clockInAttendance($USER_ID , $timepicker ,$datetimepicker4 , '' , $select_staff);
+		echo json_encode($res, JSON_THROW_ON_ERROR, 512 );
+		exit;
+	}
+
 	if(isset($_POST['delete_empl'])){
 		$employeeID = $rec_id =(int)$_POST['delete_empl'];
 		$emplObj = new DBEmployees( USER, PASSWORD, DATABASE );

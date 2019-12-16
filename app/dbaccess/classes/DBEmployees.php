@@ -37,7 +37,7 @@
 				'notes'=> $notes ,
 				'id_staff'=> $id_staff ,
 				'id_child'=> 0
-			]);
+			],TRUE);
 			return $this->result($res , 'Saved Clock In Attendance');
 		}
 

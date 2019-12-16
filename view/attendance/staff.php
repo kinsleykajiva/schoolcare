@@ -22,7 +22,7 @@
 
 	</div>
 	<div class="card-block table-border-style">
-		<div class="table-responsive">
+		<div class="table-responsive" style="min-height: 200px;">
 			<table class="table">
 				<thead>
 				<tr>
@@ -30,7 +30,7 @@
 					<th>Name</th>
 					<th>Time Signed In</th>
 					<th>Time Signed Out</th>
-					<th>Attended Time</th>
+					<th>Date</th>
 					<th>Action</th>
 				</tr>
 				</thead>
@@ -76,20 +76,18 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Date</label>
                             <div class="col-sm-10">
-                                <input type="text" id="datepicker" class="form-control form-control-normal datepicker" placeholder="">
+                                <input type="date" disabled="disabled" id="datetimepicker4" class="form-control form-control-normal datepicker" placeholder="">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Age Range</label>
+                            <label class="col-sm-2 col-form-label">Time In</label>
                             <div class="col-sm-10">
-                                <select id="newAgeRanges" class="form-control form-control-bold">
-
-                                </select>
+	                            <input type="time"  id="timepicker" class="form-control form-control-normal datepicker" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <button onclick="saveNewRoom()" class="col-sm-2 btn  btn-round btn-mini btn-info col-form-label" >Save</button>
+                            <button onclick="saveClockIn()" class="col-sm-2 btn  btn-round btn-mini btn-info col-form-label" >Save</button>
 
                         </div>
                     </form>
@@ -97,4 +95,42 @@
             </div>
         </div>
     </div>
+</div>
+<div class="" id="ClockOutDialog" data-izimodal-title="Clock Out Dialog">
+	<div class="row">
+		<span id="selected_att_id" style="display: none;"></span>
+		<div class="col-sm-12">
+			<div class="">
+				<div class="card-block">
+					<form onsubmit="return false;">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Staff</label>
+							<div class="col-sm-10">
+								<select id="select_staff_out" readonly disabled="disabled" class="form-control form-control-bold">
+
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Date</label>
+							<div class="col-sm-10">
+								<input type="date" disabled="disabled" id="datetimepicker4_out" class="form-control form-control-normal datepicker" placeholder="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Time Out</label>
+							<div class="col-sm-10">
+								<input type="time"  id="timepicker_out" class="form-control form-control-normal datepicker" placeholder="">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<button onclick="saveClockOut()" class="col-sm-2 btn  btn-round btn-mini btn-info col-form-label" >Save</button>
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

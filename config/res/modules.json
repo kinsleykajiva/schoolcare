@@ -108,13 +108,10 @@
 	"route" : "kids-attendance" ,
 	"resources" : {
 	  "css" : [
-		"assets/js/jquery.datetimepicker.css",
-		"assets/pickadate.js-3.6.2/themes/default.css",
-		"assets/pickadate.js-3.6.2/themes/default.date.css",
-		"assets/pickadate.js-3.6.2/themes/default.time.css"
+
 	  ] ,
 	  "js" : [
-		"assets/js/datetimepicker.js",
+
 		"assets/js/input-mask/jquery.inputmask.bundle.js",
 		"assets/js/input-mask/inputmask.binding.js",
 
@@ -128,11 +125,11 @@
 	"route" : "staff-attendance" ,
 	"resources" : {
 	  "css" : [
-		"assets/js/jquery.datetimepicker.css"
+
 
 	  ] ,
 	  "js" : [
-		"assets/js/datetimepicker.js",
+
 
 		"assets/js/input-mask/jquery.inputmask.bundle.js",
 		"assets/js/input-mask/inputmask.binding.js",
