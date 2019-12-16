@@ -149,6 +149,9 @@ function renderStaffTable (data) {
 	$("#tbody_data").html(row);
 }
 function saveClockOut () {
+	let id_record= $("#selected_att_id").text();
+	let obj = READ_STAFF_ROWS.filter(x=>x.id == id_record)[0];
+	let time_sign_in = obj.time_sign_in;
 	let select_staff_out = $("#select_staff_out").val();
 	
 	let datetimepicker4_out = $("#datetimepicker4_out").val();
@@ -159,7 +162,12 @@ function saveClockOut () {
 		return;
 	}
 	error_input_element(false , 'timepicker_out');
-	let id_record= $("#selected_att_id").text();
+	if(!validateClockoutTimes(timepicker_out ,time_sign_in )){
+		error_input_element(true , 'timepicker_out');
+		showErrorMessage('Please choose correct time greater than  clock in Time!' , 4);
+		return;
+	}
+	error_input_element(false , 'timepicker_out');
 	let data_ = new FormData();
 	data_.append('select_staff_out' , select_staff_out);
 	data_.append('datetimepicker4_out' ,datetimepicker4_out );
@@ -205,4 +213,11 @@ function showCheckoutDialog (id) {
 	
 	
 	$('#datetimepicker4_out').val(today);
+}
+function validateClockoutTimes (outTime,inTime) {
+	
+	
+	const time1 = moment(outTime,'HH:mm');
+	const time2 = moment(inTime,'HH:mm');
+	return time1.isSameOrAfter(time2);
 }

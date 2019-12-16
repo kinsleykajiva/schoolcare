@@ -22,22 +22,34 @@
 
 		public function clockOutAttendance($id_record  ,$time_sign_out ):array {
 			$res = $this->andUpdate('attendance',[
-				'time_sign_out'=> $time_sign_out ,
+				'time_sign_out'=> $time_sign_out ,'date_actual_clockout'=>self::nowDateTime()
 			],['id'=>$id_record]);
 			return $this->result($res , 'Saved Clock Out Attendance');
 		}
 
 		public function clockInAttendance($id_user_created , $time_sign_in  , $date_sign_in,$notes,$id_staff):array {
-			$res = $this->insert('attendance',[
-				'date_created' => self::nowDateTime() ,
-				'id_user_created'=> $id_user_created ,
-				'time_sign_in'=> $time_sign_in ,
-				'time_sign_out'=> '--' ,
-				'date_sign_in'=> $date_sign_in ,
-				'notes'=> $notes ,
-				'id_staff'=> $id_staff ,
-				'id_child'=> 0
-			],TRUE);
+			if($this->countRows('attendance',[
+				'date_sign_in'=> $date_sign_in ,'id_staff'=> $id_staff ,
+			])> 0 ){
+				// update the sign in ad
+				$res = $this->andUpdate( 'attendance' , [
+					'time_sign_in' => $time_sign_in ,
+					'notes' => $notes
+				] ,['date_sign_in'=> $date_sign_in ,'id_staff'=> $id_staff] );
+			}else {
+				// this is a new date and or diff user
+				$res = $this->insert( 'attendance' , [
+					'date_created' => self::nowDateTime() ,
+					'date_actual_clockout'=>'--',
+					'id_user_created' => $id_user_created ,
+					'time_sign_in' => $time_sign_in ,
+					'time_sign_out' => '--' ,
+					'date_sign_in' => $date_sign_in ,
+					'notes' => $notes ,
+					'id_staff' => $id_staff ,
+					'id_child' => 0
+				]  );
+			}
 			return $this->result($res , 'Saved Clock In Attendance');
 		}
 
