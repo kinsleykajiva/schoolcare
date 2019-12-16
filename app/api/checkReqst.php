@@ -11,3 +11,4 @@
 	}
 	$arr = $usersObj->deduceTokenAccess($token);
 	$USER_ID = $arr['userID'] ;
+	$ROLE_ID = $arr['roleID'] ;

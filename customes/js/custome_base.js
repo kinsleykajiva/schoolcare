@@ -18,6 +18,18 @@ function checkAccess () {
 	
 	$("#loggedUserName").text(capitaliseTextFristLetter(loggedUserName));
 	axios.defaults.headers.common['Authorization'] = TOKEN;
+	// Add a response interceptor
+	axios.interceptors.response.use(function (res) {
+		// Any status code that lie within the range of 2xx cause this function to trigger
+		// Do something with response data
+		checkAuth(res.data);
+		
+		return res;
+	}, function (error) {
+		// Any status codes that falls outside the range of 2xx cause this function to trigger
+		// Do something with response error
+		return Promise.reject(error);
+	});
 	
 }
 checkAccess ();

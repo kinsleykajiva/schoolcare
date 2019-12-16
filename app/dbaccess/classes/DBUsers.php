@@ -154,6 +154,7 @@
 			//$token->getHeaders(); // Retrieves the token header
 			//$token->getClaims(); // Retrieves the token claims
 				$ret ['userID'] = (int) $token->getClaim('user');
+				$ret ['roleID'] = (int) $token->getClaim('role');
 
 			//echo $token->getHeader('jti'); // will print "4f1g23a12aa"
 			//echo $token->getClaim('iss'); // will print "http://example.com"

@@ -35,7 +35,7 @@
 			$res = $this->insert('rooms',[
 				'title'=>$title ,
 				'id_age_range'=>$id_range
-			],TRUE);
+			]);
 			return $this->result($res ,'Saved Rooms');
 		}
 

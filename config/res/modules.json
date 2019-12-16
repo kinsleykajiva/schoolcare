@@ -117,10 +117,7 @@
 		"assets/js/datetimepicker.js",
 		"assets/js/input-mask/jquery.inputmask.bundle.js",
 		"assets/js/input-mask/inputmask.binding.js",
-		"assets/pickadate.js-3.6.2/picker.js",
-		"assets/pickadate.js-3.6.2/picker.date.js",
-		"assets/pickadate.js-3.6.2/picker.time.js",
-		"assets/pickadate.js-3.6.2/legacy.js",
+
 		"view/attendance/js/kinds-attendance.js"
 	  ]
 	}
@@ -131,17 +128,12 @@
 	"route" : "staff-attendance" ,
 	"resources" : {
 	  "css" : [
-		"assets/js/jquery.datetimepicker.css",
-		"assets/pickadate.js-3.6.2/themes/default.css",
-		"assets/pickadate.js-3.6.2/themes/default.date.css",
-		"assets/pickadate.js-3.6.2/themes/default.time.css"
+		"assets/js/jquery.datetimepicker.css"
+
 	  ] ,
 	  "js" : [
 		"assets/js/datetimepicker.js",
-		"assets/pickadate.js-3.6.2/picker.js",
-		"assets/pickadate.js-3.6.2/picker.date.js",
-		"assets/pickadate.js-3.6.2/picker.time.js",
-		"assets/pickadate.js-3.6.2/legacy.js",
+
 		"assets/js/input-mask/jquery.inputmask.bundle.js",
 		"assets/js/input-mask/inputmask.binding.js",
 		"view/attendance/js/staff-attendance.js"
