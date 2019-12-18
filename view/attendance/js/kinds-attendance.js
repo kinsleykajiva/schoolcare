@@ -35,7 +35,8 @@ function renderAttendanceRegisterTable(data){
 		return;
 	}
 	_.forEach(data,(valls,inx)=>{
-		let checkOutOption = valls.time_sign_out === '--' ?  `<a class="dropdown-item waves-light waves-effect" onclick="showCheckoutDialog('${valls.id}','${capitaliseTextFirstCaseForWords(valls.childName)}');" href="javascript:void(0);">Clock Out</a>`: '';
+		let checkOption = valls.time_sign_out === '--' ?'':`style="display: none;"`;
+		let checkOutOption = valls.time_sign_out === '--' ?  `<a class="dropdown-item waves-light waves-effect" onclick="showCheckoutDialog('${valls.id}','${capitaliseTextFirstCaseForWords(valls.childName)}','${valls.time_sign_in}');" href="javascript:void(0);">Clock Out</a>`: '';
 		row += `
 		
 		<tr style="">
@@ -47,7 +48,7 @@ function renderAttendanceRegisterTable(data){
 				<td>${valls.time_sign_out}</td>
 				<td>${valls.date_sign_in}</td>
 				<td>
-						<div class="dropdown-default dropdown open">
+						<div class="dropdown-default dropdown open" ${checkOption}>
 							<button class="btn btn-default btn-mini  dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</button>
 							<div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
 								${checkOutOption}
@@ -61,7 +62,7 @@ function renderAttendanceRegisterTable(data){
 	});
 	$("#tbody_data").html(row);
 }
-function showCheckoutDialog(id , kidName){
+function showCheckoutDialog(id , kidName,timeIn){
 	let time = '';
 	
 	iziToast.question({
@@ -87,6 +88,11 @@ function showCheckoutDialog(id , kidName){
 				}
 				if(!moment(time, "HH:mm", true).isValid()){
 					showErrorMessage("Set Valid Time");
+					return;
+				}
+				
+				if(!validateClockoutTimes(time ,timeIn )){
+					showErrorMessage("Set Time Greater than Time In");
 					return;
 				}
 				
@@ -118,6 +124,13 @@ function showCheckoutDialog(id , kidName){
 			}],
 		],
 	});
+}
+function validateClockoutTimes (outTime,inTime) {
+	
+	
+	const time1 = moment(outTime,'HH:mm');
+	const time2 = moment(inTime,'HH:mm');
+	return time1.isSameOrAfter(time2);
 }
 let ageUniter = x=> Math.floor(x/12) ;
 function openClockInDialog () {

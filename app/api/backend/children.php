@@ -14,7 +14,7 @@
 	if(isset($_POST['rec_signout_id'])){
 		$rec_id = $_POST['rec_signout_id'];
 		$time_out = $_POST['time'];
-		$childrenObj ->clockOutAttendance($rec_id ,$time_out);
+		$res = $childrenObj ->clockOutAttendance($rec_id ,$time_out);
 		print json_encode( $res , JSON_THROW_ON_ERROR , 512 );
 		exit;
 	}
