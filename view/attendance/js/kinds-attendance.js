@@ -14,7 +14,7 @@ function getDefaultData () {
 			const j  = res.data;
 			renderKidsList(j.children);
 			renderRoomsSelects(j.rooms);
-			renderAttendanceRegisterTable(j.att);
+			renderAttendanceRegisterTable(j.att ,true);
 		}else{
 			showErrorMessage('Failed to get Data please refresh' ,4);
 		}
@@ -26,15 +26,25 @@ function getDefaultData () {
 $(()=>{
 	getDefaultData ();
 });
+$('.reload-card-remake').click(()=>{
+	getDefultData ();
+});
 
+function renderOnDate () {
+	let selectDateRanges = 	$("#selectDateRanges").val();
+//	renderAttendanceRegisterTable();
+}
 
-function renderAttendanceRegisterTable(data){
+function renderAttendanceRegisterTable(data ,isInitial){
 	let row = ``;
 	if(data.length < 1){
 		$("#tbody_data").html(noDataRow(6,'No Data'));
 		return;
 	}
+	let datesArr = [];
+	
 	_.forEach(data,(valls,inx)=>{
+		datesArr.push(valls.date_sign_in);
 		let checkOption = valls.time_sign_out === '--' ?'':`style="display: none;"`;
 		let checkOutOption = valls.time_sign_out === '--' ?  `<a class="dropdown-item waves-light waves-effect" onclick="showCheckoutDialog('${valls.id}','${capitaliseTextFirstCaseForWords(valls.childName)}','${valls.time_sign_in}');" href="javascript:void(0);">Clock Out</a>`: '';
 		row += `
@@ -60,7 +70,29 @@ function renderAttendanceRegisterTable(data){
 		
 		`;
 	});
+	datesArr =  [... new Set(datesArr)];
+	
 	$("#tbody_data").html(row);
+	let opt = '';
+	console.log (datesArr)
+	_.forEach(datesArr,(valss,inx)=>{
+		opt += `<option value="${valss}">${valss} </option>`;
+	});
+	$("#selectDateRanges").html(opt);
+	if(isInitial){
+		$("#selectDateRanges").val(todayeDate());
+	}
+	
+	
+}
+function todayeDate () {
+	const now = new Date ();
+	
+	const day = ("0" + now.getDate ()).slice (-2);
+	const month = ("0" + (now.getMonth () + 1)).slice (-2);
+	
+	const today = now.getFullYear () + "-" + (month) + "-" + (day);// yyyy-mm-dd
+	return today;
 }
 function showCheckoutDialog(id , kidName,timeIn){
 	let time = '';
@@ -139,12 +171,8 @@ function openClockInDialog () {
 	modalNewClockInDialog.iziModal('setTitle', 'Clock In Dialog');
 	const now = new Date ();
 	
-	const day = ("0" + now.getDate ()).slice (-2);
-	const month = ("0" + (now.getMonth () + 1)).slice (-2);
 	
-	const today = now.getFullYear () + "-" + (month) + "-" + (day);
-	
-	$('#datetimepicker4').val(today);
+	$('#datetimepicker4').val(todayeDate());
 }
 
 function renderRoomsSelects(data){

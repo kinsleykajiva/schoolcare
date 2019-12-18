@@ -1,7 +1,18 @@
 <div class="page-header card">
 	<div class="card-block">
-		<button onclick="openClockInDialog();" class="btn btn-mini btn-info"> <i class="fa fa-clock-o"></i> Clock In</button>
 
+
+		<div class="row">
+			<!------>
+			<div class=" col-lg-2 "><button onclick="openClockInDialog();" class="btn btn-mini btn-info"> <i class="fa fa-clock-o"></i> Clock In</button></div>
+			<div class=" col-lg-10 ">
+				<select class="form-control" id="selectDateRanges" onchange="renderOnDate()">
+
+				</select>
+
+			</div>
+			<!------>
+		</div>
 
 	</div>
 </div>
