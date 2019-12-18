@@ -1,5 +1,5 @@
 const modalNewClockInDialog = $("#NewClockInDialog");
-
+let ATTENDANCE_READ_ROWS = [] ;
 modalNewClockInDialog.iziModal({
 	width: 700,
 	radius: 5,
@@ -9,17 +9,22 @@ modalNewClockInDialog.iziModal({
 modalNewClockInDialog.iziModal('setHeaderColor', MODAL_HEADER_COLOR);
 
 function getDefaultData () {
+	const card = onDivLoad ();
 	axios.get('view/children',{params:{get_def_clock:78}}).then(res=>{
 		if(res.statusText === 'OK'){
 			const j  = res.data;
 			renderKidsList(j.children);
 			renderRoomsSelects(j.rooms);
 			renderAttendanceRegisterTable(j.att ,true);
+			ATTENDANCE_READ_ROWS = j.att;
+			
 		}else{
 			showErrorMessage('Failed to get Data please refresh' ,4);
 		}
+		setTimeout ( () =>onDivLoadRemove(card), randomNumbers(2,5) * 1000);
 	}).catch(er=>{
-		showErrorMessage("Failed to connect",3);
+		setTimeout ( () =>onDivLoadRemove(card), randomNumbers(2,5) * 1000);
+		showErrorMessage("Failed to connect,Check your connection",3);
 	})
 }
 
@@ -27,12 +32,15 @@ $(()=>{
 	getDefaultData ();
 });
 $('.reload-card-remake').click(()=>{
-	getDefultData ();
+	
+	getDefaultData ();
 });
 
 function renderOnDate () {
 	let selectDateRanges = 	$("#selectDateRanges").val();
-//	renderAttendanceRegisterTable();
+	//console.log (selectDateRanges)
+	
+	renderAttendanceRegisterTable(selectDateRanges === 'null'?ATTENDANCE_READ_ROWS : ATTENDANCE_READ_ROWS.filter(x=>x.date_sign_in === selectDateRanges) , false);
 }
 
 function renderAttendanceRegisterTable(data ,isInitial){
@@ -70,17 +78,20 @@ function renderAttendanceRegisterTable(data ,isInitial){
 		
 		`;
 	});
+	datesArr.push(todayeDate());
 	datesArr =  [... new Set(datesArr)];
 	
 	$("#tbody_data").html(row);
-	let opt = '';
-	console.log (datesArr)
-	_.forEach(datesArr,(valss,inx)=>{
-		opt += `<option value="${valss}">${valss} </option>`;
-	});
-	$("#selectDateRanges").html(opt);
 	if(isInitial){
-		$("#selectDateRanges").val(todayeDate());
+		let opt = `<option value="null"> All </option>`;
+		
+		_.forEach(datesArr,(valss,inx)=>{
+			opt += `<option value="${valss}">${valss} </option>`;
+		});
+		$("#selectDateRanges").html(opt);
+		
+			$("#selectDateRanges").val(todayeDate());
+		renderOnDate ();
 	}
 	
 	

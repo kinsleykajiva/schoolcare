@@ -586,7 +586,7 @@ function onDivLoadRemove (card) {
 }
 /*********************************************************************************************/
 function onDivLoad () {
-	const card = $ (".card-header-right .reload-card");
+	const card = $ (".card-header-right .reload-card-remake");
 	card.parents ('.card').addClass ("card-load");
 	card.parents ('.card').append ('<div class="card-loader"><i class="fa fa-spinner rotate-refresh"></div>');
 	return card;

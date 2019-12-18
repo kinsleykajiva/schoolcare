@@ -29,14 +29,10 @@ function getDefultData () {
 		}else{
 			showErrorMessage('Failed to get data , please refresh', 4);
 		}
-		setTimeout (function () {
-			onDivLoadRemove(card);
-		}, 2000);
+		setTimeout ( () =>onDivLoadRemove(card), randomNumbers(2,5) * 1000);
 	}).catch(err=>{
 		//console.log (err)
-		setTimeout (function () {
-			onDivLoadRemove(card);
-		}, 2000);
+		setTimeout ( () =>onDivLoadRemove(card), randomNumbers(2,5) * 1000);
 		showErrorMessage('Failed to connect , check your connection' , 4);
 	});
 }
