@@ -2,6 +2,7 @@
 
 	include '../checkReqst.php';
 // print $USER_ID ;
+// print $ROLE_ID ;
 	include_once '../../dbaccess/classes/DBJobPositions.php';
 
 	$jobPosObj = new DBJobPositions( USER, PASSWORD, DATABASE );

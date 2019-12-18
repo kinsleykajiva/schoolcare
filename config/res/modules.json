@@ -108,13 +108,10 @@
 	"route" : "kids-attendance" ,
 	"resources" : {
 	  "css" : [
-
 	  ] ,
 	  "js" : [
-
 		"assets/js/input-mask/jquery.inputmask.bundle.js",
 		"assets/js/input-mask/inputmask.binding.js",
-
 		"view/attendance/js/kinds-attendance.js"
 	  ]
 	}
@@ -125,12 +122,8 @@
 	"route" : "staff-attendance" ,
 	"resources" : {
 	  "css" : [
-
-
 	  ] ,
 	  "js" : [
-
-
 		"assets/js/input-mask/jquery.inputmask.bundle.js",
 		"assets/js/input-mask/inputmask.binding.js",
 		"view/attendance/js/staff-attendance.js"

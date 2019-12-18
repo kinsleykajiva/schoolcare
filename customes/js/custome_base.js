@@ -669,6 +669,29 @@ function hostReachable() {
 //console.log (hostReachable())
 //doesConnectionExist();
 /*********************************************************************************************/
+
+function getCheckedInputsGetValues (className) {
+	let checkedValue = [];
+	let inputElements = document.getElementsByClassName(className);
+	for(let i=0; inputElements[i]; ++i){
+		if(inputElements[i].checked){
+			checkedValue.push(inputElements[i].value);
+		}
+	}
+	return  checkedValue;
+}
+
+function uncheckCheckedInputs (className) {
+	
+	let inputElements = document.getElementsByClassName(className);
+	for(let i=0; inputElements[i]; ++i){
+		if(inputElements[i].checked){
+			inputElements[i].checked = false;
+		}
+	}
+	
+}
+
 /*********************************************************************************************/
 /*********************************************************************************************/
 /*********************************************************************************************/

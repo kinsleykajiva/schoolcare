@@ -3,6 +3,7 @@
 
 	include '../checkReqst.php';
 	// print $USER_ID ;
+	// print $ROLE_ID ;
 	include_once '../../dbaccess/classes/DBEmployees.php';
 	include_once '../../dbaccess/classes/DBJobPositions.php';
 	include_once '../../dbaccess/classes/FileAccess.php';

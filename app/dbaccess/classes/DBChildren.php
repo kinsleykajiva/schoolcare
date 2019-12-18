@@ -16,6 +16,46 @@
 			$this->DBCon = mysqli_connect( 'localhost' , $USER , $PASSWORD , $DATABASE );
 			parent::__construct( $this->DBCon );
 		}
+		public function getAllAttendance():array {
+			$sql = "SELECT a.* ,CONCAT(c.name , ' ' , c.surname) AS childName , c.sex    FROM `attendance` a JOIN children c ON c.id = a.id_child  ";
+
+			return $this->fetchInArray($sql);
+		}
+
+
+		public function clockOutAttendance($id_record  ,$time_sign_out ):array {
+			$res = $this->andUpdate('attendance',[
+				'time_sign_out'=> $time_sign_out ,'date_actual_clockout'=>self::nowDateTime()
+			],['id'=>$id_record]);
+			return $this->result($res , 'Saved Clock Out Attendance');
+		}
+
+		public function clockInAttendance($id_user_created , $time_sign_in  , $date_sign_in,$notes,$id_child,$id_room):array {
+			if($this->countRows('attendance',[
+					'date_sign_in'=> $date_sign_in ,'id_child'=> $id_child ,
+				])> 0 ){
+				// update the sign in ad
+				$res = $this->andUpdate( 'attendance' , [
+					'time_sign_in' => $time_sign_in ,'id_room'=>$id_room,
+					'notes' => $notes
+				] ,['date_sign_in'=> $date_sign_in ,'id_child'=> $id_child] );
+			}else {
+				// this is a new date and or diff user
+				$res = $this->insert( 'attendance' , [
+					'date_created' => self::nowDateTime() ,
+					'date_actual_clockout'=>'--',
+					'id_user_created' => $id_user_created ,
+					'time_sign_in' => $time_sign_in ,
+					'time_sign_out' => '--' ,
+					'date_sign_in' => $date_sign_in ,
+					'notes' => $notes ,
+					'id_room'=> $id_room ,
+					'id_staff' => 0 ,
+					'id_child' => $id_child
+				] );
+			}
+			return $this->result($res , 'Saved Clock In Attendance');
+		}
 
 		public function deleteRecord ( $record_id ) : array
 		{

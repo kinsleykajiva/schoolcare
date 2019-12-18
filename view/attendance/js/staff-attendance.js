@@ -135,7 +135,7 @@ function renderStaffTable (data) {
 				<td>${valls.date_sign_in}</td>
 				<td >
 						<div class="dropdown-default dropdown open" ${checkOption}>
-						<button class="btn btn-mini btn-default dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</button>
+						<button class="btn btn-mini btn-default dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</button>
 						<div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
 						${checkOutOption}
 						

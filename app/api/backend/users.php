@@ -1,6 +1,7 @@
 <?php
 	include '../checkReqst.php';
 // print $USER_ID ;
+// print $ROLE_ID ;
 
 	if(isset($_POST['delete_user'])){
 		$rec_id = (int) $_POST['delete_user'];

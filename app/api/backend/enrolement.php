@@ -2,6 +2,7 @@
 
 	include '../checkReqst.php';
 	// print $USER_ID ;
+	// print $ROLE_ID ;
 
 	include_once '../../dbaccess/classes/DBChildParents.php';
 	include_once '../../dbaccess/classes/DBChildren.php';
