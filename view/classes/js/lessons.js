@@ -217,8 +217,8 @@ function renderLessonsRow (dataArr) {
 	const rend = obj=> ' <div style="padding: 10px;background-color: #f4f4f4;border-radius: 4px;"> <b class="text-muted">Title</b> <br>' +
 			obj.lTitle + '<br>'
 						+ '<strong>Details</strong>  <br>'+obj.lDescr+'<br>'
-						+ ' <strong>Category: </strong>' + obj.lesson_category
-		+`
+						+ ' <strong class="text-muted">Category: </strong><br>' + obj.lesson_category
+		+`<br>
  <a class="" onclick="showMileStoneDiloagLession('${obj.mile_stones}')" href="javascript:void(0)">Mile Stones </a>
  `
 		+ '  </div> ';
@@ -260,13 +260,24 @@ function showMileStoneDiloagLession (mileStoneIds) {
 		return;
 	}
 	milestoneDilaog.iziModal ('open');
-	axios.get('/view/lessons',{params:{milestone_gets:78}}).then(res=>{
+	milestoneDilaog.iziModal ('startLoading');
+	axios.get('/view/lessons',{params:{milestone_gets:mileStoneIds}}).then(res=>{
 		if(res.statusText === 'OK'){
-			$('#mileStonedDetail').html(res.data);
+			console.log (res.data);
+			let row = '';
+			_.forEach(res.data , (vals,inx)=>{
+				console.log(vals)
+				row+= `<p><strong>Category:</strong><br> ${vals.mileCat?vals.mileCat:'None'} </p>`;
+				row+= `<p><strong>Title:</strong><br> ${vals.title?vals.title:'None'} </p>`;
+				row+= `<hr>`;
+			})
+			$('#mileStonedDetail').html(row);
 		}else{
 			showErrorMessage('Failed to get Milestones' ,4);
 		}
+		milestoneDilaog.iziModal ('stopLoading');
 	}).catch(err=>{
+		milestoneDilaog.iziModal ('stopLoading');
 		showErrorMessage('Failed to get Milestone Plese check your connecttion' ,4);
 	})
 	

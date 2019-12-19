@@ -22,9 +22,9 @@
 			foreach ($ids as $id){
 				$sql = 'SELECT m.id, m.title, m.description, m.id_milestone_category ,mc.title AS mileCat  FROM milestones m JOIN milestone_category mc ON m.id_milestone_category = mc.id WHERE  m.id = ' . $id;
 
-				$arr [] =  $this->fetchInArray($sql);
+				$arr [] =  $this->fetchInArray($sql)[0];
 			}
-			return $arr;
+			return ( $arr );
 		}
 
 		public function getAllClasses():array {
