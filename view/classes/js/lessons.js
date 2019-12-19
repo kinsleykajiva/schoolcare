@@ -137,7 +137,7 @@ function onSaveClassLession () {
 	data.append ('lastDateSelected', lastDateSelected);
 	data.append ('lastDaySelected', lastDaySelected);
 	axios ({url: '/backend/lessons', method: 'post', data: data}).then (res => {
-		if (res.statusText === 'OK' && res.data.status === 'ok') {
+		if (res.statusText === 'OK'  && res.data.status === 'ok') {
 			showSuccessMessage('Saved Lession');
 			lastDaySelected = '';
 			lastDateSelected = '';
