@@ -110,8 +110,7 @@
 	  "css" : [
 	  ] ,
 	  "js" : [
-		"assets/js/input-mask/jquery.inputmask.bundle.js",
-		"assets/js/input-mask/inputmask.binding.js",
+
 		"view/attendance/js/kinds-attendance.js"
 	  ]
 	}
@@ -127,6 +126,31 @@
 		"assets/js/input-mask/jquery.inputmask.bundle.js",
 		"assets/js/input-mask/inputmask.binding.js",
 		"view/attendance/js/staff-attendance.js"
+	  ]
+	}
+  },{
+	"id" : 5.1 ,
+	"name" : "Lessons" ,
+	"file_path" : "view/classes/lessons.php" ,
+	"route" : "lessons" ,
+	"resources" : {
+	  "css" : [
+	  ] ,
+	  "js" : [
+
+		"view/classes/js/lessons.js"
+	  ]
+	}
+  },{
+	"id" : 5.2 ,
+	"name" : "Assessment" ,
+	"file_path" : "view/classes/assement.php" ,
+	"route" : "lessons" ,
+	"resources" : {
+	  "css" : [
+	  ] ,
+	  "js" : [
+		"view/classes/js/assement.js"
 	  ]
 	}
   }

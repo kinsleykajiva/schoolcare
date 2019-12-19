@@ -78,5 +78,23 @@
 	  "id" : 4.2
 	}
   ]
-}
+} ,
+  {
+	"name" : "Classes" ,
+	"id" : 5 ,
+	"has" : [
+	  5.1 ,
+	  5.2
+	] ,
+	"sub-modules" : [
+	  {
+		"title" : "Lessons" ,
+		"id" : 5.1
+	  } ,
+	  {
+		"title" : "Assessment" ,
+		"id" : 5.2
+	  }
+	]
+  }
 ]
