@@ -1,4 +1,4 @@
-<div class="" id="selectLessonDialog" data-izimodal-title="Select Lesson Dialog">
+<div class="" id="selectLessonDialog" >
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="">
@@ -9,7 +9,7 @@
 
 							<section class="pricing py-3">
 								<div class="container" style="overflow-y: auto;max-height: 400px;" >
-									<div class="row">
+									<div class="row" id="divLessonsSelects">
 										<!-- Free Tier -->
 										<div class="col-lg-4">
 											<div class="card mb-5 mb-lg-0">
@@ -149,7 +149,7 @@
 
 						</div>
 						<div class="col-lg-4">
-							<button class="btn btn-round btn-info btn-mini ">Add New Lesson</button>
+							<button class="btn btn-round btn-info btn-mini " onclick="showAddNewClass()" >Add New Lesson</button>
 						</div>
 						<div class="col-lg-4"></div>
 						<div class="col-lg-3">

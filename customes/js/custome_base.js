@@ -53,6 +53,11 @@ function checkAuth(jdata){
 }
 
 /*********************************************************************************************/
+function groupBy ( xs , f ) {
+	return xs.reduce (
+		( r , v , i , a , k = f ( v ) ) => ( ( r[ k ] || ( r[ k ] = [] ) ).push (    v ), r ) , {} );
+}
+/*********************************************************************************************/
 /**
  * Get the URL parameters
  * source: https://css-tricks.com/snippets/javascript/get-url-variabl

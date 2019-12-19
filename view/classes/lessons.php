@@ -58,7 +58,7 @@
         transition: all 0.2s;
     }
 
-    #module {
+    /*#module {
         font-size: 1rem;
         line-height: 1.5;
     }
@@ -81,7 +81,7 @@
     #module a:not(.collapsed)::after {
         content: '- Show Less';
     }
-
+*/
 </style>
 
 <div class="page-header card">
@@ -92,7 +92,7 @@
     </div>
 </div>
 
-<div class="card">
+<div class="card" style="" id="divViewLesson">
     <div class="card-header">
         <h5>Lessons</h5>
 
@@ -119,14 +119,14 @@
             </div>
             <div class="row">
                 <div class="col-remake col-md-1" style="visibility: hidden;">6</div>
-                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('mon')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
-                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('tue')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
-                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('wed')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
-                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('thu')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
-                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('fri')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
+                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Monday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
+                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Tuesday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
+                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Wednesday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
+                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Thursday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
+                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Friday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
 
                 <div class="col-remake col-md-1" style="visibility: hidden;">7</div>
             </div>
     </div>
 </div>
-<?php require 'lessons/select-lesson.php';?>
+<?php require 'lessons/select-lesson.php'; require 'lessons/create-lesson.php';?>
