@@ -22,9 +22,9 @@ let lastDateSelected = '';
 modalselectLessonDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 milestoneDilaog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 
-function onAddLessonOn (day,date) {
+function onAddLessonOn (day, date) {
 	lastDaySelected = day;
-	lastDateSelected = date ;
+	lastDateSelected = date;
 	openSelectLessonDialog ();
 	switch (day) {
 		
@@ -137,8 +137,8 @@ function onSaveClassLession () {
 	data.append ('lastDateSelected', lastDateSelected);
 	data.append ('lastDaySelected', lastDaySelected);
 	axios ({url: '/backend/lessons', method: 'post', data: data}).then (res => {
-		if (res.statusText === 'OK'  && res.data.status === 'ok') {
-			showSuccessMessage('Saved Lession');
+		if (res.statusText === 'OK' && res.data.status === 'ok') {
+			showSuccessMessage ('Saved Lession');
 			lastDaySelected = '';
 			lastDateSelected = '';
 			getDefault ();
@@ -152,8 +152,9 @@ function onSaveClassLession () {
 	});
 	
 }
-function getCurrentWeek() {
-	const currentDate = moment();
+
+function getCurrentWeek () {
+	const currentDate = moment ();
 	
 	const weekStart = currentDate.clone ().startOf ('isoWeek');
 	const weekEnd = currentDate.clone ().endOf ('isoWeek');
@@ -161,12 +162,13 @@ function getCurrentWeek() {
 	const days = [];
 	
 	for (var i = 0; i <= 6; i++) {
-		days.push(moment(weekStart).add(i, 'days').format("D MMM dddd"));
+		days.push (moment (weekStart).add (i, 'days').format ("D MMM dddd"));
 	}
 	return (days);
 }
-function getCurrentWeekDates() {
-	const currentDate = moment();
+
+function getCurrentWeekDates () {
+	const currentDate = moment ();
 	
 	const weekStart = currentDate.clone ().startOf ('isoWeek');
 	const weekEnd = currentDate.clone ().endOf ('isoWeek');
@@ -174,29 +176,29 @@ function getCurrentWeekDates() {
 	const days = [];
 	
 	for (var i = 0; i <= 6; i++) {
-		days.push(
-			moment(weekStart).add(i, 'days').format("YYYY-MM-DD")
-			
+		days.push (
+			moment (weekStart).add (i, 'days').format ("YYYY-MM-DD")
 		);
 	}
 	return (days);
 }
+
 function renderWeekDays () {
-	let daysArr = getCurrentWeek();
-	let datesArr = getCurrentWeekDates();
+	let daysArr = getCurrentWeek ();
+	let datesArr = getCurrentWeekDates ();
 	
 	let div = `<div class=" col-remake col-md-1 text-center" style="display: none;">Sun</div>`;
 	let divButton = ` <div class="col-remake col-md-1" style="display: none;">6</div>`;
 	
-	for (let i = 0; i < daysArr.length-2; i++) {
-		const dayFull = daysArr[i].split(' ');
+	for (let i = 0; i < daysArr.length - 2; i++) {
+		const dayFull = daysArr[i].split (' ');
 		let day = dayFull[2];
 		let month = dayFull[1];
 		let date = dayFull[0];
 		let dates_formatted = datesArr[i];
 		//console.log (dates_formatted);
-		div+= ` <div class=" col-remake col text-center"> <div class="text-dribbble">${date} ${month}</div> ${day}</div>`;
-		divButton+= ` <div class="col-remake col" >
+		div += ` <div class=" col-remake col text-center"> <div class="text-dribbble">${date} ${month}</div> ${day}</div>`;
+		divButton += ` <div class="col-remake col" >
  							<button onclick="onAddLessonOn('${day}','${dates_formatted}')" class="btn btn-primary btn-outline-primary btn-round btn-mini">
  									<i class="icofont icofont-plus-circle"></i>Add Lesson
  							</button>
@@ -204,29 +206,29 @@ function renderWeekDays () {
 	}
 	divButton += `<div class="col-remake col" style="display: none;">7</div>`;
 	div += `<div class="col-remake col text-center" style="display: none;">Sat</div>`;
-	$('#days_dats').html(div);
-	$('#divClickButtons').html(divButton);
+	$ ('#days_dats').html (div);
+	$ ('#divClickButtons').html (divButton);
 	
 }
 
 function renderLessonsRow (dataArr) {
 	
-	let daysArr = getCurrentWeek();
-	let datesArr = getCurrentWeekDates();
+	let daysArr = getCurrentWeek ();
+	let datesArr = getCurrentWeekDates ();
 	let row = ``;
-	const rend = obj=> ' <div style="padding: 10px;background-color: #f4f4f4;border-radius: 4px;"> <b class="text-muted">Title</b> <br>' +
-			obj.lTitle + '<br>'
-						+ '<strong>Details</strong>  <br>'+obj.lDescr+'<br>'
-						+ ' <strong class="text-muted">Category: </strong><br>' + obj.lesson_category
-		+`<br>
+	const rend = obj => ' <div style="padding: 10px;background-color: #f4f4f4;border-radius: 4px;"> <b class="text-muted">Title</b> <br>' +
+		obj.lTitle + '<br>'
+		+ '<strong>Details</strong>  <br>' + obj.lDescr + '<br>'
+		+ ' <strong class="text-muted">Category: </strong><br>' + obj.lesson_category
+		+ `<br>
  <a class="text-info text-capitalize" onclick="showMileStoneDiloagLession('${obj.mile_stones}')" href="javascript:void(0)">Mile Stones </a><br><hr>
  <a class="text-info text-center text-capitalize" data-toggle="tooltip" data-placement="top" data-trigger="hover" title="" data-original-title="Delete" onclick="showDeleteDialogLesson('${obj.id}')" href="javascript:void(0)"><i class="ti-trash"></i> </a>
  `
 		+ '  </div> ';
 	
-	_.forEach(dataArr,(valls,inx)=>{
+	_.forEach (dataArr, (valls, inx) => {
 		
-		 row += `<div style="background: white;"  class="row">`;
+		row += `<div style="background: white;"  class="row">`;
 		row += `<div class="col-remake col" style="display: none;">6</div>`;
 		for (let i = 0; i < daysArr.length - 2; i++) {
 			let objDate = valls.date_on_date;
@@ -237,26 +239,27 @@ function renderLessonsRow (dataArr) {
 			let date = dayFull[0];
 			let dates_formatted = datesArr[i];
 			
-			if(objDate === dates_formatted ){
+			if (objDate === dates_formatted) {
 				//console.log (objDate , dates_formatted);
-					row += `
-		                <div  class="col-remake col" >${ i ===0 ? rend(valls) : ''}</div>
-		                <div  class="col-remake col" >${ i ===1 ?rend(valls) : ''}</div>
-		               <div  class="col-remake col" >${ i ===2 ?rend(valls) : ''}</div>
-		                 <div class="col-remake col" >${ i ===3 ?rend(valls) : ''}</div>
-		                 <div  class="col-remake col" >${ i ===4 ?rend(valls) : ''}</div>
+				row += `
+		                <div  class="col-remake col" >${i === 0 ? rend (valls) : ''}</div>
+		                <div  class="col-remake col" >${i === 1 ? rend (valls) : ''}</div>
+		               <div  class="col-remake col" >${i === 2 ? rend (valls) : ''}</div>
+		                 <div class="col-remake col" >${i === 3 ? rend (valls) : ''}</div>
+		                 <div  class="col-remake col" >${i === 4 ? rend (valls) : ''}</div>
 				`;
 			}
 		}
 		row += ` <div class="col-remake col" style="display: none;">7</div>`;
 		row += `</div>`;
 	});
-	$("#div_lessons").html(row);
+	$ ("#div_lessons").html (row);
 	
 	
 }
+
 function showDeleteDialogLesson (id) {
-	iziToast.question({
+	iziToast.question ({
 		timeout: 20000,
 		close: false,
 		overlay: true,
@@ -269,22 +272,22 @@ function showDeleteDialogLesson (id) {
 		buttons: [
 			['<button><b>YES</b></button>', function (instance, toast) {
 				
-				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-				let data_ = new FormData();
+				instance.hide ({transitionOut: 'fadeOut'}, toast, 'button');
+				let data_ = new FormData ();
 				$ ('body').loading ({
 					message: 'Deleting Lesson...'
 				});
-				data_.append('delete_lesion_id' , id);
-				axios({url:'/backend/lessons',method:'post',data:data_}).then(res=>{
+				data_.append ('delete_lesion_id', id);
+				axios ({url: '/backend/lessons', method: 'post', data: data_}).then (res => {
 					$ ('body').loading ('stop');
 					if (res.statusText === 'OK' && res.data.status === 'ok') {
 						lastDaySelected = '';
 						lastDateSelected = '';
 						getDefault ();
-					}else {
+					} else {
 						showErrorMessage ('Failed to delete Lesson', 3);
 					}
-				}).catch(err=>{
+				}).catch (err => {
 					$ ('body').loading ('stop');
 					showErrorMessage ('Failed to connect ,check your connection', 5);
 				})
@@ -292,46 +295,48 @@ function showDeleteDialogLesson (id) {
 			}, true],
 			['<button>NO</button>', function (instance, toast) {
 				
-				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+				instance.hide ({transitionOut: 'fadeOut'}, toast, 'button');
 				
 			}],
 		],
-		onClosing: function(instance, toast, closedBy){
-		//	console.info('Closing | closedBy: ' + closedBy);
+		onClosing: function (instance, toast, closedBy) {
+			//	console.info('Closing | closedBy: ' + closedBy);
 		},
-		onClosed: function(instance, toast, closedBy){
-		//	console.info('Closed | closedBy: ' + closedBy);
+		onClosed: function (instance, toast, closedBy) {
+			//	console.info('Closed | closedBy: ' + closedBy);
 		}
 	});
 }
+
 function showMileStoneDiloagLession (mileStoneIds) {
-	if( mileStoneIds === null || mileStoneIds === 'null'){
-		showGeneralMessage('No MileStones were Set',4);
+	if (mileStoneIds === null || mileStoneIds === 'null') {
+		showGeneralMessage ('No MileStones were Set', 4);
 		return;
 	}
 	milestoneDilaog.iziModal ('open');
 	milestoneDilaog.iziModal ('startLoading');
-	axios.get('/view/lessons',{params:{milestone_gets:mileStoneIds}}).then(res=>{
-		if(res.statusText === 'OK'){
+	axios.get ('/view/lessons', {params: {milestone_gets: mileStoneIds}}).then (res => {
+		if (res.statusText === 'OK') {
 			//console.log (res.data);
 			let row = '';
-			_.forEach(res.data , (vals,inx)=>{
+			_.forEach (res.data, (vals, inx) => {
 				//console.log(vals)
-				row+= `<p><strong>Category:</strong><br> ${vals.mileCat?vals.mileCat:'None'} </p>`;
-				row+= `<p><strong>Title:</strong><br> ${vals.title?vals.title:'None'} </p>`;
-				row+= `<hr>`;
+				row += `<p><strong>Category:</strong><br> ${vals.mileCat ? vals.mileCat : 'None'} </p>`;
+				row += `<p><strong>Title:</strong><br> ${vals.title ? vals.title : 'None'} </p>`;
+				row += `<hr>`;
 			})
-			$('#mileStonedDetail').html(row);
-		}else{
-			showErrorMessage('Failed to get Milestones' ,4);
+			$ ('#mileStonedDetail').html (row);
+		} else {
+			showErrorMessage ('Failed to get Milestones', 4);
 		}
 		milestoneDilaog.iziModal ('stopLoading');
-	}).catch(err=>{
+	}).catch (err => {
 		milestoneDilaog.iziModal ('stopLoading');
-		showErrorMessage('Failed to get Milestone Plese check your connecttion' ,4);
+		showErrorMessage ('Failed to get Milestone Plese check your connecttion', 4);
 	})
 	
 }
+
 //renderLessonsRow([1,2,4,5,6,7,7,7,7,7])
 
 
@@ -366,7 +371,7 @@ function getDefault () {
 			renderMileStones (j.milestones);
 			renderLessonsCategories (j.lesscategory);
 			renderAgeRanges (j.age_range);
-			renderLessonsRow(j.classes);
+			renderLessonsRow (j.classes);
 		} else {
 			showErrorMessage ('Failed to get Data Admin', 4);
 		}

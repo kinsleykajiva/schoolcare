@@ -11,35 +11,35 @@
 	$childrenObj = new DBChildren( USER , PASSWORD , DATABASE );
 	$roomsObj = new DBRooms( USER , PASSWORD , DATABASE );
 
-	if(isset($_POST['rec_signout_id'])){
-		$rec_id = $_POST['rec_signout_id'];
-		$time_out = $_POST['time'];
-		$res = $childrenObj ->clockOutAttendance($rec_id ,$time_out);
+	if ( isset( $_POST[ 'rec_signout_id' ] ) ) {
+		$rec_id = $_POST[ 'rec_signout_id' ];
+		$time_out = $_POST[ 'time' ];
+		$res = $childrenObj->clockOutAttendance( $rec_id , $time_out );
 		print json_encode( $res , JSON_THROW_ON_ERROR , 512 );
 		exit;
 	}
 
-	if(isset($_POST['new_att'])){
-		$kids_selected = $_POST['kids_selected'];
-		$kids_selected = explode(',',$kids_selected);
+	if ( isset( $_POST[ 'new_att' ] ) ) {
+		$kids_selected = $_POST[ 'kids_selected' ];
+		$kids_selected = explode( ',' , $kids_selected );
 
-		$new_att = $_POST['new_att'];
-		$datetimepicker4 = $_POST['datetimepicker4'];
-		$timepicker = $_POST['timepicker'];
-		$select_rooms = $_POST['select_rooms'];
+		$new_att = $_POST[ 'new_att' ];
+		$datetimepicker4 = $_POST[ 'datetimepicker4' ];
+		$timepicker = $_POST[ 'timepicker' ];
+		$select_rooms = $_POST[ 'select_rooms' ];
 
-		foreach ($kids_selected as $kid){
+		foreach ( $kids_selected as $kid ) {
 
-			if($select_rooms === 'null'){
+			if ( $select_rooms === 'null' ) {
 				// save very child selected to all rooms
 				$rooms = $roomsObj->getRooms();
-				foreach ($rooms as $room){
-					$id_room =(int) $room['id'];
-					$res  =$childrenObj->clockInAttendance($USER_ID , $timepicker , $datetimepicker4 , '',$kid , $id_room);
+				foreach ( $rooms as $room ) {
+					$id_room = (int)$room[ 'id' ];
+					$res = $childrenObj->clockInAttendance( $USER_ID , $timepicker , $datetimepicker4 , '' , $kid , $id_room );
 				}
 
-			}else{
-				$res  =$childrenObj->clockInAttendance($USER_ID , $timepicker , $datetimepicker4 , '',$kid , $select_rooms);
+			} else {
+				$res = $childrenObj->clockInAttendance( $USER_ID , $timepicker , $datetimepicker4 , '' , $kid , $select_rooms );
 			}
 
 		}
