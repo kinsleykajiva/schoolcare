@@ -219,7 +219,8 @@ function renderLessonsRow (dataArr) {
 						+ '<strong>Details</strong>  <br>'+obj.lDescr+'<br>'
 						+ ' <strong class="text-muted">Category: </strong><br>' + obj.lesson_category
 		+`<br>
- <a class="text-info text-capitalize" onclick="showMileStoneDiloagLession('${obj.mile_stones}')" href="javascript:void(0)">Mile Stones </a>
+ <a class="text-info text-capitalize" onclick="showMileStoneDiloagLession('${obj.mile_stones}')" href="javascript:void(0)">Mile Stones </a><br><hr>
+ <a class="text-info text-center text-capitalize" onclick="showDeleteDialogLesson('${obj.id}')" href="javascript:void(0)">Delete </a>
  `
 		+ '  </div> ';
 	
@@ -253,6 +254,55 @@ function renderLessonsRow (dataArr) {
 	$("#div_lessons").html(row);
 	
 	
+}
+function showDeleteDialogLesson (id) {
+	iziToast.question({
+		timeout: 20000,
+		close: false,
+		overlay: true,
+		displayMode: 'once',
+		id: 'question',
+		zindex: 999,
+		title: 'Confirmation',
+		message: 'Are you sure about deleting?',
+		position: 'center',
+		buttons: [
+			['<button><b>YES</b></button>', function (instance, toast) {
+				
+				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+				let data_ = new FormData();
+				$ ('body').loading ({
+					message: 'Deleting Lesson...'
+				});
+				data_.append('delete_lesion_id' , id);
+				axios({url:'/backend/lessons',method:'post',data:data_}).then(res=>{
+					$ ('body').loading ('stop');
+					if (res.statusText === 'OK' && res.data.status === 'ok') {
+						lastDaySelected = '';
+						lastDateSelected = '';
+						getDefault ();
+					}else {
+						showErrorMessage ('Failed to delete Lesson', 3);
+					}
+				}).catch(err=>{
+					$ ('body').loading ('stop');
+					showErrorMessage ('Failed to connect ,check your connection', 5);
+				})
+				
+			}, true],
+			['<button>NO</button>', function (instance, toast) {
+				
+				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+				
+			}],
+		],
+		onClosing: function(instance, toast, closedBy){
+		//	console.info('Closing | closedBy: ' + closedBy);
+		},
+		onClosed: function(instance, toast, closedBy){
+		//	console.info('Closed | closedBy: ' + closedBy);
+		}
+	});
 }
 function showMileStoneDiloagLession (mileStoneIds) {
 	if( mileStoneIds === null || mileStoneIds === 'null'){

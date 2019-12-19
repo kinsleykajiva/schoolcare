@@ -8,6 +8,12 @@
 	include_once '../../dbaccess/classes/DBLessonsAll.php';
 	$lessonsObj = new DBLessonsAll( USER , PASSWORD , DATABASE );
 
+	if(isset($_POST['delete_lesion_id'])){
+		$id =(int) $_POST['delete_lesion_id'];
+		$res = $lessonsObj->deleteClass( $id);
+		print json_encode( $res , JSON_THROW_ON_ERROR , 512 );
+		exit;
+	}
 	if(isset($_POST['idsLessons'])){
 		$idsLessons = $_POST['idsLessons'];
 		$idsLessonsArr = explode(',',$idsLessons);

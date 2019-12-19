@@ -60,6 +60,11 @@
 			return $this->fetchInArray($sql);
 		}
 
+		public function deleteClass(int $id):array {
+			$res=  $this->setDeleteSafely('children_classes' ,$id );
+			return $this->result($res , 'Deleted A Lesson');
+		}
+
 		public function getAllLessons():array {
 			$sql = 'SELECT l.id, l.title, l.id_lesson_category AS lessCatID, lc.title AS lessCate, l.description , l.mile_stones ,
                     concat(a.start_age_in_months , "-",a.end_age_in_months) AS age_range
