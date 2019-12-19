@@ -5,7 +5,7 @@ milestoneDilaog.iziModal ({
 	width: 900,
 	zindex: 9999,
 	radius: 5,
-	padding: 10
+	padding: 20
 });
 
 
@@ -220,7 +220,7 @@ function renderLessonsRow (dataArr) {
 						+ ' <strong class="text-muted">Category: </strong><br>' + obj.lesson_category
 		+`<br>
  <a class="text-info text-capitalize" onclick="showMileStoneDiloagLession('${obj.mile_stones}')" href="javascript:void(0)">Mile Stones </a><br><hr>
- <a class="text-info text-center text-capitalize" onclick="showDeleteDialogLesson('${obj.id}')" href="javascript:void(0)">Delete </a>
+ <a class="text-info text-center text-capitalize" data-toggle="tooltip" data-placement="top" data-trigger="hover" title="" data-original-title="Delete" onclick="showDeleteDialogLesson('${obj.id}')" href="javascript:void(0)"><i class="ti-trash"></i> </a>
  `
 		+ '  </div> ';
 	
