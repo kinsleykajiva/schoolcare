@@ -1,9 +1,10 @@
 
 const modalselectLessonDialog = $("#selectLessonDialog");
 modalselectLessonDialog.iziModal ({
-	width: 700,
+	width: 900,
+	zindex: 9999,
 	radius: 5,
-	padding: 20
+	padding: 0
 });
 
 modalselectLessonDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);

@@ -8,103 +8,78 @@
         border: 1px solid
         rgba(86,61,124,.2);
     }
-    .pricingdiv{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        font-family: 'Source Sans Pro', Arial, sans-serif;
+    section.pricing {
+        background: #007bff;
+        background: linear-gradient(to right, #0062E6, #33AEFF);
     }
 
-    .pricingdiv ul.theplan{
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        border-top-left-radius: 50px;
-        border-bottom-right-radius: 50px;
-        color: white;
-        background: #7c3ac9;
-        position: relative;
-        width: 250px; /* width of each table */
-        margin-right: 10px; /* spacing between tables */
-        margin-bottom: 1em;
-        transition: all .5s;
+    .pricing .card {
+        border: none;
+        border-radius: 1rem;
+        transition: all 0.2s;
+        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
     }
 
-    .pricingdiv ul.theplan:hover{ /* when mouse hover over pricing table */
-        transform: scale(1.05);
-        transition: all .5s;
-        z-index: 100;
-        box-shadow: 0 0 10px gray;
+    .pricing hr {
+        margin: .70rem 0;
     }
 
-    .pricingdiv ul.theplan li{
-        margin: 10px 20px;
-        position: relative;
+    .pricing .card-title {
+       /* margin: 0.5rem 0;
+        font-size: 0.9rem;
+        letter-spacing: .1rem;
+        font-weight: bold;*/
     }
 
-    .pricingdiv ul.theplan li.title{
-        font-size: 150%;
+    .pricing .card-price {
+       /* font-size: 3rem;
+        margin: 0;*/
+    }
+
+    .pricing .card-price .period {
+        font-size: 0.8rem;
+    }
+
+    .pricing ul li {
+        margin-bottom: 1rem;
+    }
+
+    .pricing .text-muted {
+        opacity: 0.7;
+    }
+
+    .pricing .btn {
+        font-size: 80%;
+        border-radius: 5rem;
+        letter-spacing: .1rem;
         font-weight: bold;
-        text-align: center;
-        margin-top: 20px;
-        text-transform: uppercase;
-        border-bottom: 5px solid white;
+        padding: 1rem;
+        opacity: 0.7;
+        transition: all 0.2s;
     }
 
-    .pricingdiv ul.theplan:nth-of-type(2){
-        background: #e53499;
+    #module {
+        font-size: 1rem;
+        line-height: 1.5;
     }
 
-    .pricingdiv ul.theplan:nth-of-type(3){
-        background: #2a2cc8;
+
+    #module #collapseExample.collapse:not(.show) {
+        display: block;
+        height: 3rem;
+        overflow: hidden;
     }
 
-    .pricingdiv ul.theplan:last-of-type{ /* remove right margin in very last table */
-        margin-right: 0;
+    #module #collapseExample.collapsing {
+        height: 3rem;
     }
 
-    /*very last LI within each pricing UL */
-    .pricingdiv ul.theplan li:last-of-type{
-        text-align: center;
-        margin-top: auto; /*align last LI (price botton li) to the very bottom of UL */
+    #module a.collapsed::after {
+        content: '+ Show More';
     }
 
-    .pricingdiv a.pricebutton{
-        background: white;
-        text-decoration: none;
-        padding: 10px;
-        display: inline-block;
-        margin: 10px auto;
-        border-radius: 5px;
-        color: navy;
-        text-transform: uppercase;
-    }
-
-    @media only screen and (max-width: 500px) {
-        .pricingdiv ul.theplan{
-            border-radius: 0;
-            width: 100%;
-            margin-right: 0;
-        }
-
-        .pricingdiv ul.theplan:hover{
-            transform: none;
-            box-shadow: none;
-        }
-
-        .pricingdiv a.pricebutton{
-            display: block;
-        }
-    }
-    .list_lessons{
-        margin: 10px 15px; ;
-        display: inline-block;
-        /* You can also add some margins here to make it look prettier */
-        zoom:1;
-        *display:inline;
-        /* this fix is needed for IE7- */
+    #module a:not(.collapsed)::after {
+        content: '- Show Less';
     }
 
 </style>

@@ -6,61 +6,156 @@
 					<div class="row">
 
 						<div class="col-sm-12 col-xl-12" id="">
-							<ul>
-								<li class="list_lessons">
 
-									<div class="pricingdiv">
+							<section class="pricing py-3">
+								<div class="container" style="overflow-y: auto;max-height: 400px;" >
+									<div class="row">
+										<!-- Free Tier -->
+										<div class="col-lg-4">
+											<div class="card mb-5 mb-lg-0">
+												<div class="card-body">
 
-										<ul class="theplan">
-											<li class="title"><b>Plan 1</b></li>
-											<li><b>Dimensions:</b> 24.8W x 47.3H</li>
-											<li><b>Material:</b> Nylon w/ Breathable Glass Fiber</li>
-											<li><b>Weight:</b> 55 lbs</li>
-											<li><b>Max Weight:</b> 330 lbs</li>
-											<li><b>Tilt Degrees:</b> 135</li>
-											<li><b>Tilt Degrees:</b> 135</li>
-											<li><b>Head Rest:</b> Yes</li>
-											<li>
-												<div class="checkbox-fade fade-in-primary">
-													<label>
-														<input type="checkbox" value="">
-														<span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-														<span class="text-inverse">I read and accept</span>
-													</label>
+													<h6 class="card-price text-center">
+														Sample - Easter Egg Hunt
+													</h6>
+													<h6 class="text-muted text-center">Outdoor Activity</h6>
+													<hr>
+													<ul class="fa-ul">
+														<li>
+															<div id="module" class="">
+
+																<p class="collapse" id="collapseExample" style="overflow-y: auto; max-height: 100px;" aria-expanded="false">
+																	Today staff hid different-colored plastic easter eggs throughout the yard.
+																	Children had time to search the designated space and fill their baskets with the eggs they found.
+																	After they were finished, we practiced sorting the eggs by color.
+																</p>
+																<a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></a>
+															</div>
+														</li>
+
+														<li>
+															<div class="label-main">
+																<label class="label label-inverse-info">18 -40 Months</label>
+															</div>
+														</li>
+
+													</ul>
+													<!--<a href="#" class=" btn-primary t">Button</a>-->
+													<div class=" row d-flex justify-content-center checkbox-fade fade-in-primary text-uppercase ">
+														<label>
+															<input type="checkbox" value="">
+															<span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+															<span class="text-inverse">Select </span>
+														</label>
+													</div>
 												</div>
-											</li>
-										</ul>
+											</div>
+										</div>
+										<!-- Plus Tier -->
+										<div class="col-lg-4">
+											<div class="card mb-5 mb-lg-0">
+												<div class="card-body">
 
+													<h6 class="card-price text-center">
+														Sample - Easter Egg Hunt
+													</h6>
+													<h6 class="text-muted text-center">Outdoor Activity</h6>
+													<hr>
+													<ul class="fa-ul">
+														<li>
+															<div id="module" class="">
 
+																<p class="collapse" id="collapseExample" style="overflow-y: auto; max-height: 100px;" aria-expanded="false">
+																	Today staff hid different-colored plastic easter eggs throughout the yard.
+																	Children had time to search the designated space and fill their baskets with the eggs they found.
+																	After they were finished, we practiced sorting the eggs by color.
+																</p>
+																<a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></a>
+															</div>
+														</li>
+
+														<li>
+															<div class="label-main">
+																<label class="label label-inverse-info">18 -40 Months</label>
+															</div>
+														</li>
+
+													</ul>
+													<!--<a href="#" class=" btn-primary t">Button</a>-->
+													<div class=" row d-flex justify-content-center checkbox-fade fade-in-primary text-uppercase ">
+														<label>
+															<input type="checkbox" value="">
+															<span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+															<span class="text-inverse">Select </span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Pro Tier -->
+										<div class="col-lg-4">
+											<div class="card mb-5 mb-lg-0">
+												<div class="card-body">
+
+													<h6 class="card-price text-center">
+														Sample - Easter Egg Hunt
+													</h6>
+													<h6 class="text-muted text-center">Outdoor Activity</h6>
+													<hr>
+													<ul class="fa-ul">
+														<li>
+															<div id="module" class="">
+
+																<p class="collapse" id="collapseExample" style="overflow-y: auto; max-height: 100px;" aria-expanded="false">
+																	Today staff hid different-colored plastic easter eggs throughout the yard.
+																	Children had time to search the designated space and fill their baskets with the eggs they found.
+																	After they were finished, we practiced sorting the eggs by color.
+																</p>
+																<a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></a>
+															</div>
+														</li>
+
+														<li>
+															<div class="label-main">
+																<label class="label label-inverse-info">18 -40 Months</label>
+															</div>
+														</li>
+
+													</ul>
+													<!--<a href="#" class=" btn-primary t">Button</a>-->
+													<div class=" row d-flex justify-content-center checkbox-fade fade-in-primary text-uppercase ">
+														<label>
+															<input type="checkbox" value="">
+															<span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+															<span class="text-inverse">Select </span>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 
-								</li>
-								<li class="list_lessons">
+								</div>
+							</section>
 
-									<div class="pricingdiv">
-
-										<ul class="theplan">
-											<li class="title"><b>Plan 1</b></li>
-											<li><b>Dimensions:</b> 24.8W x 47.3H</li>
-											<li><b>Material:</b> Nylon w/ Breathable Glass Fiber</li>
-											<li><b>Weight:</b> 55 lbs</li>
-											<li><b>Max Weight:</b> 330 lbs</li>
-											<li><b>Tilt Degrees:</b> 135</li>
-											<li><b>Tilt Degrees:</b> 135</li>
-											<li><b>Head Rest:</b> Yes</li>
-											<li>
-												<a class="pricebutton" href="http://ergonomictrends.com/best-ergonomic-office-chairs-2017-reviews-buyers-guide/" target="_blank" rel="nofollow"><span class="icon-tag"></span> Check Out</a>
-											</li>
-										</ul>
-
-
-									</div>
-
-								</li>
-							</ul>
 
 
 						</div>
+
+					</div>
+
+					<div class="row" style="background: #007bff;padding: 10px;">
+						<div class="col-lg-1">
+
+						</div>
+						<div class="col-lg-4">
+							<button class="btn btn-round btn-info btn-mini ">Add New Lesson</button>
+						</div>
+						<div class="col-lg-4"></div>
+						<div class="col-lg-3">
+							<button  class="btn btn-round btn-info btn-mini ">Save Lesson</button>
+						</div>
+
 					</div>
 				</div>
 			</div>
