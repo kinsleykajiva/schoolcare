@@ -153,7 +153,7 @@
 						</div>
 						<div class="col-lg-4"></div>
 						<div class="col-lg-3">
-							<button  class="btn btn-round btn-info btn-mini ">Save Lesson</button>
+							<button onclick="onSaveClassLession()"  class="btn btn-round btn-info btn-mini ">Save Lesson</button>
 						</div>
 
 					</div>

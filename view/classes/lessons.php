@@ -107,17 +107,18 @@
 
     </div>
     <div class="card-block table-border-style">
-            <div class="row">
-                <div class=" col-remake col-md-1 text-center" style="visibility: hidden;">Sun</div>
+            <div class="row" id="days_dats">
+
+                <div class=" col-remake col-md-1 text-center" style="display: none;">Sun</div>
                 <div class=" col-remake col-md-2 text-center"> <div class="text-dribbble">20 Nov</div> Mon</div>
                 <div class="col-remake col-md-2 text-center">Tue</div>
                 <div class="col-remake col-md-2 text-center">Wen</div>
                 <div class="col-remake col-md-2 text-center">Thu</div>
                 <div class="col-remake col-md-2 text-center">Fri</div>
-                <div class="col-remake col-md-1 text-center" style="visibility: hidden;">Sat</div>
+                <div class="col-remake col-md-1 text-center" style="display: none;">Sat</div>
 
             </div>
-            <div class="row">
+            <div class="row" id="divClickButtons">
                 <div class="col-remake col-md-1" style="visibility: hidden;">6</div>
                 <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Monday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
                 <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Tuesday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
@@ -125,8 +126,22 @@
                 <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Thursday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
                 <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Friday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
 
-                <div class="col-remake col-md-1" style="visibility: hidden;">7</div>
+                <div class="col-remake col-md-1" style="display: none;">7</div>
             </div>
+        <hr>
+        <div class="" id="div_lessons"></div>
     </div>
 </div>
 <?php require 'lessons/select-lesson.php'; require 'lessons/create-lesson.php';?>
+
+<div class="" id="milestoneDilaog" data-izimodal-title="MileStones Dialog">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="">
+                <div class="card-block">
+                    <p id="mileStonedDetail"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

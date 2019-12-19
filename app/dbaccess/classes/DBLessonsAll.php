@@ -17,6 +17,37 @@
 			parent::__construct( $this->DBCon );
 		}
 
+		public function getMileStonesArr(array  $ids):array {
+			$arr = [] ;
+			foreach ($ids as $id){
+				$sql = 'SELECT m.id, m.title, m.description, m.id_milestone_category ,mc.title AS mileCat  FROM milestones m JOIN milestone_category mc ON m.id_milestone_category = mc.id WHERE  m.id = ' . $id;
+
+				$arr [] =  $this->fetchInArray($sql);
+			}
+			return $arr;
+		}
+
+		public function getAllClasses():array {
+			$sql = "SELECT cc.* , l.title AS lTitle, (SELECT lessons_category.title FROM lessons_category WHERE lessons_category.id = l.id_lesson_category) AS lesson_category, l.description AS lDescr, id_age_ranges, mile_stones FROM
+		             children_classes cc JOIN lessons l ON cc.id_lesson = l.id
+					WHERE cc.isvisible = 1";
+
+			return $this->fetchInArray($sql);
+		}
+
+		public function saveClassLesson( $id_lesson , $date_on_date , $id_user_saved_by , $rooms_ids ):array {
+			$res = $this->insert('children_classes',[
+				'id_lesson' => $id_lesson ,
+				'date_on_date' => $date_on_date ,
+				'id_user_saved_by' => $id_user_saved_by ,
+				'rooms_ids' => $rooms_ids ,
+				'date_created' => self::nowDateTime()
+			]) ;
+
+
+			return $this->result($res,'Added Lesson to class');
+		}
+
 		public function getMileStones ():array {
 			$sql = 'SELECT m.id, m.title, m.description, m.id_milestone_category AS mileStoneCatID, mc.title AS categoryTitle  FROM milestones m 
 					JOIN milestone_category mc ON m.id_milestone_category = mc.id
