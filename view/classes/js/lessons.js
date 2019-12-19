@@ -117,6 +117,16 @@ function onSaveNewLesson () {
 	
 	
 }
+
+
+
+function onBackToLessons () {
+	
+	$("#divCreateLesson").slideUp();
+	$("#divViewLesson").slideDown();
+	
+}
+
 function showAddNewClass () {
 	modalselectLessonDialog.iziModal ('close');
 	$("#divViewLesson").slideUp();

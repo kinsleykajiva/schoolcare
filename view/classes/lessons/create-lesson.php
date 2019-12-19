@@ -36,7 +36,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Ages</label>
 				<div class="col-sm-10">
-					<select multiple id="newLesson_ages"  class="form-control form-control-normal selectpicker" >
+					<select  id="newLesson_ages"  class="form-control form-control-normal selectpicker" >
 
 					</select>
 					<!--<div style="visibility: hidden;" id="newLesson_ages_error" class="col-form-label text-danger">
@@ -61,9 +61,12 @@
 				<label class="col-sm-2 col-form-label">
 					<button onclick="onSaveNewLesson();" class="btn btn-info  btn-round">Save</button>
 				</label>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 
 				</div>
+				<label class="col-sm-4 col-form-label">
+					<button onclick="onBackToLessons();" class="btn btn-default  btn-round"> <i class="fa fa-arrow-left"></i>  Back to View Lessons</button>
+				</label>
 			</div>
 
 		</form>
