@@ -219,7 +219,7 @@ function renderLessonsRow (dataArr) {
 						+ '<strong>Details</strong>  <br>'+obj.lDescr+'<br>'
 						+ ' <strong class="text-muted">Category: </strong><br>' + obj.lesson_category
 		+`<br>
- <a class="" onclick="showMileStoneDiloagLession('${obj.mile_stones}')" href="javascript:void(0)">Mile Stones </a>
+ <a class="text-info text-capitalize" onclick="showMileStoneDiloagLession('${obj.mile_stones}')" href="javascript:void(0)">Mile Stones </a>
  `
 		+ '  </div> ';
 	
@@ -255,18 +255,18 @@ function renderLessonsRow (dataArr) {
 	
 }
 function showMileStoneDiloagLession (mileStoneIds) {
-	if(!mileStoneIds){
-		showGeneralMessage('No MileStones Set',4);
+	if( mileStoneIds === null || mileStoneIds === 'null'){
+		showGeneralMessage('No MileStones were Set',4);
 		return;
 	}
 	milestoneDilaog.iziModal ('open');
 	milestoneDilaog.iziModal ('startLoading');
 	axios.get('/view/lessons',{params:{milestone_gets:mileStoneIds}}).then(res=>{
 		if(res.statusText === 'OK'){
-			console.log (res.data);
+			//console.log (res.data);
 			let row = '';
 			_.forEach(res.data , (vals,inx)=>{
-				console.log(vals)
+				//console.log(vals)
 				row+= `<p><strong>Category:</strong><br> ${vals.mileCat?vals.mileCat:'None'} </p>`;
 				row+= `<p><strong>Title:</strong><br> ${vals.title?vals.title:'None'} </p>`;
 				row+= `<hr>`;
