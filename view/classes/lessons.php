@@ -84,7 +84,7 @@
 */
 </style>
 
-<div class="page-header card">
+<div class="page-header card" style="display: none;">
     <div class="card-block">
        <!-- <button class="btn btn-mini btn-round btn-info"></button>-->
 

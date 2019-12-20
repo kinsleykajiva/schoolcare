@@ -36,7 +36,7 @@ function onAddLessonOn (day, date) {
 		case 'Tuesday':
 			break;
 		
-		case 'Wdnesday':
+		case 'Wednesday':
 			break;
 		
 		case 'Thursday':
@@ -111,10 +111,10 @@ function onSaveNewLesson () {
 						}],
 					],
 					onClosing: function (instance, toast, closedBy) {
-						console.info ('Closing | closedBy: ' + closedBy);
+						//console.info ('Closing | closedBy: ' + closedBy);
 					},
 					onClosed: function (instance, toast, closedBy) {
-						console.info ('Closed | closedBy: ' + closedBy);
+						//console.info ('Closed | closedBy: ' + closedBy);
 					}
 				});
 				
@@ -161,7 +161,7 @@ function getCurrentWeek () {
 	
 	const days = [];
 	
-	for (var i = 0; i <= 6; i++) {
+	for (let i = 0; i <= 6; i++) {
 		days.push (moment (weekStart).add (i, 'days').format ("D MMM dddd"));
 	}
 	return (days);
@@ -171,11 +171,10 @@ function getCurrentWeekDates () {
 	const currentDate = moment ();
 	
 	const weekStart = currentDate.clone ().startOf ('isoWeek');
-	const weekEnd = currentDate.clone ().endOf ('isoWeek');
 	
 	const days = [];
 	
-	for (var i = 0; i <= 6; i++) {
+	for (let i = 0; i <= 6; i++) {
 		days.push (
 			moment (weekStart).add (i, 'days').format ("YYYY-MM-DD")
 		);
@@ -221,9 +220,9 @@ function renderLessonsRow (dataArr) {
 		+ '<strong>Details</strong>  <br>' + obj.lDescr + '<br>'
 		+ ' <strong class="text-muted">Category: </strong><br>' + obj.lesson_category
 		+ `<br>
- <a class="text-info text-capitalize" onclick="showMileStoneDiloagLession('${obj.mile_stones}')" href="javascript:void(0)">Mile Stones </a><br><hr>
- <a class="text-info text-center text-capitalize" data-toggle="tooltip" data-placement="top" data-trigger="hover" title="" data-original-title="Delete" onclick="showDeleteDialogLesson('${obj.id}')" href="javascript:void(0)"><i class="ti-trash"></i> </a>
- `
+			 <a class="text-info text-capitalize" onclick="showMileStoneDiloagLession('${obj.mile_stones}')" href="javascript:void(0)">Mile Stones </a><br><hr>
+			 <a class="text-info text-center text-capitalize" data-toggle="tooltip" data-placement="top" data-trigger="hover" title="" data-original-title="Delete" onclick="showDeleteDialogLesson('${obj.id}')" href="javascript:void(0)"><i class="ti-trash"></i> </a>
+			 `
 		+ '  </div> ';
 	
 	_.forEach (dataArr, (valls, inx) => {
@@ -365,6 +364,7 @@ function getDefault () {
 	axios.get ('/view/lessons', {
 		params: {def_get: 34}
 	}).then (res => {
+		
 		if (res.statusText === 'OK') {
 			const j = res.data;
 			renderLessonsSelects (j.lessons);
@@ -376,7 +376,7 @@ function getDefault () {
 			showErrorMessage ('Failed to get Data Admin', 4);
 		}
 	}).catch (err => {
-		showErrorMessage ('Failed to get Data', 4);
+		showErrorMessage ('Failed to get Data, Check your connection !', 4);
 	});
 }
 
