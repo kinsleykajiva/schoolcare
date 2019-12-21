@@ -1,5 +1,5 @@
 
-<div class="card" style="display: none;" id="divCreateLesson">
+<div class="" style="" id="divCreateLesson">
 	<div class="card-header">
 		<h5>Create New Lesson</h5>
 
@@ -64,7 +64,7 @@
 				<div class="col-sm-6">
 
 				</div>
-				<label class="col-sm-4 col-form-label">
+				<label style="visibility: hidden;" class="col-sm-4 col-form-label">
 					<button onclick="onBackToLessons();" class="btn btn-default  btn-round"> <i class="fa fa-arrow-left"></i>  Back to View Lessons</button>
 				</label>
 			</div>

@@ -17,11 +17,39 @@
 			parent::__construct( $this->DBCon );
 		}
 
+		public function getAllTimeTableClassesLessons():array {
+			$sql = 'SELECT tt.id, tt.id_lesson, tt.time_period, tt.day,  tt.id_user_created, tt.date_created ,
+                            l.title,   l.description,   l.mile_stones ,
+							lc.title AS lessonsCategory ,
+                            ar.end_age_in_months , ar.start_age_in_months
+					FROM time_table tt
+						JOIN lessons l ON tt.id_lesson = l.id
+						JOIN lessons_category lc ON l.id_lesson_category = lc.id
+						JOIN age_ranges ar ON ar.id = l.id_age_ranges
+					';
+
+			return $this->fetchInArray($sql);
+		}
+
+		public function saveTimeTableClassLesson( $id_lesson , $time_period , $day , $id_user_created ):array {
+			$res = $this->insert('time_table',[
+				'id_lesson' => $id_lesson,
+				'time_period' => $time_period,
+				'day' => $day,
+				'id_user_created' => $id_user_created,
+				'date_created' => self::nowDateTime()
+			]);
+			return $this->result($res , 'Saved New Class For Time Table');
+		}
+
 		public function getMileStonesArr ( array $ids ) : array
 		{
 			$arr = [];
 			foreach ( $ids as $id ) {
-				$sql = 'SELECT m.id, m.title, m.description, m.id_milestone_category ,mc.title AS mileCat  FROM milestones m JOIN milestone_category mc ON m.id_milestone_category = mc.id WHERE  m.id = ' . $id;
+				$sql = 'SELECT m.id, m.title, m.description, m.id_milestone_category ,mc.title AS mileCat  
+						FROM milestones m 
+						    JOIN milestone_category mc ON m.id_milestone_category = mc.id 
+						WHERE  m.id = ' . $id;
 
 				$arr [] = $this->fetchInArray( $sql )[ 0 ];
 			}
@@ -30,9 +58,11 @@
 
 		public function getAllClasses () : array
 		{
-			$sql = "SELECT cc.* , l.title AS ltitle, (SELECT lessons_category.title FROM lessons_category WHERE lessons_category.id = l.id_lesson_category) AS lesson_category, l.description AS ldescr, id_age_ranges, mile_stones FROM
-		             children_classes cc JOIN lessons l ON cc.id_lesson = l.id
-					WHERE cc.isvisible = 1";
+			$sql = 'SELECT cc.* , l.title AS ltitle, (SELECT lessons_category.title FROM lessons_category 	WHERE lessons_category.id = l.id_lesson_category) AS lesson_category,
+                    l.description AS ldescr, id_age_ranges, mile_stones 
+					FROM children_classes cc 
+					    JOIN lessons l ON cc.id_lesson = l.id
+					WHERE cc.isvisible = 1';
 
 			return $this->fetchInArray( $sql );
 		}
@@ -53,8 +83,9 @@
 
 		public function getMileStones () : array
 		{
-			$sql = 'SELECT m.id, m.title, m.description, m.id_milestone_category AS milestonecatid, mc.title AS categorytitle  FROM milestones m 
-					JOIN milestone_category mc ON m.id_milestone_category = mc.id
+			$sql = 'SELECT m.id, m.title, m.description, m.id_milestone_category AS milestonecatid, mc.title AS categorytitle  
+					FROM milestones m 
+						JOIN milestone_category mc ON m.id_milestone_category = mc.id
 					WHERE m.isvisible = 1 ';
 
 			return $this->fetchInArray( $sql );

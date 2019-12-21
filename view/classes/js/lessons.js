@@ -405,8 +405,7 @@ function renderMileStones (data) {
 	
 	let optg = ``;
 	Object.keys (mData).forEach ((key, i) => {
-		let mKey = key;
-		optg += `<optgroup label="${mKey}">`;
+		optg += `<optgroup label="${key}">`;
 		let mileStonesArr = mData[key];
 		_.forEach (mileStonesArr, (valz, inz) => {
 			optg += `<option value="${valz.id}">${valz.title}</option>`;

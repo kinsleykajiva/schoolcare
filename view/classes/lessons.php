@@ -25,15 +25,15 @@
     }
 
     .pricing .card-title {
-       /* margin: 0.5rem 0;
-        font-size: 0.9rem;
-        letter-spacing: .1rem;
-        font-weight: bold;*/
+        /* margin: 0.5rem 0;
+		 font-size: 0.9rem;
+		 letter-spacing: .1rem;
+		 font-weight: bold;*/
     }
 
     .pricing .card-price {
-       /* font-size: 3rem;
-        margin: 0;*/
+        /* font-size: 3rem;
+		 margin: 0;*/
     }
 
     .pricing .card-price .period {
@@ -83,57 +83,46 @@
     }
 */
 </style>
-
-<div class="page-header card" style="display: none;">
-    <div class="card-block">
-       <!-- <button class="btn btn-mini btn-round btn-info"></button>-->
-
-
-    </div>
+<div class="page-header card">
+    <ul class="nav nav-tabs md-tabs " role="tablist">
+        <li class="nav-item ">
+            <a class="nav-link active " data-toggle="tab" href="#timetableView" role="tab" aria-expanded="true"> <i class="fa fa-table"></i> Lessons</a>
+            <div class="slide"></div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#addlessons" role="tab" aria-expanded="false"><i class="fa fa-plus-square-o"></i>  Add Lesson</a>
+            <div class="slide"></div>
+        </li>
+        <li class="nav-item" style="display: none;">
+            <a class="nav-link" data-toggle="tab" href="#messages3" role="tab" aria-expanded="false">Messages</a>
+            <div class="slide"></div>
+        </li>
+        <li class="nav-item" style="display: none;">
+            <a class="nav-link" data-toggle="tab" href="#settings3" role="tab" aria-expanded="false">Settings</a>
+            <div class="slide"></div>
+        </li>
+    </ul>
 </div>
 
-<div class="card" style="" id="divViewLesson">
-    <div class="card-header">
-        <h5>Lessons</h5>
+<div class="card">
 
-        <div class="card-header-right">
-            <ul class="list-unstyled card-option">
-                <li><i class="fa fa-chevron-left"></i></li>
-                <li><i class="fa fa-window-maximize full-card"></i></li>
-                <li><i class="fa fa-minus minimize-card"></i></li>
-                <li><i class="fa fa-refresh reload-card-remake"></i></li>
-            </ul>
+
+    <div class="tab-content card-block">
+        <div class="tab-pane active" id="timetableView" role="tabpanel" aria-expanded="true">
+	        <?php include 'lessons/table-view-lessons.php';?>
         </div>
-
-    </div>
-    <div class="card-block table-border-style">
-            <div class="row" id="days_dats">
-
-                <div class=" col-remake col-md-1 text-center" style="display: none;">Sun</div>
-                <div class=" col-remake col-md-2 text-center"> <div class="text-dribbble">20 Nov</div> Mon</div>
-                <div class="col-remake col-md-2 text-center">Tue</div>
-                <div class="col-remake col-md-2 text-center">Wen</div>
-                <div class="col-remake col-md-2 text-center">Thu</div>
-                <div class="col-remake col-md-2 text-center">Fri</div>
-                <div class="col-remake col-md-1 text-center" style="display: none;">Sat</div>
-
-            </div>
-            <div class="row" id="divClickButtons">
-                <div class="col-remake col-md-1" style="visibility: hidden;">6</div>
-                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Monday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
-                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Tuesday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
-                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Wednesday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
-                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Thursday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
-                <div class="col-remake col-md-2" ><button onclick="onAddLessonOn('Friday')" class="btn btn-primary btn-outline-primary btn-round btn-mini"><i class="icofont icofont-plus-circle"></i>Add Lesson</button></div>
-
-                <div class="col-remake col-md-1" style="display: none;">7</div>
-            </div>
-        <hr>
-        <div class="" id="div_lessons"></div>
+        <div class="tab-pane" id="addlessons" role="tabpanel" aria-expanded="false">
+	        <?php  require 'lessons/create-lesson.php';?>
+        </div>
+        <div class="tab-pane" id="messages3" role="tabpanel" aria-expanded="false">
+            <p class="m-0">3. This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis natoque penatibus et magnis dis.....</p>
+        </div>
+        <div class="tab-pane" id="settings3" role="tabpanel" aria-expanded="false">
+            <p class="m-0">4.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor interdum praesent sit amet nulla vel enim amet. Donec convallis tellus neque, et imperdiet felis amet.</p>
+        </div>
     </div>
 </div>
-<?php require 'lessons/select-lesson.php'; require 'lessons/create-lesson.php';?>
-
+<?php require 'lessons/select-lesson.php'; ?>
 <div class="" id="milestoneDilaog" data-izimodal-title="MileStones Dialog">
     <div class="row">
         <div class="col-sm-12">
