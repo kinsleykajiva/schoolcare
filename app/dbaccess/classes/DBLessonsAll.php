@@ -58,7 +58,7 @@
 
 		public function getAllClasses () : array
 		{
-			$sql = 'SELECT cc.* , l.title AS ltitle, (SELECT lessons_category.title FROM lessons_category 	WHERE lessons_category.id = l.id_lesson_category) AS lesson_category,
+			$sql = 'SELECT cc.* , l.title AS ltitle,cc.day, (SELECT lessons_category.title FROM lessons_category 	WHERE lessons_category.id = l.id_lesson_category) AS lesson_category,
                     l.description AS ldescr, id_age_ranges, mile_stones 
 					FROM children_classes cc 
 					    JOIN lessons l ON cc.id_lesson = l.id
@@ -67,13 +67,14 @@
 			return $this->fetchInArray( $sql );
 		}
 
-		public function saveClassLesson ( $id_lesson , $date_on_date , $id_user_saved_by , $rooms_ids ) : array
+		public function saveClassLesson ( $id_lesson , $date_on_date , $id_user_saved_by , $rooms_ids ,$day ) : array
 		{
 			$res = $this->insert( 'children_classes' , [
 				'id_lesson' => $id_lesson ,
 				'date_on_date' => $date_on_date ,
 				'id_user_saved_by' => $id_user_saved_by ,
 				'rooms_ids' => $rooms_ids ,
+				'day' => $day ,
 				'date_created' => self::nowDateTime()
 			] );
 

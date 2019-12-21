@@ -22,7 +22,7 @@
 		$res = [];
 		foreach ( $idsLessonsArr as $idsLesson ) {
 
-			$res = $lessonsObj->saveClassLesson( $idsLesson , $DateSelected , $USER_ID , '' );
+			$res = $lessonsObj->saveClassLesson( $idsLesson , $DateSelected , $USER_ID , '' ,$DaySelected);
 		}
 
 		print json_encode( $res , JSON_THROW_ON_ERROR , 512 );

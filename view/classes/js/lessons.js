@@ -224,24 +224,35 @@ function renderLessonsRow (dataArr) {
 			 <a class="text-info text-center text-capitalize" data-toggle="tooltip" data-placement="top" data-trigger="hover" title="" data-original-title="Delete" onclick="showDeleteDialogLesson('${obj.id}')" href="javascript:void(0)"><i class="ti-trash"></i> </a>
 			 `
 		+ '  </div> ';
-	
+	console.log (dataArr)
+	let MonLessonCount = dataArr.filter(x=>x.day === 'Monday').length ;
+	let TueLessonCount = dataArr.filter(x=>x.day === 'Tuesday').length ;
+	console.log (MonLessonCount , TueLessonCount)
 	_.forEach (dataArr, (valls, inx) => {
 		
 		row += `<div style="background: white;"  class="row">`;
 		row += `<div class="col-remake col" style="display: none;">6</div>`;
+		const NUM_OF_DAYS = 5;
+		let daysCellsArr = [];
+		
 		for (let i = 0; i < daysArr.length - 2; i++) {
 			let objDate = valls.date_on_date;
+			let objDay = valls.day;
 			
 			const dayFull = daysArr[i].split (' ');
 			let day = dayFull[2];
 			let month = dayFull[1];
 			let date = dayFull[0];
 			let dates_formatted = datesArr[i];
+			//console.log(objDay , day)
 			
-			if (objDate === dates_formatted) {
+			if (objDay === day) {
 				//console.log (objDate , dates_formatted);
+				if(i === 0){
+					let MonLessonCount = daysArr.filter(x=>x.day === 'Monday').length ;
+				}
 				row += `
-		                <div  class="col-remake col" >${i === 0 ? rend (valls) : ''}</div>
+		                <div id="cell_div_${inx}_${i}"  class="col-remake col" >${i === 0 ? rend (valls) : ''}</div>
 		                <div  class="col-remake col" >${i === 1 ? rend (valls) : ''}</div>
 		               <div  class="col-remake col" >${i === 2 ? rend (valls) : ''}</div>
 		                 <div class="col-remake col" >${i === 3 ? rend (valls) : ''}</div>
