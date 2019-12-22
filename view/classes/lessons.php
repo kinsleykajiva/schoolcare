@@ -90,11 +90,11 @@
             <div class="slide"></div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#addlessons" role="tab" aria-expanded="false"><i class="fa fa-plus-square-o"></i>  Add Lesson</a>
+            <a class="nav-link" data-toggle="tab" id="tab-addlesson" href="#addlessons" role="tab" aria-expanded="false"><i class="fa fa-plus-square-o"></i>  Add Lesson</a>
             <div class="slide"></div>
         </li>
-        <li class="nav-item" style="display: none;">
-            <a class="nav-link" data-toggle="tab" href="#messages3" role="tab" aria-expanded="false">Messages</a>
+        <li class="nav-item" >
+            <a class="nav-link" data-toggle="tab" href="#milestones" role="tab" aria-expanded="false">Milestones</a>
             <div class="slide"></div>
         </li>
         <li class="nav-item" style="display: none;">
@@ -114,8 +114,8 @@
         <div class="tab-pane" id="addlessons" role="tabpanel" aria-expanded="false">
 	        <?php  require 'lessons/create-lesson.php';?>
         </div>
-        <div class="tab-pane" id="messages3" role="tabpanel" aria-expanded="false">
-            <p class="m-0">3. This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis natoque penatibus et magnis dis.....</p>
+        <div class="tab-pane" id="milestones" role="tabpanel" aria-expanded="false">
+            <?php include "lessons/view-milestones.php"; ?>
         </div>
         <div class="tab-pane" id="settings3" role="tabpanel" aria-expanded="false">
             <p class="m-0">4.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor interdum praesent sit amet nulla vel enim amet. Donec convallis tellus neque, et imperdiet felis amet.</p>

@@ -53,6 +53,8 @@ function checkAuth(jdata){
 }
 
 /*********************************************************************************************/
+String.prototype.replaceAll = function(f,r){return this.split(f).join(r);}
+/*********************************************************************************************/
 function groupBy ( xs , f ) {
 	return xs.reduce (
 		( r , v , i , a , k = f ( v ) ) => ( ( r[ k ] || ( r[ k ] = [] ) ).push (    v ), r ) , {} );
@@ -154,6 +156,17 @@ function isEmail(email) {
 	return regex.test(email);
 }
 /*********************************************************************************************/
+function simpleAcronymExpression(text) {
+	return text
+		.split(/\s/)
+		.reduce((accumulator, word) =>{
+			word  = word === '&' ? '' : word;
+			word  = word === 'and' ||  word === 'with' ||  word === 'is' ? '' : word;
+			word  = word === 'to' || word === 'tO' || word === 'To' || word === 'TO' ? '' : word;
+			word = word.replaceAll(',' , ' ');
+			return accumulator + word.charAt(0).toUpperCase();
+		}, '');
+}
 /*********************************************************************************************/
 function removeLoadingOn(element_id_String){
 	$('#' + element_id_String).unblock();

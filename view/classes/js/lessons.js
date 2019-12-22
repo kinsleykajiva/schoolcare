@@ -197,7 +197,7 @@ function renderWeekDays () {
 		let dates_formatted = datesArr[i];
 		//console.log (dates_formatted);
 		div += ` <div class=" col-remake col text-center"> <div class="text-dribbble">${date} ${month}</div> ${day}</div>`;
-		divButton += ` <div class="col-remake col" >
+		divButton += ` <div class="col-remake col  text-center" >
  							<button onclick="onAddLessonOn('${day}','${dates_formatted}')" class="btn btn-primary btn-outline-primary btn-round btn-mini">
  									<i class="icofont icofont-plus-circle"></i>Add Lesson
  							</button>
@@ -216,18 +216,18 @@ function renderLessonsRow (dataArr) {
 	let datesArr = getCurrentWeekDates ();
 	let row = ``;
 	const rend = obj => ' <div style="padding: 10px;background-color: #f4f4f4;border-radius: 4px;"> <b class="text-muted">Title</b> <br>' +
-		obj.lTitle + '<br>'
-		+ '<strong>Details</strong>  <br>' + obj.lDescr + '<br>'
+		obj.ltitle + '<br>'
+		+ '<strong>Details</strong>  <br>' + obj.ldescr + '<br>'
 		+ ' <strong class="text-muted">Category: </strong><br>' + obj.lesson_category
 		+ `<br>
 			 <a class="text-info text-capitalize" onclick="showMileStoneDiloagLession('${obj.mile_stones}')" href="javascript:void(0)">Mile Stones </a><br><hr>
 			 <a class="text-info text-center text-capitalize" data-toggle="tooltip" data-placement="top" data-trigger="hover" title="" data-original-title="Delete" onclick="showDeleteDialogLesson('${obj.id}')" href="javascript:void(0)"><i class="ti-trash"></i> </a>
 			 `
 		+ '  </div> ';
-	console.log (dataArr)
+	//console.log (dataArr)
 	let MonLessonCount = dataArr.filter(x=>x.day === 'Monday').length ;
 	let TueLessonCount = dataArr.filter(x=>x.day === 'Tuesday').length ;
-	console.log (MonLessonCount , TueLessonCount)
+	//console.log (MonLessonCount , TueLessonCount)
 	_.forEach (dataArr, (valls, inx) => {
 		
 		row += `<div style="background: white;"  class="row">`;
@@ -347,7 +347,7 @@ function showMileStoneDiloagLession (mileStoneIds) {
 	
 }
 
-//renderLessonsRow([1,2,4,5,6,7,7,7,7,7])
+
 
 
 function onBackToLessons () {
@@ -359,8 +359,7 @@ function onBackToLessons () {
 
 function showAddNewClass () {
 	modalselectLessonDialog.iziModal ('close');
-	$ ("#divViewLesson").slideUp ();
-	$ ("#divCreateLesson").slideDown ();
+	$("#tab-addlesson").trigger('click');
 	
 }
 
@@ -383,6 +382,7 @@ function getDefault () {
 			renderLessonsCategories (j.lesscategory);
 			renderAgeRanges (j.age_range);
 			renderLessonsRow (j.classes);
+			
 		} else {
 			showErrorMessage ('Failed to get Data Admin', 4);
 		}
@@ -412,16 +412,25 @@ function renderLessonsCategories (data) {
 }
 
 function renderMileStones (data) {
-	let mData = groupBy (data, x => [x.categoryTitle]);
+	let mData = groupBy (data, x => [x.categorytitle]);
 	
 	let optg = ``;
+	let list = ``;
+	
 	Object.keys (mData).forEach ((key, i) => {
 		optg += `<optgroup label="${key}">`;
+		list += `<div class="list-group">`;
+		list += `<button type="button" class="list-group-item list-group-item-action active"> ( ${simpleAcronymExpression(key)} ) ${key}</button>`;
+		
 		let mileStonesArr = mData[key];
 		_.forEach (mileStonesArr, (valz, inz) => {
 			optg += `<option value="${valz.id}">${valz.title}</option>`;
+			list += `<button type="button" class="list-group-item list-group-item-action">${valz.title}</button>`;
 		});
 		optg += `</optgroup>`;
+		list += `</div>`;
+		list += `<br>`;
+		
 		
 		//console.log (optg)
 	});
@@ -430,6 +439,7 @@ function renderMileStones (data) {
 	
 	$ ('#newLesson_milestones').html (optg);
 	$ ('#newLesson_milestones').selectpicker ('render').selectpicker ('refresh');
+	$('#divMilestonesLists').html(list);
 }
 
 function renderLessonsSelects (data) {
@@ -445,7 +455,7 @@ function renderLessonsSelects (data) {
 							<h6 class="card-price text-center">
 								${valls.title}
 							</h6>
-							<h6 class="text-muted text-center">${valls.lessCate}</h6>
+							<h6 class="text-muted text-center">${valls.lesscate}</h6>
 							<hr>
 							<ul class="fa-ul">
 							<li>
