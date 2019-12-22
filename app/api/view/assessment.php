@@ -12,6 +12,7 @@
 	if(isset($_GET['get_deff'])){
 		$view ['m_cates'] = $lessonsObj->getAllMileStonesCategories();
 		$view ['children'] = $childrenObj->getAllChildren();
+		$view ['assesment'] = $childrenObj->getAllChildAssesment();
 		$view ['markers'] = $childrenObj->getAllAssesmentMarkers();
 
 		print json_encode( $view , JSON_THROW_ON_ERROR , 512 );

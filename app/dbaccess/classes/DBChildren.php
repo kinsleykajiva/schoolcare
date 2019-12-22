@@ -21,6 +21,18 @@
 
 			return $this->fetchInArray($sql);
 		}
+		public function getAllChildAssesment():array {
+			$sql ="SELECT ca.* , cam.id AS  camid,  cam.title AS  camtitle , 
+                    CONCAT(c.name , ' ' , c.surname) as childname ,
+                    (SELECT CONCAT(employees.surname , ' ' , employees.surname) FROM employees WHERE employees.id = u.id_employee) AS savedby
+					FROM child_assessment ca 
+                    JOIN child_assessment_markers cam ON ca.id_assessment_marker = cam.id
+                    JOIN children c ON ca.id_child = c.id
+					JOIN users u ON ca.id_user_created = u.id
+                    ";
+
+			return $this->fetchInArray($sql);
+		}
 
 		public function getAllAssesmentMarkers():array {
 			$sql ='SELECT * FROM child_assessment_markers';
