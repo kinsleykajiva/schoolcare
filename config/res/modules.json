@@ -145,7 +145,7 @@
 	"id" : 5.2 ,
 	"name" : "Assessment" ,
 	"file_path" : "view/classes/assement.php" ,
-	"route" : "lessons" ,
+	"route" : "assessments" ,
 	"resources" : {
 	  "css" : [
 	  ] ,

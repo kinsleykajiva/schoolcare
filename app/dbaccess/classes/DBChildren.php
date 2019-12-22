@@ -22,6 +22,12 @@
 			return $this->fetchInArray($sql);
 		}
 
+		public function getAllAssesmentMarkers():array {
+			$sql ='SELECT * FROM child_assessment_markers';
+
+			return $this->fetchInArray($sql);
+		}
+
 
 		public function clockOutAttendance($id_record  ,$time_sign_out ):array {
 			$res = $this->andUpdate('attendance',[

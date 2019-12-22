@@ -42,6 +42,13 @@
 			return $this->result($res , 'Saved New Class For Time Table');
 		}
 
+		public function getAllMileStonesCategories ( ) : array
+		{
+			$sql = 'SELECT * FROM milestone_category ';
+
+			return $this->fetchInArray( $sql );
+		}
+
 		public function getMileStonesArr ( array $ids ) : array
 		{
 			$arr = [];
