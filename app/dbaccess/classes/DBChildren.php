@@ -23,15 +23,29 @@
 		}
 
 		public function saveChildAssesment( $id_child , $id_assessment_marker , $id_user_created , $id_milestone_category ):array {
-			$res = $this->insert('child_assessment' ,[
+			if($this->countRows('child_assessment',[
 				'id_assessment_marker' => $id_assessment_marker ,
-				'id_child' => $id_child ,
-				'id_user_created' => $id_user_created ,
-				'date_created' => self::nowDateTime() ,
 				'id_milestone_category' => $id_milestone_category ,
+			]) > 0){
+				// update
+				$res = $this->andUpdate('child_assessment' ,[
+					'id_assessment_marker' => $id_assessment_marker ,
+				],[
+					'id_assessment_marker' => $id_assessment_marker ,
+					'id_milestone_category' => $id_milestone_category ,
+				]);
+			}else{
 
-			]);
-			return $this->result($res , 'Saved Assesment');
+				$res = $this->insert('child_assessment' ,[
+					'id_assessment_marker' => $id_assessment_marker ,
+					'id_child' => $id_child ,
+					'id_user_created' => $id_user_created ,
+					'date_created' => self::nowDateTime() ,
+					'id_milestone_category' => $id_milestone_category ,
+
+				]);
+			}
+			return $this->result($res , 'Saved Assessment');
 		}
 		public function getAllChildAssesment():array {
 			$sql ="SELECT ca.* , cam.id AS  camid,  cam.title AS  camtitle , 

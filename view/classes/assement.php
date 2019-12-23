@@ -45,7 +45,7 @@
 					<br>
 					<div class="row" ">
 						<div class="col-lg-12">
-							<button onclick="saveAssesment();" class="btn btn-info btn-mini btn-round" >Save Assessment</button> <br>
+							<button onclick="saveAssesment();" id="btnSaveAssesment" class="btn btn-info btn-mini btn-round" >Save Assessment</button> <br>
 
 						</div>
 					</div>

@@ -135,9 +135,9 @@ function renderAsseentTable () {
 }
 function saveAssesment () {
 	let darray = [];
-	let id_child = $("#selected_id_child_asses").text();
-	const pr_attribute = $('.pr_attribute'); //
 	let tempArr = [] ;
+	let id_child = $("#selected_id_child_asses").text();
+	const pr_attribute = $('.pr_attribute');
 	$.each(pr_attribute, function(index, value){
 		let vall = $(value).val();
 		if(vall!== 'null'){
@@ -171,6 +171,11 @@ function saveAssesment () {
 				modalassesChildDilaog.iziModal ('close');
 				showSuccessMessage('Saved Assessment' , 3);
 				getDefault ();
+				const pr_attribute = $('.pr_attribute');
+				$.each(pr_attribute, function(index, value){
+					 $(value).val('null');
+					
+				});
 			}else{
 				showErrorMessage('Failed to save ' , 4);
 			}
@@ -181,8 +186,25 @@ function saveAssesment () {
 }
 function openAssessChildDialog(id , name ,surname){
 	$("#selected_id_child_asses").text(id);
+	$("#btnSaveAssesment").text('Save Assessment');
 	modalassesChildDilaog.iziModal ('setTitle', 'Child Assessment  Dialog for ' + name + ' ' + surname  );
 	modalassesChildDilaog.iziModal ('open');
+	// update
+	let updateArr = ASSESEMENT_READ_ROWS.filter(x=>x.id_child == id);
+	if(updateArr.length > 0) {
+		$("#btnSaveAssesment").text('Update Assessment');
+		//console.log (updateArr);
+		_.forEach (updateArr, (valls, inx) => {
+			const pr_attribute = $ ('.pr_attribute');
+			$.each (pr_attribute, function (index, value) {
+				let mileStone = $ (value).attr ('data-mileStone');
+				if (valls.id_milestone_category == mileStone) {
+					$ (value).val (valls.id_assessment_marker);
+				}
+				
+			});
+		});
+	}
 	
 }
 
