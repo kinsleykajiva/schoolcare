@@ -3,7 +3,7 @@ let ASSES_MARKERS_READ_ROWS = [];
 let MILE_STONE_CATEGORY_READ_ROWS = [];
 let ASSESEMENT_READ_ROWS = [];
 const modalassesChildDilaog = $ ("#assesChildDilaog");
-
+let ASSETSMENT_SELECTS = '';
 
 modalassesChildDilaog.iziModal ({
 	width: 900,
@@ -33,11 +33,25 @@ function getDefault () {
 	});
 }
 function renderAssessDialog () {
-
+	
+	let row = ``;
+	_.forEach(MILE_STONE_CATEGORY_READ_ROWS,(valls,inx)=>{
+		row += `
+					<div class="col-lg-12">
+						<label style="margin-top: 15px;" class="" >${valls.title}</label>
+						<br>
+						<select class=" form-control ">${ASSETSMENT_SELECTS}</select>
+					</div>
+					<br>
+		`;
+	});
+	$("#assement_div").html(row);
 }
 function  renderMarkersDefinations() {
 	let txt = ``;
+	ASSETSMENT_SELECTS +=`<option value="null">  </option>`;
 	_.forEach(ASSES_MARKERS_READ_ROWS,(valls,inx)=>{
+		ASSETSMENT_SELECTS +=`<option value="${valls.id}"> ${valls.title} </option>`;
 		txt += `<div class="col" >  <strong>${simpleAcronymExpression(valls.title)}</strong> <code>${(valls.title)}</code> </div>`;
 	});
 	$('#text_definations').html(txt);
@@ -68,6 +82,8 @@ function renderTableHeading (data) {
 	
 }
 
+
+
 function renderAsseentTable () {
 	//console.log (ASSESEMENT_READ_ROWS);
 	//const childDataGroup = groupBy(ASSESEMENT_READ_ROWS,(x=>[x.id_child]));
@@ -80,7 +96,7 @@ function renderAsseentTable () {
 				
 				<tr class="d-flex">
 					<th scope="row" class="col-2">
-							<a onclick="openAssessChildDialog('${valls.id}');" href="javascript:voie(0);">${capitaliseTextFristLetter (valls.name)} ${capitaliseTextFristLetter (valls.surname)}</a>
+							<a onclick="openAssessChildDialog('${valls.id}' , '${valls.name}' ,  '${valls.surname}');" href="javascript:voie(0);">${capitaliseTextFristLetter (valls.name)} ${capitaliseTextFristLetter (valls.surname)}</a>
 					</th>
 				`;
 		
@@ -117,8 +133,10 @@ function renderAsseentTable () {
 	}
 	
 }
-function openAssessChildDialog(id){
+function openAssessChildDialog(id , name ,surname){
+	modalassesChildDilaog.iziModal ('setTitle', 'Child Assessment  Dialog for ' + name + ' ' + surname  );
 	modalassesChildDilaog.iziModal ('open');
+	
 }
 
 $ (() => {
