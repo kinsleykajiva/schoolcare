@@ -153,5 +153,17 @@
 		"view/classes/js/assement.js"
 	  ]
 	}
+  },{
+	"id" : 6.1 ,
+	"name" : "Accounts" ,
+	"file_path" : "view/bills/accounts.php" ,
+	"route" : "accounts" ,
+	"resources" : {
+	  "css" : [
+	  ] ,
+	  "js" : [
+		"view/bills/js/accounts.js"
+	  ]
+	}
   }
 ]

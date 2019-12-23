@@ -96,5 +96,18 @@
 		"id" : 5.2
 	  }
 	]
+  },
+  {
+	"name" : "Bills" ,
+	"id" : 6 ,
+	"has" : [
+	  6.1
+	] ,
+	"sub-modules" : [
+	  {
+		"title" : "Accounts" ,
+		"id" : 6.1
+	  }
+	]
   }
 ]
