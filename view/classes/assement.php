@@ -13,39 +13,36 @@
 			<table class="table table-hover">
 				<thead id="thead_data">
 				<tr class="d-flex" style="display: none;" >
-					<th class="col-2">#</th>
-					<th class="col-1">First Name</th>
-					<th class="col-1">First Name</th>
-					<th class="col-1">First Name</th>
-					<th class="col-1">First Name</th>
-					<th class="col-1">First Name</th>
-					<th class="col-1">First Name</th>
-					<th class="col-1">First Name</th>
-					<th class="col-1">First Name</th>
-					<th class="col-1">First Name</th>
-					<th class="col-1">First Name</th>
+
 
 				</tr>
 				</thead>
 				<tbody id="tbidy_assessment">
 				<tr class="d-flex" style="display: none;">
-					<th scope="row" class="col-2">1</th>
-					<td class="col-1">Mark</td>
-					<td class="col-1">Mark</td>
-					<td class="col-1">Mark</td>
-					<td class="col-1">Mark</td>
-					<td class="col-1">Mark</td>
-					<td class="col-1">Mark</td>
-					<td class="col-1">Mark</td>
-					<td class="col-1">Mark</td>
-					<td class="col-1">Mark</td>
-					<td class="col-1">Mark</td>
+
 
 				</tr>
 
 
 				</tbody>
 			</table>
+		</div>
+	</div>
+</div>
+<div class="" id="assesChildDilaog" data-izimodal-title="Assess Child Dialog">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="">
+				<div class="card-block">
+					<div id="assess_form"></div>
+					<div class="row">
+						<div class="col-lg-12">
+							<label class="" >Laerning</label> <br>
+							<select class=" form-control selectpicker"></select>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

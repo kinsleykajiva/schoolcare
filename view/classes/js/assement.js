@@ -2,7 +2,17 @@ let CHILDREN_READ_ROWS = [];
 let ASSES_MARKERS_READ_ROWS = [];
 let MILE_STONE_CATEGORY_READ_ROWS = [];
 let ASSESEMENT_READ_ROWS = [];
+const modalassesChildDilaog = $ ("#assesChildDilaog");
 
+
+modalassesChildDilaog.iziModal ({
+	width: 900,
+	zindex: 9999,
+	radius: 5,
+	padding: 20
+});
+
+modalassesChildDilaog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 function getDefault () {
 	axios.get ('/view/assessment', {params: {get_deff: 38}}).then (res => {
 		if (res.statusText === 'OK') {
@@ -14,12 +24,16 @@ function getDefault () {
 			ASSES_MARKERS_READ_ROWS = (j.markers);
 			renderMarkersDefinations();
 			renderAsseentTable (j.m_cates);
+			renderAssessDialog();
 		} else {
 			showErrorMessage ('Failed to get data , reload page', 4)
 		}
 	}).catch (err => {
 		showErrorMessage ('Failed to connect please check your connection', 4)
 	});
+}
+function renderAssessDialog () {
+
 }
 function  renderMarkersDefinations() {
 	let txt = ``;
@@ -104,7 +118,7 @@ function renderAsseentTable () {
 	
 }
 function openAssessChildDialog(id){
-
+	modalassesChildDilaog.iziModal ('open');
 }
 
 $ (() => {
