@@ -58,31 +58,37 @@ function renderAsseentTable(){
 				`;
 		
 		let cellsArr = (childDataGroup[childID]);
-		console.log (cellsArr)
+		console.log (cellsArr);
+		for (let i = 0; i < (MILE_STONE_CATEGORY_READ_ROWS.length  -cellsArr.length); i++) {
+			row += `<td class="col-1"> 00-- </td>`;
+		}
 		if(cellsArr) {
-			
+			let co = 0;
 			_.forEach (cellsArr, (ell, iel) => {
 				
-				for (let i = 1; i < MILE_STONE_CATEGORY_READ_ROWS.length ; i++) {
-					console.log (i,parseInt(ell.id_milestone_category));
-					if(i === parseInt(ell.id_milestone_category)){
-						console.log ('yes');
+				//console.log (ell);
+				let cells = ``;
+				for(let j = 1 ; j < (MILE_STONE_CATEGORY_READ_ROWS.length ) ;j++){
+					let c = parseInt(ell.id_milestone_category);
+					c = c > 1 ? c-1:c;
+					if(j === (c )){
+						co ++;
 						row += `<td class="col-1"> ${simpleAcronymExpression(ell.camtitle)} </td>`;
-						
-						i = 100;// used to break out the loop
+						j = 90;
 					}else{
-						//console.log ('no')
-						if(i < MILE_STONE_CATEGORY_READ_ROWS.length ){
-							row += `<td class="col-1"> 00++ </td>`;
-						}
-						
+						co ++;
+						console.log(j+1)
+						row += `<td class="col-1"> 00** </td>`;
 					}
 				}
+				//row += cells ;
+				
+				//row += `<td class="col-1"> ${simpleAcronymExpression(ell.camtitle)} </td>`;
 				
 				//row += `<td class="col-1"> ${simpleAcronymExpression(ell.camtitle)} </td>`;
 			});
 			// lets create the difference remaining
-			for (let i = 0; i < MILE_STONE_CATEGORY_READ_ROWS.length - cellsArr.length; i++) {
+			for (let i = 0; i < (MILE_STONE_CATEGORY_READ_ROWS.length  -cellsArr.length); i++) {
 				row += `<td class="col-1"> 00-- </td>`;
 			}
 		}else{
