@@ -1,6 +1,9 @@
 <div class="card">
 	<div class="card-header">
-		<h5>Hover table</h5>
+
+		<div class="row" id="text_definations">
+
+		</div>
 
 
 
