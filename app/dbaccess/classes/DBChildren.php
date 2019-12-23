@@ -21,6 +21,18 @@
 
 			return $this->fetchInArray($sql);
 		}
+
+		public function saveChildAssesment( $id_child , $id_assessment_marker , $id_user_created , $id_milestone_category ):array {
+			$res = $this->insert('child_assessment' ,[
+				'id_assessment_marker' => $id_assessment_marker ,
+				'id_child' => $id_child ,
+				'id_user_created' => $id_user_created ,
+				'date_created' => self::nowDateTime() ,
+				'id_milestone_category' => $id_milestone_category ,
+
+			]);
+			return $this->result($res , 'Saved Assesment');
+		}
 		public function getAllChildAssesment():array {
 			$sql ="SELECT ca.* , cam.id AS  camid,  cam.title AS  camtitle , 
                     CONCAT(c.name , ' ' , c.surname) as childname ,

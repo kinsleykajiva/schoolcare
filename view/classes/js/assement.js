@@ -40,7 +40,7 @@ function renderAssessDialog () {
 					<div class="col-lg-12">
 						<label style="margin-top: 15px;" class="" >${valls.title}</label>
 						<br>
-						<select class=" form-control ">${ASSETSMENT_SELECTS}</select>
+						<select data-mileStone = "${valls.id}" class=" form-control pr_attribute ">${ASSETSMENT_SELECTS}</select>
 					</div>
 					<br>
 		`;
@@ -133,7 +133,54 @@ function renderAsseentTable () {
 	}
 	
 }
+function saveAssesment () {
+	let darray = [];
+	let id_child = $("#selected_id_child_asses").text();
+	const pr_attribute = $('.pr_attribute'); //
+	let tempArr = [] ;
+	$.each(pr_attribute, function(index, value){
+		let vall = $(value).val();
+		if(vall!== 'null'){
+			
+			let mileStone = $(value).attr('data-mileStone');
+			//console.log(mileStone,vall );
+			
+			tempArr.push(
+				{
+					mileStone:mileStone ,
+					vall:vall
+				}
+			)
+		}
+		
+	});
+	if(tempArr.length === 0){
+		showErrorMessage('Please make a selection to save ' , 2);
+		return;
+	}
+	darray.push({
+		id:id_child,
+		data:tempArr
+	});
+	let data = new FormData();
+	modalassesChildDilaog.iziModal ('startLoading');
+	data.append('post_ass', JSON.stringify(darray));
+	axios({url:'/backend/assessment',method:'post',data:data}).then(res=>{
+		modalassesChildDilaog.iziModal ('stopLoading');
+			if(res.statusText === 'OK' && res.data.status === 'ok'){
+				modalassesChildDilaog.iziModal ('close');
+				showSuccessMessage('Saved Assessment' , 3);
+				getDefault ();
+			}else{
+				showErrorMessage('Failed to save ' , 4);
+			}
+	}).catch(err=>{
+		modalassesChildDilaog.iziModal ('stopLoading');
+		showErrorMessage('Failed to connect ' , 4);
+	})
+}
 function openAssessChildDialog(id , name ,surname){
+	$("#selected_id_child_asses").text(id);
 	modalassesChildDilaog.iziModal ('setTitle', 'Child Assessment  Dialog for ' + name + ' ' + surname  );
 	modalassesChildDilaog.iziModal ('open');
 	
