@@ -35,8 +35,10 @@
 		}
 
 		public function getFeesPackages():array {
-			return $this->fetchInArray('SELECT fp.id,  fp.title,  fp.fee_items_ids,  fp.id_payment_periods ,fpp.title AS payment_period_title
-												FROM fees_packages fp JOIN fees_payment_periods fpp ON fp.id_payment_periods = fpp.id');
+			return $this->fetchInArray('SELECT fp.id,  fp.title,  fp.fee_items_ids,  fp.id_payment_periods ,fpp.title AS payment_period_title 
+												FROM fees_packages fp 
+												    JOIN fees_payment_periods fpp ON fp.id_payment_periods = fpp.id 
+												    ');
 		}
 
 
@@ -50,7 +52,7 @@
 		public function createFeesPackage( $title , $fee_items_ids ,$id_payment_periods ):array {
 
 			return $this->result(
-				$this->insert('fees_packeges',[
+				$this->insert('fees_packages',[
 					'title' => $title,
 					'fee_items_ids' => $fee_items_ids,
 					'id_payment_periods' => $id_payment_periods
