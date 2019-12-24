@@ -160,8 +160,10 @@
 	"route" : "accounts" ,
 	"resources" : {
 	  "css" : [
+		"assets/js/jsduallists/Duallistbox.css"
 	  ] ,
 	  "js" : [
+		"assets/js/jsduallists/jsdual.js",
 		"view/bills/js/accounts.js"
 	  ]
 	}
