@@ -60,7 +60,7 @@
         </div>
     </div>
 </div>
-
+<div id="GlobalIziModalModalHtmlContentDiv"></div>
 <?php require 'includes/include_js.php'; ?>
 <?php print $viewObject->loadModuleJSS(); ?>
 </body>

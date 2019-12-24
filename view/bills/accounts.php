@@ -14,7 +14,7 @@
 				<a class="nav-link" data-toggle="tab" href="#messages3" role="tab">Invoices</a>
 				<div class="slide"></div>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item" style="display: none;">
 				<a class="nav-link" data-toggle="tab" href="#settings3" role="tab">Settings</a>
 				<div class="slide"></div>
 			</li>

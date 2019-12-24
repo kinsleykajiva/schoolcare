@@ -711,6 +711,19 @@ function uncheckCheckedInputs (className) {
 }
 
 /*********************************************************************************************/
+function globalInfoDialog (htmlContent , header__) {
+	const cont = $("#GlobalIziModalModalHtmlContentDiv");
+	cont.iziModal ({
+		width: 700,
+		radius: 5,
+		padding: 20
+	});
+	cont.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
+	cont.iziModal('setTitle', header__ + ' Info Dialog');
+	
+	cont.iziModal('setContent', htmlContent);
+	cont.iziModal('open');
+}
 /*********************************************************************************************/
 /*********************************************************************************************/
 /*********************************************************************************************/

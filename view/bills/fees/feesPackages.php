@@ -34,6 +34,7 @@
 </div>
 
 
+
 <div class="" id="NewPackageDialog" data-izimodal-title="New Package Dialog">
     <div class="row">
         <div class="col-sm-12">
@@ -55,7 +56,7 @@
 	                </div>
 	                <!--<i class="fas fa-angle-double-left"></i>-->
 	                <div class="" id="" >
-
+						<h6>Select Fee(s)</h6>
 		                <select multiple="multiple" size="10" id="feeItemSelects" class="duallistbox-multi-selection">
 
 		                </select>
@@ -64,6 +65,42 @@
 	                <br>
 	                <br>
 	                <button onclick="savePackage();" class="btn btn-info btn-round">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="" id="EditPackageDialog" data-izimodal-title="Edit Package Dialog">
+	<span id="selected_package_edit" style="display: none;"></span>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="">
+                <div class="card-block">
+	                <div class="form-group row">
+		                <label class="col-sm-2 col-form-label">Package Title</label>
+		                <div class="col-sm-10">
+			                <input type="text" id="editPackageTitle" class="form-control form-control-normal" placeholder="">
+		                </div>
+	                </div>
+	                <div class="form-group row">
+		                <label class="col-sm-2 col-form-label">Payment Period</label>
+		                <div class="col-sm-10">
+			                <select id="editfeePaymentPeriodSelects" class="form-control">
+
+			                </select>
+		                </div>
+	                </div>
+	                <!--<i class="fas fa-angle-double-left"></i>-->
+	                <div class="" id="" >
+						<h6>Select Fee(s)</h6>
+		                <select multiple="multiple" size="10" id="editfeeItemSelects" class="duallistbox-multi-selection">
+
+		                </select>
+
+	                </div>
+	                <br>
+	                <br>
+	                <button onclick="saveEditPackage();" class="btn btn-info btn-round">Save</button>
                 </div>
             </div>
         </div>

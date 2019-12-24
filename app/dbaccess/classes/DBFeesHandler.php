@@ -49,6 +49,17 @@
 		public function getPaymentMethods():array {
 			return $this->fetchInArray('SELECT * FROM payment_type');
 		}
+
+
+		public function editFeesPackage( $id_rec , $title , $fee_items_ids ,$id_payment_periods ):array {
+
+			return $this->result(
+				$this->andUpdate('fees_packages',[
+					'title' => $title,
+					'fee_items_ids' => $fee_items_ids,
+					'id_payment_periods' => $id_payment_periods
+				] ,['id'=>$id_rec]),'Updated new package');
+		}
 		public function createFeesPackage( $title , $fee_items_ids ,$id_payment_periods ):array {
 
 			return $this->result(

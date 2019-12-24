@@ -4,24 +4,24 @@
 		<!-- Nav tabs -->
         <ul class="nav nav-tabs  tabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#home1" role="tab" aria-expanded="false">Make Fees</a>
+                <a class="nav-link active" data-toggle="tab" href="#home1" role="tab" aria-expanded="false">Make Fees</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#profile1" role="tab" aria-expanded="true">Items </a>
+                <a class="nav-link " data-toggle="tab" href="#profile1" role="tab" aria-expanded="true">Items </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="display: none;">
                 <a class="nav-link" data-toggle="tab" href="#messages1" role="tab">Messages</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"  style="display: none;" >
                 <a class="nav-link" data-toggle="tab" href="#settings1" role="tab">Settings</a>
             </li>
         </ul>
 		<!-- Tab panes -->
         <div class="tab-content tabs card-block">
-            <div class="tab-pane" id="home1" role="tabpanel" aria-expanded="false">
+            <div class="tab-pane active" id="home1" role="tabpanel" aria-expanded="false">
                 <?php include 'feesPackages.php';?>
             </div>
-            <div class="tab-pane active" id="profile1" role="tabpanel" aria-expanded="true">
+            <div class="tab-pane " id="profile1" role="tabpanel" aria-expanded="true">
 	            <?php include 'feesItems.php';?>
             </div>
             <div class="tab-pane" id="messages1" role="tabpanel">
