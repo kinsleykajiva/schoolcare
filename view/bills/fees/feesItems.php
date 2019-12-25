@@ -8,7 +8,7 @@
 				<tr>
 
 					<th>Fee </th>
-					<th>Total</th>
+					<th>Price</th>
 					<th>Action</th>
 				</tr>
 				</thead>
