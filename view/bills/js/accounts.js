@@ -174,7 +174,11 @@ function renderPostChildrenTable () {
 		}
 	});
 }
+function saveChildPayment () {
+
+}
 function onSavePaymentDialog (id) {
+	$("#child_payment_yeared").text(id);
 	modalReceiveChildPaymentDialogDialog.iziModal ('open');
 }
 function renderFeesTable () {

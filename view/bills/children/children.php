@@ -56,23 +56,23 @@
 </div>
 
 <div class="" id="receiveChildPaymentDialog" data-izimodal-title="Receive Payment Dialog" >
-
+    <span id="child_payment_yeared" style="display: none;"></span>
 	<div class="card-block">
 		<form onsubmit="return false;">
 			<div class="row">
 				<div class="col-lg-6">
-					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">Amount</label>
-						<div class="col-sm-10">
-							<input type="number" step="any" id="editFeeTitle" class="form-control form-control-normal" placeholder="Fee Name">
+					<div class="form-group col-sm-12 ">
+						<label class="col-form-label">Amount</label> <br>
+						<div class="">
+							<input type="number" step="any" id="amountPayment" class="form-control form-control-normal" placeholder="0.00">
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-6">
-					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">Method</label>
-						<div class="col-sm-10">
-							<select  id="editFeeTitle" class="form-control form-control-normal" >
+                    <div class="form-group col-sm-12 ">
+						<label class=" col-form-label">Payment Type</label> <br>
+						<div class="">
+							<select  id="editFeeTitle" class="form-control form-control-normal selectpicker" >
 								<option value="1">Cash</option>
 								<option value="2">Cheque</option>
 								<option value="3">Other</option>
@@ -84,19 +84,19 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Reference</label>
 				<div class="col-sm-10">
-					<input type="number"  id="editFeeAmount" class="form-control form-control-normal" placeholder="Fee Amount">
+					<input type="text"  id="refPayment" class="form-control form-control-normal" placeholder="">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Notes</label>
 				<div class="col-sm-10">
-					<textarea type="number"  id="editFeeAmount" class="form-control form-control-normal" placeholder="Notes/Description"></textarea>
+					<textarea id="notesPayment" class="form-control form-control-normal" placeholder="Notes/Description"></textarea>
 				</div>
 			</div>
 
 
 			<div class="form-group row">
-				<button onclick="saveEditFeeItem()" class="col-sm-2 btn btn-info btn-round">Save Fee</button>
+				<button onclick="saveChildPayment()" class="col-sm-2 btn btn-info btn-round">Save Payment</button>
 				<div class="col-sm-10">
 
 				</div>
