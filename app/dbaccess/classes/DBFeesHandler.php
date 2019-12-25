@@ -18,13 +18,13 @@
 
 		public function getPostedChildrenForFinancialYear($year = ''):array {
 			if(!empty($year)){
-				return $this->fetchInArray("SELECT ffy.id, ffy.id_child, ffy.id_year , CONCAT(c.surname , ' ' ,c.name) AS childName
+				return $this->fetchInArray("SELECT ffy.id, ffy.id_child, ffy.id_year , fy.year , CONCAT(c.surname , ' ' ,c.name) AS childName
 												FROM fees_financial_year ffy 
 												        JOIN financial_year fy ON ffy.id_year = fy.id
 												        JOIN children c ON  c.id = ffy.id_child
 												        WHERE fy.year = '$year' ");
 			}
-			return $this->fetchInArray("SELECT ffy.id, ffy.id_child, ffy.id_year , CONCAT(c.surname , ' ' ,c.name) AS childName
+			return $this->fetchInArray("SELECT ffy.id, ffy.id_child, ffy.id_year , fy.year , CONCAT(c.surname , ' ' ,c.name) AS childName
 												FROM fees_financial_year ffy 
 												        JOIN financial_year fy ON ffy.id_year = fy.id
 												        JOIN children c ON  c.id = ffy.id_child");
@@ -86,7 +86,9 @@
 			]) , 'Saved Fees Items');
 		}
 
-
+		public function getFinancialYear($year):array {
+			return $this->fetchAllInArray("SELECT * FROM financial_year WHERE  financial_year.year = '$year' LIMIT 1");
+		}
 		public function postChildToFeesFinancialYear( $id_child , $id_year ):array {
 
 			return $this->result(
@@ -97,13 +99,25 @@
 				, 'Posted Child to new Financial year');
 		}
 
-		public function  saveFeesPayment( $title , $id_payment_type , $reference_txt , $id_child , $notes , $id_saved_by ):array {
+		public function  saveFeesPayment( $title , $id_payment_type , $reference_txt , $id_child , $notes , $id_saved_by , $amount ):array {
+			$res = $this->insert('journal',[
+				'date_created' => self::nowDateTime() ,
+				'description' => $reference_txt . '\n Notes:\n' . $notes ,
+				'id_user_saved_by' => $$id_saved_by ,
+				'amount' => $amount
+			]);
+			if(!$res){
+				return $this->result($res , 'Saved Fees Payment');
+			}
+			$lastID = $this->getLastInsertAutoID();
 			$res = $this->insert('fee_payment_ledger' ,[
 				'title'=> $title ,
 				'id_payment_type'=> $id_payment_type ,
 				'reference_txt'=> $reference_txt ,
 				'id_child'=> $id_child ,
 				'notes'=> $notes ,
+				'amount' => $amount ,
+				'id_journal'=> $lastID ,
 				'id_user_saved_by'=> $id_saved_by ,
 				'date_created'=> self::nowDateTime()
 			]) ;

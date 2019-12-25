@@ -3,11 +3,11 @@
 
 		<ul class="nav nav-tabs md-tabs" role="tablist">
 			<li class="nav-item">
-				<a class="nav-link " data-toggle="tab" href="#home3" role="tab">Children</a>
+				<a class="nav-link active" data-toggle="tab" href="#home3" role="tab">Children</a>
 				<div class="slide"></div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active" data-toggle="tab" href="#profile3" role="tab">Fees</a>
+				<a class="nav-link " data-toggle="tab" href="#profile3" role="tab">Fees</a>
 				<div class="slide"></div>
 			</li>
 			<li class="nav-item">
@@ -25,14 +25,10 @@
 
 <div class="card">
 	<div class="tab-content card-block">
-		<div class="tab-pane " id="home3" role="tabpanel">
-			<p class="m-0">
-				1.
-				This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum.
-
-			</p>
+		<div class="tab-pane active" id="home3" role="tabpanel">
+			<?php include 'children/children.php';?>
 		</div>
-		<div class="tab-pane active" id="profile3" role="tabpanel">
+		<div class="tab-pane " id="profile3" role="tabpanel">
 			<p class="m-0">
 				<?php include 'fees/fees.php';?>
 

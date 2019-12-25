@@ -6,8 +6,10 @@
 
 	include_once '../../dbaccess/classes/DBChildParents.php';
 	include_once '../../dbaccess/classes/DBChildren.php';
+
 	$res = [];
 	if ( isset( $_POST[ 'childrenJson' ] ) ) {
+		include_once '../../dbaccess/classes/DBFeesHandler.php';
 		$childrenJson = $_POST[ 'childrenJson' ];
 		$parentJson = $_POST[ 'parentJson' ];
 		$childrenJson = json_decode( $childrenJson , TRUE , 512 , JSON_THROW_ON_ERROR );
@@ -15,6 +17,7 @@
 		//print_r($childrenJson);exit;
 		//print_r($parentJson);exit;
 		$parentObj = new DBChildParents( USER , PASSWORD , DATABASE );
+		$feesObj = new DBFeesHandler( USER , PASSWORD , DATABASE );
 		$childObj = new DBChildren( USER , PASSWORD , DATABASE );
 		$lastChildID = $lastParentID = [];
 		// register the child
@@ -24,6 +27,10 @@
 			$res = $childObj->saveChild( $child[ 'childName' ] , $child[ 'childSurname' ] , $child[ 'childSex' ] , $child[ 'childDOB' ] , $child[ 'childNotes' ] );
 			if ( $res[ 'status' ] === 'ok' ) {
 				$lastChildID[] = $res[ 'extra' ][ 'lastID' ];
+				// register or post the child to a financial year
+				$year = date("Y");
+				$id_year = $feesObj->getFinancialYear($year)['id'];
+				$feesObj->postChildToFeesFinancialYear($res[ 'extra' ][ 'lastID' ] ,$id_year );
 			}
 		}
 		// register the parent
