@@ -69,12 +69,24 @@
 					'id_payment_periods' => $id_payment_periods
 				]),'saved new package');
 		}
+
+
+		public function editFeesItem($rec_id , $title , $costAmount ):array {
+			return $this->result( $this->andUpdate('fees_items' ,[
+				'title' => $title ,
+				'cost' => $costAmount
+			],['id'=>$rec_id]) , 'Saved Fees Items');
+		}
+
+
 		public function saveFeesItem( $title , $costAmount ):array {
 			return $this->result( $this->insert('fees_items' ,[
 				'title' => $title ,
 				'cost' => $costAmount
 			]) , 'Saved Fees Items');
 		}
+
+
 		public function postChildToFeesFinancialYear( $id_child , $id_year ):array {
 
 			return $this->result(

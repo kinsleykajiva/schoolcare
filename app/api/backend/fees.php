@@ -22,7 +22,17 @@
 		print json_encode( $res, JSON_THROW_ON_ERROR, 512 );
 		exit;
 	}
-	if(isset($_POST['newFeeTitle'])){
+	if(isset($_POST['edit_rec_id'])){
+		$FeeTitle = $_POST['editFeeTitle'];
+		$FeeAmount = $_POST['editFeeAmount'];
+		$edit_rec_id = $_POST['edit_rec_id'];
+
+
+		$res =$feesHandlerObj->editFeesItem($edit_rec_id , $FeeTitle ,(double) $FeeAmount);
+			print json_encode( $res, JSON_THROW_ON_ERROR, 512 );
+		exit;
+	}
+if(isset($_POST['newFeeTitle'])){
 		$newFeeTitle = $_POST['newFeeTitle'];
 		$newFeeAmount = $_POST['newFeeAmount'];
 

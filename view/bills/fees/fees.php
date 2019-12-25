@@ -4,10 +4,10 @@
 		<!-- Nav tabs -->
         <ul class="nav nav-tabs  tabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#home1" role="tab" aria-expanded="false">Make Fees</a>
+                <a class="nav-link active" data-toggle="tab" href="#home1" role="tab" aria-expanded="false">Make Fees Packages</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " data-toggle="tab" href="#profile1" role="tab" aria-expanded="true">Items </a>
+                <a class="nav-link " data-toggle="tab" href="#profile1" role="tab" aria-expanded="true">Fees </a>
             </li>
             <li class="nav-item" style="display: none;">
                 <a class="nav-link" data-toggle="tab" href="#messages1" role="tab">Messages</a>

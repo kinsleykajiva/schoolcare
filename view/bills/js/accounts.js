@@ -3,6 +3,22 @@ let FEES_ITEMS_READ_ROWS = [] ;
 let FEES_PACKAGES_READ_ROWS = [] ;
 const modalNewPackageDialogDialog = $("#NewPackageDialog");
 const modalEditPackageDialogDialog = $("#EditPackageDialog");
+const modalEaddFeeItemDialogDialog = $("#addFeeItemDialog");
+const modaleditFeeItemDialogDialog = $("#editFeeItemDialog");
+
+modaleditFeeItemDialogDialog.iziModal ({
+	width: 700,
+	radius: 5,
+	padding: 20
+});
+
+
+modalEaddFeeItemDialogDialog.iziModal ({
+	width: 700,
+	radius: 5,
+	padding: 20
+});
+
 
 modalEditPackageDialogDialog.iziModal ({
 	width: 700,
@@ -18,10 +34,19 @@ modalNewPackageDialogDialog.iziModal ({
 });
 
 
+modaleditFeeItemDialogDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
+modalEaddFeeItemDialogDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 modalNewPackageDialogDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 modalEditPackageDialogDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
+
+function openFeeItemDialog(){
+	modalEaddFeeItemDialogDialog.iziModal ('open');
+	
+}
+
 function openNewPackageDialog(){
 	modalNewPackageDialogDialog.iziModal ('open');
+	
 	
 }
 
@@ -58,6 +83,7 @@ function getDefaultData () {
 			renderPackagesTable (j.fees_packages);
 			renderPaymentSelects(j.paymentPeriods);
 			renderFeesSelects(j.fee_items);
+			renderFeesTable();
 			
 		}
 	}).catch (err => {
@@ -65,6 +91,35 @@ function getDefaultData () {
 	})
 }
 
+function renderFeesTable () {
+	let row =``;
+	_.forEach(FEES_ITEMS_READ_ROWS,(valls,inx)=>{
+		row +=`
+		<tr>
+				<td>${valls.title}</td>
+				<td>R ${valls.cost}</td>
+				<td>
+				<div class="dropdown-default dropdown open">
+				<button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Option</button>
+				<div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+				
+					<a class="dropdown-item waves-light waves-effect" onclick="openEditFeeIyemDialog('${valls.id}');" href="javascript:void(0);">Edit</a>
+				</div>
+				</div>
+				</td>
+		</tr>`;
+	});
+	$("#tbody_fee_items").html(row);
+}
+
+function openEditFeeIyemDialog (id) {
+	$("#editSelect_feeietm").text(id);
+	modaleditFeeItemDialogDialog.iziModal ('open');
+	let obj = FEES_ITEMS_READ_ROWS.filter(x=>x.id == id)[0];
+	$("#editFeeTitle").val(obj.title);
+	$("#editFeeAmount").val(obj.cost);
+	
+}
 function renderPaymentSelects (data) {
 		let opt = ` <option value="null">  Select </option>`;
 		
@@ -264,6 +319,49 @@ function openInfoView (id) {
 
 
 
+function saveEditFeeItem () {
+		let newFeeTitle = $("#editFeeTitle").val();
+		let newFeeAmount = $("#editFeeAmount").val();
+
+		
+		if(newFeeTitle === ''){
+			showErrorMessage('Fee Title is required' , 4);
+			error_input_element(true , 'newFeeTitle');
+			return;
+		}
+	error_input_element(false , 'newFeeTitle');
+		
+		if(newFeeAmount === ''){
+			showErrorMessage('Fee Cost is required' , 4);
+			error_input_element(true , 'newFeeAmount');
+			return;
+		}
+	error_input_element(false , 'newFeeAmount');
+	modaleditFeeItemDialogDialog.iziModal ('startLoading');
+		let dataa = new FormData();
+		let child_id = $("#editSelect_feeietm").text();
+	dataa.append('editFeeTitle' , newFeeTitle);
+	dataa.append('edit_rec_id' , child_id);
+	dataa.append('editFeeAmount' , newFeeAmount);
+	
+		axios({url:'/backend/fees' , method:'post',data:dataa}).then(res=>{
+			modaleditFeeItemDialogDialog.iziModal ('stopLoading');
+			if(res.statusText === 'OK' && res.data.status === 'ok'){
+				$("#editFeeTitle,#editFeeAmount").val('');
+				modaleditFeeItemDialogDialog.iziModal ('close');
+				showSuccessMessage('Updated Fee',4);
+				getDefaultData ();
+				
+			}else{
+				showErrorMessage('Failed to update , try again' , 4);
+			}
+		}).catch(err=>{
+			modaleditFeeItemDialogDialog.iziModal ('stopLoading');
+		
+			showErrorMessage('Failed to connect ' , 3);
+		});
+}
+
 function saveNewFeeItem () {
 		let newFeeTitle = $("#newFeeTitle").val();
 		let newFeeAmount = $("#newFeeAmount").val();
@@ -285,20 +383,21 @@ function saveNewFeeItem () {
 		let dataa = new FormData();
 	dataa.append('newFeeTitle' , newFeeTitle);
 	dataa.append('newFeeAmount' , newFeeAmount);
-	$('body').loading({
-		message: 'Saving...'
-	});
+	modalEaddFeeItemDialogDialog.iziModal ('startLoading');
+	
 		axios({url:'/backend/fees' , method:'post',data:dataa}).then(res=>{
-			$('body').loading('stop');
+			modalEaddFeeItemDialogDialog.iziModal ('stopLoading');
 			if(res.statusText === 'OK' && res.data.status === 'ok'){
 				$("#newFeeTitle,#newFeeAmount").val('');
+				modalEaddFeeItemDialogDialog.iziModal ('close');
 				showSuccessMessage('Saved Fee',4);
 				getDefaultData ();
 			}else{
 				showErrorMessage('Failed to save , try again' , 4);
 			}
 		}).catch(err=>{
-			$('body').loading('stop');
+			modalEaddFeeItemDialogDialog.iziModal ('stopLoading');
+			
 			showErrorMessage('Failed to connect ' , 3);
 		});
 }
