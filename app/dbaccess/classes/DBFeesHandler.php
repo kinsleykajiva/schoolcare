@@ -16,7 +16,7 @@
 			parent::__construct( $this->DBCon );
 		}
 
-		public function saveFeesToChild():array {
+		public function saveFeesToChild( $package_title , $fee_item_title , $fee_item_amount , $id_posted_child , $id_fee_item , $id_package_fee , $payment_period_title , $id_payment_period , $id_user ):array {
 			$res= $this->insert('fees_packages_structure_for_child',[
 				'package_title' => $package_title ,
 				'fee_item_title' => $fee_item_title ,
