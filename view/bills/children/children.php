@@ -61,8 +61,8 @@
 							</div>
 
 					</th>
-					<td>Mark</td>
-					<td>R 000</td>
+					<td>Loading ....</td>
+					<td>Loading...</td>
 					<td>
 						<div class="dropdown-default dropdown open">
 							<button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Option</button>

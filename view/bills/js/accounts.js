@@ -108,7 +108,7 @@ function renderPostChildrenTable () {
 	$('body').loading('stop');
 	let row = ``;
 	_.forEach(POSTED_CHILDREN_READ_ROWS,(valls,inx)=>{
-		let costOfPaid = valls.check_has_fees? ''+ accounting.formatMoney(valls.check_has_fees) + ' of /' : '';
+		let costOfPaid = valls.check_has_fees? ' Of '+ accounting.formatMoney(valls.check_has_fees) + ' ' : '';
 		row += `
 		
 		<tr>
@@ -124,7 +124,7 @@ function renderPostChildrenTable () {
 
      </th>
      <td>${valls.childname}</td>
-     <td> ${costOfPaid}  ${valls.paidamount ? accounting.formatMoney(valls.paidamount) : accounting.formatMoney(0.00)} </td>
+     <td>  ${valls.paidamount ? accounting.formatMoney(valls.paidamount) : accounting.formatMoney(0.00)}   ${costOfPaid}</td>
      <td>
       <div class="dropdown-default dropdown open">
        <button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Option</button>
