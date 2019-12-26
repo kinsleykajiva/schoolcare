@@ -57,6 +57,7 @@
 
 <div class="" id="receiveChildPaymentDialog" data-izimodal-title="Receive Payment Dialog" >
     <span id="child_payment_yeared" style="display: none;"></span>
+    <h6 id="payment_details" ">Nail</h6>
 	<div class="card-block">
 		<form onsubmit="return false;">
 			<div class="row">
@@ -72,7 +73,8 @@
                     <div class="form-group col-sm-12 ">
 						<label class=" col-form-label">Payment Type</label> <br>
 						<div class="">
-							<select  id="editFeeTitle" class="form-control form-control-normal selectpicker" >
+							<select  id="typePayment" class="form-control form-control-normal selectpicker" >
+
 								<option value="1">Cash</option>
 								<option value="2">Cheque</option>
 								<option value="3">Other</option>
@@ -96,8 +98,8 @@
 
 
 			<div class="form-group row">
-				<button onclick="saveChildPayment()" class="col-sm-2 btn btn-info btn-round">Save Payment</button>
-				<div class="col-sm-10">
+				<button onclick="saveChildPayment()" class="col-sm-4 btn btn-info btn-round">Save Payment</button>
+				<div class="col-sm-8">
 
 				</div>
 			</div>

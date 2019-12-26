@@ -164,7 +164,8 @@
 	  ] ,
 	  "js" : [
 		"assets/js/jsduallists/jsdual.js",
-		"view/bills/js/accounts.js"
+		"view/bills/js/accounts.js",
+		"view/bills/js/children-accounts.js"
 	  ]
 	}
   }

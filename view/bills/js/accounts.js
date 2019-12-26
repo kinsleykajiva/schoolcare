@@ -6,7 +6,7 @@ const modalNewPackageDialogDialog = $("#NewPackageDialog");
 const modalEditPackageDialogDialog = $("#EditPackageDialog");
 const modalEaddFeeItemDialogDialog = $("#addFeeItemDialog");
 const modaleditFeeItemDialogDialog = $("#editFeeItemDialog");
-const modalReceiveChildPaymentDialogDialog = $("#receiveChildPaymentDialog");
+
 
 modaleditFeeItemDialogDialog.iziModal ({
 	width: 700,
@@ -14,12 +14,6 @@ modaleditFeeItemDialogDialog.iziModal ({
 	padding: 20
 });
 
-
-modalReceiveChildPaymentDialogDialog.iziModal ({
-	width: 700,
-	radius: 5,
-	padding: 20
-});
 
 
 modalEaddFeeItemDialogDialog.iziModal ({
@@ -43,7 +37,6 @@ modalNewPackageDialogDialog.iziModal ({
 });
 
 
-modalReceiveChildPaymentDialogDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 modaleditFeeItemDialogDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 modalEaddFeeItemDialogDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 modalNewPackageDialogDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
@@ -102,26 +95,6 @@ function getDefaultData () {
 		showErrorMessage ('Failed to connect', 4);
 	})
 }
-$('#children_select_all').click(function(event) {
-	if(this.checked) {
-		// Iterate each checkbox
-		$('.fee_table_check').each(function() {
-			this.checked = true;
-		});
-		$("#btnPostSlected").slideDown('slow');
-		checkCounter = POSTED_CHILDREN_READ_ROWS.length;
-	}
-	else {
-		$('.fee_table_check').each(function() {
-			this.checked = false;
-		});
-		checkCounter = 0;
-		$("#btnPostSlected").slideUp('slow');
-	}
-	
-});
-let checkCounter = 0;
-
 
 
 
@@ -143,13 +116,13 @@ function renderPostChildrenTable () {
 
      </th>
      <td>${valls.childName}</td>
-     <td>R 000</td>
+     <td>R ${valls.paidamount ? valls.paidamount : 0.00}</td>
      <td>
       <div class="dropdown-default dropdown open">
        <button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Option</button>
        <div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
 
-        <a class="dropdown-item waves-light waves-effect" onclick="onSavePaymentDialog(${valls.id});" href="javascript:void(0);">Receive Payment</a>
+        <a class="dropdown-item waves-light waves-effect" onclick="onSavePaymentDialog('${valls.id_child}' , '${valls.childName}' , '${valls.year}');" href="javascript:void(0);">Receive Payment</a>
        </div>
       </div>
      </td>
@@ -174,13 +147,8 @@ function renderPostChildrenTable () {
 		}
 	});
 }
-function saveChildPayment () {
 
-}
-function onSavePaymentDialog (id) {
-	$("#child_payment_yeared").text(id);
-	modalReceiveChildPaymentDialogDialog.iziModal ('open');
-}
+
 function renderFeesTable () {
 	let row =``;
 	_.forEach(FEES_ITEMS_READ_ROWS,(valls,inx)=>{

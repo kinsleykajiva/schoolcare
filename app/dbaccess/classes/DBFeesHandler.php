@@ -16,18 +16,27 @@
 			parent::__construct( $this->DBCon );
 		}
 
-		public function getPostedChildrenForFinancialYear($year = ''):array {
-			if(!empty($year)){
-				return $this->fetchInArray("SELECT ffy.id, ffy.id_child, ffy.id_year , fy.year , CONCAT(c.surname , ' ' ,c.name) AS childName
-												FROM fees_financial_year ffy 
-												        JOIN financial_year fy ON ffy.id_year = fy.id
-												        JOIN children c ON  c.id = ffy.id_child
-												        WHERE fy.year = '$year' ");
+		public function getPostedChildrenForFinancialYear ( $year = '' ) : array
+		{
+			if ( !empty( $year ) ) {
+				return $this->fetchInArray( "SELECT 
+                                                            ffy.id, ffy.id_child, ffy.id_year , 
+                                                            fy.year ,
+                                                            (SELECT SUM(fee_payment_ledger.amount ) AS sumAll FROM fee_payment_ledger WHERE fee_payment_ledger.id_child = ffy.id_child AND fee_payment_ledger.iscredit = 1 AND fee_payment_ledger.date_created = '$year' ) AS paidAmount ,
+                                                            CONCAT(c.surname , ' ' ,c.name) AS childName
+													   FROM fees_financial_year ffy 
+													        JOIN financial_year fy ON ffy.id_year = fy.id
+													        JOIN children c ON  c.id = ffy.id_child
+													        WHERE fy.year = '$year' " );
 			}
-			return $this->fetchInArray("SELECT ffy.id, ffy.id_child, ffy.id_year , fy.year , CONCAT(c.surname , ' ' ,c.name) AS childName
-												FROM fees_financial_year ffy 
+			return $this->fetchInArray( "SELECT 
+                                                        ffy.id, ffy.id_child, ffy.id_year , 
+                                                        fy.year , 
+                                                        (SELECT SUM(fee_payment_ledger.amount ) AS sumall FROM fee_payment_ledger WHERE fee_payment_ledger.id_child = ffy.id_child AND fee_payment_ledger.iscredit = 1  ) AS paidamount ,
+                                                        CONCAT(c.surname , ' ' ,c.name) AS childname
+												   FROM fees_financial_year ffy 
 												        JOIN financial_year fy ON ffy.id_year = fy.id
-												        JOIN children c ON  c.id = ffy.id_child");
+												        JOIN children c ON  c.id = ffy.id_child" );
 		}
 
 		public function getFeesItems():array {
@@ -98,7 +107,9 @@
 				])
 				, 'Posted Child to new Financial year');
 		}
-
+		/**We are saving child's payment related to the child but has no co-reaation to the financial year the child id or child we just save payments for the child and later relate when required
+		 *This is subject to change in regard to accounting logic or system .
+		 */
 		public function  saveFeesPayment( $title , $id_payment_type , $reference_txt , $id_child , $notes , $id_saved_by , $amount ):array {
 			$res = $this->insert('journal',[
 				'date_created' => self::nowDateTime() ,
@@ -107,9 +118,12 @@
 				'amount' => $amount
 			]);
 			if(!$res){
-				return $this->result($res , 'Saved Fees Payment');
+				return $this->result($res , '');
 			}
 			$lastID = $this->getLastInsertAutoID();
+
+			// here we immediately post the children transaction .
+
 			$res = $this->insert('fee_payment_ledger' ,[
 				'title'=> $title ,
 				'id_payment_type'=> $id_payment_type ,
@@ -123,7 +137,7 @@
 			]) ;
 
 
-			return $this->result($res , 'Saved Fees Payment');
+			return $this->result($res , 'Saved & Posted Fees Payment');
 		}
 
 
