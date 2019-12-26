@@ -167,8 +167,8 @@ function onViewChildFeesStructureDialog (id) {
 		if(res.statusText === 'OK'){
 			
 			const j = res.data.child_structure;
-			let childName = ` <h4> <u>Child Name:</u> </h4> <h5> ${j[0].child_name }  </h5> <br><br>`;
-			let packageName = `Package: <h6> ${j[0].package_title }  paid ${j[0].payment_period_title}</h6>  <br><br>`;
+			let childName = ` <h4> <u>Child Name:</u> </h4> <h5> ${j[0].child_name }  </h5>`;
+			let packageName = `Package: <h6> ${j[0].package_title }  paid ${j[0].payment_period_title}</h6>  <br>`;
 			let htmlC = `
 					<div class="card-block table-border-style">
 					<strong><h4>Fee Structure </h4></strong>
