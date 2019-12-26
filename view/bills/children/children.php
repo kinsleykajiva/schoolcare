@@ -1,6 +1,20 @@
 <div class="">
-	<button id="btnPostSlected" style="display: none;" onclick="postChildrenDialog()" class="btn btn-mini btn-info btn-round"><i class="fa fa-address-book-o" aria-hidden="true"></i>
-		 Post</button>
+
+    <div class="row">
+        <div class="col-sm-2">
+            <button id="btnPostSlected" style="display: none;" onclick="postChildrenDialog()" class="btn  btn-mini btn-info btn-round">
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>	 Post
+            </button>
+        </div>
+        <div class="col-sm-2">
+            <button id="btnAddFeesTolected" style="display: none;" onclick="openAddChildToFeesDialog()" class="btn  btn-mini btn-info btn-round">
+                <i class="fa fa-address-book-o" aria-hidden="true"></i>	 Add Fees
+            </button>
+        </div>
+
+
+    </div>
+
 	<div class="card-block table-border-style" style="min-height: 300px;">
 		<select class="form-control selectpicker" onchange="onchangeYearOnPostTable()" id="table_select_year"></select>
 		<div class="table-responsive">
@@ -56,6 +70,8 @@
 	</div>
 </div>
 
+
+
 <div class="" id="receiveChildPaymentDialog" data-izimodal-title="Receive Payment Dialog" >
     <span id="child_payment_yeared" style="display: none;"></span>
     <h6 id="payment_details" ">Nail</h6>
@@ -107,4 +123,53 @@
 		</form>
 	</div>
 </div>
+
+
+
+<div class="" id="addFeePackageToFeesDialog" data-izimodal-title="Add Fee All Selected Children Dialog" >
+    <span id="child_payment_yeared" style="display: none;"></span>
+    <h6 id="packageCostSelected" ">R 0.00</h6>
+	<div class="card-block">
+		<form onsubmit="return false;">
+			<div class="row">
+
+				<div class="col-lg-6">
+                    <div class="form-group col-sm-12 ">
+						<label class=" col-form-label">Packages</label> <br>
+						<div class="">
+							<select onchange="onchangefeePaymentPackages();"  id="feePaymentPackages" class="form-control form-control-normal " >
+
+
+							</select>
+						</div>
+					</div>
+				</div>
+                <div class="col-lg-6">
+                    <div class="form-group col-sm-12 ">
+                        <label class="col-form-label">Fee Item</label> <br>
+                        <div class="">
+                            <ul id="list_fee_items_for_packag">
+                               <!-- <li>
+                                    <i class="icofont icofont-stylish-right text-danger"></i> Lorem ipsum dolor sit amet
+                                </li>-->
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+
+
+			<div class="form-group row">
+				<button onclick="saveChildrenFeePackages()" class="col-sm-4 btn btn-info btn-round">Save</button>
+				<div class="col-sm-8">
+
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
 

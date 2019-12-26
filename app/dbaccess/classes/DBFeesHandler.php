@@ -16,6 +16,24 @@
 			parent::__construct( $this->DBCon );
 		}
 
+		public function saveFeesToChild():array {
+			$res= $this->insert('fees_packages_structure_for_child',[
+				'package_title' => $package_title ,
+				'fee_item_title' => $fee_item_title ,
+				'fee_item_amount' =>$fee_item_amount ,
+				'id_posted_child'=> $id_posted_child ,
+				'id_fee_item' => $id_fee_item ,
+				'id_package_fee' => $id_package_fee ,
+				'payment_period_title' => $payment_period_title ,
+				'id_payment_period'=>$id_payment_period ,
+				'date_created' => self::nowDateTime(),
+				'id_user_created' => $id_user
+			]);
+
+
+			return $this->result($res , 'Adding fees to child' );
+		}
+
 		public function getPostedChildrenForFinancialYear ( $year = '' ) : array
 		{
 

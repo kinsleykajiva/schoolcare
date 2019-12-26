@@ -93,6 +93,7 @@ function getDefaultData () {
 			renderFeesTable();
 			renderPostChildrenTable();
 			renderYearSelects();
+			renderFeePackagesDialogData();
 			
 		}
 	}).catch (err => {
@@ -142,12 +143,12 @@ function renderPostChildrenTable () {
 		
 		if(this.checked) {
 			checkCounter++;
-			$("#btnPostSlected").slideDown('slow');
+			$("#btnPostSlected,#btnAddFeesTolected").slideDown('slow');
 		}
 		else {
 			checkCounter--;
 			if(checkCounter === 0){
-				$("#btnPostSlected").slideUp('slow');
+				$("#btnPostSlected,#btnAddFeesTolected").slideUp('slow');
 			}
 			
 		}
@@ -299,24 +300,31 @@ function savePackage () {
 	});
 	
 }
+function renderFeePackagesDialogData () {
+	let opt=`<option value="null"> </option>`;
+	_.forEach(FEES_PACKAGES_READ_ROWS,(valls,inx)=>{
+		
+		opt+= `<option value="${valls.id}"> ${valls.title} / (${valls.payment_period_title}) </option>`;
+	});
+	$("#feePaymentPackages").html(opt);
+}
+function sumUp(str){
+	let arr = str.split(',');
+	let ret = 0;
+	_.forEach(arr,(valz,ix)=>{
+		let costt = FEES_ITEMS_READ_ROWS.filter(x=>x.id == valz)[0];
+		ret += parseFloat(costt.cost);
+	});
+	return ret.toFixed(2);
+}
 function renderPackagesTable (data) {
 	let row = ``;
 	if(data.length === 0){
 		$("#tbody_packages").html(noDataRow(3,'--'));
 		return;
 	}
-	
-	
-	function sumUp(str){
-		let arr = str.split(',');
-		let ret = 0;
-		_.forEach(arr,(valz,ix)=>{
-			let costt = FEES_ITEMS_READ_ROWS.filter(x=>x.id == valz)[0];
-			ret += parseFloat(costt.cost);
-		});
-		return ret.toFixed(2);;
-	}
 	_.forEach (data, (valls, inx) => {
+		
 		row += `
 					<tr>
 

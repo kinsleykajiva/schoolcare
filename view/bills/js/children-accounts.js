@@ -1,12 +1,67 @@
 let checkCounter = 0;
 const modalReceiveChildPaymentDialogDialog = $("#receiveChildPaymentDialog");
+const modalAddFeePackageToFeesDialogDialog = $("#addFeePackageToFeesDialog");
+modalAddFeePackageToFeesDialogDialog.iziModal ({
+	width: 700,
+	radius: 5,
+	padding: 20
+});
+
 modalReceiveChildPaymentDialogDialog.iziModal ({
 	width: 700,
 	radius: 5,
 	padding: 20
 });
 
+
+
+modalAddFeePackageToFeesDialogDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 modalReceiveChildPaymentDialogDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
+
+function openAddChildToFeesDialog () {
+	modalAddFeePackageToFeesDialogDialog.iziModal ('open');
+}
+
+
+
+let FEES_CHILD_POSTED_SELECTS_DATA = {} ;
+function onchangefeePaymentPackages () {
+	let select = $("#feePaymentPackages").val() ;
+	FEES_CHILD_POSTED_SELECTS_DATA = {} ;
+	let obj = FEES_PACKAGES_READ_ROWS.filter(x=>x.id == select )[0];
+	const ids_str =obj.fee_items_ids;
+	let cost = sumUp(ids_str);
+	$("#packageCostSelected").text('R ' + cost);
+	let arr = ids_str.split(',');
+	let ret = ``;
+	let objData = [];
+	_.forEach(arr,(valz,ix)=>{
+		let objj = FEES_ITEMS_READ_ROWS.filter(x=>x.id == valz)[0];
+		objData.push({
+			feeID:objj.id,
+			feeTitle:objj.title,
+			feeItemCost:objj.cost
+		});
+		ret += `<li>
+  					<i class="icofont icofont-stylish-right text-danger"></i> ${objj.title} R ${objj.cost}
+                </li>`;
+	});
+	FEES_CHILD_POSTED_SELECTS_DATA = {
+		id_package:select ,
+		pack_obj:obj,
+		totalCost:cost,
+		fees:objData
+	};
+	$("#list_fee_items_for_packag").html(ret);
+	
+}
+
+
+
+
+
+
+
 function getPosttableData (year) {
 	$('body').loading({
 		message: 'Loading...'
@@ -37,7 +92,7 @@ $('#children_select_all').click(function(event) {
 		$('.fee_table_check').each(function() {
 			this.checked = true;
 		});
-		$("#btnPostSlected").slideDown('slow');
+		$("#btnPostSlected,#btnAddFeesTolected").slideDown('slow');
 		checkCounter = POSTED_CHILDREN_READ_ROWS.length;
 	}
 	else {
@@ -45,7 +100,7 @@ $('#children_select_all').click(function(event) {
 			this.checked = false;
 		});
 		checkCounter = 0;
-		$("#btnPostSlected").slideUp('slow');
+		$("#btnPostSlected,#btnAddFeesTolected").slideUp('slow');
 	}
 	
 });
@@ -155,6 +210,23 @@ function postChildrenDialog () {
 	
 	
 	
+}
+function saveChildrenFeePackages () {
+	let feePaymentPackages = $("#feePaymentPackages").val();
+	if(feePaymentPackages === ''){
+		showErrorMessage('Please select a package ' , 4);
+		error_input_element(true , 'feePaymentPackages');
+		return;
+	}
+	error_input_element(false , 'feePaymentPackages');
+	
+	let post_id_children = getCheckedInputsGetValues('fee_table_check');
+	FEES_CHILD_POSTED_SELECTS_DATA['post_id_children'] = post_id_children;
+	console.log (FEES_CHILD_POSTED_SELECTS_DATA);
+	let dataa = new FormData();
+	dataa.append('newChildPackgeFee' , JSON.stringify(FEES_CHILD_POSTED_SELECTS_DATA));
+	modalAddFeePackageToFeesDialogDialog.iziModal ('startLoading');
+	axios({url:'/backend',method:'post',data:dataa})
 }
 
 function saveChildPayment () {
