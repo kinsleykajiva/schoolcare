@@ -109,6 +109,7 @@ function renderPostChildrenTable () {
 	let row = ``;
 	_.forEach(POSTED_CHILDREN_READ_ROWS,(valls,inx)=>{
 		let costOfPaid = valls.check_has_fees? ' Of '+ accounting.formatMoney(valls.check_has_fees) + ' ' : '';
+		let viewFeeStruct =  valls.check_has_fees? `<a class="dropdown-item waves-light waves-effect" onclick="onViewChildFeesStructureDialog('${valls.id}');" href="javascript:void(0);">View Fees Structure</a>`:'';
 		row += `
 		
 		<tr>
@@ -131,6 +132,7 @@ function renderPostChildrenTable () {
        <div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
 
         <a class="dropdown-item waves-light waves-effect" onclick="onSavePaymentDialog('${valls.id_child}' , '${valls.childname}' , '${valls.year}');" href="javascript:void(0);">Receive Payment</a>
+        ${viewFeeStruct}
        </div>
       </div>
      </td>
@@ -156,7 +158,9 @@ function renderPostChildrenTable () {
 	});
 }
 
+function onViewChildFeesStructureDialog (id) {
 
+}
 function renderFeesTable () {
 	let row =``;
 	_.forEach(FEES_ITEMS_READ_ROWS,(valls,inx)=>{
