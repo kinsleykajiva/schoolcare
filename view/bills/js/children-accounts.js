@@ -65,7 +65,7 @@ function onchangeYearOnPostTable () {
 }
 function renderYearSelects () {
 	
-	let opt =`<option value="00">Select</option>`;
+	let opt =`<option value="00">Select Year</option>`;
 	_.forEach(FINANCIAL_YEARS_READ_ROWS,(valls,ix)=>{
 		let selected = valls.year == thisYear ? 'selected="selected"' : '';
 		
