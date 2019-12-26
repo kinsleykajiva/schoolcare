@@ -112,7 +112,7 @@ function onSavePaymentDialog (id , childName , year) {
 }
 function onchangeYearOnPostTable () {
 	
-	let select = $("#table_select_year").val();
+	let select = $("#table_select_year_11").val();
 	let year = FINANCIAL_YEARS_READ_ROWS.filter(x=>x.id == select)[0].year;
 
 	getPosttableData(year)
@@ -128,7 +128,9 @@ function renderYearSelects () {
 		
 	});
 	
-	$("#table_select_year").html(opt).selectpicker('render').selectpicker('refresh');
+	$("#table_select_year_11").html(opt);
+	//$("#table_select_year_11").selectpicker('render');
+	//$("#table_select_year_11").selectpicker('refresh');
 }
 function postChildrenDialog () {
 	const nextYear = new Date().getFullYear() +1;     // Get the four digit year (yyyy);

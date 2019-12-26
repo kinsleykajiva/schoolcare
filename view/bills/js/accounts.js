@@ -201,7 +201,7 @@ function onViewChildFeesStructureDialog (id) {
 			});
 			tr+= `
 				 <tr>
-                                                            <th scope="row"> <i class="icofont icofont-bubble-right"></i> </th>
+                                                            <th scope="row">  </th>
                                                             <td><strong>Total</strong></td>
                                                             <td>${accounting.formatMoney(totalCost)}</td>
                                                             

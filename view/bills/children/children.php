@@ -1,32 +1,17 @@
 <div class="">
-
-    <div class="row">
-        <div class="col-sm-2">
-            <button id="btnPostSlected" style="display: none;" onclick="postChildrenDialog()" class="btn  btn-mini btn-info btn-round">
-                <i class="fa fa-address-book-o" aria-hidden="true"></i>	 Post
-            </button>
-        </div>
-        <div class="col-sm-2">
-            <button id="btnAddFeesTolected" style="display: none;" onclick="openAddChildToFeesDialog()" class="btn  btn-mini btn-info btn-round">
-                <i class="fa fa-address-book-o" aria-hidden="true"></i>	 Add Fees
-            </button>
-        </div>
-
-
-    </div>
-
 	<div class="card-block table-border-style" style="min-height: 300px;">
 		<div class="row">
 			<div class="col-sm-2">
 				<label class="badge badge-primary">FS - Has Fees Structure</label>
 			</div>
+			<div class="col-sm-1"></div>
 			<div class="col-sm-2">
 				<label class="badge badge-danger">NF - Has No Fees Structure</label>
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
-		<br>
-		<select class="form-control selectpicker" onchange="onchangeYearOnPostTable()" id="table_select_year"></select>
+		<label for="table_select_year_11"></label>
+		<select onchange="onchangeYearOnPostTable()" id="table_select_year_11" class="form-control"  ><option></option></select>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
@@ -34,13 +19,13 @@
 
 					<th>
 
-							<div  class="checkbox-fade fade-in-primary">
-								<label>
-									<input type="checkbox"  id="children_select_all" value="all">
-									<span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-									<span class="text-inverse">All</span>
-								</label>
-							</div>
+						<div  class="checkbox-fade fade-in-primary">
+							<label>
+								<input type="checkbox"  id="children_select_all" value="all">
+								<span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+								<span class="text-inverse">All</span>
+							</label>
+						</div>
 
 					</th>
 					<th>Name </th>
@@ -52,13 +37,13 @@
 				<tr>
 					<th scope="row">
 
-							<div  class="checkbox-fade fade-in-primary">
-								<label>
-									<input type="checkbox" value="">
-									<span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+						<div  class="checkbox-fade fade-in-primary">
+							<label>
+								<input type="checkbox" value="">
+								<span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
 
-								</label>
-							</div>
+							</label>
+						</div>
 
 					</th>
 					<td>Loading ....</td>
@@ -132,7 +117,7 @@
 
 <div class="" id="addFeePackageToFeesDialog" data-izimodal-title="Add Fee All Selected Children Dialog" >
     <span id="child_payment_yeared" style="display: none;"></span>
-    <h6 id="packageCostSelected" ">R 0.00</h6>
+    <h6 id="packageCostSelected" >R 0.00</h6>
 	<div class="card-block">
 		<form onsubmit="return false;">
 			<div class="row">
@@ -153,9 +138,7 @@
                         <label class="col-form-label">Fee Item</label> <br>
                         <div class="">
                             <ul id="list_fee_items_for_packag">
-                               <!-- <li>
-                                    <i class="icofont icofont-stylish-right text-danger"></i> Lorem ipsum dolor sit amet
-                                </li>-->
+
 
                             </ul>
                         </div>
