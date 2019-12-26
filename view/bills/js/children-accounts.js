@@ -213,7 +213,7 @@ function postChildrenDialog () {
 }
 function saveChildrenFeePackages () {
 	let feePaymentPackages = $("#feePaymentPackages").val();
-	if(feePaymentPackages === ''){
+	if(feePaymentPackages === 'null'){
 		showErrorMessage('Please select a package ' , 4);
 		error_input_element(true , 'feePaymentPackages');
 		return;
@@ -224,9 +224,19 @@ function saveChildrenFeePackages () {
 	FEES_CHILD_POSTED_SELECTS_DATA['post_id_children'] = post_id_children;
 	console.log (FEES_CHILD_POSTED_SELECTS_DATA);
 	let dataa = new FormData();
-	dataa.append('newChildPackgeFee' , JSON.stringify(FEES_CHILD_POSTED_SELECTS_DATA));
+	dataa.append('newChildFeePackge' , JSON.stringify(FEES_CHILD_POSTED_SELECTS_DATA));
 	modalAddFeePackageToFeesDialogDialog.iziModal ('startLoading');
-	axios({url:'/backend',method:'post',data:dataa})
+	axios({url:'/backend/fees',method:'post',data:dataa}).then(res=>{
+		modalAddFeePackageToFeesDialogDialog.iziModal ('stopLoading');
+		if(res.statusText === 'OK' && res.data.status === 'ok'){
+			modalAddFeePackageToFeesDialogDialog.iziModal ('close');
+		}else{
+			showErrorMessage('Failed to Save' ,4);
+		}
+	}).catch(err=>{
+		showErrorMessage('Failed to connect Please check Your Connection' , 3);
+		modalAddFeePackageToFeesDialogDialog.iziModal ('stopLoading');
+	});
 }
 
 function saveChildPayment () {

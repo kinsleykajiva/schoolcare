@@ -5,6 +5,20 @@
 	//print $USER_ID ;
 	$feesHandlerObj = new DBFeesHandler( USER, PASSWORD, DATABASE );
 
+	if(isset($_POST['newChildFeePackge'])){
+		$newChildFeePackge = $_POST['newChildFeePackge'];
+		$dataArr = json_decode( $newChildFeePackge , TRUE , 512 , JSON_THROW_ON_ERROR );
+		// decode
+		$id_package = $dataArr['id_package'];
+		$pack_objArr = $dataArr['pack_obj'];
+		$feesArr = $dataArr['fees'];
+		$post_id_childrenArr = $dataArr['post_id_children'];
+		//print_r($pack_objArr);exit;
+		$res = [];
+		print json_encode( $res, JSON_THROW_ON_ERROR, 512 );
+		exit;
+	}
+
 	if(isset($_POST['child_payment_yeared'])){
 		$child_id = $_POST['child_payment_yeared'];
 		$typePayment = $_POST['typePayment'];
