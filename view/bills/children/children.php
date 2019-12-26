@@ -1,7 +1,8 @@
 <div class="">
 	<button id="btnPostSlected" style="display: none;" onclick="postChildrenDialog()" class="btn btn-mini btn-info btn-round"><i class="fa fa-address-book-o" aria-hidden="true"></i>
 		 Post</button>
-	<div class="card-block table-border-style">
+	<div class="card-block table-border-style" style="min-height: 300px;">
+		<select class="form-control selectpicker" onchange="onchangeYearOnPostTable()" id="table_select_year"></select>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>

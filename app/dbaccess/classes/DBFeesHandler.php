@@ -18,12 +18,13 @@
 
 		public function getPostedChildrenForFinancialYear ( $year = '' ) : array
 		{
+
 			if ( !empty( $year ) ) {
 				return $this->fetchInArray( "SELECT 
                                                             ffy.id, ffy.id_child, ffy.id_year , 
                                                             fy.year ,
-                                                            (SELECT SUM(fee_payment_ledger.amount ) AS sumAll FROM fee_payment_ledger WHERE fee_payment_ledger.id_child = ffy.id_child AND fee_payment_ledger.iscredit = 1 AND fee_payment_ledger.date_created = '$year' ) AS paidAmount ,
-                                                            CONCAT(c.surname , ' ' ,c.name) AS childName
+                                                            (SELECT SUM(fee_payment_ledger.amount ) AS sumall FROM fee_payment_ledger WHERE fee_payment_ledger.id_child = ffy.id_child AND fee_payment_ledger.iscredit = 1 AND  SUBSTRING_INDEX(SUBSTRING_INDEX(fee_payment_ledger.date_created, ' ', 1), '-', 1) = '$year' ) AS paidamount ,
+                                                            CONCAT(c.surname , ' ' ,c.name) AS childname
 													   FROM fees_financial_year ffy 
 													        JOIN financial_year fy ON ffy.id_year = fy.id
 													        JOIN children c ON  c.id = ffy.id_child
@@ -39,6 +40,9 @@
 												        JOIN children c ON  c.id = ffy.id_child" );
 		}
 
+		public function getFinancialYears():array {
+			return $this->fetchInArray('SELECT * FROM financial_year');
+		}
 		public function getFeesItems():array {
 			return $this->fetchInArray('SELECT * FROM fees_items');
 		}
@@ -114,7 +118,7 @@
 			$res = $this->insert('journal',[
 				'date_created' => self::nowDateTime() ,
 				'description' => $reference_txt . '\n Notes:\n' . $notes ,
-				'id_user_saved_by' => $$id_saved_by ,
+				'id_user_saved_by' => $id_saved_by ,
 				'amount' => $amount
 			]);
 			if(!$res){
@@ -129,7 +133,7 @@
 				'id_payment_type'=> $id_payment_type ,
 				'reference_txt'=> $reference_txt ,
 				'id_child'=> $id_child ,
-				'notes'=> $notes ,
+				'notes_description'=> $notes ,
 				'amount' => $amount ,
 				'id_journal'=> $lastID ,
 				'id_user_saved_by'=> $id_saved_by ,

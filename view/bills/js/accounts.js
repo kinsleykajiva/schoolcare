@@ -2,6 +2,8 @@ $ ('.duallistbox').bootstrapDualListbox ();
 let FEES_ITEMS_READ_ROWS = [] ;
 let FEES_PACKAGES_READ_ROWS = [] ;
 let POSTED_CHILDREN_READ_ROWS = [] ;
+let FINANCIAL_YEARS_READ_ROWS = [] ;
+const thisYear = new Date().getFullYear() ;
 const modalNewPackageDialogDialog = $("#NewPackageDialog");
 const modalEditPackageDialogDialog = $("#EditPackageDialog");
 const modalEaddFeeItemDialogDialog = $("#addFeeItemDialog");
@@ -76,11 +78,12 @@ $ (function () {
 function getDefaultData () {
 	axios.get ('/view/fees', {
 		params: {
-			get_def: '2019'
+			get_def: thisYear
 		}
 	}).then (res => {
 		if (res.statusText === 'OK') {
 			const j = res.data;
+			FINANCIAL_YEARS_READ_ROWS = j.years;
 			POSTED_CHILDREN_READ_ROWS = j.postedChildren;
 			FEES_ITEMS_READ_ROWS = j.fee_items;
 			FEES_PACKAGES_READ_ROWS = j.fees_packages;
@@ -89,6 +92,7 @@ function getDefaultData () {
 			renderFeesSelects(j.fee_items);
 			renderFeesTable();
 			renderPostChildrenTable();
+			renderYearSelects();
 			
 		}
 	}).catch (err => {
@@ -99,6 +103,8 @@ function getDefaultData () {
 
 
 function renderPostChildrenTable () {
+	
+	$('body').loading('stop');
 	let row = ``;
 	_.forEach(POSTED_CHILDREN_READ_ROWS,(valls,inx)=>{
 		row += `
@@ -115,14 +121,14 @@ function renderPostChildrenTable () {
        </div>
 
      </th>
-     <td>${valls.childName}</td>
+     <td>${valls.childname}</td>
      <td>R ${valls.paidamount ? valls.paidamount : 0.00}</td>
      <td>
       <div class="dropdown-default dropdown open">
        <button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Option</button>
        <div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
 
-        <a class="dropdown-item waves-light waves-effect" onclick="onSavePaymentDialog('${valls.id_child}' , '${valls.childName}' , '${valls.year}');" href="javascript:void(0);">Receive Payment</a>
+        <a class="dropdown-item waves-light waves-effect" onclick="onSavePaymentDialog('${valls.id_child}' , '${valls.childname}' , '${valls.year}');" href="javascript:void(0);">Receive Payment</a>
        </div>
       </div>
      </td>

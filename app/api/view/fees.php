@@ -6,9 +6,12 @@
 	$feesHandlerObj = new DBFeesHandler( USER , PASSWORD , DATABASE );
 
 	if ( isset( $_GET[ 'get_def' ] ) ) {
-		$view[ 'postedChildren' ] = $feesHandlerObj->getPostedChildrenForFinancialYear();
+		$getyear = $_GET['get_def'];
+		$getyear = $getyear === '00'? '' : $getyear;
+		$view[ 'postedChildren' ] = $feesHandlerObj->getPostedChildrenForFinancialYear($getyear);
 		$view[ 'paymentmethods' ] = $feesHandlerObj->getPaymentMethods();
 		$view[ 'fee_items' ] = $feesHandlerObj->getFeesItems();
+		$view[ 'years' ] = $feesHandlerObj->getFinancialYears();
 		$view[ 'fees_packages' ] = $feesHandlerObj->getFeesPackages();
 		$view[ 'paymentPeriods' ] = $feesHandlerObj->getPaymentPeriods();
 
