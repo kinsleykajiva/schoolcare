@@ -16,6 +16,16 @@
     </div>
 
 	<div class="card-block table-border-style" style="min-height: 300px;">
+		<div class="row">
+			<div class="col-sm-2">
+				<label class="badge badge-primary">FS - Has Fee Structure</label>
+			</div>
+			<div class="col-sm-2">
+				<label class="badge badge-danger">NF - Has No Fee Structure</label>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+		<br>
 		<select class="form-control selectpicker" onchange="onchangeYearOnPostTable()" id="table_select_year"></select>
 		<div class="table-responsive">
 			<table class="table">

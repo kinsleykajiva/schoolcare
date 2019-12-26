@@ -5,7 +5,20 @@ const firstAPI = axios.create({
 });
 axios.defaults.baseURL = 'app/api/';
 axios.defaults.timeout = 1000 * 4;
-
+accounting.settings = {
+	currency: {
+		symbol: 'R',   // default currency symbol is '$'
+		format: "%s %v", // controls output: %s = symbol, %v = value/number (can be object: see below)
+		decimal: ".",  // decimal point separator
+		thousand: ",",  // thousands separator
+		precision: 2   // decimal places
+	},
+	number: {
+		precision: 0,  // default precision on numbers is 0
+		thousand: ",",
+		decimal: "."
+	}
+};
 function checkAccess () {
 	if (!Cookies.get ('JWT')) {
 		window.location.href = "log?access=1";

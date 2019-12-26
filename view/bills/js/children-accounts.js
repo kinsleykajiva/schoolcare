@@ -124,7 +124,7 @@ function renderYearSelects () {
 	_.forEach(FINANCIAL_YEARS_READ_ROWS,(valls,ix)=>{
 		let selected = valls.year == thisYear ? 'selected="selected"' : '';
 		
-			opt += `<option ${selected} value="${valls.id}">${valls.year}</option>`;
+			opt += `<option ${selected} value="${valls.id}"> year ${valls.year}</option>`;
 		
 	});
 	
@@ -230,6 +230,8 @@ function saveChildrenFeePackages () {
 		modalAddFeePackageToFeesDialogDialog.iziModal ('stopLoading');
 		if(res.statusText === 'OK' && res.data.status === 'ok'){
 			modalAddFeePackageToFeesDialogDialog.iziModal ('close');
+			showSuccessMessage('Fee Structure added to selected Kids');
+			getDefaultData ();
 		}else{
 			showErrorMessage('Failed to Save' ,4);
 		}

@@ -108,6 +108,7 @@ function renderPostChildrenTable () {
 	$('body').loading('stop');
 	let row = ``;
 	_.forEach(POSTED_CHILDREN_READ_ROWS,(valls,inx)=>{
+		let costOfPaid = valls.check_has_fees? ''+ accounting.formatMoney(valls.check_has_fees) + ' of /' : '';
 		row += `
 		
 		<tr>
@@ -117,13 +118,13 @@ function renderPostChildrenTable () {
         <label>
          <input type="checkbox" class="fee_table_check" value="${valls.id}">
          <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-		 <span class="text-inverse"> ${valls.year} </span>
+		 <span class="text-inverse"> ${valls.year} ${valls.check_has_fees? 'FS':'NF'}</span>
         </label>
        </div>
 
      </th>
      <td>${valls.childname}</td>
-     <td>R ${valls.paidamount ? valls.paidamount : 0.00}</td>
+     <td> ${costOfPaid}  ${valls.paidamount ? accounting.formatMoney(valls.paidamount) : accounting.formatMoney(0.00)} </td>
      <td>
       <div class="dropdown-default dropdown open">
        <button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Option</button>
@@ -162,7 +163,7 @@ function renderFeesTable () {
 		row +=`
 		<tr>
 				<td>${valls.title}</td>
-				<td>R ${valls.cost}</td>
+				<td> ${accounting.formatMoney(valls.cost)}</td>
 				<td>
 				<div class="dropdown-default dropdown open">
 				<button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Option</button>
@@ -201,7 +202,7 @@ function renderFeesSelects (data) {
 		
 		_.forEach(data,(valls,inx)=>{
 			opt += `
-				 <option value="${valls.id}">${valls.title} (R${valls.cost}) </option>
+				 <option value="${valls.id}">${valls.title} ( ${accounting.formatMoney(valls.cost)}) </option>
 			`;
 		});
 		$("#feeItemSelects").html(opt);
@@ -324,12 +325,13 @@ function renderPackagesTable (data) {
 		return;
 	}
 	_.forEach (data, (valls, inx) => {
+		let costOf = accounting.formatMoney(sumUp(valls.fee_items_ids)) ;
 		
 		row += `
 					<tr>
 
 					<td>${valls.title} / (${valls.payment_period_title})</td>
-					<td>R ${sumUp(valls.fee_items_ids)}</td>
+					<td> ${costOf}</td>
 							<td>
 							<div class="dropdown-default dropdown open">
 							<button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Option</button>
@@ -359,9 +361,9 @@ function openEditView (id) {
 	
 	_.forEach(FEES_ITEMS_READ_ROWS,(valls,inx)=>{
 		if(arrSele .includes(valls.id ) ){
-			opt += ` <option selected="selected" value="${valls.id}">${valls.title} (R${valls.cost}) </option>`;
+			opt += ` <option selected="selected" value="${valls.id}">${valls.title} ( ${accounting.formatMoney(valls.cost)}) </option>`;
 		}else{
-			opt += ` <option value="${valls.id}">${valls.title} (R${valls.cost}) </option>`;
+			opt += ` <option value="${valls.id}">${valls.title} (${accounting.formatMoney(valls.cost)}) </option>`;
 		}
 		
 		
@@ -377,7 +379,7 @@ function openInfoView (id) {
 	let htmlData= `<h4> Package Title : ${arr.title}</h4> <br>`;
 	_.forEach(FEES_ITEMS_READ_ROWS,(valls,inx)=>{
 		if(arrSele .includes(valls.id ) ){
-			htmlData += ` Fee  <label >${valls.title} @ (R${valls.cost}) </label> <br>`;
+			htmlData += ` Fee  <label >${valls.title} @ ( ${accounting.formatMoney(valls.cost)}) </label> <br>`;
 		}
 		
 		

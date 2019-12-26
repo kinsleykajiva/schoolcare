@@ -42,7 +42,8 @@
                                                             ffy.id, ffy.id_child, ffy.id_year , 
                                                             fy.year ,
                                                             (SELECT SUM(fee_payment_ledger.amount ) AS sumall FROM fee_payment_ledger WHERE fee_payment_ledger.id_child = ffy.id_child AND fee_payment_ledger.iscredit = 1 AND  SUBSTRING_INDEX(SUBSTRING_INDEX(fee_payment_ledger.date_created, ' ', 1), '-', 1) = '$year' ) AS paidamount ,
-                                                            CONCAT(c.surname , ' ' ,c.name) AS childname
+                                                            CONCAT(c.surname , ' ' ,c.name) AS childname ,
+                                                            (SELECT SUM(fees_packages_structure_for_child.fee_item_amount)  FROM fees_packages_structure_for_child WHERE fees_packages_structure_for_child.id_posted_child =  ffy.id ) AS check_has_fees
 													   FROM fees_financial_year ffy 
 													        JOIN financial_year fy ON ffy.id_year = fy.id
 													        JOIN children c ON  c.id = ffy.id_child
@@ -52,7 +53,8 @@
                                                         ffy.id, ffy.id_child, ffy.id_year , 
                                                         fy.year , 
                                                         (SELECT SUM(fee_payment_ledger.amount ) AS sumall FROM fee_payment_ledger WHERE fee_payment_ledger.id_child = ffy.id_child AND fee_payment_ledger.iscredit = 1  ) AS paidamount ,
-                                                        CONCAT(c.surname , ' ' ,c.name) AS childname
+                                                        CONCAT(c.surname , ' ' ,c.name) AS childname ,
+                                                        (SELECT SUM(fees_packages_structure_for_child.fee_item_amount)  FROM fees_packages_structure_for_child WHERE fees_packages_structure_for_child.id_posted_child =  ffy.id ) AS check_has_fees
 												   FROM fees_financial_year ffy 
 												        JOIN financial_year fy ON ffy.id_year = fy.id
 												        JOIN children c ON  c.id = ffy.id_child" );
