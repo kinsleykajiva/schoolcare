@@ -5,6 +5,14 @@
 	//print $USER_ID ;
 	$feesHandlerObj = new DBFeesHandler( USER , PASSWORD , DATABASE );
 
+	if(isset($_GET['get_feed_child'])){
+		$rec_id  = $_GET['get_feed_child'];
+		$view[ 'child_structure' ] = $feesHandlerObj->getChildFeesStructure($rec_id);
+		print json_encode( $view , JSON_THROW_ON_ERROR , 512 );
+		exit;
+	}
+
+
 	if ( isset( $_GET[ 'get_def' ] ) ) {
 		$getyear = $_GET['get_def'];
 		$getyear = $getyear === '00'? '' : $getyear;

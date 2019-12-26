@@ -18,10 +18,10 @@
 	<div class="card-block table-border-style" style="min-height: 300px;">
 		<div class="row">
 			<div class="col-sm-2">
-				<label class="badge badge-primary">FS - Has Fee Structure</label>
+				<label class="badge badge-primary">FS - Has Fees Structure</label>
 			</div>
 			<div class="col-sm-2">
-				<label class="badge badge-danger">NF - Has No Fee Structure</label>
+				<label class="badge badge-danger">NF - Has No Fees Structure</label>
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
@@ -64,13 +64,7 @@
 					<td>Loading ....</td>
 					<td>Loading...</td>
 					<td>
-						<div class="dropdown-default dropdown open">
-							<button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Option</button>
-							<div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
-
-								<a class="dropdown-item waves-light waves-effect" href="#">Edit</a>
-							</div>
-						</div>
+						Loading...
 					</td>
 				</tr>
 

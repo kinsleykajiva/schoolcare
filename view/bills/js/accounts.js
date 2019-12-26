@@ -159,7 +159,72 @@ function renderPostChildrenTable () {
 }
 
 function onViewChildFeesStructureDialog (id) {
-
+	$('body').loading({
+		message: 'Loading...'
+	});
+	axios.get('/view/fees',{params:{get_feed_child:id}}).then(res=>{
+		$('body').loading('stop');
+		if(res.statusText === 'OK'){
+			
+			const j = res.data.child_structure;
+			let childName = ` <h4> <u>Child Name:</u> </h4> <h5> ${j[0].child_name }  </h5> <br><br>`;
+			let packageName = `Package: <h6> ${j[0].package_title }  paid ${j[0].payment_period_title}</h6>  <br><br>`;
+			let htmlC = `
+					<div class="card-block table-border-style">
+					<strong><h4>Fee Structure </h4></strong>
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Fee</th>
+                                                            <th>Amount</th>
+                                                           
+                                                        </tr>
+                                                    </thead>
+                                                    
+					`;
+			let tr= ``;
+			let totalCost = 0;
+			_.forEach(j,(valls,inx)=>{
+				totalCost += parseFloat(valls.fee_item_amount);
+				//console.log ()
+				tr+= `
+				 <tr>
+                                                            <th scope="row"> <i class="icofont icofont-bubble-right"></i> </th>
+                                                            <td>${valls.fee_item_title}</td>
+                                                            <td>${accounting.formatMoney(valls.fee_item_amount)}</td>
+                                                            
+                                                        </tr>
+				
+				`;
+			});
+			tr+= `
+				 <tr>
+                                                            <th scope="row"> <i class="icofont icofont-bubble-right"></i> </th>
+                                                            <td><strong>Total</strong></td>
+                                                            <td>${accounting.formatMoney(totalCost)}</td>
+                                                            
+                                                        </tr>
+				
+				`;
+			 htmlC += ` <tbody>
+                                                    
+                                        ${tr}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>`;
+			
+			globalInfoDialog(childName + packageName + htmlC, 'Fees Structure ');
+		}else{
+			showErrorMessage('Failed to get Data' , 4);
+		}
+	}).catch(err=>{
+		$('body').loading('stop');
+		showErrorMessage('Failed to connect' ,4);
+	});
+	
 }
 function renderFeesTable () {
 	let row =``;

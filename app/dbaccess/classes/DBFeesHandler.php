@@ -33,6 +33,28 @@
 
 			return $this->result($res , 'Adding fees to child' );
 		}
+		public function getChildFeesStructure($rec_id):array {
+			$sql = "SELECT 
+                            (SELECT CONCAT(employees.name , ' ' , employees.surname) FROM employees WHERE employees.id = u.id_employee) AS  saved_employee_name ,
+                            (SELECT CONCAT(children.name , ' ' , children.surname) FROM children WHERE children.id = ffy.id_child ) AS child_name ,
+                            fpsc.id,  
+                            fpsc.package_title,  
+                            fpsc.fee_item_title,  
+                            fpsc.fee_item_amount,  
+                            fpsc.id_posted_child,  
+                            fpsc.id_fee_item, 
+                            fpsc.id_package_fee, 
+                            fpsc.payment_period_title, 
+                            fpsc.id_payment_period, 
+                            fpsc.date_created,  
+                            fpsc.id_user_created
+					FROM `fees_packages_structure_for_child` fpsc 
+					    JOIN  users u ON fpsc.id_user_created = u.id 
+					    JOIN fees_financial_year ffy ON ffy.id = fpsc.id_posted_child
+					    WHERE fpsc.id_posted_child  = '$rec_id' " ;
+
+			return $this->fetchInArray($sql);
+		}
 
 		public function getPostedChildrenForFinancialYear ( $year = '' ) : array
 		{
