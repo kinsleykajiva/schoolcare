@@ -57,11 +57,6 @@ function onchangefeePaymentPackages () {
 }
 
 
-
-
-
-
-
 function getPosttableData (year) {
 	$('body').loading({
 		message: 'Loading...'
