@@ -1,0 +1,628 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"user",
+				"username\t(LoginController.php)"
+			],
+			[
+				"User",
+				"UserID\tabc"
+			],
+			[
+				"$user",
+				"$user->CompanyID\tabc"
+			],
+			[
+				"htt",
+				"https://api2qa.affsaf.co.za\t(commands.txt)"
+			],
+			[
+				"app2-",
+				"app2-pdf-attendance-visitor.php?ID\tabc"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
+				"req",
+				"request\tabc"
+			],
+			[
+				"DB",
+				"DB::insert\tRun an insert statement against the database."
+			],
+			[
+				"Coma",
+				"CompanyID\tabc"
+			],
+			[
+				"us",
+				"user\tabc"
+			],
+			[
+				"case",
+				"cases"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "composer.lock",
+			"settings":
+			{
+				"buffer_size": 149578,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"run req",
+				"Requester: Run Requests"
+			],
+			[
+				"au",
+				"Requester: Authentication Options"
+			],
+			[
+				"doc",
+				"Requester: Show Documentation (Local)"
+			],
+			[
+				"erq",
+				"Requester: Replay Request"
+			],
+			[
+				"req",
+				"Requester: Show Documentation (Online)"
+			],
+			[
+				"pretty",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"run re",
+				"Requester: Settings"
+			],
+			[
+				"run au",
+				"Requester: Authentication Options"
+			],
+			[
+				"run ",
+				"Requester: Show Documentation (Local)"
+			],
+			[
+				"prett",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"instA",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"aut",
+				"Requester: Authentication Options"
+			],
+			[
+				"run d",
+				"Requester: Show Documentation (Local)"
+			],
+			[
+				"mater",
+				"Material Theme: Activate theme"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare"
+	],
+	"file_history":
+	[
+		"/opt/lampp/htdocs/mpdf-examples-master/example34_invoice_example.php",
+		"/opt/lampp/htdocs/mpdf-examples-master/example_test.php",
+		"/opt/lampp/htdocs/mpdf-examples-master/MathJaxSample.html",
+		"/opt/lampp/htdocs/mpdf-examples-master/generate-examples.sh",
+		"/opt/lampp/htdocs/mpdf-examples-master/MathJaxProcess.php",
+		"/opt/lampp/htdocs/mpdf-examples-master/composer.json",
+		"/opt/lampp/htdocs/invoicr-master/templates/HTML/apple.php",
+		"/opt/lampp/htdocs/invoicr-master/example/index.php",
+		"/opt/lampp/htdocs/invoicr-master/invoicr.php",
+		"/home/kinsleykajiva/Desktop/desk/commands.txt",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Controllers/ProjectMonitorController.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Controllers/ChecklistApiController.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Controllers/FieldForceController.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/routes/api.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Controllers/PPEApiController.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Controllers/FirebaseMessageController.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Controllers/RiskApiController.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Controllers/InventoryApiController.php",
+		"/home/kinsleykajiva/Desktop/getppe.json",
+		"/home/kinsleykajiva/Desktop/getchecklists.json",
+		"/home/kinsleykajiva/Desktop/incidentapi.json",
+		"/etc/environment",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Controllers/Utilities/FirebaseMessagingUtilities.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/storage/logs/laravel.log",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Middleware/Checklist.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Providers/AuthServiceProvider.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Controllers/UserController.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/CatCheckList.php",
+		"/home/kinsleykajiva/Documents/works-data/-.txt",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Controllers/TrainingApiController.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Controllers/Auth/LoginController.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Features.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/User.php",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/ProjectUser.php",
+		"/home/kinsleykajiva/Desktop/myhp.txt",
+		"/opt/lampp/htdocs/projects/work/api2.affsaf.co.za/app/Http/Controllers/FormsController.php",
+		"/home/kinsleykajiva/.config/sublime-text-3/Packages/User/Rainbowth.sublime-settings",
+		"/home/kinsleykajiva/.config/sublime-text-3/Packages/User/Requester.history.json.bkp",
+		"/home/kinsleykajiva/.config/sublime-text-3/Packages/User/PHP.sublime-settings",
+		"/home/kinsleykajiva/.config/sublime-text-3/Packages/User/PHP.sublime.settings",
+		"/home/kinsleykajiva/Documents/works-data/app server.txt",
+		"/opt/lampp/htdocs/projects/AAllAA/legalwareweb/system-docs/install_new_company_sql_database.sql",
+		"/opt/lampp/htdocs/projects/AAllAA/legalware_v_2/includes/shared_css.php",
+		"/opt/lampp/htdocs/projects/AAllAA/legalware_v_2/dist/css/style.min.css",
+		"/opt/lampp/htdocs/projects/AAllAA/legalware_v_2/dist/css/style.css",
+		"/opt/lampp/htdocs/projects/AAllAA/legalware_v_2/configurations/module-resources.json",
+		"/opt/lampp/htdocs/projects/AAllAA/legalware_v_2/includes/shared_header.php",
+		"/opt/lampp/htdocs/projects/AAllAA/legalwareweb/app/DBAccess/ajax/schedules_ajax_slave.php",
+		"/opt/lampp/htdocs/projects/AAllAA/legalwareweb/schedules.php",
+		"/opt/lampp/htdocs/projects/AAllAA/legalwareweb/asset/js/forpages/schedules.js",
+		"/opt/lampp/htdocs/projects/AAllAA/legalwareweb/includes/for-events/add-event.php",
+		"/home/kinsleykajiva/Desktop/settings.json",
+		"/home/kinsleykajiva/Desktop/Preferences.sublime-settings",
+		"/opt/lampp/htdocs/projects/AAllAA/legalware_v_2/vendor/tedivm/stash/src/Stash/Pool.php",
+		"/opt/lampp/htdocs/projects/AAllAA/legalware_v_2/vendor/tedivm/stash/src/Stash/Item.php",
+		"/opt/lampp/htdocs/projects/AAllAA/legalware_v_2/vendor/tedivm/stash/src/Stash/Utilities.php",
+		"/opt/lampp/htdocs/projects/AAllAA/legalware_v_2/vendor/tedivm/stash/tests/runTests.sh",
+		"/opt/lampp/htdocs/projects/AAllAA/legalware_v_2/vendor/tedivm/stash/tests/bootstrap.php",
+		"/opt/lampp/htdocs/projects/AAllAA/legalware_v_2/vendor/tedivm/stash/tests/travis/php_extensions.ini",
+		"/etc/sysctl.conf",
+		"/home/kinsleykajiva/Desktop/desk/AAcomands.txt",
+		"/opt/lampp/htdocs/projects/AAllAA/legalware_v_2/backups/databases/legalware_beta (3).sql"
+	],
+	"find":
+	{
+		"height": 70.0
+	},
+	"find_in_files":
+	{
+		"height": 161.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"7",
+			",7",
+			"check",
+			"project",
+			"57_2_FIELD_FORCE_05_REQUESTS",
+			"7",
+			"');\n",
+			"crea",
+			"features",
+			"user()",
+			"createToken",
+			"mysql_2",
+			"1371828",
+			"1034696",
+			"8508226161085",
+			"\\\"\\\"",
+			"7412055097083",
+			");\n",
+			",\n",
+			"\\n",
+			"  \\n",
+			"  ",
+			"getAttendanceRegister\n",
+			"');\n",
+			")\n",
+			"task_status",
+			"priority",
+			"https:",
+			"https://fon",
+			"https://fonts",
+			"https://fonts.gstatic",
+			"https://fonts.gstatic.com/s/rubik/v7/iJWHBXyIfDnIV7F6iGmd8WU.ttf",
+			".tff",
+			"https://fonts.gstatic.com/s/rubik/v7/iJWHBXyIfDnIV7FCimmd8WU.ttf",
+			"https://fonts.gstatic.com/s/rubik/v7/iJWKBXyIfDnIV7nBrXk.ttf",
+			"https://fonts.gstatic.com/s/rubik/v7/iJWHBXyIfDnIV7Eyjmmd8WU.ttf",
+			"https://fonts.gstatic.com/s/rubik/v7/iJWHBXyIfDnIV7Fqj2md8WU.ttf",
+			"fonts.",
+			"fonts.goo",
+			"updateEvent-modal",
+			"addEvent-modal",
+			"enableDrag",
+			"draggable",
+			"enableDrag",
+			"onEventClick",
+			"onDrop",
+			"onSelect",
+			"$modal",
+			"defaultEvents",
+			"*\n",
+			"$riskAssesment",
+			".pos(",
+			" uploadBasicRiskResign: ",
+			"E/xxxxxx:",
+			"ReportID"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"'fonts/Rubik-Bold.ttf'",
+			"'fonts/Rubik-Black.ttf'",
+			"'fonts/Rubik-Regular.ttf'",
+			"'fonts/Rubik-Medium.ttf'",
+			"'fonts/Rubik-Light.ttf'",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "composer.lock",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 149578,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": 43,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										0,
+										1
+									]
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"git_gutter_is_enabled": true,
+							"rainbowth.lispy": false,
+							"syntax": "Packages/zzz A File Icon zzz/aliases/JSON (Composer).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.Terminus":
+	{
+		"height": 156.0
+	},
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "schoolcare.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 354.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 864.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 288.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

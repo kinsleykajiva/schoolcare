@@ -31,7 +31,7 @@ function onchangefeePaymentPackages () {
 	let obj = FEES_PACKAGES_READ_ROWS.filter(x=>x.id == select )[0];
 	const ids_str =obj.fee_items_ids;
 	let cost = sumUp(ids_str);
-	$("#packageCostSelected").text('R ' + cost);
+	$("#packageCostSelected").text( accounting.formatMoney( cost));
 	let arr = ids_str.split(',');
 	let ret = ``;
 	let objData = [];
@@ -43,7 +43,7 @@ function onchangefeePaymentPackages () {
 			feeItemCost:objj.cost
 		});
 		ret += `<li>
-  					<i class="icofont icofont-stylish-right text-danger"></i> ${objj.title} R ${objj.cost}
+  					<i class="icofont icofont-stylish-right text-danger"></i> ${objj.title}  ${accounting.formatMoney(objj.cost)}
                 </li>`;
 	});
 	FEES_CHILD_POSTED_SELECTS_DATA = {
@@ -224,7 +224,7 @@ function saveChildrenFeePackages () {
 	
 	let post_id_children = getCheckedInputsGetValues('fee_table_check');
 	FEES_CHILD_POSTED_SELECTS_DATA['post_id_children'] = post_id_children;
-	console.log (FEES_CHILD_POSTED_SELECTS_DATA);
+	//console.log (FEES_CHILD_POSTED_SELECTS_DATA);
 	let dataa = new FormData();
 	dataa.append('newChildFeePackge' , JSON.stringify(FEES_CHILD_POSTED_SELECTS_DATA));
 	modalAddFeePackageToFeesDialogDialog.iziModal ('startLoading');
