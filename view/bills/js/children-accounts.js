@@ -22,8 +22,6 @@ function openAddChildToFeesDialog () {
 	modalAddFeePackageToFeesDialogDialog.iziModal ('open');
 }
 
-
-
 let FEES_CHILD_POSTED_SELECTS_DATA = {} ;
 function onchangefeePaymentPackages () {
 	let select = $("#feePaymentPackages").val() ;
