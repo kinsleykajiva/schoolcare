@@ -3,3 +3,6 @@ storage/files/**
 storage/logs/
 storage/logs/**
 vender/abr4xa*
+public/
+.phpintel
+app/api/backend/tmp/

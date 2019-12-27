@@ -188,6 +188,10 @@ function removeLoadingOn(element_id_String){
 
 /*********************************************************************************************/
 /*********************************************************************************************/
+function removeEverythingAfterLastOccurrenceOfCharacter(str , char) {
+    return str.substring(0, str.lastIndexOf(char) + 1);
+}
+/*********************************************************************************************/
 function randString(x) {
 	var s = "";
 	while (s.length < x && x > 0) {
