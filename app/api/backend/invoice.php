@@ -5,7 +5,8 @@
 	include '../checkReqst.php';
 require_once  '../../../vendor/autoload.php';
 
-// include_once '../../dbaccess/classes/DBFeesHandler.php';
+include_once '../../dbaccess/classes/DBCompanyDetails.php';
+	$companyObj = new DBCompanyDetails( USER , PASSWORD , DATABASE );
 //print $USER_ID ;
 $viewData = [];
 if(isset($_POST['dataArr'])){
@@ -26,11 +27,10 @@ if(isset($_POST['dataArr'])){
     $toName = $_POST['toName'];
 
     $companyDetails = '
-                   
-                    <br>345 Anotherstreet
-                    <br>Little Village
-                    <br>Their City
-                    <br>CB22 6SO
+                    <br> '.$companyObj->NAME.'
+                    <br> '.$companyObj->CONTACTS.'
+                    <br> '.$companyObj->EMAIL.'
+                    <br> '.$companyObj->ADDRESS.'
                     ';
 
     $ToDetails = '
