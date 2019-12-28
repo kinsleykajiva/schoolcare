@@ -135,7 +135,7 @@ function onSaveInvoice () {
 				if (win) {
 					//Browser has allowed it to be opened
 					win.focus ();
-					//getRandom = receiptNumber();
+					getRandom = receiptNumber();
 				} else {
 					//Browser has blocked it
 					alert ('Please allow popups for this website');
