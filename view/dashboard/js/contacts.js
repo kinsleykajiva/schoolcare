@@ -21,6 +21,38 @@ function onShowAddContactDialog () {
 	modalAddContactDialogDialog.iziModal ('open');
 	
 }
+const url = window.location.href;     // Returns full URL (https://example.com/path/example.html)
+let fullPath = removeEverythingAfterLastOccurrenceOfCharacter (url, "/");
+
+function onExportDialog () {
+	axios.get('/view/contacts',{params:{export_csv:12}}).then(res=>{
+		if (res.statusText === 'OK') {
+			
+			if (res.data.status === 'ok') {
+				let path = res.data.path;
+				path = path.replace ('../../../', '');
+				
+				showSuccessMessage ('Created CSV File', 4);
+				let win = window.open (fullPath + path, '_blank');
+				if (win) {
+					//Browser has allowed it to be opened
+					win.focus ();
+					getRandom = receiptNumber();
+				} else {
+					//Browser has blocked it
+					alert ('Please allow popups for this website');
+				}
+			} else {
+				showErrorMessage ('Failed Download File', 4);
+			}
+		} else {
+			showErrorMessage ('Failed to generate Invoice File', 4);
+		}
+	}).catch (err => {
+		$ ('body').loading ('stop');
+		showErrorMessage ('Failed to connect', 4);
+	});
+}
 
 function saveNewContact () {
 	let newSelectType = $ ("#newSelectType").val ();

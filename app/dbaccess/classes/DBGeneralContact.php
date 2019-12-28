@@ -16,8 +16,25 @@
 			$this->DBCon = mysqli_connect( 'localhost' , $USER , $PASSWORD , $DATABASE );
 			parent::__construct( $this->DBCon );
 		}
+//  id, Name, Surname, Organisation,  Date Created, id_user_created, Email ,contacts,address ,Employee Full Name
+		public function getContactsExport () : array
+		{
+			$res = "SELECT 
+                    IF(gc.name = 'NULL' ,'',gc.name ) AS name_, 
+                    IF(gc.surname = 'NULL' ,'',gc.surname ) AS surname_, 
+                    IF(gc.organisation = 'NULL' ,'',gc.organisation ) AS organisation, 
+                    gc.date_created,  gc.email ,
+                    (SELECT (contacts.contact_number ) FROM contacts WHERE contacts.id_table_index = gc.id AND contacts.for_table = 'general_contacts') AS contacts ,
+                    (SELECT (addresses.address ) FROM addresses WHERE addresses.id_table_index = gc.id AND addresses.for_table = 'general_contacts') AS address ,
+					CONCAT(e.name , ' ' , e.surname) AS employee_fullname
+					FROM general_contacts gc
+					JOIN users u ON gc.id_user_created = u.id
+					JOIN employees e ON e.id = u.id_employee
+					WHERE gc.isvisible = 1 AND gc.isdeleted = 0
+					";
 
-		public function getContacts () : array
+			return $this->fetchInArray( $res );
+		}public function getContacts () : array
 		{
 			$res = "SELECT gc.id, gc.name, gc.surname, gc.organisation,  gc.date_created, gc.id_user_created, gc.email ,
                     (SELECT (contacts.contact_number ) FROM contacts WHERE contacts.id_table_index = gc.id AND contacts.for_table = 'general_contacts') AS contacts ,

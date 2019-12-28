@@ -1,6 +1,7 @@
 <div class="page-header card">
 	<div class="card-block">
 		<button onclick="onShowAddContactDialog()" class="btn btn-mini btn-round btn-info"> <i class="fa fa-plus-square"></i> New Contact</button>
+		<button onclick="onExportDialog()" class="btn btn-mini btn-round btn-info"> <i class="fa fa-file-excel-o"></i> Export CSV</button>
 
 	</div>
 </div>
