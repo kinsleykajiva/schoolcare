@@ -125,7 +125,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="form-group col-sm-12 ">
-						<label class="col-form-label">Address</label> <br>
+						<label class="col-form-label">Address <small>(Comma Separate)</small> </label> <br>
 						<div class="">
 							<input id="newAddress" class="form-control" type="text" placeholder="">
 						</div>
@@ -219,7 +219,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="form-group col-sm-12 ">
-						<label class="col-form-label">Address</label> <br>
+						<label class="col-form-label">Address <small>(Comma Separate)</small> </label> <br>
 						<div class="">
 							<input id="editAddress" class="form-control" type="text" placeholder="">
 						</div>
