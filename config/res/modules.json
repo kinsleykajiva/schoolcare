@@ -169,5 +169,19 @@
 		"view/bills/js/invoice.js"
 	  ]
 	}
+  },{
+	"id" : 6.2 ,
+	"name" : "Invoices" ,
+	"file_path" : "view/bills/invoice/invoice.php" ,
+	"route" : "invoices" ,
+	"resources" : {
+	  "css" : [
+
+	  ] ,
+	  "js" : [
+
+		"view/bills/js/invoice.js"
+	  ]
+	}
   }
 ]

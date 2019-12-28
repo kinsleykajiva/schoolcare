@@ -1,4 +1,5 @@
-<div class="card-block table-border-style">
+<div class="card">
+    <div class="card-block table-border-style">
     <div clasS="row clearfix" style="margin-bottom:20px;">
         <div class="col-lg-8"> Make Invoice On The Fly</div>
         <div class="col-lg-2"></div>
@@ -104,4 +105,5 @@
             </table>
         </div>
     </div>
+</div>
 </div>

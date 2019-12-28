@@ -101,12 +101,15 @@
 	"name" : "Bills" ,
 	"id" : 6 ,
 	"has" : [
-	  6.1
+	  6.1,6.2
 	] ,
 	"sub-modules" : [
 	  {
 		"title" : "Accounts" ,
 		"id" : 6.1
+	  }, {
+		"title" : "Invoices" ,
+		"id" : 6.2
 	  }
 	]
   }
