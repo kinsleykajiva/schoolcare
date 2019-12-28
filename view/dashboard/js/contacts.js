@@ -25,33 +25,63 @@ const url = window.location.href;     // Returns full URL (https://example.com/p
 let fullPath = removeEverythingAfterLastOccurrenceOfCharacter (url, "/");
 
 function onExportDialog () {
-	axios.get('/view/contacts',{params:{export_csv:12}}).then(res=>{
-		if (res.statusText === 'OK') {
-			
-			if (res.data.status === 'ok') {
-				let path = res.data.path;
-				path = path.replace ('../../../', '');
+	iziToast.question({
+		timeout: 20000,
+		close: false,
+		overlay: true,
+		displayMode: 'once',
+		id: 'question',
+		zindex: 999,
+		title: 'Confirmation',
+		message: 'Your about to export Contacts to a CSV File',
+		position: 'center',
+		buttons: [
+			['<button><b>YES</b></button>', function (instance, toast) {
 				
-				showSuccessMessage ('Created CSV File', 4);
-				let win = window.open (fullPath + path, '_blank');
-				if (win) {
-					//Browser has allowed it to be opened
-					win.focus ();
-					getRandom = receiptNumber();
-				} else {
-					//Browser has blocked it
-					alert ('Please allow popups for this website');
-				}
-			} else {
-				showErrorMessage ('Failed Download File', 4);
-			}
-		} else {
-			showErrorMessage ('Failed to generate Invoice File', 4);
+				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+				axios.get('/view/contacts',{params:{export_csv:12}}).then(res=>{
+					if (res.statusText === 'OK') {
+						
+						if (res.data.status === 'ok') {
+							let path = res.data.path;
+							path = path.replace ('../../../', '');
+							
+							showSuccessMessage ('Created CSV File', 4);
+							let win = window.open (fullPath + path, '_blank');
+							if (win) {
+								//Browser has allowed it to be opened
+								win.focus ();
+								
+							} else {
+								//Browser has blocked it
+								alert ('Please allow popups for this website');
+							}
+						} else {
+							showErrorMessage ('Failed Download File', 4);
+						}
+					} else {
+						showErrorMessage ('Failed to generate Invoice File', 4);
+					}
+				}).catch (err => {
+					$ ('body').loading ('stop');
+					showErrorMessage ('Failed to connect', 4);
+				});
+				
+			}, true],
+			['<button>NO,Cancel</button>', function (instance, toast) {
+				
+				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+				
+			}],
+		],
+		onClosing: function(instance, toast, closedBy){
+		//	console.info('Closing | closedBy: ' + closedBy);
+		},
+		onClosed: function(instance, toast, closedBy){
+			//console.info('Closed | closedBy: ' + closedBy);
 		}
-	}).catch (err => {
-		$ ('body').loading ('stop');
-		showErrorMessage ('Failed to connect', 4);
 	});
+	
 }
 
 function saveNewContact () {
