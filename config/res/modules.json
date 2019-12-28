@@ -84,6 +84,18 @@
 		"view/settings/js/profile.js"
 	  ]
 	}
+  },{
+	"id" : 10.3 ,
+	"name" : "Company" ,
+	"file_path" : "view/settings/company.php" ,
+	"route" : "company" ,
+	"resources" : {
+	  "css" : [ ] ,
+	  "js" : [
+
+		"view/settings/js/company.js"
+	  ]
+	}
   },
   {
 	"id" : 3.1 ,
