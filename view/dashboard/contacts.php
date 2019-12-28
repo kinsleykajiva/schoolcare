@@ -14,7 +14,7 @@
 				<li><i class="fa fa-chevron-left"></i></li>
 				<li><i class="fa fa-window-maximize full-card"></i></li>
 				<li><i class="fa fa-minus minimize-card"></i></li>
-				<li><i class="fa fa-refresh reload-card-remake"></i></li>
+				<!--<li><i class="fa fa-refresh reload-card-remake"></i></li>-->
 			</ul>
 		</div>
 
