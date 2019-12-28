@@ -123,6 +123,7 @@ if(isset($_POST['dataArr'])){
 		$mpdf->Output( $downloadPath , 'F' );
 	} catch( MpdfException $e ) {
 		$viewData[ 'result' ] = 'fail';
+		$viewData[ 'message' ] = $e->getMessage();
 	}
 
 
