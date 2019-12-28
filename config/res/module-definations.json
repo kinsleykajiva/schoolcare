@@ -2,7 +2,7 @@
   {
 	"name" : "Dashboard" ,
 	"id" : 1 ,
-	"has": [1.1,1.2],
+	"has": [1.1,1.2,1.3],
 	"sub-modules" : [
 	  {
 		"title" : "Home" ,
@@ -11,6 +11,10 @@
 	  {
 		"title" : "Rooms" ,
 		"id" : 1.2
+	  },
+	  {
+		"title" : "Contacts" ,
+		"id" : 1.3
 	  }
 	]
   } ,

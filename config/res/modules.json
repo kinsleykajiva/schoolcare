@@ -21,6 +21,17 @@
 		"view/dashboard/js/rooms.js"
 	  ]
 	}
+  } ,{
+	"id" : 1.3 ,
+	"name" : "Contacts" ,
+	"file_path" : "view/dashboard/contacts.php" ,
+	"route" : "contacts" ,
+	"resources" : {
+	  "css" : [ ] ,
+	  "js" : [
+		"view/dashboard/js/contacts.js"
+	  ]
+	}
   } ,
   {
 	"id" : 2.1 ,
