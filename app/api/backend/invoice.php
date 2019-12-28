@@ -1,6 +1,8 @@
-<?php 
+<?php
 
-include '../checkReqst.php';
+	use Mpdf\MpdfException;
+
+	include '../checkReqst.php';
 require_once  '../../../vendor/autoload.php';
 
 // include_once '../../dbaccess/classes/DBFeesHandler.php';
@@ -42,13 +44,14 @@ if(isset($_POST['dataArr'])){
     $trTax = '';
     
     $trTax .= '
-    <tr style="margin-top:50px;">
-    <td class="blanktotal" colspan="2" rowspan="6" style="width: 67.839%;">
-        <br>
-    </td>
-    <td class="totals" style="width: 14.5139%; background-color: rgb(239, 239, 239);">Subtotal</td>
-    <td class="totals cost" style="width: 14.5139%; background-color: rgb(239, 239, 239);">'.$subtotal.' </td>
-  </tr>
+				<br>
+			    <tr style="margin-top:50px;">
+			    <td class="blanktotal" colspan="2" rowspan="6" style="width: 67.839%;">
+			        <br>
+			    </td>
+			    <td class="totals" style="width: 14.5139%; background-color: rgb(239, 239, 239);">Subtotal</td>
+			    <td class="totals cost" style="width: 14.5139%; background-color: rgb(239, 239, 239);">'.$subtotal.' </td>
+			  </tr>
            
            ';
            $trTax .= '
@@ -82,42 +85,45 @@ if(isset($_POST['dataArr'])){
         ';
     }
 
-    $html = htmlForPdf($companyDetails,$ToDetails , $tr , $trTax , $toDueDate); 
-    $tempPath = '../../../public/temp';
-    $folderPath =  '../../../public/invoices'.date('Y') .'/'. $rec . '/';
-    $downloadPath = $folderPath  .$toName. ' invoice' . '-' . date( 'm.d.y' ) . '.pdf';
-    try {
-        if ( !file_exists( $folderPath) ) {
-            if ( !mkdir( $concurrentDirectory = $folderPath, 0777, TRUE ) && !is_dir( $concurrentDirectory ) ) {
-                throw new \RuntimeException( sprintf( 'Directory "%s" was not created', $concurrentDirectory ) );
-            }
-        }
-        $height_ = 290;
-        $width_ = 236;
-        $mpdf = new \Mpdf\Mpdf( [ 'tempDir' => $tempPath, 'mode' => 'utf-8',
-            'format' => [$height_ , $width_ ],
-            'orientation' => 'L' ,
-                'margin_left' => 20,
-                'margin_right' => 20,
-                'margin_top' => 20,
-                'margin_bottom' => 8,
-                'margin_header' => 10,
-                'margin_footer' => 10]
+	$html = htmlForPdf( $companyDetails , $ToDetails , $tr , $trTax , $toDueDate ,$companyName = '');
+	$path = '../../../public/';
+	$tempPath = $path . 'temp';
+	$folderPath = $path . 'invoices/' . date( 'Y-m' ) . '/' . $rec . '/';
+	$downloadPath = $folderPath . $toName . ' invoice' . '-' . date( 'm.d.y' ) . '.pdf';
+	try {
+		if ( !file_exists( $folderPath ) ) {
+			if ( !mkdir( $concurrentDirectory = $folderPath , 0777 , TRUE ) && !is_dir( $concurrentDirectory ) ) {
+				throw new \RuntimeException( sprintf( 'Directory "%s" was not created' , $concurrentDirectory ) );
+			}
+		}
+		//$height_ = 290;
+		$height_ = 842/2;
+		//$width_ = 236;
+		$width_ = 595/2;
+		$mpdf = new \Mpdf\Mpdf( [ 'tempDir' => $tempPath , 'mode' => 'utf-8' ,
+				'format' => [ $height_ , $width_ ] ,
+				'orientation' => 'L' ,
+				'margin_left' => 20 ,
+				'margin_right' => 20 ,
+				'margin_top' => 20 ,
+				'margin_bottom' => 8 ,
+				'margin_header' => 10 ,
+				'margin_footer' => 10 ]
 
-        );
-        $mpdf->SetProtection(array('print'));
-        $mpdf->SetTitle( ' Invoice');
-        //$mpdf->SetAuthor($userFullName);
-        //$mpdf->SetWatermarkText("Document");
-        $mpdf->showWatermarkText = true;
-        $mpdf->WriteHTML( $html);
-        $viewData[ 'result' ] = 'ok';
-        $viewData[ 'path' ] = $downloadPath;
-        $mpdf->Output( $downloadPath, 'F' );
-    } catch
-    ( MpdfException $e ) {
-        $viewData[ 'result' ] = 'fail';
-    }
+		);
+		$mpdf->SetProtection( array( 'print' ) );
+		$mpdf->SetTitle( ' Invoice' );
+		//$mpdf->SetAuthor($userFullName);
+		//$mpdf->SetWatermarkText("Document");
+		$mpdf->showWatermarkText = TRUE;
+		$mpdf->SetFooter('Invoice - ' .date('Y-m-d H:i:s'));
+		$mpdf->WriteHTML( $html );
+		$viewData[ 'result' ] = 'ok';
+		$viewData[ 'path' ] = $downloadPath;
+		$mpdf->Output( $downloadPath , 'F' );
+	} catch( MpdfException $e ) {
+		$viewData[ 'result' ] = 'fail';
+	}
 
 
     print json_encode( $viewData );
@@ -125,13 +131,18 @@ if(isset($_POST['dataArr'])){
 }
 
 
-function htmlForPdf($companyDetails,$ToDetails , $tr , $trTax , $toDueDate):string{
+function htmlForPdf($companyDetails,$ToDetails , $tr , $trTax , $toDueDate , $companyName):string{
     $html = '   
     
 <div>
-    <div style="text-align: right;"><span class="fr-img-caption fr-fic fr-dib" style="width: 230px;"><span class="fr-img-wrap">
-    <img src="https://s3-eu-west-1.amazonaws.com/froala-eu/temp_files%2F1577428116736-logo3.png">
-    <span class="fr-inner">Company Logo</span></span></span>
+    <div style="text-align: center;">
+    <span class="fr-img-caption fr-fic fr-dib" style="width: 230px;">
+	    <span class="fr-img-wrap">
+		    <img src="https://s3-eu-west-1.amazonaws.com/froala-eu/temp_files%2F1577428116736-logo3.png">
+		    <br>
+		    <span class="fr-inner">'.$companyName.'</span>
+	    </span>
+    </span>
     </div>
 	<div style="text-align: left;"><span style="font-size: 30px;"><strong><u>INVOICE</u></strong></span><u><br></u></div>
 	<div style="text-align: right;">Date: '.date('Y-m-d').'</div>
