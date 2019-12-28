@@ -26,7 +26,7 @@
 				<tr>
 					<th>#</th>
 					<th>Full Name</th>
-					<th>Contact</th>
+					<th>Phone</th>
 					<th>Email</th>
 					<th>Address</th>
 					<th>Action</th>
