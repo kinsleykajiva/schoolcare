@@ -86,9 +86,9 @@
 	}
   },{
 	"id" : 10.3 ,
-	"name" : "Company" ,
+	"name" : "School" ,
 	"file_path" : "view/settings/company.php" ,
-	"route" : "company" ,
+	"route" : "school-profile" ,
 	"resources" : {
 	  "css" : [ ] ,
 	  "js" : [

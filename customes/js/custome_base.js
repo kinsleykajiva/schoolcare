@@ -1,4 +1,6 @@
 let loggedUserName = null;
+let loggedUserSex = Cookies.get ('sex');
+
 let TOKEN = null;
 const firstAPI = axios.create({
 	//baseURL: 'https://github.com/'
@@ -30,6 +32,7 @@ function checkAccess () {
 	TOKEN = payloadObj.jwt;
 	
 	$("#loggedUserName").text(capitaliseTextFristLetter(loggedUserName));
+	$("#globalUserIcon").attr('src' ,  loggedUserSex === 'male' ? 'customes/logos/user.png' : 'customes/logos/female-user.png');
 	axios.defaults.headers.common['Authorization'] = TOKEN;
 	// Add a response interceptor
 	axios.interceptors.response.use(function (res) {

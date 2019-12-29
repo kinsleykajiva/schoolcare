@@ -20,7 +20,7 @@ function loginUser() {
 	$.post('app/api/backend/login',{username:username , password:password}).done(res=>{
 		let  j = JSON.parse(res);
 		if(j.status=== 'ok'){
-			makeToken (j.jwt, username);
+			makeToken (j.jwt, username ,j.sex);
 			//	alert('in');
 			window.location.href = "http://localhost/projects/AAllAA/schoolcare/render-home";
 		}else{
@@ -36,7 +36,7 @@ function loginUser() {
 }
 
 
-function makeToken (token,username) {
+function makeToken (token,username , sex) {
 // Header
 	var oHeader = {alg: 'HS256', typ: 'JWT'};
 // Payload
@@ -60,6 +60,7 @@ function makeToken (token,username) {
 //	console.log (payloadObj.username)
 	// expires 7 days from now
 	Cookies.set('JWT', sJWT, { expires: 7 });
+	Cookies.set('sex', sex, { expires: 7 });
 	
 	///
 	//Cookies.get('name') // => 'value'

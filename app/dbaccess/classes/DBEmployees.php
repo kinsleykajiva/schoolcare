@@ -63,6 +63,21 @@
 			return ['status'=> $res ? 'ok' : 'fail'] ;
 		}
 
+		public function getEmployee($userID):array{
+			$sql = "SELECT 
+			(SELECT address FROM addresses WHERE addresses.id_table_index = e.id AND addresses.for_table='employees') AS address ,
+			(SELECT contacts.contact_number FROM contacts WHERE contacts.id_table_index = e.id AND contacts.for_table='employees') AS phonecontact,
+			e.id, e. name, e.surname,e.email, e.date_of_birth, e.id_number, e.id_user_saved, e.date_created, e.sex, e.id_job_position ,
+			job_positions.title AS jobposition , u.id AS userID
+			   FROM employees e 
+			   JOIN job_positions ON job_positions.id = e.id_job_position 
+			   JOIN users u ON u.id_employee = e.id
+			   WHERE (e.isvisible = 1 AND e.isdeleted = 0) AND u.id = '$userID'
+			";
+			
+			return $this->fetchInArray($sql);
+		}
+
 		public function getAllEmployees($userID = '0', $search = '' , $role_id = '1'):array {
 
 			if($role_id == '1') {

@@ -77,10 +77,11 @@
 				return [ 'status' => 'none' ];
 			}
 
-			$sql = mysqli_query( $this->DBCon, "SELECT password,id_role,id FROM users WHERE username = '$username'" );
+			$sql = mysqli_query( $this->DBCon, "SELECT u.password,u.id_role,u.id , employees.sex FROM users u JOIN employees ON employees.id = u.id_employee WHERE username = '$username'" );
 			$sqlArr = mysqli_fetch_assoc( $sql );
 			$dbPassword = $sqlArr[ 'password' ];
 			$dbRole = (int)$sqlArr[ 'id_role' ];
+			$sex = $sqlArr[ 'sex' ];
 			$dbUserID = (int)$sqlArr[ 'id' ];
 			$accessM = '1.1,1.2,1.3,2.1,2.2,10.1,10.2,10.3,3.1,3.2,4.1,4.2,5.1,5.2,6.1,6.2';
 			if ( !password_verify( $password, $dbPassword ) ) {
@@ -99,7 +100,7 @@
 			$_SESSION[ 'USER_MODULES' ] = $res->USER_MODULES;
 			$_SESSION[ 'SYSTEM_PARENT_NAV' ] = $res->SYSTEM_PARENT_NAV;
 			$token = (string)$this->createUserToken( $dbUserID, $dbRole );
-			return [ 'status' => 'ok', 'jwt' => $token ];
+			return [ 'status' => 'ok', 'jwt' => $token ,'sex'=>$sex ];
 
 
 		}
@@ -116,14 +117,14 @@
 		// 86400seconds  = 1days
 			$time = time();
 			$token = (new Builder())
-				->issuedBy('http://example.com') // Configures the issuer (iss claim)
-			->permittedFor('http://example.org') // Configures the audience (aud claim)
+				->issuedBy('https://commonresolve.co.za') // Configures the issuer (iss claim)
+			->permittedFor('https://commonresolve.co.za') // Configures the audience (aud claim)
 			->identifiedBy('4f1g23a12aa', true) // Configures the id (jti claim), replicating as a header item
 			->issuedAt($time) // Configures the time that the token was issue (iat claim)
 			->canOnlyBeUsedAfter($time + 60) // Configures the time that the token can be used (nbf claim)
 			->expiresAt($time + 3600) // Configures the expiration time of the token (exp claim)
 			->withClaim('user', $userID) // Configures a new claim, called "uid"
-			->withClaim('role',$role)
+			->withClaim('role',$role)			
 			->withClaim('modules','1,2,3')
 			->getToken(); // Retrieves the generated token
 
