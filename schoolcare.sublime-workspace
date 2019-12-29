@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"status",
+				"statusText\tabc"
+			],
+			[
 				"user",
 				"username\t(LoginController.php)"
 			],
@@ -63,6 +67,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
 			[
 				"pack",
 				"Package Control: List Packages"
@@ -166,15 +174,25 @@
 	[
 		"/opt/lampp/htdocs/projects/AAllAA/schoolcare",
 		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/app",
-		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/config",
-		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/config/res",
-		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/view",
-		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/view/bills",
-		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/view/bills/invoice",
-		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/view/bills/js"
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/app/api",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/app/api/view",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/app/dbaccess",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/app/dbaccess/classes",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/app/dbaccess/dbcontrol",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/storage",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/storage/files",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/storage/files/schoolcare",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/storage/files/schoolcare/company",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/storage/files/schoolcare/company/files"
 	],
 	"file_history":
 	[
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/app/dbaccess/classes/FileAccess.php",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/app/api/backend/company.php",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/app/api/view/company.php",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/view/settings/js/company.js",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/app/dbaccess/classes/DBCompanyDetails.php",
+		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/app/dbaccess/dbcontrol/DbManager.php",
 		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/view/bills/invoice/invoice.php",
 		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/view/bills/accounts.php",
 		"/opt/lampp/htdocs/projects/AAllAA/schoolcare/view/bills/js/invoice.js",
@@ -267,6 +285,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			";\n",
 			"\"\n",
 			"7",
 			",7",
@@ -350,6 +369,11 @@
 			"sheets":
 			[
 			]
+		},
+		{
+			"sheets":
+			[
+			]
 		}
 	],
 	"incremental_find":
@@ -369,11 +393,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.553788248698,
 			1.0
 		],
 		"rows":
@@ -440,12 +471,27 @@
 	"selected_group": 0,
 	"settings":
 	{
+		"last_automatic_layout":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		]
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
-	"side_bar_width": 288.0,
+	"side_bar_visible": true,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

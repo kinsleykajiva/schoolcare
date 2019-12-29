@@ -25,14 +25,15 @@ if(isset($_POST['dataArr'])){
     $toPhone = $_POST['toPhone'];
     $toDueDate = $_POST['toDueDate'];
     $toName = $_POST['toName'];
-
+	$companyName = $companyObj->NAME;
     $companyDetails = '
                     <br> '.$companyObj->NAME.'
                     <br> '.$companyObj->CONTACTS.'
                     <br> '.$companyObj->EMAIL.'
                     <br> '.$companyObj->ADDRESS.'
-                    ';
-
+					';
+	$logo = isset( $companyObj->LOGO) ? $companyObj->LOGO :'https://s3-eu-west-1.amazonaws.com/froala-eu/temp_files%2F1577428116736-logo3.png' ;
+	//print $logo; exit;
     $ToDetails = '
                    
                     <br>'.$toName.'
@@ -85,7 +86,7 @@ if(isset($_POST['dataArr'])){
         ';
     }
 
-	$html = htmlForPdf( $companyDetails , $ToDetails , $tr , $trTax , $toDueDate ,$companyName = '');
+	$html = htmlForPdf( $companyDetails , $ToDetails , $tr , $trTax , $toDueDate ,$companyName ,$logo);
 	$path = '../../../public/';
 	$tempPath = $path . 'temp';
 	$folderPath = $path . 'invoices/' . date( 'Y-m' ) . '/' . $rec . '/';
@@ -132,14 +133,14 @@ if(isset($_POST['dataArr'])){
 }
 
 
-function htmlForPdf($companyDetails,$ToDetails , $tr , $trTax , $toDueDate , $companyName):string{
+function htmlForPdf($companyDetails,$ToDetails  , $tr , $trTax , $toDueDate , $companyName= '' ,$logo='https://s3-eu-west-1.amazonaws.com/froala-eu/temp_files%2F1577428116736-logo3.png'):string{
     $html = '   
     
 <div>
     <div style="text-align: center;">
     <span class="fr-img-caption fr-fic fr-dib" style="width: 230px;">
 	    <span class="fr-img-wrap">
-		    <img src="https://s3-eu-west-1.amazonaws.com/froala-eu/temp_files%2F1577428116736-logo3.png">
+		    <img src="'.$logo.'">
 		    <br>
 		    <span class="fr-inner">'.$companyName.'</span>
 	    </span>
