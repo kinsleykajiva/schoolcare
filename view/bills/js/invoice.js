@@ -27,6 +27,9 @@ let ITEMS_CART_ARR = [];
 let ITEMS_CART_TAX_OBJ = {};
 let getRandom = receiptNumber ();
 
+$(":input[data-inputmask-mask]").inputmask();
+$(":input[data-inputmask-alias]").inputmask();
+
 function calc () {
 	ITEMS_CART_ARR = [];
 	$ ('#tab_logic tbody tr').each (function (i, element) {

@@ -24,11 +24,11 @@
     <div clasS="row clearfix" style="margin-bottom:20px;">
         <div class="col-lg-4">
             <label>Phone Number</label>
-            <input class="form-control" id='toPhone' type="text">
+            <input class="form-control" id='toPhone' type="text" onpaste="return false;" data-inputmask-mask="(+27)99-999-9999" data-val="true" data-val-required="Required">
         </div>
         <div class="col-lg-4">
             <label>Email</label>
-            <input class="form-control" id='toEmail' type="email">
+            <input class="form-control" id='toEmail' type="text" data-inputmask-alias="email" data-val="true" data-val-required="Required">
         </div>
         <div class="col-lg-4">
             <label>Address</label>

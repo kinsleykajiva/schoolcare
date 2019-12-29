@@ -9,7 +9,8 @@ modalEditCompanyDialogDialog.iziModal ({
 });
 
 let COMPANY_READ_ROWS = [] ;
-
+$(":input[data-inputmask-mask]").inputmask();
+$(":input[data-inputmask-alias]").inputmask();
 function getDefaultData () {
 	axios.get('view/company',{params:{def_get:39}}).then(res=>{
 		if(res.statusText === 'OK'){
@@ -37,7 +38,7 @@ function renderDetails(){
 	$('#companyemail').text(COMPANY_READ_ROWS.EMAIL);
 	$('#newEmail').val(COMPANY_READ_ROWS.EMAIL);
 	$('#iconPropic').attr('src',fullPath+COMPANY_READ_ROWS.LOGO.replaceAll('../../../',''));
-	console.log(fullPath+COMPANY_READ_ROWS.LOGO.replaceAll('../../../',''));
+	//console.log(fullPath+COMPANY_READ_ROWS.LOGO.replaceAll('../../../',''));
 }
 function saveDetailsContact () {
 	let newOrg = $('#newOrg').val();

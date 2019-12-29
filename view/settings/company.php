@@ -54,7 +54,7 @@
 					<div class="form-group col-sm-12 ">
 						<label class="col-form-label">Email</label> <br>
 						<div class="">
-							<input id="newEmail" class="form-control" type="text" placeholder="">
+							<input id="newEmail" class="form-control" type="text" placeholder=""  data-inputmask-alias="email" data-val="true" data-val-required="Required">
 						</div>
 					</div>
 				</div>
@@ -62,7 +62,7 @@
 					<div class="form-group col-sm-12 ">
 						<label class="col-form-label">Phone</label> <br>
 						<div class="">
-							<input id="newPhone" class="form-control" type="text" placeholder="">
+							<input id="newPhone" class="form-control" type="text" placeholder="" onpaste="return false;" data-inputmask-mask="(+27)99-999-9999" data-val="true" data-val-required="Required">
 						</div>
 					</div>
 				</div>
