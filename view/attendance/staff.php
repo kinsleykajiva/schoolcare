@@ -1,6 +1,6 @@
 <div class="page-header card">
 	<div class="card-block">
-		<button onclick="openClockInDialog();" class="btn btn-mini btn-info"> <i class="fa fa-clock-o"></i> Clock In</button>
+		<button onclick="openClockInDialog();" class="btn btn-mini btn-round btn-info"> <i class="fa fa-clock-o"></i> Clock In</button>
 
 
 	</div>
@@ -88,6 +88,44 @@
 
                         <div class="form-group row">
                             <button onclick="saveClockIn()" class="col-sm-2 btn  btn-round btn-mini btn-info col-form-label" >Save</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="" id="ClockOutDialog" data-izimodal-title="Clock out Dialog">
+<span id="selected_att_id" style='display:none;'></span>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="">
+                <div class="card-block">
+                    <form onsubmit="return false;">
+	                    <div class="form-group row">
+		                    <label class="col-sm-2 col-form-label">Staff</label>
+		                    <div class="col-sm-10">
+			                    <select id="select_staff_out" class="form-control form-control-bold">
+
+			                    </select>
+		                    </div>
+	                    </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Date</label>
+                            <div class="col-sm-10">
+                                <input type="date" disabled="disabled" id="datetimepicker4_out" class="form-control form-control-normal datepicker" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Time Out</label>
+                            <div class="col-sm-10">
+	                            <input type="time"  id="timepicker_out" class="form-control form-control-normal datepicker" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <button onclick="saveClockOut()" class="col-sm-2 btn  btn-round btn-mini btn-info col-form-label" >Save</button>
 
                         </div>
                     </form>

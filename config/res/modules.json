@@ -92,7 +92,8 @@
 	"resources" : {
 	  "css" : [ ] ,
 	  "js" : [
-
+		"assets/js/input-mask/jquery.inputmask.bundle.js",
+		"assets/js/input-mask/inputmask.binding.js",
 		"view/settings/js/company.js"
 	  ]
 	}
@@ -202,7 +203,8 @@
 
 	  ] ,
 	  "js" : [
-
+		"assets/js/input-mask/jquery.inputmask.bundle.js",
+		"assets/js/input-mask/inputmask.binding.js",
 		"view/bills/js/invoice.js"
 	  ]
 	}

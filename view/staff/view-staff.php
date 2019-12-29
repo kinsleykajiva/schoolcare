@@ -30,15 +30,15 @@
 					</tr>
 					</thead>
 					<tbody id="tbody_staff">
-					<!--<tr>
+					<tr>
 						<th></th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-						<td>ffffff</td>
-					</tr>-->
+						<td>Loading ...</td>
+						<td></td>
+						<td>Loading ...</td>
+						<td>Loading ...</td>
+						<td>Loading ...</td>
+						<td>..</td>
+					</tr>
 
 					</tbody>
 				</table>

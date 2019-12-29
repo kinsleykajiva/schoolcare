@@ -46,7 +46,7 @@ function openEmployeeInfoDialog (id) {
 	$ ("#info_id_number").text (Objj.id_number);
 	$ ("#info_dob").text (Objj.date_of_birth);
 	$ ("#date_record_created").text (Objj.date_created);
-	$ ("#info_jobPosition").text (Objj.Jobposition);
+	$ ("#info_jobPosition").text (Objj.jobposition);
 	$ ("#info_email").text (Objj.email);
 	$ ("#info_phone").text (Objj.phoneContact);
 	$ ("#info_address").html (Objj.address.split(',').join(' <br>'));
@@ -68,7 +68,7 @@ function renderEmployeesTable (data) {
 				<td>${capitaliseTextFirstCaseForWords (valls.surname)}</td>
 				<td>${capitaliseTextFristLetter (valls.sex)}</td>
 				<td>${valls.id_number}</td>
-				<td>${valls.Jobposition}</td>
+				<td>${valls.jobposition}</td>
 				<td>
 					 <div class="dropdown-default dropdown open">
                      <button class="btn btn-default btn-mini dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</button>

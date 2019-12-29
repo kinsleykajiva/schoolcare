@@ -153,7 +153,7 @@ function saveClockOut () {
 	let datetimepicker4_out = $("#datetimepicker4_out").val();
 	let timepicker_out = $("#timepicker_out").val();
 	if(timepicker_out === ''){
-		showErrorMessage('Time is required' , 4);
+		showErrorMessage('Time Out is required' , 4);
 		error_input_element(true , 'timepicker_out');
 		return;
 	}
@@ -176,6 +176,7 @@ function saveClockOut () {
 	}).then(res=>{
 		if(res.statusText === 'OK' && res.data.status === 'ok'){
 			modalClockOutDialog.iziModal('close');
+			enableAllSelectOptions('select_staff_out');
 			getDefultData();
 			showSuccessMessage('Clocked out' , 4);
 		}else{
@@ -191,6 +192,24 @@ $('.reload-card-remake').click(()=>{
 	getDefultData ();
 });
 
+function disableOtherSelectOptionsUsingValueAndSelectID(selectorID,targetOptionVal){
+	let op = document.getElementById(selectorID).getElementsByTagName("option");
+	for (let i = 0; i < op.length; i++) {
+		if (op[i].value != targetOptionVal) {
+			op[i].disabled = true;
+		}
+	}
+}
+
+function enableAllSelectOptions(selectorID){
+	let op = document.getElementById(selectorID).getElementsByTagName("option");
+	for (let i = 0; i < op.length; i++) {
+		
+			op[i].disabled = false;
+		
+	}
+}
+
 function showCheckoutDialog (id) {
 	$("#selected_att_id").text(id);
 	let obj = READ_STAFF_ROWS.filter(x=>x.id == id)[0];
@@ -199,6 +218,8 @@ function showCheckoutDialog (id) {
 	$("#datetimepicker4_out").val(obj.date_sign_in);
 	$("#timepicker_out").val('');
 	$("#select_staff_out").val(def_empl_select);
+	// this is to disable other options from being used
+	disableOtherSelectOptionsUsingValueAndSelectID('select_staff_out' ,def_empl_select);
 	
 	var now = new Date();
 	
