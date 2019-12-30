@@ -1,6 +1,6 @@
 'use strict';
 $ (document).ready (function () {
-	
+
 	// chart js function start
 	function buildchartoption () {
 		return {
@@ -63,10 +63,10 @@ $ (document).ready (function () {
 			}
 		};
 	}
-	
+
 	// chart js function end
-	
-	
+
+
 	// statustic start
 	$ (function () {
 		var ctx = document.getElementById ('Statistics-chart').getContext ("2d");
@@ -81,7 +81,7 @@ $ (document).ready (function () {
 			data: {
 				labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL"],
 				datasets: [{
-					label: "Data",
+					label: "Lang",
 					borderColor: blueline,
 					pointBorderColor: blueline,
 					pointBackgroundColor: blueline,
@@ -96,7 +96,7 @@ $ (document).ready (function () {
 					data: [20, 50, 30, 50, 20, 70, 30]
 				},
 					{
-						label: "Data",
+						label: "Commu",
 						borderColor: greenline,
 						pointBorderColor: greenline,
 						pointBackgroundColor: greenline,
@@ -137,7 +137,7 @@ $ (document).ready (function () {
 							drawTicks: false,
 							display: false
 						}
-						
+
 					}],
 					xAxes: [{
 						gridLines: {
@@ -155,7 +155,7 @@ $ (document).ready (function () {
 		});
 	});
 	// statustic end
-	
+
 	// feedback chart start
 	var ctx = document.getElementById ("feedback-chart").getContext ("2d");
 	var config = {
@@ -194,7 +194,7 @@ $ (document).ready (function () {
 	};
 	window.myDoughnut = new Chart (ctx, config);
 	// feedback chart end
-	
+
 	// seo card start
 	function seojs (a, b, f) {
 		if (f == null) {
@@ -221,7 +221,7 @@ $ (document).ready (function () {
 			}]
 		};
 	}
-	
+
 	var ctx = document.getElementById ('seo-card1').getContext ("2d");
 	var gradientFill = ctx.createLinearGradient (300, 0, 0, 300);
 	gradientFill.addColorStop (1, "#b9fdef");
@@ -241,5 +241,5 @@ $ (document).ready (function () {
 		options: buildchartoption (),
 	});
 	// seo cardunction end
-	
+
 });

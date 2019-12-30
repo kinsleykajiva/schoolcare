@@ -7,6 +7,8 @@
 	"resources" : {
 	  "css" : [ ] ,
 	  "js" : [
+      "template/assets/js/chart.js/Chart.js",
+      "template/assets/pages/dashboard/custom-dashboard.js",
 		"view/dashboard/js/dashboard.js"
 	  ]
 	}

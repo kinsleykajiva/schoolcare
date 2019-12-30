@@ -5,52 +5,51 @@
               <div class="card bg-c-blue order-card">
                   <div class="card-block">
                       <h6 class="m-b-20">Children</h6>
-                      <h2 class="text-right"><i class="ti-face-smile f-left"></i><span>486</span></h2>
-                      <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                      <h2 class="text-right"><i class="fa fa-child f-left"></i><span id="txtChildrenCounter">--</span></h2>
+                      <p class="m-b-0"> <span class="f-left" id="MaleKidsCounter">--</span>   <span class="f-right" id="FeMaleKidsCounter" >--</span></p>
                   </div>
               </div>
           </div>
           <div class="col-md-6 col-xl-3">
               <div class="card bg-c-green order-card">
                   <div class="card-block">
-                      <h6 class="m-b-20">Total Sales</h6>
-                      <h2 class="text-right"><i class="ti-tag f-left"></i><span>1641</span></h2>
-                      <p class="m-b-0">This Month<span class="f-right">213</span></p>
+                      <h6 class="m-b-20">Birthdays</h6>
+                      <h2 class="text-center"><i class="fa fa-birthday-cake f-center"></i><span></span></h2>
+                      <p class="m-b-0">Today<span class="f-right" id="birthdaysCounter">--</span></p>
                   </div>
               </div>
           </div>
           <div class="col-md-6 col-xl-3">
               <div class="card bg-c-yellow order-card">
                   <div class="card-block">
-                      <h6 class="m-b-20">Revenue</h6>
-                      <h2 class="text-right"><i class="ti-reload f-left"></i><span>$42,562</span></h2>
-                      <p class="m-b-0">This Month<span class="f-right">$5,032</span></p>
+                      <h6 class="m-b-20">Tasks</h6>
+                      <h2 class="text-right"><i class="ti-list f-left"></i><span>7</span></h2>
+                      <p class="m-b-0">Due Today <span class="f-right">3</span></p>
                   </div>
               </div>
           </div>
           <div class="col-md-6 col-xl-3">
               <div class="card bg-c-pink order-card">
                   <div class="card-block">
-                      <h6 class="m-b-20">Total Profit</h6>
-                      <h2 class="text-right"><i class="ti-wallet f-left"></i><span>$9,562</span></h2>
-                      <p class="m-b-0">This Month<span class="f-right">$542</span></p>
+                      <h6 class="m-b-20">Attendance</h6>
+                      <h2 class="text-center"><i class="fa fa-check f-center"></i><span></span></h2>
+                      <p class="m-b-0">Today<span class="f-right">2</span></p>
                   </div>
               </div>
           </div>
           <!-- order-card end -->
 
           <!-- statustic and process start -->
-          <div class="col-lg-8 col-md-12">
+          <div class="col-lg-12 col-md-12">
               <div class="card">
                   <div class="card-header">
-                      <h5>Statistics</h5>
+                      <h5>Children Assessment Statistics</h5>
                       <div class="card-header-right">
                           <ul class="list-unstyled card-option">
                               <li><i class="fa fa-chevron-left"></i></li>
                               <li><i class="fa fa-window-maximize full-card"></i></li>
                               <li><i class="fa fa-minus minimize-card"></i></li>
                               <li><i class="fa fa-refresh reload-card"></i></li>
-                              <li><i class="fa fa-times close-card"></i></li>
                           </ul>
                       </div>
                   </div>
@@ -59,30 +58,10 @@
                   </div>
               </div>
           </div>
-          <div class="col-lg-4 col-md-12">
-              <div class="card">
-                  <div class="card-header">
-                      <h5>Customer Feedback</h5>
-                  </div>
-                  <div class="card-block"><iframe class="chartjs-hidden-iframe" style="display: block; overflow: hidden; border: 0px none; margin: 0px; inset: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;" tabindex="-1"></iframe><iframe class="chartjs-hidden-iframe" style="display: block; overflow: hidden; border: 0px none; margin: 0px; inset: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;" tabindex="-1"></iframe>
-                      <span class="d-block text-c-blue f-24 f-w-600 text-center">365247</span>
-                      <canvas id="feedback-chart" height="92" style="display: block; width: 277px; height: 92px;" width="277"></canvas>
-                      <div class="row justify-content-center m-t-15">
-                          <div class="col-auto b-r-default m-t-5 m-b-5">
-                              <h4>83%</h4>
-                              <p class="text-success m-b-0"><i class="ti-hand-point-up m-r-5"></i>Positive</p>
-                          </div>
-                          <div class="col-auto m-t-5 m-b-5">
-                              <h4>17%</h4>
-                              <p class="text-danger m-b-0"><i class="ti-hand-point-down m-r-5"></i>Negative</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+
           <!-- statustic and process end -->
 <!-- tabs card start -->
-          <div class="col-sm-12">
+          <div class="col-sm-12" style="display:none;">
               <div class="card tabs-card">
                   <div class="card-block p-0">
                       <!-- Nav tabs -->
@@ -256,38 +235,7 @@
           </div>
           <!-- tabs card end -->
 
-          <!-- social statustic start -->
-          <div class="col-md-12 col-lg-4">
-              <div class="card">
-                  <div class="card-block text-center">
-                      <i class="fa fa-envelope-open text-c-blue d-block f-40"></i>
-                      <h4 class="m-t-20"><span class="text-c-blue">8.62k</span> Subscribers</h4>
-                      <p class="m-b-20">Your main list is growing</p>
-                      <button class="btn btn-primary btn-sm btn-round">Manage List</button>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-              <div class="card">
-                  <div class="card-block text-center">
-                      <i class="fa fa-twitter text-c-green d-block f-40"></i>
-                      <h4 class="m-t-20"><span class="text-c-blgreenue">+40</span> Followers</h4>
-                      <p class="m-b-20">Your main list is growing</p>
-                      <button class="btn btn-success btn-sm btn-round">Check them out</button>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-              <div class="card">
-                  <div class="card-block text-center">
-                      <i class="fa fa-puzzle-piece text-c-pink d-block f-40"></i>
-                      <h4 class="m-t-20">Business Plan</h4>
-                      <p class="m-b-20">This is your current active plan</p>
-                      <button class="btn btn-danger btn-sm btn-round">Upgrade to VIP</button>
-                  </div>
-              </div>
-          </div>
-          <!-- social statustic end -->
+
 
 
 

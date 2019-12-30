@@ -44,13 +44,13 @@
                     </a>
                 </li>
             </ul>
-            <ul class="nav-right">
+            <ul class="nav-right" >
                 <li class="header-notification">
                     <a href="#!">
                         <i class="ti-bell"></i>
                         <span class="badge bg-c-pink"></span>
                     </a>
-                    <ul class="show-notification">
+                    <!-- <ul class="show-notification" >
                         <li>
                             <h6>Notifications</h6>
                             <label class="label label-danger">New</label>
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                         </li>
-                    </ul>
+                    </ul> -->
                 </li>
 
                 <li class="user-profile header-notification">
@@ -102,18 +102,18 @@
                         <i class="ti-angle-down"></i>
                     </a>
                     <ul class="show-notification profile-notification">
-                        <li>
+                        <li style="display:none;">
                             <a href="#!">
                                 <i class="ti-settings"></i> Settings
                             </a>
                         </li>
-                        <li>
+                        <li  style="display:none;">
                             <a href="user-profile.html">
                                 <i class="ti-user"></i> Profile
                             </a>
                         </li>
 
-                        <li>
+                        <li  style="display:none;">
                             <a href="log">
                                 <i class="ti-lock"></i> Lock Screen
                             </a>

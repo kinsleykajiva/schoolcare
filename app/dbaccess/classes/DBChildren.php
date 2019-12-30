@@ -19,11 +19,11 @@
 
 		public function getStatistics():array{
 			$res                   = [];
-			$res ['child_counter'] = (int) $this->fetchAllInArray('SELECT COUNT(children.id) AS counter FROM children WHERE children.isvisible = 1 AND children.isdeleted = 0 ;')['counter'];
-			$today                 = date('m-d');
-			$res ['dob']           = $this->fetchInArray("SELECT c.id, c.name, c.surname, c.sex, c.date_of_birth FROM children c WHERE c.isvisible = 1 AND c.isdeleted = 0 AND substring(c.date_of_birth,6) = '$today';");
-			$res ['male']          = $this->fetchAllInArray("SELECT COUNT(c.id) AS counter FROM children c WHERE c.isvisible = 1 AND c.isdeleted = 0 AND c.sex = 'male';")['counter'];
-			$res ['female']        = $this->fetchAllInArray("SELECT COUNT(c.id) AS counter FROM children c WHERE c.isvisible = 1 AND c.isdeleted = 0 AND c.sex = 'female';")['counter'];
+			$res ['child_counter']   = (int) $this->fetchAllInArray('SELECT COUNT(children.id) AS counter FROM children WHERE children.isvisible     = 1 AND children.isdeleted = 0 ;')['counter'];
+			$today                   = date('m-d');
+			$res ['birthdays_today'] = $this->fetchInArray("SELECT c.id, c.name, c.surname, c.sex, c.date_of_birth FROM children c WHERE c.isvisible = 1 AND c.isdeleted        = 0 AND substring(c.date_of_birth,6) = '$today';");
+			$res ['male']            = $this->fetchAllInArray("SELECT COUNT(c.id) AS counter FROM children c WHERE c.isvisible                       = 1 AND c.isdeleted        = 0 AND c.sex = 'male';")['counter'];
+			$res ['female']          = $this->fetchAllInArray("SELECT COUNT(c.id) AS counter FROM children c WHERE c.isvisible                       = 1 AND c.isdeleted        = 0 AND c.sex = 'female';")['counter'];
 
 			return $res ;
 		}
