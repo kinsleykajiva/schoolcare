@@ -16,6 +16,18 @@
 			$this->DBCon = mysqli_connect( 'localhost' , $USER , $PASSWORD , $DATABASE );
 			parent::__construct( $this->DBCon );
 		}
+
+		public function getStatistics():array{
+			$res                   = [];
+			$res ['child_counter'] = (int) $this->fetchAllInArray('SELECT COUNT(children.id) AS counter FROM children WHERE children.isvisible = 1 AND children.isdeleted = 0 ;')['counter'];
+			$today                 = date('m-d');
+			$res ['dob']           = $this->fetchInArray("SELECT c.id, c.name, c.surname, c.sex, c.date_of_birth FROM children c WHERE c.isvisible = 1 AND c.isdeleted = 0 AND substring(c.date_of_birth,6) = '$today';");
+			$res ['male']          = $this->fetchAllInArray("SELECT COUNT(c.id) AS counter FROM children c WHERE c.isvisible = 1 AND c.isdeleted = 0 AND c.sex = 'male';")['counter'];
+			$res ['female']        = $this->fetchAllInArray("SELECT COUNT(c.id) AS counter FROM children c WHERE c.isvisible = 1 AND c.isdeleted = 0 AND c.sex = 'female';")['counter'];
+
+			return $res ;
+		}
+
 		public function getAllAttendance():array {
 			$sql = "SELECT a.* ,CONCAT(c.name , ' ' , c.surname) AS childName , c.sex    FROM `attendance` a JOIN children c ON c.id = a.id_child  ";
 
@@ -48,10 +60,10 @@
 			return $this->result($res , 'Saved Assessment');
 		}
 		public function getAllChildAssesment():array {
-			$sql ="SELECT ca.* , cam.id AS  camid,  cam.title AS  camtitle , 
+			$sql ="SELECT ca.* , cam.id AS  camid,  cam.title AS  camtitle ,
                     CONCAT(c.name , ' ' , c.surname) as childname ,
                     (SELECT CONCAT(employees.surname , ' ' , employees.surname) FROM employees WHERE employees.id = u.id_employee) AS savedby
-					FROM child_assessment ca 
+					FROM child_assessment ca
                     JOIN child_assessment_markers cam ON ca.id_assessment_marker = cam.id
                     JOIN children c ON ca.id_child = c.id
 					JOIN users u ON ca.id_user_created = u.id

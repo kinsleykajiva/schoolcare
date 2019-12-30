@@ -19,11 +19,11 @@ function renderDetails(data){
 
     $('#UserName').text(capitaliseTextFristLetter(loggedUserName));
 
-    $('#employeeSex').text(data.sex.toUpperCase());
-   
+    $('#employeeSex').text(capitaliseTextFristLetter(data.sex));
+
     $("#userLogo").attr('src' ,  data.sex === 'male' ? 'customes/logos/user.png' : 'customes/logos/female-user.png');
-   
-   
+
+
     $('#employeeID').text(data.id_number);
     $('#employeeAddress').text(data.address);
     $('#employeeEmail').text(data.email);

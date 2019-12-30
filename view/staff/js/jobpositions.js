@@ -1,5 +1,5 @@
 $('.reload-card-remake').click(()=>{
-	
+
 	getDefaultData ();
 });
 
@@ -10,7 +10,7 @@ function getDefaultData () {
 			get_def:'all'
 		}
 	}).then(res=>{
-		
+
 		if(res.statusText === 'OK'){
 			checkAuth(res.data);
 			renderJobsTable(res.data.jobPos);
@@ -21,7 +21,7 @@ function getDefaultData () {
 		setTimeout (function () {
 			onDivLoadRemove(card);
 		}, 2000);
-		
+
 	}).catch(err=>{
 		showErrorMessage('Failed to Connect, check your connection.',4);
 		console.log (err);
@@ -35,7 +35,7 @@ function renderJobsTable (data) {
 		$("#job_pos_tbody").html(row);
 		return ;
 	}
-	
+
 	_.forEach(data , (valls,inx)=>{
 		row+= `
 		<tr  class="d-flex">
@@ -50,7 +50,7 @@ function renderJobsTable (data) {
                         <div class="dropdown-inverse dropdown open">
                             <button class="btn btn-mini btn-default dropdown-toggle waves-effect waves-light " type="button" id="dropdown-7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Action</button>
                             <div class="dropdown-menu" aria-labelledby="dropdown-7" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                
+
                                 <a class="dropdown-item waves-light waves-effect" onclick="editJobRow('${valls.id}','${valls.title}','${valls.description}');" href="javascript:void(0);">Edit</a>
                                 <a class="dropdown-item waves-light waves-effect" onclick="deleteJobRow('${valls.id}');" href="javascript:void(0);">Delete</a>
                             </div>
@@ -59,9 +59,9 @@ function renderJobsTable (data) {
                 </tr>
 		`;
 	});
-	
+
 	$("#job_pos_tbody").html(row);
-	
+
 }
 const modalNewJobPosition = $(".iziModal");
 const modalEditJobPosition = $(".iziModalEdit");
@@ -101,7 +101,7 @@ function deleteJobRow (id) {
 		position: 'center',
 		buttons: [
 			['<button><b>YES</b></button>', function (instance, toast) {
-				
+
 				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
 				$('body').loading({
 					message: 'Deleting...'
@@ -131,16 +131,16 @@ function deleteJobRow (id) {
 				})
 			}, true],
 			['<button>NO</button>', function (instance, toast) {
-				
+
 				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-				
+
 			}],
 		],
 		onClosing: function(instance, toast, closedBy){
-			console.info('Closing | closedBy: ' + closedBy);
+			//console.info('Closing | closedBy: ' + closedBy);
 		},
 		onClosed: function(instance, toast, closedBy){
-			console.info('Closed | closedBy: ' + closedBy);
+			//console.info('Closed | closedBy: ' + closedBy);
 		}
 	});
 }
@@ -196,7 +196,7 @@ function saveNewJobPosition () {
 	data_.append('newJobTitle' ,newJobTitle );
 	data_.append('newJobDescription' ,newJobDescription );
 	modalNewJobPosition.iziModal('startLoading');
-	
+
 	axios({
 		url:'/backend/jobposition' , method:'post' , data:data_
 	}).then(res=>{
@@ -214,7 +214,6 @@ function saveNewJobPosition () {
 	}).catch(err =>{
 		modalNewJobPosition.iziModal('stopLoading');
 	});
-	
-	
-}
 
+
+}

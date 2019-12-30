@@ -26,11 +26,11 @@ function checkAccess () {
 		window.location.href = "log?access=1";
 		return;
 	}
-	
+
 	const payloadObj = KJUR.jws.JWS.readSafeJSONString (b64utoutf8 (Cookies.get ('JWT').split (".")[1]));
 	loggedUserName = payloadObj.username;
 	TOKEN = payloadObj.jwt;
-	
+
 	$("#loggedUserName").text(capitaliseTextFristLetter(loggedUserName));
 	$("#globalUserIcon").attr('src' ,  loggedUserSex === 'male' ? 'customes/logos/user.png' : 'customes/logos/female-user.png');
 	axios.defaults.headers.common['Authorization'] = TOKEN;
@@ -39,14 +39,14 @@ function checkAccess () {
 		// Any status code that lie within the range of 2xx cause this function to trigger
 		// Do something with response data
 		checkAuth(res.data);
-		
+
 		return res;
 	}, function (error) {
 		// Any status codes that falls outside the range of 2xx cause this function to trigger
 		// Do something with response error
 		return Promise.reject(error);
 	});
-	
+
 }
 checkAccess ();
 
@@ -65,7 +65,7 @@ function checkAuth(jdata){
 	if(jdata === 'auth'){
 		window.location.href = "log";
 	}
-	
+
 }
 
 /*********************************************************************************************/
@@ -107,7 +107,7 @@ let getParams =  url=> {
 };
 /*********************************************************************************************/
 function emptyInputs ( arrInput_ids , arrSelect_ids ) {
-	
+
 	for(let i = 0 ; i < arrInput_ids.length ; i ++){
 		let id = arrInput_ids[i];
 		$("#"+id).val('');
@@ -116,7 +116,7 @@ function emptyInputs ( arrInput_ids , arrSelect_ids ) {
 		let id = arrSelect_ids[i];
 		$("#"+id).val('null');
 	}
-	
+
 }
 /*********************************************************************************************/
 function error_perInput(inputElement, errorMessage) {
@@ -142,14 +142,14 @@ function error_input_element(isTrue , elementId) {
 			"border": "1px solid red",
 			"background": "#ff4e44"
 		});
-		
+
 	}else{
 		$('#'+elementId).css({
 			"border": "",
 			"background": ""
 		});
 	}
-	
+
 }
 /*********************************************************************************************/
 /*********************************************************************************************/
@@ -186,7 +186,7 @@ function simpleAcronymExpression(text) {
 /*********************************************************************************************/
 function removeLoadingOn(element_id_String){
 	$('#' + element_id_String).unblock();
-	
+
 }
 
 /*********************************************************************************************/
@@ -305,11 +305,11 @@ function idleTimer() {
 	function logout() {
 		window.location.href = '/action/logout'; //Adapt to actual logout script
 	}
-	
+
 	function reload() {
 		window.location = self.location.href; //Reloads the current page
 	}
-	
+
 	function resetTimer() {
 		clearTimeout(t);
 		t = setTimeout(logout, 1800000); // time is in milliseconds (1000 is 1 second)
@@ -427,7 +427,7 @@ function convertDateToReadableFormat(date_yyy_mm_dd){
 /*********************************************************************************************/
 
 function capitaliseTextFristLetter ( string ) {
-	
+
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
@@ -471,14 +471,14 @@ function chunkArrayGrouped(myArray, chunk_size){
 	var tempArray = [];
 	let i = 1 ;
 	for (index = 0; index < arrayLength; index += chunk_size) {
-		
+
 		const myChunk = myArray.slice(index, index+chunk_size);
 		// Do something if you want with the group
 		let objGroup = {[i]:myChunk};
 		tempArray.push(objGroup);
 		i++;
 	}
-	
+
 	return tempArray;
 }
 // result
@@ -500,13 +500,13 @@ function chunkArray(myArray, chunk_size){
 	var index = 0;
 	var arrayLength = myArray.length;
 	var tempArray = [];
-	
+
 	for (index = 0; index < arrayLength; index += chunk_size) {
 		myChunk = myArray.slice(index, index+chunk_size);
 		// Do something if you want with the group
 		tempArray.push(myChunk);
 	}
-	
+
 	return tempArray;
 }
 // Split in group of 3 items
@@ -635,12 +635,12 @@ function doesConnectionExist() {
 	var xhr = new XMLHttpRequest();
 	var file = "https://www.kirupa.com/blank.png";
 	var randomNum = Math.round(Math.random() * 10000);
-	
+
 	xhr.open('HEAD', file + "?rand=" + randomNum, true);
 	xhr.send();
-	
+
 	xhr.addEventListener("readystatechange", processRequest, false);
-	
+
 	function processRequest(e) {
 		if (xhr.readyState === 4) {
 			console.log (xhr.status)
@@ -654,7 +654,7 @@ function doesConnectionExist() {
 	}
 }
 function hostReachable() {
-	
+
 	$.ajax({url: "http://api.themoviedb.org/2.1/Movie.search/en/json/23afca60ebf72f8d88cdcae2c4f31866/The Goonies",
 		dataType: "jsonp",
 		timeout:3000,
@@ -701,7 +701,7 @@ function hostReachable() {
 			}
 			console.log(error.config);
 		});*/
-	
+
 }
 //hostReachable()
 //console.log (hostReachable())
@@ -720,14 +720,14 @@ function getCheckedInputsGetValues (className) {
 }
 
 function uncheckCheckedInputs (className) {
-	
+
 	let inputElements = document.getElementsByClassName(className);
 	for(let i=0; inputElements[i]; ++i){
 		if(inputElements[i].checked){
 			inputElements[i].checked = false;
 		}
 	}
-	
+
 }
 
 /*********************************************************************************************/
@@ -740,12 +740,15 @@ function globalInfoDialog (htmlContent , header__) {
 	});
 	cont.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 	cont.iziModal('setTitle', header__ + ' Info Dialog');
-	
+
 	cont.iziModal('setContent', htmlContent);
 	cont.iziModal('open');
 }
 /*********************************************************************************************/
+function runInternetAvailabilityCheck(){
 
+}
+// setTimeout ( ()=> runInternetAvailabilityCheck(), randomNumbers(40,60) * 1000);
 /*********************************************************************************************/
 /*********************************************************************************************/
 /*********************************************************************************************/
@@ -963,4 +966,3 @@ function globalInfoDialog (htmlContent , header__) {
 /*********************************************************************************************/
 /*********************************************************************************************/
 /*********************************************************************************************/
-
