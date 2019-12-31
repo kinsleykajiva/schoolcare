@@ -14,11 +14,20 @@ function loginUser() {
 		return;
 	}
 	status_response.text("Loading..");
-	
-	
+
+
 	// makeToken('124212wadewr');
 	$.post('app/api/backend/login',{username:username , password:password}).done(res=>{
+
+		if (res === 'error_parse') {
+									 //alert("Put Valid email log");
+									 status_response.text('Put Valid email log');
+
+							 }else if (res === 'lol_non_wrong'){
+								 	status_response.text('Your not Registered to use the system !');
+							 }else{
 		let  j = JSON.parse(res);
+
 		if(j.status=== 'ok'){
 			makeToken (j.jwt, username ,j.sex);
 			//	alert('in');
@@ -31,8 +40,11 @@ function loginUser() {
 				status_response.text("Access Denied..");
 			}
 		}
-		
-	});
+	}
+
+	}).fail((xhr, rd, err) => {
+                status_response.text('Something Went  Wrong');
+            });
 }
 
 
@@ -61,7 +73,7 @@ function makeToken (token,username , sex) {
 	// expires 7 days from now
 	Cookies.set('JWT', sJWT, { expires: 7 });
 	Cookies.set('sex', sex, { expires: 7 });
-	
+
 	///
 	//Cookies.get('name') // => 'value'
 	//Cookies.get('nothing') // => undefined

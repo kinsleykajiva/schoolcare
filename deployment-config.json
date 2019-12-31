@@ -1,0 +1,9 @@
+{
+    "type": "ftp",
+    "host": "commonresolve.co.za",
+    "username": "xuser@commonresolve.co.za",
+    "password": "aBr*rT#HTUtC*PoC3duyyjv37a",
+    "port": 21,
+    "remotePath": "/schoolcare/",
+    "uploadOnSave": false
+}

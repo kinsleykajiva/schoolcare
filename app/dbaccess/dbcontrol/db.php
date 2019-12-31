@@ -3,12 +3,12 @@
 	$domainsCompany = domainsCompany ();
 
 	define ( 'HOST' , 'localhost' );
-	define ( 'USER' , 'root' );
-	define ( 'DATABASE', 'schoolcare' );
-	define ( 'PASSWORD' , "" );
+	define ( 'USER' , 'commomku_schoole' );
+	//define ( 'DATABASE', 'schoolcare' );
+	define ( 'PASSWORD' , "e29Ze$%Jjh0Y;Q76n678fPX" );
 
-	/*if ( session_status () === PHP_SESSION_ACTIVE ) {
-		$doComp = $_SESSION[ 'xdomainx' ];
+	if ( session_status () === PHP_SESSION_ACTIVE ) {
+		$doComp = $_SESSION[ 'vdomainv' ];
 		if ( array_key_exists ( $doComp , $domainsCompany ) ) {
 			define ( 'DATABASE', $domainsCompany[ $doComp ] );
 		}
@@ -19,7 +19,7 @@
 	}
 	else {
 		session_start ();
-		$doComp = $_SESSION[ 'xdomainx' ];
+		$doComp = $_SESSION[ 'vdomainv' ];
 		if ( array_key_exists ( $doComp , $domainsCompany ) ) {
 			define ( 'DATABASE', $domainsCompany[ $doComp ] );
 		}
@@ -27,4 +27,4 @@
 			define ( 'DATABASE', 'legalwar_test' );
 		}
 
-	}*/
+	}
