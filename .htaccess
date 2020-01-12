@@ -3,7 +3,7 @@ RewriteEngine On
 #RewriteBase /
 
 # Set the default handler.
-DirectoryIndex index.php
+#DirectoryIndex index.php
 
 RewriteCond %{REQUEST_FILENAME} !-f
 
