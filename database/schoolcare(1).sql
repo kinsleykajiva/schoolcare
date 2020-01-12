@@ -19,10 +19,10 @@ SET time_zone = "+02:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `commomku_schoolc`
+-- Database: `schoofhf_beta`
 --
-CREATE DATABASE IF NOT EXISTS `commomku_schoolc` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `commomku_schoolc`;
+CREATE DATABASE IF NOT EXISTS `schoofhf_beta` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `schoofhf_beta`;
 
 -- --------------------------------------------------------
 
