@@ -15,9 +15,9 @@ function loginUser() {
 	}
 	status_response.text("Loading..");
 
-
+	//alert(2)
 	// makeToken('124212wadewr');
-	$.post('/app/api/backend/login',{username:username , password:password}).done(res=>{
+	$.post('app/api/backend/login',{username:username , password:password}).done(res=>{
 
 		if (res === 'error_parse') {
 									 //alert("Put Valid email log");
@@ -43,6 +43,9 @@ function loginUser() {
 	}
 
 	}).fail((xhr, rd, err) => {
+		console.log(xhr)
+		console.log(rd)
+		console.log(err)
                 status_response.text('Something Went  Wrong');
             });
 }

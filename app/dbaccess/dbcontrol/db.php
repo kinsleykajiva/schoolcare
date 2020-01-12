@@ -5,7 +5,7 @@
 	define ( 'HOST' , 'localhost' );
 	define ( 'USER' , 'schoofhf_xrootx' );
 	//define ( 'DATABASE', 'schoolcare' );
-	define ( 'PASSWORD' , "r3454FGy4mTop)h@3U8DY" );
+	define ( 'PASSWORD' , 'r3454FGy4mTop)h@3U8DY');
 
 	if ( session_status () === PHP_SESSION_ACTIVE ) {
 		$doComp = $_SESSION[ 'vdomainv' ];
