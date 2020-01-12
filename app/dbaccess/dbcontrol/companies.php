@@ -1,11 +1,11 @@
 <?php
 	function domainsCompany (): array {
 		return
-			array ('beta'=>'commomku_schoolc',);
+			array ('beta'=>'schoofhf_beta',);
 	}
 
 
 	function CompanyDBs () :array{
 		return
-			array('commomku_schoolc',) ;
+			array('schoofhf_beta',) ;
 	}

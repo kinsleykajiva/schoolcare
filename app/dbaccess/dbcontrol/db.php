@@ -3,9 +3,9 @@
 	$domainsCompany = domainsCompany ();
 
 	define ( 'HOST' , 'localhost' );
-	define ( 'USER' , 'commomku_schoole' );
+	define ( 'USER' , 'schoofhf_xrootx' );
 	//define ( 'DATABASE', 'schoolcare' );
-	define ( 'PASSWORD' , "e29Ze$%Jjh0Y;Q76n678fPX" );
+	define ( 'PASSWORD' , "r3454FGy4mTop)h@3U8DY" );
 
 	if ( session_status () === PHP_SESSION_ACTIVE ) {
 		$doComp = $_SESSION[ 'vdomainv' ];
@@ -24,7 +24,7 @@
 			define ( 'DATABASE', $domainsCompany[ $doComp ] );
 		}
 		else {
-			define ( 'DATABASE', 'legalwar_test' );
+			define ( 'DATABASE', 'schoofhf_test' );
 		}
 
 	}
