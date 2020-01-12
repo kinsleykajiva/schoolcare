@@ -17,7 +17,7 @@ function loginUser() {
 
 
 	// makeToken('124212wadewr');
-	$.post('app/api/backend/login',{username:username , password:password}).done(res=>{
+	$.post('/app/api/backend/login',{username:username , password:password}).done(res=>{
 
 		if (res === 'error_parse') {
 									 //alert("Put Valid email log");
@@ -31,7 +31,7 @@ function loginUser() {
 		if(j.status=== 'ok'){
 			makeToken (j.jwt, username ,j.sex);
 			//	alert('in');
-			window.location.href = "http://localhost/projects/AAllAA/schoolcare/render-home";
+			window.location.href = "render-home";
 		}else{
 			if(j.status === 'none'){
 				status_response.text("User not found !");
