@@ -14,10 +14,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="description"
-	      content="Gradient Able Bootstrap admin template made using Bootstrap 4. The starter version of Gradient Able is completely free for personal project."/>
-	<meta name="keywords"
-	      content="free dashboard template, free admin, free bootstrap template, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive"/>
-	<meta name="author" content="codedthemes">
+	      content="Schoolcare System Software Log in page"/>
+	
 	<!-- Favicon icon -->
 	<link rel="icon" href="template/assets/images/favicon.ico" type="image/x-icon">
 	<!-- Google font-->
