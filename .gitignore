@@ -4,6 +4,7 @@ storage/logs/
 storage/logs/**
 vender/abr4xas/
 vender/sabberworm/
+vendor
 public/
 .phpintel
 app/api/backend/tmp/
