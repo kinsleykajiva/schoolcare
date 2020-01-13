@@ -18,7 +18,8 @@
 	"phpoffice/phpword": "^0.17.0",
 	"php-ai/php-ml": "^0.8.0",
 	"ext-mysqli": "*",
-    "lcobucci/jwt": "^3.3"
+    "lcobucci/jwt": "^3.3",
+	"ext-apache": "*"
   },
   "require-dev": {
 	"roave/security-advisories": "dev-master",

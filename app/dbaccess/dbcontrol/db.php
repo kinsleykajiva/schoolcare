@@ -1,4 +1,5 @@
 <?php
+	
 	require_once 'companies.php';
 	$domainsCompany = domainsCompany ();
 
@@ -18,7 +19,8 @@
 
 	}
 	else {
-		session_start ();
+		
+		
 		$doComp = $_SESSION[ 'vdomainv' ];
 		if ( array_key_exists ( $doComp , $domainsCompany ) ) {
 			define ( 'DATABASE', $domainsCompany[ $doComp ] );

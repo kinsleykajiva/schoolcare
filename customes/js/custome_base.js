@@ -34,6 +34,7 @@ function checkAccess () {
 	$("#loggedUserName").text(capitaliseTextFristLetter(loggedUserName));
 	$("#globalUserIcon").attr('src' ,  loggedUserSex === 'male' ? 'customes/logos/user.png' : 'customes/logos/female-user.png');
 	axios.defaults.headers.common['Authorization'] = TOKEN;
+	axios.defaults.headers.common['header12'] = TOKEN;
 	// Add a response interceptor
 	axios.interceptors.response.use(function (res) {
 		// Any status code that lie within the range of 2xx cause this function to trigger

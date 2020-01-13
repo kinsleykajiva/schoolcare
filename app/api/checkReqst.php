@@ -1,5 +1,6 @@
 <?php
-
+	@ob_start();
+	if(session_status()!=PHP_SESSION_ACTIVE) session_start();
 	include '../access.php';
 	include_once '../../dbaccess/dbcontrol/db.php';
 	include_once '../../dbaccess/classes/DBUsers.php';
