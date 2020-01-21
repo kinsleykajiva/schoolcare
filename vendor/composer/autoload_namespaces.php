@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Sabberworm\\CSS' => array($vendorDir . '/sabberworm/php-css-parser/lib'),
-    'Evenement' => array($vendorDir . '/evenement/evenement/src'),
 );

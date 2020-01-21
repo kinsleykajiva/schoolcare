@@ -2,9 +2,10 @@ storage/files/
 storage/files/**
 storage/logs/
 storage/logs/**
-vender/abr4xas/
-vender/sabberworm/
-vendor
+#vender/abr4xas/
+#vender/sabberworm/
+#vendor
+#vendor/*
 public/
 .phpintel
 app/api/backend/tmp/
