@@ -709,6 +709,16 @@ function hostReachable() {
 //doesConnectionExist();
 /*********************************************************************************************/
 
+function getCheckedInputsGetAttributeValues (className,attributeName) {
+	let checkedValue = [];
+	let inputElements = document.getElementsByClassName(className);
+	for(let i=0; inputElements[i]; ++i){
+		if(inputElements[i].checked){
+			checkedValue.push(inputElements[i].getAttribute(attributeName));
+		}
+	}
+	return  checkedValue;
+}
 function getCheckedInputsGetValues (className) {
 	let checkedValue = [];
 	let inputElements = document.getElementsByClassName(className);

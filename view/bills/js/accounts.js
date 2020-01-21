@@ -117,9 +117,9 @@ function renderPostChildrenTable () {
 
        <div  class="checkbox-fade fade-in-primary">
         <label>
-         <input type="checkbox" class="fee_table_check" value="${valls.id}">
+         <input type="checkbox" class="fee_table_check" data-childID = "${valls.id_child}" value="${valls.id}">
          <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-		 <span class="text-inverse"> ${valls.year} ${valls.check_has_fees? 'FS':'NF'}</span>
+		 <span class="text-inverse"> ${valls.year} ${valls.check_has_fees? '<label class="text-primary">FS</label>':'<label class="text-danger">NF </label>'}</span>
         </label>
        </div>
 

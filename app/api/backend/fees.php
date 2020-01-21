@@ -4,6 +4,15 @@
 	include_once '../../dbaccess/classes/DBFeesHandler.php';
 	//print $USER_ID ;
 	$feesHandlerObj = new DBFeesHandler( USER , PASSWORD , DATABASE );
+	
+	if(isset($_POST['postChildToFinancialYear'])){
+		$year_id = $_POST['postChildToFinancialYear'];
+		$children_ids = $_POST['postChild_id'];
+		$res = $feesHandlerObj->saveChildToNewFinancialYear($year_id , $children_ids);
+		
+		print json_encode( $res , JSON_THROW_ON_ERROR , 512 );
+		exit;
+	}
 
 	if ( isset( $_POST[ 'newChildFeePackge' ] ) ) {
 		$newChildFeePackge = $_POST[ 'newChildFeePackge' ];

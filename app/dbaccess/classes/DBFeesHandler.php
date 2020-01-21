@@ -55,6 +55,17 @@
 
 			return $this->fetchInArray($sql);
 		}
+		
+		public function saveChildToNewFinancialYear($id_year,string $children_ids):array {
+			$kidsArr = explode(',',$children_ids);
+			foreach ($kidsArr as $kid_id){
+				if($this->countRows('fees_financial_year',['id_child'=>$kid_id,'id_year'=>$id_year]) < 1){
+					$this->insert('fees_financial_year',['id_child'=>$kid_id,'id_year'=>$id_year]);
+				}
+				
+			}
+			return ['status'=>'ok'];
+		}
 
 		public function getPostedChildrenForFinancialYear ( $year = '' ) : array
 		{

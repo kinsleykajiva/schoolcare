@@ -13,8 +13,6 @@ modalReceiveChildPaymentDialogDialog.iziModal ({
 	padding: 20
 });
 
-
-
 modalAddFeePackageToFeesDialogDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 modalReceiveChildPaymentDialogDialog.iziModal ('setHeaderColor', MODAL_HEADER_COLOR);
 
@@ -168,11 +166,12 @@ function postChildrenDialog () {
 		buttons: [
 			['<button><b>Yes Post</b></button>', function (instance, toast, button, e, inputs) {
 				
-				console.info(button);
-				console.info(e);
-				
-				alert(inputs[0].options[inputs[0].selectedIndex].value)
-				
+				//console.info(button);
+				//console.info(e);
+				let post_id_children = getCheckedInputsGetAttributeValues('fee_table_check','data-childID');
+				//console.info(post_id_children)
+				//alert(inputs[0].options[inputs[0].selectedIndex].value)
+				postChildrenToNewFinancialYear(inputs[0].options[inputs[0].selectedIndex].value,post_id_children);
 				instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
 				
 				/* iziToast.success({
@@ -205,6 +204,30 @@ function postChildrenDialog () {
 	
 	
 	
+}
+
+function postChildrenToNewFinancialYear(year_id,children_ids) {
+	// we should do a check if the child was already posted to the new year and ignore that id
+	let dataa = new FormData();
+	dataa.append('postChildToFinancialYear' ,year_id );
+	dataa.append('postChild_id' ,children_ids+'' );
+	$('body').loading({
+		message: 'Posting...'
+	});
+	axios({url:'/backend/fees',method:'post',data:dataa}).then(res=>{
+		$('body').loading('stop');
+		if(res.statusText === 'OK' && res.data.status === 'ok'){
+			showSuccessMessage('Selected Children have been posted to selected financial year' ,4);
+			$('#children_select_all').trigger('click');
+			$('#children_select_all').trigger('click');// is to deselect all of the check box in-case not all where selected for example 4 out of 5
+			onchangeYearOnPostTable ();
+		}else{
+			showErrorMessage('Failed to post please try again' , 4);
+		}
+	}).catch(error=>{
+		$('body').loading('stop');
+		showErrorMessage('Failed to connect Please check your connection' , 4);
+	});
 }
 function saveChildrenFeePackages () {
 	let feePaymentPackages = $("#feePaymentPackages").val();
