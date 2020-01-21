@@ -126,7 +126,7 @@ function renderYearSelects () {
 	//$("#table_select_year_11").selectpicker('refresh');
 }
 function postChildrenDialog () {
-	const nextYear = new Date().getFullYear() +1;     // Get the four digit year (yyyy);
+	const nextYear = new Date().getFullYear() +0;     // Get the four digit year (yyyy);
 	let opt =`<option value="null">Select</option>`;
 	_.forEach(FINANCIAL_YEARS_READ_ROWS,(valls,ix)=>{
 		let selected = valls.year == nextYear ? 'selected="selected"' : '';

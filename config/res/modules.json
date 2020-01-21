@@ -189,6 +189,8 @@
 		"assets/js/jsduallists/Duallistbox.css"
 	  ] ,
 	  "js" : [
+		"assets/js/input-mask/jquery.inputmask.bundle.js",
+		"assets/js/input-mask/inputmask.binding.js",
 		"assets/js/jsduallists/jsdual.js",
 		"view/bills/js/accounts.js",
 		"view/bills/js/children-accounts.js",

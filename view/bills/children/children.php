@@ -1,4 +1,18 @@
 <div class="">
+	<div class="row">
+		<div class="col-sm-2">
+			<button id="btnPostSlected" style="display: none;" onclick="postChildrenDialog()" class="btn  btn-mini btn-info btn-round">
+				<i class="fa fa-address-book-o" aria-hidden="true"></i>	 Post
+			</button>
+		</div>
+		<div class="col-sm-2">
+			<button id="btnAddFeesTolected" style="display: none;" onclick="openAddChildToFeesDialog()" class="btn  btn-mini btn-info btn-round">
+				<i class="fa fa-address-book-o" aria-hidden="true"></i>	 Add Fees
+			</button>
+		</div>
+	
+	
+	</div>
 	<div class="card-block table-border-style" style="min-height: 300px;">
 		<div class="row">
 			<div class="col-sm-2">
